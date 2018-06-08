@@ -1,0 +1,23 @@
+.tag-cloud {
+  text-align: center;
+  margin-top: 100px;
+
+  .tag-cloud-title {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .tag-cloud-tags {
+    a {
+      display: inline-block;
+      margin: 10px;
+      word-wrap: break-word;
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    a:hover {
+      border-bottom-color: #555;
+    }
+  }
+}
