@@ -2959,6 +2959,10 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
+gentelella@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/gentelella/-/gentelella-1.4.0.tgz#b3d15fd9c40c6ea47dc7f36290c8f89aee95efc5"
+
 get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/get-caller-file/download/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
