@@ -22,13 +22,7 @@ Route::get('archive', 'ArchiveController@index')->name('archive.index');
 Route::resource('tags', 'TagController', ['only' => ['index', 'show']]);
 
 // 后台管理系统
-Route::group(['prefix' => 'admin'], function () {
-    // 登录
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     // 首页
     Route::get('/', 'AdminController@index')->name('admin');
-
 });

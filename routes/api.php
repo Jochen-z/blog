@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['namespace' => 'Admin'], function () {
+    // 登录注册
+    Route::prefix('auth')->group(function() {
+        Route::post('login', 'AuthController@login');
+        Route::get('logout', 'AuthController@logout');
+    });
+
+//    Route::middleware('refresh.token')->group(function() {
+//        Route::get('profile','UserController@profile');
+//    });
+});
