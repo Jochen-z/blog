@@ -6,6 +6,8 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
+        { path: '/login', component: require('./pages/login/'), hidden: true },
+
         {
             path: '/',
             component: Layout,

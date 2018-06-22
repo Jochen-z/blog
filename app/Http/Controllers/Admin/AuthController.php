@@ -2,47 +2,78 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginPost;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
     /**
-     * Get a JWT token via given credentials.
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * AuthController constructor.
      */
-    public function login(Request $request)
+    public function __construct()
     {
-        // 验证规则
-        $rules = [
-            'email'    => [
-                'required',
-                'exists:users',
-            ],
-            'password' => 'required|string|min:6|max:20',
-        ];
-
-        // 验证参数，如果验证失败，则会抛出 ValidationException 的异常
-        $params = $this->validate($request, $rules);
-
-        // 使用 Auth 登录用户，如果登录成功，则返回 201 的 code 和 token，如果登录失败则返回 400
-        return ($token = Auth::guard('api')->attempt($params))
-            ? response(['token' => 'bearer ' . $token], 201)
-            : response(['error' => '账号或密码错误'], 400);
+        $this->middleware('auth:api')->except('login');
     }
 
     /**
-     * 处理用户登出逻辑
+     * Get a JWT token via given credentials.
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @param LoginPost $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(LoginPost $request)
+    {
+        if (! $token = auth('api')->attempt($request->all())) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function user()
+    {
+        return response()->json(auth('api')->user());
+    }
+
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function logout()
     {
-        Auth::guard('api')->logout();
+        auth('api')->logout();
 
-        return response(['message' => '退出成功']);
+        return response()->json(['message' => '退出成功']);
+    }
+
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth('api')->refresh());
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => 'bearer ' . $token,
+            'expires_in' => auth('api')->factory()->getTTL() * 60 // JWT time to live (in second)
+        ]);
     }
 }

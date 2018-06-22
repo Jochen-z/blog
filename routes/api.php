@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,16 +10,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(['namespace' => 'Admin', 'middleware' => 'api'], function () {
 
-
-Route::group(['namespace' => 'Admin'], function () {
-    // 登录注册
-    Route::prefix('auth')->group(function() {
-        Route::post('login', 'AuthController@login');
-        Route::get('logout', 'AuthController@logout');
+    Route::group(['prefix' => 'auth'], function() {
+        Route::post('login', 'AuthController@login')->name('login');
+        Route::get('user', 'AuthController@user')->name('auth.user');
+        Route::get('logout', 'AuthController@logout')->name('logout');
     });
 
 //    Route::middleware('refresh.token')->group(function() {
