@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import app from './modules/app';
 import user from './modules/user';
 
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -13,9 +14,11 @@ export default new Vuex.Store({
     },
     // “getter” 可以认为是 store 的计算属性，作为共享函数使用，例如 this.$store.getters.sidebar
     getters: {
-        sidebar: state => state.app.sidebar,
-        avatar: state => state.user.avatar,
-        device: state => state.app.device,
+        auth: state => state.user.auth,
+        name: state => state.user.name,
         token: state => state.user.token,
+        avatar: state => state.user.avatar,
+        sidebar: state => state.app.sidebar,
+        device: state => state.app.device,
     }
 });

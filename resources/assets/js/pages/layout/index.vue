@@ -16,10 +16,10 @@
 </template>
 
 <script>
-    import ResizeMixin from './ResizeHandler';
-    import Navbar from './Navbar/';
-    import Sidebar from './Sidebar/';
-    import AppMain from './Main/';
+    import ResizeMixin from './mixin/ResizeHandler';
+    import { default as Navbar } from "./components/Navbar";
+    import { default as Sidebar } from "./components/Sidebar/index";
+    import { default as AppMain } from './components/AppMain';
 
     export default {
         name: 'layout',
@@ -46,19 +46,22 @@
         },
         methods: {
             handleClickOutside() {
-                this.$store.dispatch('CloseSideBar', { withoutAnimation: false });
+                return this.$store.dispatch('CloseSideBar', { withoutAnimation: false });
             }
         }
     }
 </script>
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
+    @import "../../styles/mixin.scss";
+
     .app-wrapper {
-    @include clearfix;
+        @include clearfix;
         position: relative;
         height: 100%;
         width: 100%;
     }
+
     .drawer-bg {
         background: #000;
         opacity: 0.3;

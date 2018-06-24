@@ -4,7 +4,9 @@
             <h3 class="title">后台管理系统</h3>
 
             <el-form-item prop="username">
-                <span class="svg-container"><svg-icon icon-class="user"></svg-icon></span>
+                <span class="svg-container" style="font-size: 20px">
+                    <svg-icon icon-class="user"></svg-icon>
+                </span>
                 <el-input name="username"
                           type="text"
                           v-model="loginForm.username"
@@ -14,19 +16,26 @@
             </el-form-item>
 
             <el-form-item prop="password">
-                <span class="svg-container"><svg-icon icon-class="password"></svg-icon></span>
+                <span class="svg-container">
+                    <svg-icon icon-class="password"></svg-icon>
+                </span>
                 <el-input name="password"
                           :type="pwdType"
                           v-model="loginForm.password"
-                          @keyup.enter.native="handleLogin"
+                          @keyup.enter.native="doLogin"
                           autoComplete="on"
                           placeholder="password">
                 </el-input>
-                <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye"></svg-icon></span>
+                <span class="show-pwd" @click="showPwd">
+                    <svg-icon icon-class="eye"></svg-icon>
+                </span>
             </el-form-item>
 
             <el-form-item>
-                <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
+                <el-button type="primary"
+                           style="width:100%;"
+                           :loading="loading"
+                           @click.native.prevent="doLogin">
                     登 录
                 </el-button>
             </el-form-item>
@@ -36,24 +45,29 @@
 </template>
 
 <script>
-    import { isvalidUsername } from './Validate';
+    import SvgIcon from '../../components/SvgIcon/index';
 
     export default {
         name: "index",
+        components: { SvgIcon },
         data() {
-            const validateUsername = (rule, value, callback) => {
-                if (!isvalidUsername(value)) {
-                    callback(new Error('请输入正确的用户名'))
+            let validateUsername = (rule, value, callback) => {
+                let email = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+
+                if (! value.length) {
+                    callback(new Error('用户名不能为空'));
+                } else if (! email.test(value)) {
+                    callback(new Error('用户名格式错误'));
                 } else {
-                    callback()
+                    callback();
                 }
             };
 
-            const validatePass = (rule, value, callback) => {
-                if (value.length < 5) {
-                    callback(new Error('密码不能小于5位'))
+            let validatePassword = (rule, value, callback) => {
+                if (value.length < 6) {
+                    callback(new Error('密码不能小于6位'));
                 } else {
-                    callback()
+                    callback();
                 }
             };
 
@@ -65,32 +79,29 @@
                     password: ''
                 },
                 loginRules: {
-                    username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-                    password: [{ required: true, trigger: 'blur', validator: validatePass }]
+                    username: [
+                        { required: true, trigger: 'blur', validator: validateUsername }
+                    ],
+                    password: [
+                        { required: true, trigger: 'blur', validator: validatePassword }
+                    ],
                 },
             }
         },
         methods: {
             showPwd() {
-                if (this.pwdType === 'password') {
-                    this.pwdType = ''
-                } else {
-                    this.pwdType = 'password'
-                }
+                this.pwdType = (this.pwdType === 'password') ? '' : 'password';
             },
-            handleLogin() {
+            doLogin() {
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
                         this.loading = true;
-                        this.$store.dispatch('Login', this.loginForm).then(() => {
+                        this.$store.dispatch('doLogin', this.loginForm).then(() => {
                             this.loading = false;
-                            this.$router.push({ path: '/' })
+                            this.$router.push({ path: '/' });
                         }).catch(() => {
                             this.loading = false;
                         })
-                    } else {
-                        console.log('error submit!!');
-                        return false
                     }
                 })
             }

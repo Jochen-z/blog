@@ -43,8 +43,11 @@
 </template>
 
 <script>
+    import SvgIcon from '../../../../components/SvgIcon/index';
+
     export default {
         name: 'SidebarItem',
+        components: { SvgIcon },
         props: {
             routes: {
                 type: Array

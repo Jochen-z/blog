@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from './pages/layout/';
+import Layout from '../pages/layout/index';
 
 Vue.use(Router);
 
 export default new Router({
     routes: [
-        { path: '/login', component: require('./pages/login/'), hidden: true },
+        { path: '/login', component: require('../pages/login/index'), hidden: true },
 
         {
             path: '/',
@@ -18,7 +18,7 @@ export default new Router({
             children: [
                 {
                     path: 'dashboard',
-                    component: require('./pages/dashboard/')
+                    component: require('../pages/dashboard/index')
                 }
             ]
         },
