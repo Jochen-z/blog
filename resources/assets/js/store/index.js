@@ -14,7 +14,6 @@ export default new Vuex.Store({
     },
     // “getter” 可以认为是 store 的计算属性，作为共享函数使用，例如 this.$store.getters.sidebar
     getters: {
-        auth: state => state.user.auth,
         name: state => state.user.name,
         token: state => state.user.token,
         avatar: state => state.user.avatar,

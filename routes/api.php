@@ -17,8 +17,4 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'api'], function () {
         Route::get('user', 'AuthController@user')->name('auth.user');
         Route::get('logout', 'AuthController@logout')->name('logout');
     });
-
-//    Route::middleware('refresh.token')->group(function() {
-//        Route::get('profile','UserController@profile');
-//    });
 });

@@ -9,17 +9,11 @@
         <!-- 头像及下拉 -->
         <el-dropdown class="avatar-container" trigger="click">
             <div class="avatar-wrapper">
-                <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-                <!--<i class="el-icon-caret-bottom"></i>-->
+                <img class="user-avatar" :src="avatar">
             </div>
             <el-dropdown-menu class="user-dropdown" slot="dropdown">
-                <!--<router-link class="inlineBlock" to="/">-->
-                    <!--<el-dropdown-item>-->
-                        <!--Home-->
-                    <!--</el-dropdown-item>-->
-                <!--</router-link>-->
-                <el-dropdown-item divided>
-                    <span @click="logout" style="display:block;">LogOut</span>
+                <el-dropdown-item>
+                    <span @click="logout" style="display:block;">Logout</span>
                 </el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -49,7 +43,7 @@
             logout() {
                 return this.$store.dispatch('doLogout').then(() => {
                     location.reload(); // 为了重新实例化vue-router对象 避免bug
-                })
+                });
             }
         }
     }

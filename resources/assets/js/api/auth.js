@@ -18,13 +18,6 @@ export function userInfo() {
     })
 }
 
-export function refresh() {
-    return http({
-        url: 'api/auth/refresh',
-        method: 'get',
-    })
-}
-
 export function logout() {
     return http({
         url: 'api/auth/logout',
