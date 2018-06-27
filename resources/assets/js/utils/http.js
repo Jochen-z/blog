@@ -1,6 +1,5 @@
 import axios from 'axios';
 import store from '../store';
-import router from '../router';
 import { getToken } from './cookie';
 import { Message } from 'element-ui';
 
@@ -39,15 +38,24 @@ http.interceptors.response.use(response => {
     let data = error.response.data;
 
     switch (code) {
+        case 400:
+            Message.error(data.error);
+            break;
         case 401:
             if (data.error === 'Unauthorized') {
                 // 登录失败（密码错误）
                 Message.error('密码错误');
-            } else {
+            } else if (data.error === 'Unauthenticated.') {
                 // refresh_token 已过期
                 Message.error('授权已过期，请重新登录');
-                router.push('/login');
+                store.dispatch('cleanUser');
+                location.reload();
+            } else {
+                Message.error(data.error);
             }
+            break;
+        case 403:
+            Message.error(data.error);
             break;
         case 422:
             // 登录校验失败

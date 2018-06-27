@@ -16,37 +16,42 @@ class RefreshToken extends BaseMiddleware
      * @param $request
      * @param Closure $next
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|mixed
-     * @throws JWTException
      */
     public function handle($request, Closure $next)
     {
-        // 检查此次请求中是否带有 token，如果没有则抛出异常
-        $this->checkForToken($request);
-
         try {
-            // 检测用户的登录状态，如果正常则通过
-            // 若 token 已过期，则抛出 TokenExpiredException  异常
-            if ($this->auth->parseToken()->authenticate()) {
-                return $next($request);
+            // 检查请求是否带有 token
+            $this->checkForToken($request);
+
+            // 检测用户的登录状态，若 token 已过期，则抛出 TokenExpiredException  异常
+            if (! $this->auth->parseToken()->authenticate()) {
+                return response('Unauthenticated.', 401);
             }
 
-            // token 是无效的，用户尚未认证
-            throw new UnauthorizedHttpException('jwt-auth', 'Unauthenticated.');
-        } catch (TokenExpiredException $exception) {
-            // 刷新该用户的 token 并将它添加到响应头中
+            return $next($request);
+        }
+        catch (UnauthorizedHttpException $exception) {
+            // 参数异常
+            return response($exception->getMessage(), 403);
+        }
+        catch (TokenExpiredException $exception) {
+            // token 已过期
             try {
                 // 刷新用户的 token
                 $token = $this->auth->refresh();
                 // 使用一次性登录以保证此次请求的成功
-                $id = $this->auth->manager()->getPayloadFactory()->buildClaimsCollection()->toPlainArray()['sub'];
-                auth('api')->onceUsingId($id);
+                $claim = $this->auth->manager()->getPayloadFactory()->buildClaimsCollection()->toPlainArray();
+                auth('api')->onceUsingId($claim['sub']);
+                // 在响应头中返回新的 token
+                return $this->setAuthenticationHeader($next($request), $token);
             } catch (JWTException $exception) {
-                // 如果捕获到此异常，即代表 refresh 已过期，用户无法刷新令牌，需要重新登录
-                throw new UnauthorizedHttpException('jwt-auth', 'Unauthenticated.');
+                // refresh 已过期
+                return response($exception->getMessage(), 401);
             }
         }
-
-        // 在响应头中返回新的 token
-        return $this->setAuthenticationHeader($next($request), $token);
+        catch (JWTException $exception) {
+            // token 数据解析异常
+            return response($exception->getMessage(), 400);
+        }
     }
 }

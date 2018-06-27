@@ -1,4 +1,4 @@
-import { login, userInfo, refresh, logout } from '../../api/auth';
+import { login, userInfo, logout } from '../../api/auth';
 import { setToken, removeToken } from '../../utils/cookie';
 
 const user = {
@@ -20,7 +20,7 @@ const user = {
     },
     actions: {
         // 登录
-        doLogin({ commit }, userInfo) {
+        doLogin({commit}, userInfo) {
             let username = userInfo.username.trim();
             let password = userInfo.password;
 
@@ -37,7 +37,7 @@ const user = {
         },
 
         // 获取用户信息
-        getUserInfo({ commit }) {
+        getUserInfo({commit}) {
             return new Promise((resolve, reject) => {
                 userInfo().then(response => {
                     let data = response.data;
@@ -50,7 +50,7 @@ const user = {
         },
 
         // 刷新令牌
-        refreshToken({ commit, token }) {
+        refreshToken({commit}, token) {
             return new Promise((resolve) => {
                 setToken(token);
                 commit('SET_TOKEN', token);
@@ -59,7 +59,7 @@ const user = {
         },
 
         // 登出
-        doLogout({ commit }) {
+        doLogout({commit}) {
             return new Promise((resolve, reject) => {
                 logout().then(() => {
                     removeToken();
@@ -69,6 +69,15 @@ const user = {
                     reject(error);
                 })
             })
+        },
+
+        // 清除用户信息
+        cleanUser({ commit }) {
+          return new Promise((resolve) => {
+              removeToken();
+              commit('SET_TOKEN', '');
+              resolve();
+          })
         }
     }
 };
