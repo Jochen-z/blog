@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\LoginPost;
-use App\Http\Controllers\Controller;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     /**
      * AuthController constructor.
@@ -24,10 +23,10 @@ class AuthController extends Controller
     public function login(LoginPost $request)
     {
         if (! $token = auth('api')->attempt($request->all())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return $this->unAuthorized('密码错误');
         }
 
-        return response()->json([
+        return $this->success([
             'access_token' => 'bearer ' . $token,
             'expires_in' => auth('api')->factory()->getTTL() * 60 // JWT time to live (in second)
         ]);
@@ -40,7 +39,7 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return response()->json(auth('api')->user());
+        return $this->success(auth('api')->user());
     }
 
     /**
@@ -52,6 +51,6 @@ class AuthController extends Controller
     {
         auth('api')->logout();
 
-        return response()->json(['message' => '退出成功']);
+        return $this->setMessage('退出成功')->toJson();
     }
 }

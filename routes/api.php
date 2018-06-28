@@ -10,12 +10,17 @@
 |
 */
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['namespace' => 'Admin'], function() {
 
     Route::group(['prefix' => 'auth'], function() {
         Route::post('login', 'AuthController@login')->name('login');
         Route::get('user', 'AuthController@user')->name('auth.user');
         Route::get('logout', 'AuthController@logout')->name('logout');
     });
-
+    
+    Route::group(['middleware' => 'refresh'], function() {
+        Route::resource('articles', 'ArticleController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('tags', 'TagController');
+    });
 });
