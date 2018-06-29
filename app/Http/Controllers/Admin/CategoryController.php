@@ -3,36 +3,44 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryPost;
+use App\Http\Requests\UpdateCategoryPost;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends ApiController
 {
     /**
+     * 分类列表
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $categories = Category::latest()->paginate(20);
+        $categories = CategoryResource::collection(Category::latest()->paginate(15));
 
         return $this->success($categories);
     }
 
     /**
+     * 查看分类信息
+     *
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        $category = new CategoryResource(Category::findOrFail($id));
 
         return $this->success($category);
     }
 
     /**
-     * @param Request $request
+     * 新增分类
+     *
+     * @param StoreCategoryPost $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreCategoryPost $request)
     {
         Category::create($request->all());
 
@@ -40,11 +48,13 @@ class CategoryController extends ApiController
     }
 
     /**
-     * @param Request $request
+     * 更新分类
+     *
+     * @param UpdateCategoryPost $request
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryPost $request, $id)
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
@@ -53,12 +63,16 @@ class CategoryController extends ApiController
     }
 
     /**
+     * 删除分类
+     *
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        Category::destroy($id);
+        $category = Category::findOrFail($id);
+        $category->delete();
 
         return $this->deleted();
     }

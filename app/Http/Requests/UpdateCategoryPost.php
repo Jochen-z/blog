@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class LoginPost extends FormRequest
+class UpdateCategoryPost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +24,11 @@ class LoginPost extends FormRequest
      */
     public function rules()
     {
+        // Unique 规则忽略当前的 ID
+        $id = $this->route('category');
+
         return [
-            'email'    => 'bail|required|email|exists:users',
-            'password' => 'required|min:6|max:255',
+            'name' => 'required|max:255|unique:categories,name,' . $id
         ];
     }
 
@@ -37,13 +40,9 @@ class LoginPost extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => '邮箱不能为空',
-            'email.email'    => '邮箱地址不合法',
-            'email.exists'   => '邮箱不存在',
-
-            'password.required' => '密码不能为空',
-            'password.min'      => '密码不能短于6位',
-            'password.max'      => '密码不能长于255位',
+            'name.required' => '名称不能为空',
+            'name.max'      => '名称长度不能超过 255 个字符',
+            'name.unique'   => '名称已存在',
         ];
     }
 }

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $content 文章内容
  * @property int $category_id 文章分类
  * @property int $read_count 查看总数
- * @property int $status 文章状态:0-公开;1-私密
+ * @property int $status 文章状态:0-私密;1-公开
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \App\Models\Category $category
@@ -42,17 +42,6 @@ class Article extends Model
         'category_id',
     ];
 
-    /**
-     * 按照创建时间排序
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeRecent($query)
-    {
-        return $query->orderBy('created_at', 'desc');
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -63,4 +52,8 @@ class Article extends Model
         return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
     }
 
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
 }

@@ -69,7 +69,7 @@ class Handler extends ExceptionHandler
             );
         } elseif ($exception instanceof ModelNotFoundException) {
             // 模型找不到
-            $response = $api->notFound($exception->getMessage());
+            $response = $api->notFound('数据不存在');
         } elseif ($exception instanceof NotFoundHttpException) {
             // 404 页面
             $response = $api->notFound();

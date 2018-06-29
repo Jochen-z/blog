@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->longText('content')->nullable()->comment('文章内容');
             $table->integer('category_id')->unsigned()->unsigned()->comment('文章分类');
             $table->integer('read_count')->unsigned()->default(0)->comment('查看总数');
-            $table->tinyInteger('status')->unsigned()->default(0)->comment('文章状态:0-公开;1-私密');
+            $table->tinyInteger('status')->unsigned()->default(1)->comment('文章状态:1-公开;0-私密');
             $table->timestamps();
         });
     }

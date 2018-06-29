@@ -14,12 +14,33 @@ class SeedCategoriesData extends Migration
      */
     public function up()
     {
+        $now = date('Y-m-d H:i:s');
         $categories = [
-            ['name' => '后端'],
-            ['name' => '数据库'],
-            ['name' => '服务器端'],
-            ['name' => '前端'],
-            ['name' => '其他'],
+            [
+                'name' => '后端',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'name' => '数据库',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'name' => '服务器端',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'name' => '前端',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'name' => '其他',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
         ];
 
         DB::table('categories')->insert($categories);

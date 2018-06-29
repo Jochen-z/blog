@@ -13,16 +13,12 @@
 
 Route::get('/', 'ArticleController@index')->name('index');
 
-Route::resource('articles', 'ArticleController');
+Route::resource('articles', 'ArticleController', ['only' => ['index', 'show']]);
 
 Route::resource('categories', 'CategoryController', ['only' => ['show']]);
 
-Route::get('archive', 'ArchiveController@index')->name('archive.index');
-
 Route::resource('tags', 'TagController', ['only' => ['index', 'show']]);
 
-// 后台管理系统
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    // 首页
-    Route::get('/', 'AdminController@index')->name('admin');
-});
+Route::get('archive', 'ArchiveController@index')->name('archive.index');
+
+Route::get('admin', 'AdminController@index')->name('admin');

@@ -19,8 +19,10 @@ Route::group(['namespace' => 'Admin'], function() {
     });
     
     Route::group(['middleware' => 'refresh'], function() {
-        Route::resource('articles', 'ArticleController');
-        Route::resource('categories', 'CategoryController');
-        Route::resource('tags', 'TagController');
+        Route::resource('articles', 'ArticleController', ['except' => ['create']]);
+
+        Route::resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
+
+        Route::resource('tags', 'TagController', ['except' => ['create', 'edit']]);
     });
 });

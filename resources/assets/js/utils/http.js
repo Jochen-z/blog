@@ -1,7 +1,7 @@
 import axios from 'axios';
 import store from '../store';
 import { getToken } from './cookie';
-import { Message } from 'element-ui';
+import { Message, MessageBox } from 'element-ui';
 
 
 const http = axios.create({
@@ -26,45 +26,47 @@ http.interceptors.request.use(config => {
 
 // response 截器
 http.interceptors.response.use(response => {
+    let data = response.data;
 
-    if (response.headers['authorization']) {
-        // 刷新令牌
-        store.dispatch('refreshToken', response.headers['authorization']);
+    if (data.code === 200) {
+        if (response.headers['authorization']) {
+            // 刷新令牌
+            store.dispatch('refreshToken', response.headers['authorization']);
+        }
+
+        return response;
     }
 
-    return response;
+    if (data.code === 401) {
+        if (data.message === '密码错误') {
+            // 登录失败（密码错误）
+            Message.error('密码错误');
+        } else if (data.message === 'The token has been blacklisted') {
+            // refresh_token 已过期
+            MessageBox.confirm('授权已过期，请重新登录，或者取消继续留在该页面', '确定登出', {
+                confirmButtonText: '重新登录',
+                cancelButtonText: '取消',
+                type: 'warning',
+            }).then(() => {
+                store.dispatch('cleanUser').then(() => {
+                    location.reload(); // 为了重新实例化vue-router对象 避免bug
+                })
+            });
+        } else {
+            Message.error(data.message);
+        }
+    } else {
+        Message.error(data.message);
+    }
+
+    return Promise.reject('error');
+
 }, error => {
-    let code = error.response.status;
-    let data = error.response.data;
-
-    switch (code) {
-        case 400:
-            Message.error(data.error);
-            break;
-        case 401:
-            if (data.error === 'Unauthorized') {
-                // 登录失败（密码错误）
-                Message.error('密码错误');
-            } else if (data.error === 'Unauthenticated.') {
-                // refresh_token 已过期
-                Message.error('授权已过期，请重新登录');
-                store.dispatch('cleanUser');
-                location.reload();
-            } else {
-                Message.error(data.error);
-            }
-            break;
-        case 403:
-            Message.error(data.error);
-            break;
-        case 422:
-            // 登录校验失败
-            Message.error(data.errors.email[0]);
-            break;
-        default:
-            Message.error('未知错误');
-    }
-
+    Message({
+        message: error.message,
+        type: 'error',
+        duration: 5 * 1000
+    });
     return Promise.reject(error);
 });
 

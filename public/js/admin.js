@@ -52640,7 +52640,7 @@ var user = {
 
             return new Promise(function (resolve, reject) {
                 Object(__WEBPACK_IMPORTED_MODULE_0__api_auth__["a" /* login */])(username, password).then(function (response) {
-                    var token = response.data.access_token;
+                    var token = response.data.data.access_token;
                     Object(__WEBPACK_IMPORTED_MODULE_1__utils_cookie__["c" /* setToken */])(token);
                     commit('SET_TOKEN', token);
                     resolve();
@@ -52657,7 +52657,7 @@ var user = {
 
             return new Promise(function (resolve, reject) {
                 Object(__WEBPACK_IMPORTED_MODULE_0__api_auth__["c" /* userInfo */])().then(function (response) {
-                    var data = response.data;
+                    var data = response.data.data;
                     commit('SET_NAME', data.name);
                     resolve(response);
                 }).catch(function (error) {
@@ -52784,45 +52784,46 @@ http.interceptors.request.use(function (config) {
 
 // response 截器
 http.interceptors.response.use(function (response) {
+    var data = response.data;
 
-    if (response.headers['authorization']) {
-        // 刷新令牌
-        __WEBPACK_IMPORTED_MODULE_1__store__["a" /* default */].dispatch('refreshToken', response.headers['authorization']);
+    if (data.code === 200) {
+        if (response.headers['authorization']) {
+            // 刷新令牌
+            __WEBPACK_IMPORTED_MODULE_1__store__["a" /* default */].dispatch('refreshToken', response.headers['authorization']);
+        }
+
+        return response;
     }
 
-    return response;
+    if (data.code === 401) {
+        if (data.message === '密码错误') {
+            // 登录失败（密码错误）
+            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error('密码错误');
+        } else if (data.message === 'The token has been blacklisted') {
+            // refresh_token 已过期
+            __WEBPACK_IMPORTED_MODULE_3_element_ui__["MessageBox"].confirm('授权已过期，请重新登录，或者取消继续留在该页面', '确定登出', {
+                confirmButtonText: '重新登录',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(function () {
+                __WEBPACK_IMPORTED_MODULE_1__store__["a" /* default */].dispatch('cleanUser').then(function () {
+                    location.reload(); // 为了重新实例化vue-router对象 避免bug
+                });
+            });
+        } else {
+            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.message);
+        }
+    } else {
+        __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.message);
+    }
+
+    return Promise.reject('error');
 }, function (error) {
-    var code = error.response.status;
-    var data = error.response.data;
-
-    switch (code) {
-        case 400:
-            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.error);
-            break;
-        case 401:
-            if (data.error === 'Unauthorized') {
-                // 登录失败（密码错误）
-                __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error('密码错误');
-            } else if (data.error === 'Unauthenticated.') {
-                // refresh_token 已过期
-                __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error('授权已过期，请重新登录');
-                __WEBPACK_IMPORTED_MODULE_1__store__["a" /* default */].dispatch('cleanUser');
-                location.reload();
-            } else {
-                __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.error);
-            }
-            break;
-        case 403:
-            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.error);
-            break;
-        case 422:
-            // 登录校验失败
-            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error(data.errors.email[0]);
-            break;
-        default:
-            __WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"].error('未知错误');
-    }
-
+    Object(__WEBPACK_IMPORTED_MODULE_3_element_ui__["Message"])({
+        message: error.message,
+        type: 'error',
+        duration: 5 * 1000
+    });
     return Promise.reject(error);
 });
 
@@ -56858,11 +56859,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'AppMain',
-    computed: {}
+    name: 'AppMain'
 });
 
 /***/ }),
@@ -68688,7 +68687,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "/*fade*/\n.fade-enter-active,\n.fade-leave-active {\n  transition: opacity 0.28s; }\n\n.fade-enter,\n.fade-leave-active {\n  opacity: 0; }\n\n/*fade*/\n.breadcrumb-enter-active,\n.breadcrumb-leave-active {\n  transition: all .5s; }\n\n.breadcrumb-enter,\n.breadcrumb-leave-active {\n  opacity: 0;\n  transform: translateX(20px); }\n\n.breadcrumb-move {\n  transition: all .5s; }\n\n.breadcrumb-leave-active {\n  position: absolute; }\n\n.el-upload input[type=\"file\"] {\n  display: none !important; }\n\n.el-upload__input {\n  display: none; }\n\n.el-dialog {\n  transform: none;\n  left: 0;\n  position: relative;\n  margin: 0 auto; }\n\n.upload-container .el-upload {\n  width: 100%; }\n  .upload-container .el-upload .el-upload-dragger {\n    width: 100%;\n    height: 200px; }\n\n#app .main-container {\n  min-height: 100%;\n  transition: margin-left .28s;\n  margin-left: 180px; }\n\n#app .sidebar-container {\n  transition: width 0.28s;\n  width: 180px !important;\n  height: 100%;\n  position: fixed;\n  font-size: 0px;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1001;\n  overflow: hidden; }\n  #app .sidebar-container .horizontal-collapse-transition {\n    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out; }\n  #app .sidebar-container .scrollbar-wrapper {\n    height: calc(100% + 15px); }\n    #app .sidebar-container .scrollbar-wrapper .el-scrollbar__view {\n      height: 100%; }\n  #app .sidebar-container .is-horizontal {\n    display: none; }\n  #app .sidebar-container a {\n    display: inline-block;\n    width: 100%;\n    overflow: hidden; }\n  #app .sidebar-container .svg-icon {\n    margin-right: 16px; }\n  #app .sidebar-container .el-menu {\n    border: none;\n    height: 100%;\n    width: 100% !important; }\n\n#app .hideSidebar .sidebar-container {\n  width: 36px !important; }\n\n#app .hideSidebar .main-container {\n  margin-left: 36px; }\n\n#app .hideSidebar .submenu-title-noDropdown {\n  padding-left: 10px !important;\n  position: relative; }\n  #app .hideSidebar .submenu-title-noDropdown .el-tooltip {\n    padding: 0 10px !important; }\n\n#app .hideSidebar .el-submenu {\n  overflow: hidden; }\n  #app .hideSidebar .el-submenu > .el-submenu__title {\n    padding-left: 10px !important; }\n    #app .hideSidebar .el-submenu > .el-submenu__title .el-submenu__icon-arrow {\n      display: none; }\n\n#app .hideSidebar .el-menu--collapse .el-submenu > .el-submenu__title > span {\n  height: 0;\n  width: 0;\n  overflow: hidden;\n  visibility: hidden;\n  display: inline-block; }\n\n#app .sidebar-container .nest-menu .el-submenu > .el-submenu__title,\n#app .sidebar-container .el-submenu .el-menu-item {\n  min-width: 180px !important;\n  background-color: #1f2d3d !important; }\n  #app .sidebar-container .nest-menu .el-submenu > .el-submenu__title:hover,\n  #app .sidebar-container .el-submenu .el-menu-item:hover {\n    background-color: #001528 !important; }\n\n#app .el-menu--collapse .el-menu .el-submenu {\n  min-width: 180px !important; }\n\n#app .mobile .main-container {\n  margin-left: 0px; }\n\n#app .mobile .sidebar-container {\n  transition: transform .28s;\n  width: 180px !important; }\n\n#app .mobile.hideSidebar .sidebar-container {\n  transition-duration: 0.3s;\n  transform: translate3d(-180px, 0, 0); }\n\n#app .withoutAnimation .main-container,\n#app .withoutAnimation .sidebar-container {\n  transition: none; }\n\nbody {\n  height: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  text-rendering: optimizeLegibility;\n  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif; }\n\nlabel {\n  font-weight: 700; }\n\nhtml {\n  height: 100%;\n  box-sizing: border-box; }\n\n#app {\n  height: 100%; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\na,\na:focus,\na:hover {\n  cursor: pointer;\n  color: inherit;\n  outline: none;\n  text-decoration: none; }\n\ndiv:focus {\n  outline: none; }\n\na:focus,\na:active {\n  outline: none; }\n\na,\na:focus,\na:hover {\n  cursor: pointer;\n  color: inherit;\n  text-decoration: none; }\n\n.clearfix:after {\n  visibility: hidden;\n  display: block;\n  font-size: 0;\n  content: \" \";\n  clear: both;\n  height: 0; }\n\n.app-main {\n  min-height: 100%; }\n\n.app-container {\n  padding: 20px; }\n", ""]);
+exports.push([module.i, "/*fade*/\n.fade-enter-active,\n.fade-leave-active {\n  transition: opacity 0.28s; }\n\n.fade-enter,\n.fade-leave-active {\n  opacity: 0; }\n\n/*fade-transform*/\n.fade-transform-leave-active,\n.fade-transform-enter-active {\n  transition: all .5s; }\n\n.fade-transform-enter {\n  opacity: 0;\n  transform: translateX(-30px); }\n\n.fade-transform-leave-to {\n  opacity: 0;\n  transform: translateX(30px); }\n\n/*breadcrumb transition*/\n.breadcrumb-enter-active,\n.breadcrumb-leave-active {\n  transition: all .5s; }\n\n.breadcrumb-enter,\n.breadcrumb-leave-active {\n  opacity: 0;\n  transform: translateX(20px); }\n\n.breadcrumb-move {\n  transition: all .5s; }\n\n.breadcrumb-leave-active {\n  position: absolute; }\n\n.el-breadcrumb__inner, .el-breadcrumb__inner a {\n  font-weight: 400 !important; }\n\n.el-upload input[type=\"file\"] {\n  display: none !important; }\n\n.el-upload__input {\n  display: none; }\n\n.cell .el-tag {\n  margin-right: 0px; }\n\n.small-padding .cell {\n  padding-left: 5px;\n  padding-right: 5px; }\n\n.fixed-width .el-button--mini {\n  padding: 7px 10px;\n  width: 60px; }\n\n.status-col .cell {\n  padding: 0 10px;\n  text-align: center; }\n  .status-col .cell .el-tag {\n    margin-right: 0px; }\n\n.el-dialog {\n  transform: none;\n  left: 0;\n  position: relative;\n  margin: 0 auto; }\n\n.article-textarea textarea {\n  padding-right: 40px;\n  resize: none;\n  border: none;\n  border-radius: 0px;\n  border-bottom: 1px solid #bfcbd9; }\n\n.upload-container .el-upload {\n  width: 100%; }\n  .upload-container .el-upload .el-upload-dragger {\n    width: 100%;\n    height: 200px; }\n\n.el-dropdown-menu a {\n  display: block; }\n\n#app .main-container {\n  min-height: 100%;\n  transition: margin-left .28s;\n  margin-left: 180px; }\n\n#app .sidebar-container {\n  transition: width 0.28s;\n  width: 180px !important;\n  height: 100%;\n  position: fixed;\n  font-size: 0px;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1001;\n  overflow: hidden; }\n  #app .sidebar-container .horizontal-collapse-transition {\n    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out; }\n  #app .sidebar-container .scrollbar-wrapper {\n    overflow-x: hidden !important; }\n    #app .sidebar-container .scrollbar-wrapper .el-scrollbar__view {\n      height: 100%; }\n  #app .sidebar-container .is-horizontal {\n    display: none; }\n  #app .sidebar-container a {\n    display: inline-block;\n    width: 100%;\n    overflow: hidden; }\n  #app .sidebar-container .svg-icon {\n    margin-right: 16px; }\n  #app .sidebar-container .el-menu {\n    border: none;\n    height: 100%;\n    width: 100% !important; }\n\n#app .hideSidebar .sidebar-container {\n  width: 36px !important; }\n\n#app .hideSidebar .main-container {\n  margin-left: 36px; }\n\n#app .hideSidebar .submenu-title-noDropdown {\n  padding-left: 10px !important;\n  position: relative; }\n  #app .hideSidebar .submenu-title-noDropdown .el-tooltip {\n    padding: 0 10px !important; }\n\n#app .hideSidebar .el-submenu {\n  overflow: hidden; }\n  #app .hideSidebar .el-submenu > .el-submenu__title {\n    padding-left: 10px !important; }\n    #app .hideSidebar .el-submenu > .el-submenu__title .el-submenu__icon-arrow {\n      display: none; }\n\n#app .hideSidebar .el-menu--collapse .el-submenu > .el-submenu__title > span {\n  height: 0;\n  width: 0;\n  overflow: hidden;\n  visibility: hidden;\n  display: inline-block; }\n\n#app .sidebar-container .nest-menu .el-submenu > .el-submenu__title,\n#app .sidebar-container .el-submenu .el-menu-item {\n  min-width: 180px !important;\n  background-color: #1f2d3d !important; }\n  #app .sidebar-container .nest-menu .el-submenu > .el-submenu__title:hover,\n  #app .sidebar-container .el-submenu .el-menu-item:hover {\n    background-color: #001528 !important; }\n\n#app .el-menu--collapse .el-menu .el-submenu {\n  min-width: 180px !important; }\n\n#app .mobile .main-container {\n  margin-left: 0px; }\n\n#app .mobile .sidebar-container {\n  transition: transform .28s;\n  width: 180px !important; }\n\n#app .mobile.hideSidebar .sidebar-container {\n  transition-duration: 0.3s;\n  transform: translate3d(-180px, 0, 0); }\n\n#app .withoutAnimation .main-container,\n#app .withoutAnimation .sidebar-container {\n  transition: none; }\n\n.blue-btn {\n  background: #324157; }\n  .blue-btn:hover {\n    color: #324157; }\n    .blue-btn:hover:before, .blue-btn:hover:after {\n      background: #324157; }\n\n.light-blue-btn {\n  background: #3A71A8; }\n  .light-blue-btn:hover {\n    color: #3A71A8; }\n    .light-blue-btn:hover:before, .light-blue-btn:hover:after {\n      background: #3A71A8; }\n\n.red-btn {\n  background: #C03639; }\n  .red-btn:hover {\n    color: #C03639; }\n    .red-btn:hover:before, .red-btn:hover:after {\n      background: #C03639; }\n\n.pink-btn {\n  background: #E65D6E; }\n  .pink-btn:hover {\n    color: #E65D6E; }\n    .pink-btn:hover:before, .pink-btn:hover:after {\n      background: #E65D6E; }\n\n.green-btn {\n  background: #30B08F; }\n  .green-btn:hover {\n    color: #30B08F; }\n    .green-btn:hover:before, .green-btn:hover:after {\n      background: #30B08F; }\n\n.tiffany-btn {\n  background: #4AB7BD; }\n  .tiffany-btn:hover {\n    color: #4AB7BD; }\n    .tiffany-btn:hover:before, .tiffany-btn:hover:after {\n      background: #4AB7BD; }\n\n.yellow-btn {\n  background: #FEC171; }\n  .yellow-btn:hover {\n    color: #FEC171; }\n    .yellow-btn:hover:before, .yellow-btn:hover:after {\n      background: #FEC171; }\n\n.pan-btn {\n  font-size: 14px;\n  color: #fff;\n  padding: 14px 36px;\n  border-radius: 8px;\n  border: none;\n  outline: none;\n  margin-right: 25px;\n  transition: 600ms ease all;\n  position: relative;\n  display: inline-block; }\n  .pan-btn:hover {\n    background: #fff; }\n    .pan-btn:hover:before, .pan-btn:hover:after {\n      width: 100%;\n      transition: 600ms ease all; }\n  .pan-btn:before, .pan-btn:after {\n    content: '';\n    position: absolute;\n    top: 0;\n    right: 0;\n    height: 2px;\n    width: 0;\n    transition: 400ms ease all; }\n  .pan-btn::after {\n    right: inherit;\n    top: inherit;\n    left: 0;\n    bottom: 0; }\n\n.custom-button {\n  display: inline-block;\n  line-height: 1;\n  white-space: nowrap;\n  cursor: pointer;\n  background: #fff;\n  color: #fff;\n  -webkit-appearance: none;\n  text-align: center;\n  box-sizing: border-box;\n  outline: 0;\n  margin: 0;\n  padding: 10px 15px;\n  font-size: 14px;\n  border-radius: 4px; }\n\nbody {\n  height: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  text-rendering: optimizeLegibility;\n  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif; }\n\nlabel {\n  font-weight: 700; }\n\nhtml {\n  height: 100%;\n  box-sizing: border-box; }\n\n#app {\n  height: 100%; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\n.no-padding {\n  padding: 0px !important; }\n\n.padding-content {\n  padding: 4px 0; }\n\na:focus,\na:active {\n  outline: none; }\n\na,\na:focus,\na:hover {\n  cursor: pointer;\n  color: inherit;\n  text-decoration: none; }\n\ndiv:focus {\n  outline: none; }\n\n.fr {\n  float: right; }\n\n.fl {\n  float: left; }\n\n.pr-5 {\n  padding-right: 5px; }\n\n.pl-5 {\n  padding-left: 5px; }\n\n.block {\n  display: block; }\n\n.pointer {\n  cursor: pointer; }\n\n.inlineBlock {\n  display: block; }\n\n.clearfix:after {\n  visibility: hidden;\n  display: block;\n  font-size: 0;\n  content: \" \";\n  clear: both;\n  height: 0; }\n\ncode {\n  background: #eef1f6;\n  padding: 15px 16px;\n  margin-bottom: 20px;\n  display: block;\n  line-height: 36px;\n  font-size: 15px;\n  font-family: \"Source Sans Pro\", \"Helvetica Neue\", Arial, sans-serif; }\n  code a {\n    color: #337ab7;\n    cursor: pointer; }\n    code a:hover {\n      color: #20a0ff; }\n\n.warn-content {\n  background: rgba(66, 185, 131, 0.1);\n  border-radius: 2px;\n  padding: 16px;\n  padding: 1rem;\n  line-height: 1.6rem;\n  word-spacing: .05rem; }\n  .warn-content a {\n    color: #42b983;\n    font-weight: 600; }\n\n.app-container {\n  padding: 20px; }\n\n.components-container {\n  margin: 30px 50px;\n  position: relative; }\n\n.pagination-container {\n  margin-top: 30px; }\n\n.text-center {\n  text-align: center; }\n\n.sub-navbar {\n  height: 50px;\n  line-height: 50px;\n  position: relative;\n  width: 100%;\n  text-align: right;\n  padding-right: 20px;\n  transition: 600ms ease position;\n  background: linear-gradient(90deg, #20b6f9 0%, #20b6f9 0%, #2178f1 100%, #2178f1 100%); }\n  .sub-navbar .subtitle {\n    font-size: 20px;\n    color: #fff; }\n  .sub-navbar.draft {\n    background: #d0d0d0; }\n  .sub-navbar.deleted {\n    background: #d0d0d0; }\n\n.link-type,\n.link-type:focus {\n  color: #337ab7;\n  cursor: pointer; }\n  .link-type:hover,\n  .link-type:focus:hover {\n    color: #20a0ff; }\n\n.filter-container {\n  padding-bottom: 10px; }\n  .filter-container .filter-item {\n    display: inline-block;\n    vertical-align: middle;\n    margin-bottom: 10px; }\n\n.multiselect {\n  line-height: 16px; }\n\n.multiselect--active {\n  z-index: 1000 !important; }\n", ""]);
 
 // exports
 
@@ -69505,7 +69504,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69516,13 +69515,237 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__directives_waves__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_category__ = __webpack_require__(309);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 //
 
+ // 水波纹指令
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "index"
+    name: 'Category',
+    directives: { waves: __WEBPACK_IMPORTED_MODULE_0__directives_waves__["a" /* default */] },
+    data: function data() {
+        return {
+            listQuery: {
+                page: 1,
+                limit: 20,
+                sort: '+id'
+            },
+            sortOptions: [{ label: '降序', key: '+id' }, { label: '升序', key: '-id' }],
+            categoryList: [],
+
+            total: null,
+            listLoading: true,
+            showReviewer: false,
+            temp: {
+                id: undefined,
+                importance: 1,
+                remark: '',
+                timestamp: new Date(),
+                title: '',
+                type: '',
+                status: 'published'
+            },
+            dialogFormVisible: false,
+            dialogStatus: '',
+            textMap: {
+                update: 'Edit',
+                create: 'Create'
+            },
+            dialogPvVisible: false,
+            pvData: [],
+            rules: {
+                type: [{ required: true, message: 'type is required', trigger: 'change' }],
+                timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
+                title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+            },
+            downloadLoading: false
+        };
+    },
+
+    // filters: {
+    //     statusFilter(status) {
+    //         const statusMap = {
+    //             published: 'success',
+    //             draft: 'info',
+    //             deleted: 'danger'
+    //         }
+    //         return statusMap[status]
+    //     }
+    // },
+    created: function created() {
+        this.getList();
+    },
+
+    methods: {
+        getList: function getList() {
+            this.listLoading = true;
+
+            Object(__WEBPACK_IMPORTED_MODULE_1__api_category__["a" /* getList */])(this.listQuery).then(function (response) {
+                // this.list = response.data.items
+                // this.total = response.data.total
+                //
+                // // Just to simulate the time of the request
+                // setTimeout(() => {
+                //     this.listLoading = false
+                // }, 1.5 * 1000)
+            });
+        },
+        handleFilter: function handleFilter() {
+            this.listQuery.page = 1;
+            this.getList();
+        },
+        handleCreate: function handleCreate() {},
+        handleUpdate: function handleUpdate() {},
+        handleDelete: function handleDelete() {},
+        handleSizeChange: function handleSizeChange(val) {
+            this.listQuery.limit = val;
+            this.getList();
+        },
+        handleCurrentChange: function handleCurrentChange(val) {
+            this.listQuery.page = val;
+            this.getList();
+        },
+        handleModifyStatus: function handleModifyStatus(row, status) {
+            this.$message({
+                message: '操作成功',
+                type: 'success'
+            });
+            row.status = status;
+        },
+        resetTemp: function resetTemp() {
+            this.temp = {
+                id: undefined,
+                importance: 1,
+                remark: '',
+                timestamp: new Date(),
+                title: '',
+                status: 'published',
+                type: ''
+            };
+        },
+        createData: function createData() {
+            // this.$refs['dataForm'].validate((valid) => {
+            //     if (valid) {
+            //         this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
+            //         this.temp.author = 'vue-element-admin'
+            //         createArticle(this.temp).then(() => {
+            //             this.list.unshift(this.temp)
+            //             this.dialogFormVisible = false
+            //             this.$notify({
+            //                 title: '成功',
+            //                 message: '创建成功',
+            //                 type: 'success',
+            //                 duration: 2000
+            //             })
+            //         })
+            //     }
+            // })
+        },
+        handleFetchPv: function handleFetchPv(pv) {
+            // fetchPv(pv).then(response => {
+            //     this.pvData = response.data.pvData
+            //     this.dialogPvVisible = true
+            // })
+        },
+        formatJson: function formatJson(filterVal, jsonData) {
+            return jsonData.map(function (v) {
+                return filterVal.map(function (j) {
+                    if (j === 'timestamp') {
+                        return parseTime(v[j]);
+                    } else {
+                        return v[j];
+                    }
+                });
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -69533,7 +69756,191 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Category")])
+  return _c(
+    "div",
+    { staticClass: "app-container" },
+    [
+      _c(
+        "div",
+        { staticClass: "filter-container" },
+        [
+          _c("el-input", {
+            staticClass: "filter-item",
+            staticStyle: { width: "200px" },
+            attrs: { placeholder: "名称" },
+            nativeOn: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.handleFilter($event)
+              }
+            },
+            model: {
+              value: _vm.listQuery.name,
+              callback: function($$v) {
+                _vm.$set(_vm.listQuery, "name", $$v)
+              },
+              expression: "listQuery.name"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "el-select",
+            {
+              staticClass: "filter-item",
+              staticStyle: { width: "140px" },
+              on: { change: _vm.handleFilter },
+              model: {
+                value: _vm.listQuery.sort,
+                callback: function($$v) {
+                  _vm.$set(_vm.listQuery, "sort", $$v)
+                },
+                expression: "listQuery.sort"
+              }
+            },
+            _vm._l(_vm.sortOptions, function(item) {
+              return _c("el-option", {
+                key: item.key,
+                attrs: { label: item.label, value: item.key }
+              })
+            })
+          ),
+          _vm._v(" "),
+          _c(
+            "el-button",
+            {
+              directives: [{ name: "waves", rawName: "v-waves" }],
+              staticClass: "filter-item",
+              attrs: { type: "primary", icon: "el-icon-search" },
+              on: { click: _vm.handleFilter }
+            },
+            [_vm._v("搜索")]
+          ),
+          _vm._v(" "),
+          _c(
+            "el-button",
+            {
+              staticClass: "filter-item",
+              staticStyle: { "margin-left": "10px" },
+              attrs: { type: "primary", icon: "el-icon-edit" },
+              on: { click: _vm.handleCreate }
+            },
+            [_vm._v("新建")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-table",
+        {
+          directives: [
+            {
+              name: "loading",
+              rawName: "v-loading",
+              value: _vm.listLoading,
+              expression: "listLoading"
+            }
+          ],
+          staticStyle: { width: "100%", "min-height": "1000px" },
+          attrs: {
+            data: _vm.categoryList,
+            border: "",
+            fit: "",
+            "highlight-current-row": ""
+          }
+        },
+        [
+          _c("el-table-column", {
+            attrs: { align: "center", prop: "id", label: "id", width: "65" }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: {
+              align: "center",
+              prop: "name",
+              label: "名称",
+              "min-width": "150px"
+            }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: {
+              align: "center",
+              prop: "sum",
+              label: "文章总数",
+              "min-width": "150px"
+            }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: {
+              align: "center",
+              prop: "created_at",
+              label: "创建时间",
+              width: "150px"
+            }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: {
+              align: "center",
+              prop: "updated_at",
+              label: "更新时间",
+              width: "150px"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "el-table-column",
+            {
+              attrs: {
+                align: "center",
+                prop: "actions",
+                label: "行为",
+                width: "230",
+                "class-name": "small-padding fixed-width"
+              }
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary", size: "mini" },
+                  on: {
+                    click: function($event) {
+                      _vm.handleUpdate()
+                    }
+                  }
+                },
+                [_vm._v("修改")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "danger", size: "mini" },
+                  on: {
+                    click: function($event) {
+                      _vm.handleDelete()
+                    }
+                  }
+                },
+                [_vm._v("删除")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -69859,6 +70266,169 @@ var symbol = new __WEBPACK_IMPORTED_MODULE_0_svg_baker_runtime_browser_symbol___
 });
 var result = __WEBPACK_IMPORTED_MODULE_1_svg_sprite_loader_runtime_browser_sprite_build___default.a.add(symbol);
 /* harmony default export */ __webpack_exports__["default"] = (symbol);
+
+/***/ }),
+/* 303 */,
+/* 304 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__waves__ = __webpack_require__(305);
+
+
+var install = function install(Vue) {
+  Vue.directive('waves', __WEBPACK_IMPORTED_MODULE_0__waves__["a" /* default */]);
+};
+
+if (window.Vue) {
+  window.waves = __WEBPACK_IMPORTED_MODULE_0__waves__["a" /* default */];
+  Vue.use(install); // eslint-disable-line
+}
+
+__WEBPACK_IMPORTED_MODULE_0__waves__["a" /* default */].install = install;
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__waves__["a" /* default */]);
+
+/***/ }),
+/* 305 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__waves_css__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__waves_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__waves_css__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  bind: function bind(el, binding) {
+    el.addEventListener('click', function (e) {
+      var customOpts = Object.assign({}, binding.value);
+      var opts = Object.assign({
+        ele: el, // 波纹作用元素
+        type: 'hit', // hit点击位置扩散center中心点扩展
+        color: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+      }, customOpts);
+      var target = opts.ele;
+      if (target) {
+        target.style.position = 'relative';
+        target.style.overflow = 'hidden';
+        var rect = target.getBoundingClientRect();
+        var ripple = target.querySelector('.waves-ripple');
+        if (!ripple) {
+          ripple = document.createElement('span');
+          ripple.className = 'waves-ripple';
+          ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+          target.appendChild(ripple);
+        } else {
+          ripple.className = 'waves-ripple';
+        }
+        switch (opts.type) {
+          case 'center':
+            ripple.style.top = rect.height / 2 - ripple.offsetHeight / 2 + 'px';
+            ripple.style.left = rect.width / 2 - ripple.offsetWidth / 2 + 'px';
+            break;
+          default:
+            ripple.style.top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop + 'px';
+            ripple.style.left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft + 'px';
+        }
+        ripple.style.backgroundColor = opts.color;
+        ripple.className = 'waves-ripple z-active';
+        return false;
+      }
+    }, false);
+  }
+});
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(307);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(30)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../../node_modules/css-loader/index.js!./waves.css", function() {
+			var newContent = require("!!../../../../../node_modules/css-loader/index.js!./waves.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".waves-ripple {\n    position: absolute;\n    border-radius: 100%;\n    background-color: rgba(0, 0, 0, 0.15);\n    background-clip: padding-box;\n    pointer-events: none;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    -ms-user-select: none;\n    user-select: none;\n    -webkit-transform: scale(0);\n    -ms-transform: scale(0);\n    transform: scale(0);\n    opacity: 1;\n}\n\n.waves-ripple.z-active {\n    opacity: 0;\n    -webkit-transform: scale(2);\n    -ms-transform: scale(2);\n    transform: scale(2);\n    -webkit-transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;\n    transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;\n    transition: opacity 1.2s ease-out, transform 0.6s ease-out;\n    transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 308 */,
+/* 309 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getList;
+/* unused harmony export createCategory */
+/* unused harmony export updateCategory */
+/* unused harmony export deleteCategory */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_http__ = __webpack_require__(123);
+
+
+function getList(query) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__utils_http__["a" /* default */])({
+        url: 'api/categories',
+        method: 'get',
+        params: query
+    });
+}
+
+function createCategory(name) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__utils_http__["a" /* default */])({
+        url: 'api/categories',
+        method: 'post',
+        data: { name: name }
+    });
+}
+
+function updateCategory(id, name) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__utils_http__["a" /* default */])({
+        url: 'api/categories/'.id,
+        method: 'post',
+        data: {
+            _method: 'PUT',
+            name: name
+        }
+    });
+}
+
+function deleteCategory(id) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__utils_http__["a" /* default */])({
+        url: 'api/categories/'.id,
+        method: 'post',
+        data: { _method: 'DELETE' }
+    });
+}
 
 /***/ })
 /******/ ]);

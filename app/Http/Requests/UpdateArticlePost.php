@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginPost extends FormRequest
+class UpdateArticlePost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class LoginPost extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'bail|required|email|exists:users',
-            'password' => 'required|min:6|max:255',
+            'title'       => 'max:255',
+            'category_id' => 'integer|exists:categories,id',
         ];
     }
 
@@ -37,13 +37,10 @@ class LoginPost extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => '邮箱不能为空',
-            'email.email'    => '邮箱地址不合法',
-            'email.exists'   => '邮箱不存在',
+            'title.max'            => '标题长度不能超过 255 个字符',
 
-            'password.required' => '密码不能为空',
-            'password.min'      => '密码不能短于6位',
-            'password.max'      => '密码不能长于255位',
+            'category_id.integer'  => '文章分类 ID 必须是整型',
+            'category_id.exists'   => '文章分类 ID 不存在',
         ];
     }
 }

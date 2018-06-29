@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class CategoryResource extends Resource
+class TagResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,6 @@ class CategoryResource extends Resource
         return [
             'id'         => $this->id,
             'name'       => $this->name,
-            'sum'        => $this->sum,
             'created_at' => optional($this->created_at)->toDateTimeString(),
             'updated_at' => optional($this->updated_at)->toDateTimeString(),
         ];

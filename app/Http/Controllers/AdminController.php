@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 class AdminController extends Controller
 {

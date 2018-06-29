@@ -26,7 +26,7 @@ const user = {
 
             return new Promise((resolve, reject) => {
                 login(username, password).then(response => {
-                    let token = response.data.access_token;
+                    let token = response.data.data.access_token;
                     setToken(token);
                     commit('SET_TOKEN', token);
                     resolve();
@@ -40,7 +40,7 @@ const user = {
         getUserInfo({commit}) {
             return new Promise((resolve, reject) => {
                 userInfo().then(response => {
-                    let data = response.data;
+                    let data = response.data.data;
                     commit('SET_NAME', data.name);
                     resolve(response);
                 }).catch(error => {
