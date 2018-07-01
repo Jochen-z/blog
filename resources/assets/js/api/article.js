@@ -3,23 +3,25 @@ import http from '../utils/http';
 
 export function getList(query) {
     return http({
-        url: 'api/tags',
+        url: 'api/articles',
         method: 'get',
         params: query
     })
 }
 
-export function createTag(tag) {
+export function createArticle(category) {
     return http({
-        url: 'api/tags',
+        url: 'api/articles',
         method: 'post',
-        data: { name: tag.name}
+        data: {
+            name: category.name
+        }
     })
 }
 
-export function updateTag(id, name) {
+export function updateArticle(id, name) {
     return http({
-        url: 'api/tags/' + id,
+        url: 'api/articles/' + id,
         method: 'post',
         data: {
             _method: 'PUT',
@@ -28,9 +30,9 @@ export function updateTag(id, name) {
     })
 }
 
-export function deleteTag(id) {
+export function deleteArticle(id) {
     return http({
-        url: 'api/tags/' + id,
+        url: 'api/articles/' + id,
         method: 'post',
         data: { _method: 'DELETE' }
     })

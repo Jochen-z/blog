@@ -11,7 +11,7 @@ export default new Router({
         {
             path: '',
             component: Layout,
-            redirect: '/dashboard',
+            redirect: 'dashboard',
             children: [
                 {
                     path: 'dashboard',
@@ -23,13 +23,28 @@ export default new Router({
         },
         {
             path: '/article',
+            name: 'article',
             component: Layout,
+            redirect: '/article/index',
+            meta: { title: '文章', icon: 'article' },
             children: [
                 {
                     path: 'index',
-                    name: 'article',
-                    meta: { title: '文章', icon: 'article' },
+                    name: 'articleList',
+                    meta: { title: '列表', icon: 'list' },
                     component: require('../pages/article/index'),
+                },
+                {
+                    path: 'create',
+                    name: 'createArticle',
+                    meta: { title: '新建', icon: 'edit' },
+                    component: require('../pages/article/create'),
+                },
+                {
+                    path: 'edit/:id(\\d+)',
+                    name: 'editArticle',
+                    meta: { title: '修改' },
+                    component: require('../pages/article/edit'),
                 }
             ]
         },

@@ -12,7 +12,7 @@
         </div>
 
         <!-- 表格内容 -->
-        <el-table style="width: 100%" :data="categoryList" v-loading="listLoading" border fit highlight-current-row>
+        <el-table style="width: 100%" :data="tagList" v-loading="listLoading" border fit highlight-current-row>
             <el-table-column align="center" prop="id" label="ID" width="80"></el-table-column>
             <el-table-column align="center" prop="name" label="名称"></el-table-column>
             <el-table-column align="center" prop="created_at" label="创建时间"></el-table-column>
@@ -39,9 +39,9 @@
 
         <!-- 创建/修改 -->
         <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="25%" center>
-            <el-form ref="dataForm" :rules="rules" :model="category" label-position="left" label-width="70px">
+            <el-form ref="dataForm" :rules="rules" :model="tag" label-position="left" label-width="70px">
                 <el-form-item label="名称" prop="name">
-                    <el-input v-model="category.name" autofocus></el-input>
+                    <el-input v-model="tag.name" autofocus></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -55,7 +55,7 @@
 
 <script>
     import waves from '../../directives/waves'; // 水波纹指令
-    import { getList, createCategory, updateCategory, deleteCategory } from '../../api/tag';
+    import { getList, createTag, updateTag, deleteTag } from '../../api/tag';
 
     export default {
         name: "Tag",
@@ -64,10 +64,10 @@
             return {
                 total: 0,
                 listLoading: true,
-                categoryList: [],
+                tagList: [],
                 dialogStatus: '',
                 dialogFormVisible: false,
-                category: { name: '' },
+                tag: { name: '' },
                 textMap: { update: '修改', create: '创建' },
                 listQuery: {
                     page: 1,
@@ -85,16 +85,16 @@
             }
         },
         created() {
-            this.getCategoryList();
+            this.getTagList();
         },
         methods: {
-            getCategoryList() {
+            getTagList() {
                 this.listLoading = true;
 
                 getList(this.listQuery).then(response => {
                     let result = response.data.data;
                     this.total = result.meta.total;
-                    this.categoryList = result.data;
+                    this.tagList = result.data;
                     this.listLoading = false;
                 })
             },
@@ -103,13 +103,13 @@
                     this.listQuery.keyword = undefined;
                 }
                 this.listQuery.page = 1;
-                this.getCategoryList();
+                this.getTagList();
             },
-            resetCategory() {
-                this.category = { name: '' };
+            resetTag() {
+                this.tag = { name: '' };
             },
             handleCreate() {
-                this.resetCategory();
+                this.resetTag();
                 this.dialogStatus = 'create';
                 this.dialogFormVisible = true;
                 this.$nextTick(() => {
@@ -119,16 +119,16 @@
             createData() {
                 this.$refs['dataForm'].validate((valid) => {
                     if (valid) {
-                        createCategory(this.category).then(() => {
+                        createTag(this.tag).then(() => {
                             this.dialogFormVisible = false;
                             this.$message({ message: '创建成功', type: 'success' });
-                            this.getCategoryList();
+                            this.getTagList();
                         })
                     }
                 })
             },
-            handleUpdate(category) {
-                this.category = category;
+            handleUpdate(tag) {
+                this.tag = tag;
                 this.dialogStatus = 'update';
                 this.dialogFormVisible = true;
                 this.$nextTick(() => {
@@ -138,25 +138,25 @@
             updateData() {
                 this.$refs['dataForm'].validate((valid) => {
                     if (valid) {
-                        updateCategory(this.category.id, this.category.name).then(() => {
+                        updateTag(this.tag.id, this.tag.name).then(() => {
                             this.dialogFormVisible = false;
                             this.$message({ message: '更新成功', type: 'success' });
-                            this.getCategoryList();
+                            this.getTagList();
                         }).catch(() => {
                             this.$message({ message: '更新失败', type: 'error' });
                         })
                     }
                 })
             },
-            handleDelete(category) {
+            handleDelete(tag) {
                 this.$confirm('此操作将永久删除该数据, 是否继续？', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    deleteCategory(category.id).then(() => {
+                    deleteTag(tag.id).then(() => {
                         this.$message({ message: '删除成功', type: 'success' });
-                        this.getCategoryList();
+                        this.getTagList();
                     });
                 }).catch(() => {
                     this.$message({ type: 'info', message: '已取消删除' });
@@ -165,11 +165,11 @@
             handleSizeChange(val) {
                 this.listQuery.page = 1;
                 this.listQuery.limit = val;
-                this.getCategoryList();
+                this.getTagList();
             },
             handleCurrentChange(val) {
                 this.listQuery.page = val;
-                this.getCategoryList();
+                this.getTagList();
             },
         }
     }

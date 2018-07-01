@@ -31,7 +31,12 @@
         methods: {
             getBreadcrumb() {
                 // $route.matched 数组记录着所有路由信息
-                this.routes = this.$route.matched;
+                let matched = this.$route.matched.filter(item => item.name);
+                if (matched[0] && matched[0].name !== 'dashboard') {
+                    let dashboard = { path: '/dashboard', meta: { title: '仪表盘', icon: 'dashboard' }};
+                    matched = [dashboard].concat(matched);
+                }
+                this.routes = matched;
             }
         }
     }
