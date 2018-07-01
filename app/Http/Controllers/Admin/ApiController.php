@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ApiController extends Controller
 {
@@ -24,6 +25,17 @@ class ApiController extends Controller
      * @var array
      */
     protected $data = [];
+
+    /**
+     * 返回带有分页的资源集合
+     *
+     * @param AnonymousResourceCollection $collection
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function responseWithPaginate(AnonymousResourceCollection $collection)
+    {
+        return $this->success(json_decode($collection->response()->content()));
+    }
 
     /**
      * 操作成功响应

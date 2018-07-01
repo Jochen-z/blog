@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryPost;
 use App\Http\Requests\UpdateCategoryPost;
 use App\Http\Resources\CategoryResource;
@@ -12,13 +13,22 @@ class CategoryController extends ApiController
     /**
      * 分类列表
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = CategoryResource::collection(Category::latest()->paginate(15));
+        $this->validate($request, [
+            'order' => 'in:asc,desc',
+            'limit' => 'integer',
+        ]);
 
-        return $this->success($categories);
+        $order = $request->get('order', 'asc');
+        $limit = $request->get('limit', 15);
+        $categories = Category::orderBy('created_at', $order)->paginate($limit);
+        $categories = CategoryResource::collection($categories);
+
+        return $this->responseWithPaginate($categories);
     }
 
     /**

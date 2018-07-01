@@ -18,7 +18,7 @@ class ArticleController extends ApiController
     {
         $articles = ArticleResource::collection(Article::with('category')->recent()->paginate(15));
 
-        return $this->success($articles);
+        return $this->responseWithPaginate($articles);
     }
 
     /**

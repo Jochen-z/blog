@@ -27,8 +27,9 @@ http.interceptors.request.use(config => {
 // response 截器
 http.interceptors.response.use(response => {
     let data = response.data;
+    let success = [200, 201, 204];
 
-    if (data.code === 200) {
+    if (success.indexOf(data.code) !== -1) {
         if (response.headers['authorization']) {
             // 刷新令牌
             store.dispatch('refreshToken', response.headers['authorization']);

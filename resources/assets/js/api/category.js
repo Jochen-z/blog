@@ -9,17 +9,17 @@ export function getList(query) {
     })
 }
 
-export function createCategory(name) {
+export function createCategory(category) {
     return http({
         url: 'api/categories',
         method: 'post',
-        data: { name: name}
+        data: { name: category.name}
     })
 }
 
 export function updateCategory(id, name) {
     return http({
-        url: 'api/categories/' . id,
+        url: 'api/categories/' + id,
         method: 'post',
         data: {
             _method: 'PUT',
@@ -30,7 +30,7 @@ export function updateCategory(id, name) {
 
 export function deleteCategory(id) {
     return http({
-        url: 'api/categories/' . id,
+        url: 'api/categories/' + id,
         method: 'post',
         data: { _method: 'DELETE' }
     })

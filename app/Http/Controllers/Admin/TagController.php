@@ -18,7 +18,7 @@ class TagController extends ApiController
     {
         $tags = TagResource::collection(Tag::latest()->paginate(15));
 
-        return $this->success($tags);
+        return $this->responseWithPaginate($tags);
     }
 
     /**
