@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Tag;
+use Illuminate\Http\Request;
 use App\Http\Resources\TagResource;
 use App\Http\Requests\StoreTagPost;
 use App\Http\Requests\UpdateTagPost;
@@ -12,11 +13,25 @@ class TagController extends ApiController
     /**
      * 标签列表
      *
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tags = TagResource::collection(Tag::latest()->paginate(15));
+        $this->validate($request, [
+            'limit'   => 'integer',
+            'order'   => 'in:asc,desc',
+            'keyword' => 'string'
+        ]);
+
+        $order = $request->get('order', 'asc');
+        $limit = $request->get('limit', 15);
+        $keyword = trim($request->get('keyword'));
+        $tags = empty($keyword) ?
+            Tag::orderBy('created_at', $order)->paginate($limit) :
+            Tag::search($keyword)->orderBy('created_at', $order)->paginate($limit);
+
+        $tags = TagResource::collection($tags);
 
         return $this->responseWithPaginate($tags);
     }

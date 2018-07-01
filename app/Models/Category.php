@@ -24,6 +24,23 @@ class Category extends Model
 {
     protected $fillable = ['name'];
 
+    /**
+     * 模糊查询名称
+     *
+     * @param $query
+     * @param $name
+     * @return mixed
+     */
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'like', '%' . $name . '%');
+    }
+
+    /**
+     * 获取所有关联的文章
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles()
     {
         return $this->hasMany(Article::class);

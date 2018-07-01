@@ -19,13 +19,18 @@ class CategoryController extends ApiController
     public function index(Request $request)
     {
         $this->validate($request, [
-            'order' => 'in:asc,desc',
-            'limit' => 'integer',
+            'limit'   => 'integer',
+            'order'   => 'in:asc,desc',
+            'keyword' => 'string'
         ]);
 
         $order = $request->get('order', 'asc');
         $limit = $request->get('limit', 15);
-        $categories = Category::orderBy('created_at', $order)->paginate($limit);
+        $keyword = trim($request->get('keyword'));
+        $categories = empty($keyword) ?
+            Category::orderBy('created_at', $order)->paginate($limit) :
+            Category::search($keyword)->orderBy('created_at', $order)->paginate($limit);
+
         $categories = CategoryResource::collection($categories);
 
         return $this->responseWithPaginate($categories);

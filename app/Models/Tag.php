@@ -24,7 +24,19 @@ class Tag extends Model
     protected $fillable = ['name'];
 
     /**
-     * 文章与标签多对多关联
+     * 模糊查询名称
+     *
+     * @param $query
+     * @param $name
+     * @return mixed
+     */
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'like', '%' . $name . '%');
+    }
+
+    /**
+     * 获取所有关联文章
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

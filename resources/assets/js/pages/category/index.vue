@@ -2,7 +2,7 @@
     <div class="app-container">
         <!-- 顶部工具栏 -->
         <div class="filter-container">
-            <el-input style="width: 200px;" class="filter-item" placeholder="名称" v-model="listQuery.search" @keyup.enter.native="handleFilter">
+            <el-input style="width: 200px;" class="filter-item" placeholder="名称" v-model="listQuery.keyword" @keyup.enter.native="handleFilter">
             </el-input>
             <el-select style="width: 140px" class="filter-item" @change='handleFilter' v-model="listQuery.order">
                 <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key"></el-option>
@@ -74,7 +74,7 @@
                     page: 1,
                     limit: 15,
                     order: 'asc',
-                    search: undefined
+                    keyword: undefined
                 },
                 sortOptions: [
                     { label: '升序', key: 'asc' },
@@ -100,6 +100,9 @@
                 })
             },
             handleFilter() {
+                if (! this.listQuery.keyword) {
+                    this.listQuery.keyword = undefined;
+                }
                 this.listQuery.page = 1;
                 this.getCategoryList();
             },

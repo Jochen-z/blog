@@ -42,18 +42,46 @@ class Article extends Model
         'category_id',
     ];
 
-    public function category()
+    /**
+     * 限制查询按创建时间排序
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * 模糊查询标题
+     *
+     * @param $query
+     * @param $title
+     * @return mixed
+     */
+    public function scopeSearch($query, $title)
+    {
+        return $query->where('title', 'like', '%' . $title . '%');
+    }
+
+    /**
+     * 获取所有关联分类
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function categories()
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * 获取所有关联标签
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
-    }
-
-    public function scopeRecent($query)
-    {
-        return $query->orderBy('created_at', 'desc');
     }
 }

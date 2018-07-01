@@ -68804,7 +68804,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 page: 1,
                 limit: 15,
                 order: 'asc',
-                search: undefined
+                keyword: undefined
             },
             sortOptions: [{ label: '升序', key: 'asc' }, { label: '降序', key: 'desc' }],
             rules: {
@@ -68830,6 +68830,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         handleFilter: function handleFilter() {
+            if (!this.listQuery.keyword) {
+                this.listQuery.keyword = undefined;
+            }
             this.listQuery.page = 1;
             this.getCategoryList();
         },
@@ -70165,11 +70168,11 @@ var render = function() {
               }
             },
             model: {
-              value: _vm.listQuery.search,
+              value: _vm.listQuery.keyword,
               callback: function($$v) {
-                _vm.$set(_vm.listQuery, "search", $$v)
+                _vm.$set(_vm.listQuery, "keyword", $$v)
               },
-              expression: "listQuery.search"
+              expression: "listQuery.keyword"
             }
           }),
           _vm._v(" "),
