@@ -13,7 +13,8 @@
 
 Route::get('/', 'ArticleController@index')->name('index');
 
-Route::resource('articles', 'ArticleController', ['only' => ['index', 'show']]);
+Route::get('articles', 'ArticleController@index')->name('articles.index');
+Route::get('articles/{article}/{slug?}', 'ArticleController@show')->name('articles.show');
 
 Route::resource('categories', 'CategoryController', ['only' => ['show']]);
 

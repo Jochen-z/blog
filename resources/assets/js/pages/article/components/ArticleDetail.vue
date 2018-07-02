@@ -1,63 +1,44 @@
 <template>
     <div class="createPost-container">
-        <el-form class="form-container" ref="article" :model="article" :rules="rules">
-
-            <sticky :className="'sub-navbar '+ article.status">
-                <el-button v-loading="loading" style="margin-left: 10px;" type="success" @click="submitForm">发布
-                </el-button>
-                <el-button v-loading="loading" type="warning" @click="draftForm">草稿</el-button>
-            </sticky>
-
+        <el-form class="form-container" :model="article" :rules="rules">
             <div class="createPost-main-container">
-                <el-row>
-                    <el-col :span="21">
-                        <el-form-item style="margin-bottom: 40px;" prop="title">
-                            <MDinput name="name" v-model="article.title" required :maxlength="100">
-                                标题
-                            </MDinput>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-
-                <el-form-item style="margin-bottom: 40px;" label-width="45px" label="摘要:">
-                    <el-input type="textarea" class="article-textarea" :rows="1" autosize placeholder="请输入内容"
-                              v-model="article.excerpt">
-                    </el-input>
-                    <span class="word-counter" v-show="contentLength">{{contentLength}}字</span>
+                <el-form-item label="标题">
+                    <el-input v-model="article.title"></el-input>
+                </el-form-item>
+                <el-form-item label="摘要">
+                    <el-input type="textarea" v-model="article.excerpt"></el-input>
+                </el-form-item>
+                <!--<div class="editor-container">-->
+                    <!--<Tinymce :height=400 ref="editor" v-model="article.content"/>-->
+                <!--</div>-->
+                <el-form-item label="分类">
+                    <el-select v-model="article.category_id" placeholder="请选择">
+                        <el-option
+                                v-for="category in categories"
+                                :key="category.name"
+                                :label="category.name"
+                                :value="category.id">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="是否公开">
+                    <el-switch v-model="article.status"></el-switch>
                 </el-form-item>
 
-                <div class="editor-container">
-                    <Tinymce :height=400 ref="editor" v-model="article.content"/>
-                </div>
-
+                <!--<el-button v-loading="loading" type="warning" @click="draftForm">草稿</el-button>-->
+                <!--<el-button v-loading="loading" type="success" @click="submitForm">发布</el-button>-->
             </div>
         </el-form>
-
     </div>
 </template>
 
 <script>
-    // import Tinymce from '@/components/Tinymce'
-    // import MDinput from '@/components/MDinput'
-    // import Multiselect from 'vue-multiselect'// 使用的一个多选框组件，element-ui的select不能满足所有需求
-    // import 'vue-multiselect/dist/vue-multiselect.min.css'// 多选框组件css
-    // import Sticky from '@/components/Sticky' // 粘性header组件
-    // import Warning from './Warning'
-    // import {CommentDropdown, PlatformDropdown, SourceUrlDropdown} from './Dropdown'
-
+    import { getList } from '../../../api/category';
 
     export default {
         name: 'articleDetail',
         components: {
-            // Tinymce,
-            // MDinput,
-            // Upload,
-            // Multiselect,
-            // Sticky,
-            // Warning,
-            // CommentDropdown,
-            // PlatformDropdown,
-            // SourceUrlDropdown
+
         },
         props: {
             isEdit: {
@@ -67,6 +48,7 @@
         },
         data() {
             return {
+                categories: [],
                 article: {
                     id: undefined,
                     title: '', // 文章标题
@@ -82,17 +64,22 @@
             }
         },
         computed: {
-            contentLength() {
-                return this.article.content.length;
-            }
+
         },
         created() {
+            this.getCategoryList();
+
             if (this.isEdit) {
                 const id = this.$route.params && this.$route.params.id;
                 this.fetchData(id);
             }
         },
         methods: {
+            getCategoryList() {
+                getList({ limit:100 }).then(response => {
+                    this.categories = response.data.data.data;
+                })
+            },
             fetchData(id) {
                 // fetchArticle(id).then(response => {
                 //     this.postForm = response.data

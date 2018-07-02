@@ -3,7 +3,7 @@
         <article class="article">
             <header class="article-header">
                 <h2 class="article-title">
-                    <a class="article-title-link" href="{{ route('articles.show', [$article->id]) }}" title="{{ $article->title }}">
+                    <a class="article-title-link" href="{{ $article->link() }}" title="{{ $article->title }}">
                         {{ $article->title }}
                     </a>
                 </h2>
@@ -41,13 +41,13 @@
                 <div class="article-wordcount">
                     <span class="article-meta-item-icon"><i class="fa fa-file-word-o"></i></span>
                     <span class="article-meta-item-text">字数统计:</span>
-                    <span title="字数统计">916字</span>
+                    <span title="字数统计">{{ $article->word_count }}字</span>
 
                     <span class="article-meta-divider">|</span>
 
                     <span class="article-meta-item-icon"><i class="fa fa-clock-o"></i></span>
                     <span class="article-meta-item-text">阅读时长 ≈</span>
-                    <span title="阅读时长">4分钟</span>
+                    <span title="阅读时长">{{ $article->read_time }}分钟</span>
                 </div>
             </aside>
 

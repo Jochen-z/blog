@@ -19,8 +19,10 @@ class CreateArticlesTable extends Migration
             $table->text('excerpt')->comment('文章摘要');
             $table->string('slug')->nullable()->comment('SEO友好的URI');
             $table->longText('content')->nullable()->comment('文章内容');
-            $table->integer('category_id')->unsigned()->unsigned()->comment('文章分类');
-            $table->integer('read_count')->unsigned()->default(0)->comment('查看总数');
+            $table->integer('category_id')->unsigned()->comment('文章分类');
+            $table->integer('read_count')->unsigned()->default(0)->comment('浏览次数');
+            $table->integer('word_count')->unsigned()->default(0)->comment('字数统计');
+            $table->tinyInteger('read_time')->unsigned()->default(0)->comment('阅读时间');
             $table->tinyInteger('status')->unsigned()->default(1)->comment('文章状态:1-公开;0-私密');
             $table->timestamps();
         });

@@ -45,6 +45,7 @@ export default new Router({
                     name: 'editArticle',
                     meta: { title: '修改' },
                     component: require('../pages/article/edit'),
+                    hidden: true
                 }
             ]
         },

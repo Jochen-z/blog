@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $content 文章内容
  * @property int $category_id 文章分类
  * @property int $read_count 查看总数
+ * @property int $read_time 阅读时间
+ * @property int $word_count 字数统计
  * @property int $status 文章状态:0-私密;1-公开
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -30,6 +32,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article search($title)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereReadTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereWordCount($value)
  * @mixin \Eloquent
  */
 class Article extends Model
@@ -40,7 +45,20 @@ class Article extends Model
         'slug',
         'content',
         'category_id',
+        'word_count',
+        'read_time'
     ];
+
+    /**
+     * 使用 Slug 作为 URL
+     *
+     * @param array $params
+     * @return string
+     */
+    public function link($params = [])
+    {
+        return route('articles.show', array_merge([$this->id, $this->slug], $params));
+    }
 
     /**
      * 限制查询按创建时间排序
@@ -66,11 +84,11 @@ class Article extends Model
     }
 
     /**
-     * 获取所有关联分类
+     * 获取关联分类
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
