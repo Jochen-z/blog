@@ -1,7 +1,7 @@
 import http from '../utils/http';
 
 
-export function getList(query) {
+export function getArticleList(query) {
     return http({
         url: 'api/articles',
         method: 'get',

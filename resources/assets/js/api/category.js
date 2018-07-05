@@ -1,7 +1,7 @@
 import http from '../utils/http';
 
 
-export function getList(query) {
+export function getCategoryList(query) {
     return http({
         url: 'api/categories',
         method: 'get',

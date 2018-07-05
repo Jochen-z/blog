@@ -1,7 +1,7 @@
 import http from '../utils/http';
 
 
-export function getList(query) {
+export function getTagList(query) {
     return http({
         url: 'api/tags',
         method: 'get',

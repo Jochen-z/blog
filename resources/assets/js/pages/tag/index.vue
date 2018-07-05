@@ -55,7 +55,7 @@
 
 <script>
     import waves from '../../directives/waves'; // 水波纹指令
-    import { getList, createTag, updateTag, deleteTag } from '../../api/tag';
+    import { getTagList, createTag, updateTag, deleteTag } from '../../api/tag';
 
     export default {
         name: "Tag",
@@ -91,7 +91,7 @@
             getTagList() {
                 this.listLoading = true;
 
-                getList(this.listQuery).then(response => {
+                getTagList(this.listQuery).then(response => {
                     let result = response.data.data;
                     this.total = result.meta.total;
                     this.tagList = result.data;

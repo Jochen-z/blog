@@ -49,7 +49,7 @@
 
 <script>
     import waves from '../../directives/waves'; // 水波纹指令
-    import { getList, deleteArticle } from '../../api/article';
+    import { getArticleList, deleteArticle } from '../../api/article';
 
     export default {
         name: "Article",
@@ -81,7 +81,7 @@
             getArticleList() {
                 this.listLoading = true;
 
-                getList(this.listQuery).then(response => {
+                getArticleList(this.listQuery).then(response => {
                     let result = response.data.data;
                     this.total = result.meta.total;
                     this.articleList = result.data;

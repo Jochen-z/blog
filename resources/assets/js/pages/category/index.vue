@@ -56,7 +56,7 @@
 
 <script>
     import waves from '../../directives/waves'; // 水波纹指令
-    import { getList, createCategory, updateCategory, deleteCategory } from '../../api/category';
+    import { getCategoryList, createCategory, updateCategory, deleteCategory } from '../../api/category';
 
     export default {
         name: 'Category',
@@ -92,7 +92,7 @@
             getCategoryList() {
                 this.listLoading = true;
 
-                getList(this.listQuery).then(response => {
+                getCategoryList(this.listQuery).then(response => {
                     let result = response.data.data;
                     this.total = result.meta.total;
                     this.categoryList = result.data;

@@ -25,7 +25,9 @@
     "screenfull": "3.3.2",
     "svg-sprite-loader": "^3.8.0",
     "vue": "^2.5.7",
+    "vue-multiselect": "^2.1.0",
     "vue-router": "^3.0.1",
+    "vue-simplemde": "^0.4.8",
     "vuex": "^3.0.1"
   }
 }
