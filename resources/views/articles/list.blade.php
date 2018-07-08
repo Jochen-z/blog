@@ -1,6 +1,6 @@
 @if (count($articles))
     @foreach ($articles as $article)
-        <article class="article">
+        <article class="article-block">
             <header class="article-header">
                 <h2 class="article-title">
                     <a class="article-title-link" href="{{ $article->link() }}" title="{{ $article->title }}">

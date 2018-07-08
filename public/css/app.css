@@ -11403,11 +11403,24 @@ button.close {
   clip: auto;
 }
 
-.article-list {
-  margin-top: 50px;
+.main {
+  display: block;
+  padding-bottom: 50px;
 }
 
-.article-list .article .article-header .article-title {
+.main .main-inner {
+  margin: 80px auto;
+}
+
+.main .main-inner .content-wrap .content .article-block {
+  margin-top: 0;
+  opacity: 1;
+  display: block;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.main .main-inner .content-wrap .content .article-block .article-header .article-title {
   font-size: 26px;
   position: relative;
   font-weight: 400;
@@ -11415,7 +11428,7 @@ button.close {
   word-break: break-word;
 }
 
-.article-list .article .article-header .article-title-link {
+.main .main-inner .content-wrap .content .article-block .article-header .article-title-link {
   display: inline-block;
   position: relative;
   color: #555;
@@ -11426,7 +11439,7 @@ button.close {
   word-wrap: break-word;
 }
 
-.article-list .article .article-header .article-title-link::before {
+.main .main-inner .content-wrap .content .article-block .article-header .article-title-link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -11445,13 +11458,13 @@ button.close {
           transition-delay: 0s;
 }
 
-.article-list .article .article-header .article-title-link:hover::before {
+.main .main-inner .content-wrap .content .article-block .article-header .article-title-link:hover::before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
-.article-list .article .article-meta {
+.main .main-inner .content-wrap .content .article-block .article-meta {
   margin: 3px 0 30px 0;
   color: #999;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -11459,29 +11472,59 @@ button.close {
   text-align: left;
 }
 
-.article-list .article .article-meta a {
+.main .main-inner .content-wrap .content .article-block .article-meta .article-meta-item-icon {
+  margin-right: 3px;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-meta .article-meta-divider {
+  margin: 0 0.5em;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-meta .page-pv {
+  display: inline-block;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-meta a {
   color: #555;
   text-decoration: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 
-.article-list .article .article-meta a:hover {
+.main .main-inner .content-wrap .content .article-block .article-meta a:hover {
   color: #222;
   border-bottom-color: #222;
 }
 
-.article-list .article .article-content {
+.main .main-inner .content-wrap .content .article-block .article-detail .article-title,
+.main .main-inner .content-wrap .content .article-block .article-detail .article-meta {
+  text-align: center;
+  line-height: 2;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-detail .article-title:before {
+  display: none;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-detail .article-meta {
+  margin-bottom: 60px;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-content {
   text-align: justify;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
-.article-list .article .article-button {
+.main .main-inner .content-wrap .content .article-block .article-content blockquote {
+  font-size: 16px;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-button {
   margin-top: 20px;
   text-align: left;
 }
 
-.article-list .article .article-button a {
+.main .main-inner .content-wrap .content .article-block .article-button a {
   font-size: 16px;
   margin: 0 8px 8px 0 !important;
   padding: 0;
@@ -11493,11 +11536,11 @@ button.close {
   transition-property: border;
 }
 
-.article-list .article .article-button a:hover {
+.main .main-inner .content-wrap .content .article-block .article-button a:hover {
   border-bottom-color: #222;
 }
 
-.article-list .article .article-button .btn {
+.main .main-inner .content-wrap .content .article-block .article-button .btn {
   border-radius: 0;
   display: inline-block;
   text-decoration: none;
@@ -11509,17 +11552,38 @@ button.close {
           transition-delay: 0s;
 }
 
-.article-list .article .article-button .btn:hover {
+.main .main-inner .content-wrap .content .article-block .article-button .btn:hover {
   border-color: #222;
   color: #222;
   background: #fff;
 }
 
-.article-list .article .article-footer {
+.main .main-inner .content-wrap .content .article-block .article-footer {
   margin-bottom: 120px;
 }
 
-.article-list .article .article-footer blockquote {
+.main .main-inner .content-wrap .content .article-block .article-footer .article-tags {
+  text-align: left;
+  margin-top: 40px;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-footer .article-tags a {
+  padding: 1px 5px;
+  background: #f5f5f5;
+  border-bottom: none;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 13px;
+  color: #555;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-footer .article-tags a:hover {
+  background: #ccc;
+}
+
+.main .main-inner .content-wrap .content .article-block .article-footer blockquote {
   padding: 0 15px;
   margin: 0;
   color: #666;
@@ -11701,8 +11765,9 @@ html {
 
 body {
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 2;
+  color: #555;
   background: #fff;
 }
 

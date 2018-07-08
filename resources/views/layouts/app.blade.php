@@ -11,18 +11,17 @@
 
     <title>@yield('title', 'Jochen Blog')</title>
 
-    {{--<link rel="Shortcut Icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">--}}
+    <link rel="Shortcut Icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 
 <body>
-    <div id="app">
-        @include('layouts.header')
+    @include('layouts.header')
 
-        @yield('content')
+    @yield('content')
 
-        @include('layouts.footer')
-    </div>
+    @include('layouts.footer')
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')

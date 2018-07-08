@@ -46,7 +46,8 @@ class Article extends Model
         'content',
         'category_id',
         'word_count',
-        'read_time'
+        'read_time',
+        'status',
     ];
 
     /**
@@ -100,6 +101,6 @@ class Article extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'article_tags', 'article_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'article_tags');
     }
 }

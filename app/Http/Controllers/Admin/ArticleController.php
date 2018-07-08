@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Article;
+use App\Models\ArticleTag;
 use Illuminate\Http\Request;
 use App\Http\Resources\ArticleResource;
 use App\Http\Requests\StoreArticlePost;
@@ -28,8 +29,8 @@ class ArticleController extends ApiController
         $limit = $request->get('limit', 15);
         $keyword = trim($request->get('keyword'));
         $articles = empty($keyword) ?
-            Article::orderBy('created_at', $order)->paginate($limit) :
-            Article::search($keyword)->orderBy('created_at', $order)->paginate($limit);
+            Article::with('category')->orderBy('created_at', $order)->paginate($limit) :
+            Article::with('category')->search($keyword)->orderBy('created_at', $order)->paginate($limit);
 
         $articles = ArticleResource::collection($articles);
 
@@ -44,7 +45,7 @@ class ArticleController extends ApiController
      */
     public function show($id)
     {
-        $article = new ArticleResource(Article::findOrFail($id));
+        $article = new ArticleResource(Article::with(['tags', 'category'])->findOrFail($id));
 
         return $this->success($article);
     }
@@ -57,7 +58,18 @@ class ArticleController extends ApiController
      */
     public function store(StoreArticlePost $request)
     {
-        Article::create($request->all());
+        $article = Article::create($request->all());
+
+        if (! empty($request->tag)) {
+            $data = [];
+            foreach ($request->tag as $tag) {
+                $data[] = [
+                    'article_id' => $article->id,
+                    'tag_id' => $tag
+                ];
+            }
+            ArticleTag::insert($data);
+        }
 
         return $this->created();
     }
@@ -68,11 +80,26 @@ class ArticleController extends ApiController
      * @param UpdateArticlePost $request
      * @param $id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function update(UpdateArticlePost $request, $id)
     {
         $article = Article::findOrFail($id);
         $article->update($request->all());
+
+        if (! empty($request->tag)) {
+            // 删除此文章下的所有标签
+            ArticleTag::where('article_id', $id)->delete();
+
+            $data = [];
+            foreach ($request->tag as $tag) {
+                $data[] = [
+                    'article_id' => $id,
+                    'tag_id' => $tag
+                ];
+            }
+            ArticleTag::insert($data);
+        }
 
         return $this->updated();
     }

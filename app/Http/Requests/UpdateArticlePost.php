@@ -26,6 +26,7 @@ class UpdateArticlePost extends FormRequest
         return [
             'title'       => 'max:255',
             'category_id' => 'integer|exists:categories,id',
+            'tag'         => 'array'
         ];
     }
 
@@ -41,6 +42,8 @@ class UpdateArticlePost extends FormRequest
 
             'category_id.integer'  => '文章分类 ID 必须是整型',
             'category_id.exists'   => '文章分类 ID 不存在',
+
+            'tag.array'            => '标签必须为数组',
         ];
     }
 }

@@ -28,6 +28,7 @@ class StoreArticlePost extends FormRequest
             'excerpt'     => 'required',
             'content'     => 'required',
             'category_id' => 'required|integer|exists:categories,id',
+            'tag'         => 'array'
         ];
     }
 
@@ -49,6 +50,8 @@ class StoreArticlePost extends FormRequest
             'category_id.required' => '文章分类不能为空',
             'category_id.integer'  => '文章分类 ID 必须是整型',
             'category_id.exists'   => '文章分类 ID 不存在',
+
+            'tag.array'            => '标签必须为数组',
         ];
     }
 }

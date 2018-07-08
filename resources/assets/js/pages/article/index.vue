@@ -15,7 +15,7 @@
         <el-table style="width: 100%" :data="articleList" v-loading="listLoading" border fit highlight-current-row>
             <el-table-column align="center" prop="id" label="ID" width="80"></el-table-column>
             <el-table-column align="center" prop="title" label="标题"></el-table-column>
-            <el-table-column align="center" prop="category_id" label="文章分类" width="140"></el-table-column>
+            <el-table-column align="center" prop="category_name" label="文章分类" width="140"></el-table-column>
             <el-table-column align="center" prop="read_count" label="阅读总数" width="140"></el-table-column>
             <el-table-column class-name="status-col" prop="status" label="状态" width="100">
                 <template slot-scope="scope">
@@ -27,7 +27,7 @@
             <el-table-column align="center" prop="updated_at" label="更新时间" width="180"></el-table-column>
             <el-table-column align="center" label="行为" width="200">
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="handleUpdate(scope.row)">修改</el-button>
+                    <el-button size="mini" @click="handleUpdate(scope.row.id)">修改</el-button>
                     <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
@@ -65,12 +65,12 @@
                 listQuery: {
                     page: 1,
                     limit: 15,
-                    order: 'asc',
+                    order: 'desc',
                     keyword: undefined
                 },
                 sortOptions: [
-                    { label: '升序', key: 'asc' },
                     { label: '降序', key: 'desc' },
+                    { label: '升序', key: 'asc' },
                 ],
             }
         },
@@ -98,16 +98,16 @@
             handleCreate() {
 
             },
-            handleUpdate(category) {
-
+            handleUpdate(id) {
+                this.$router.push('/article/edit/' + id);
             },
-            handleDelete(category) {
+            handleDelete(article) {
                 this.$confirm('此操作将永久删除该数据, 是否继续？', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    deleteArticle(category.id).then(() => {
+                    deleteArticle(article.id).then(() => {
                         this.$message({ message: '删除成功', type: 'success' });
                         this.getArticleList();
                     });

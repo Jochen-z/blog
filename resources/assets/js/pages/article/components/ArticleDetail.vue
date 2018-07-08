@@ -9,21 +9,29 @@
 
             <div style="z-index: 1; height: 50px;">
                 <div class="sub-navbar draft" style="top: 0px; z-index: 1; height: 50px;">
-                    <el-button v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>
-                    <el-button v-loading="loading" type="success" @click="handleCreateArticle">发布</el-button>
+                    <template v-if="isEdit">
+                        <el-button round v-loading="loading" type="primary" @click="handleUpdateArticle">更新</el-button>
+                    </template>
+                    <template v-else>
+                        <el-button round v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>
+                        <el-button round v-loading="loading" type="success" @click="handleCreateArticle">发布</el-button>
+                    </template>
                 </div>
             </div>
 
             <div class="createPost-main-container">
-                <el-form-item label="标题">
+                <el-form-item label="标题" prop="title">
                     <el-input v-model="article.title"></el-input>
                 </el-form-item>
-                <el-form-item label="摘要">
+                <el-form-item label="摘要" prop="excerpt">
                     <el-input type="textarea" rows="3" v-model="article.excerpt"></el-input>
                 </el-form-item>
-                <el-form-item label="分类">
+                <el-form-item label="是否公开">
+                    <el-switch v-model="article.status"></el-switch>
+                </el-form-item>
+                <el-form-item label="分类" prop="category_id">
                     <el-select v-model="article.category_id" placeholder="请选择">
-                        <el-option v-for="category in categories"
+                        <el-option v-for="category in categoryList"
                                    :key="category.name"
                                    :label="category.name"
                                    :value="category.id">
@@ -34,18 +42,21 @@
                     <multiselect label="name"
                                  track-by="id"
                                  tag="addTag"
+                                 placeholder="请选择"
                                  :multiple="true"
-                                 :options="tags"
+                                 :options="tagList"
+                                 :show-labels="false"
                                  :hide-selected="true"
                                  :preserve-search="true"
-                                 v-model="article.tags">
+                                 v-model="selectTag">
                     </multiselect>
                 </el-form-item>
-                <el-form-item label="是否公开">
-                    <el-switch v-model="article.status"></el-switch>
-                </el-form-item>
                 <div class="editor-container">
-                    <markdown-editor :configs="editorConfig" v-model="article.content" ref="editor"></markdown-editor>
+                    <markdown-editor ref="editor"
+                                     preview-class="markdown-body"
+                                     :configs="editorConfig"
+                                     v-model="article.content">
+                    </markdown-editor>
                 </div>
             </div>
         </el-form>
@@ -55,11 +66,13 @@
 <script>
     import { getTagList } from '../../../api/tag'
     import { getCategoryList } from '../../../api/category'
-    import { createArticle } from '../../../api/article'
+    import { createArticle, updateArticle } from '../../../api/article'
     import 'vue-multiselect/dist/vue-multiselect.min.css'
     import Multiselect from 'vue-multiselect'
     import 'simplemde/dist/simplemde.min.css'
+    import 'github-markdown-css'
     import MarkdownEditor from 'vue-simplemde/src/markdown-editor'
+
 
     export default {
         name: 'articleDetail',
@@ -68,23 +81,27 @@
             MarkdownEditor,
         },
         props: {
-            isEdit: {
-                type: Boolean,
-                default: false
+            article: {
+                type: Object,
+                default() {
+                    return {
+                        id: undefined,
+                        title: '', // 标题
+                        excerpt: '', // 摘要
+                        content: '', // 内容
+                        category_id: '', // 分类
+                        status: true, // 是否公开
+                        tag: [], // 标签
+                    }
+                }
             }
         },
         data() {
             return {
-                tags:[],
-                categories: [],
-                article: {
-                    id: undefined,
-                    title: '', // 文章标题
-                    excerpt: '', // 文章摘要
-                    content: '', // 文章内容
-                    category_id: '', // 文章分类
-                    status: true, // 是否公开
-                },
+                isEdit: false,
+                tagList: [],
+                categoryList: [],
+                selectTag: [],
                 loading: false,
                 rules: {
                     title: [
@@ -96,9 +113,6 @@
                     ],
                     category_id: [
                         { type: 'number', required: true, message: '请选择文章分类', trigger: 'blur' }
-                    ],
-                    content: [
-                        { type: 'string', required: true, message: '请填写文章内容', trigger: 'blur' }
                     ],
                 },
                 editorConfig: {
@@ -113,43 +127,93 @@
                 }
             }
         },
-        computed: {
-
-        },
         created() {
+            if (this.article.id) {
+                this.isEdit = true;
+                this.selectTag = this.article.tag;
+                this.article.status = !!+this.article.status;
+            }
             this.getTagList();
             this.getCategoryList();
         },
         methods: {
             getTagList() {
                 getTagList({ limit:100 }).then(response => {
-                    this.tags = response.data.data.data;
+                    this.tagList = response.data.data.data;
                 });
             },
             getCategoryList() {
                 getCategoryList({ limit:100 }).then(response => {
-                    this.categories = response.data.data.data;
+                    this.categoryList = response.data.data.data;
                 })
             },
             handleCreateArticle() {
                 this.$refs['articleForm'].validate((valid) => {
+                    if (! this.article.content.length) {
+                        return this.$notify({
+                            title: '错误',
+                            message: '请填写文章内容',
+                            type: 'error',
+                            offset: 100,
+                            duration: 2000,
+                        });
+                    }
+
                     if (valid) {
                         this.loading = true;
-                        console.log(this.article);
-                        // createArticle(this.article).then(() => {
-                        //     this.$notify({
-                        //         title: '成功',
-                        //         message: '文章发布成功',
-                        //         type: 'success',
-                        //         duration: 2000
-                        //     });
-                        //     this.loading = false;
-                        // });
+
+                        this.selectTag.forEach((tag) => {
+                            this.article.tag.push(tag.id);
+                        });
+
+                        createArticle(this.article).then(() => {
+                            this.$notify({
+                                title: '成功',
+                                message: '创建成功',
+                                type: 'success',
+                                offset: 100,
+                                duration: 2000
+                            });
+                            this.loading = false;
+                        });
                     }
                 })
             },
             handleDraftArticle() {
 
+            },
+            handleUpdateArticle() {
+                this.$refs['articleForm'].validate((valid) => {
+                    if (! this.article.content.length) {
+                        return this.$notify({
+                            title: '错误',
+                            message: '请填写文章内容',
+                            type: 'error',
+                            offset: 100,
+                            duration: 2000
+                        });
+                    }
+
+                    if (valid) {
+                        this.loading = true;
+
+                        this.article.tag = [];
+                        this.selectTag.forEach((tag) => {
+                            this.article.tag.push(tag.id);
+                        });
+
+                        updateArticle(this.article.id, this.article).then(() => {
+                            this.$notify({
+                                title: '成功',
+                                message: '更新成功',
+                                type: 'success',
+                                offset: 100,
+                                duration: 2000
+                            });
+                            this.loading = false;
+                        });
+                    }
+                })
             }
         }
     }
@@ -160,20 +224,19 @@
 
     .createPost-container {
         position: relative;
+
         .createPost-main-container {
             padding: 40px 250px 20px 50px;
-            .postInfo-container {
-                position: relative;
-                @include clearfix;
-                margin-bottom: 10px;
-                .postInfo-container-item {
-                    float: left;
-                }
+
+            .multiselect {
+                width: 30%;
             }
+
             .editor-container {
                 margin-left: 200px;
             }
         }
+
         .word-counter {
             width: 40px;
             position: absolute;
