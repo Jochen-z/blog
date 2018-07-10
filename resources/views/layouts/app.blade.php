@@ -16,7 +16,7 @@
     @yield('style')
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#myScrollspy">
     @include('layouts.header')
 
     @yield('content')

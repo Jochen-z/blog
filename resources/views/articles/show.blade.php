@@ -3,14 +3,6 @@
 @section('title', $article->title)
 @section('description', $article->excerpt)
 
-@section('style')
-    <style>
-        .affix {
-            top: 200px;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -22,42 +14,42 @@
                             <article class="article-block">
                                 <div class="article-detail">
                                     <header class="article-header">
-                                        <h2 class="article-title">{{ $article->title }}</h2>
+                                        <h1 class="article-title">{{ $article->title }}</h1>
 
                                         <div class="article-meta">
-                                    <span class="article-time">
-                                        <span class="article-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
-                                        <span class="article-meta-item-text">发表于</span>
-                                        <time title="发表于" itemprop="dateCreated datePublished" datetime="{{ $article->created_at }}">
-                                            {{ $article->created_at->format('Y-m-d') }}
-                                        </time>
+                                            <span class="article-time">
+                                                <span class="article-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                                                <span class="article-meta-item-text">发表于</span>
+                                                <time title="发表于" itemprop="dateCreated datePublished" datetime="{{ $article->created_at }}">
+                                                    {{ $article->created_at->format('Y-m-d') }}
+                                                </time>
 
-                                        <span class="article-meta-divider">|</span>
-                                        <span class="article-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span>
-                                        <span class="article-meta-item-text">更新于:</span>
-                                        <time title="更新于" itemprop="dateModified" datetime="{{ $article->updated_at }}">
-                                            {{ $article->updated_at->format('Y-m-d') }}
-                                        </time>
-                                    </span>
+                                                <span class="article-meta-divider">|</span>
+                                                <span class="article-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span>
+                                                <span class="article-meta-item-text">更新于:</span>
+                                                <time title="更新于" itemprop="dateModified" datetime="{{ $article->updated_at }}">
+                                                    {{ $article->updated_at->format('Y-m-d') }}
+                                                </time>
+                                            </span>
 
                                             <span class="article-meta-divider">|</span>
 
                                             <span class="article-category">
-                                        <span class="article-meta-item-icon"><i class="fa fa-folder-o"></i></span>
-                                        <span class="article-meta-item-text">分类于</span>
-                                        <span>
-                                            <a href="{{ route('categories.show', ['id' => $article->category->id]) }}" itemprop="url" rel="index">
-                                                <span itemprop="name">{{ $article->category->name }}</span>
-                                            </a>
-                                        </span>
-                                    </span>
+                                                <span class="article-meta-item-icon"><i class="fa fa-folder-o"></i></span>
+                                                <span class="article-meta-item-text">分类于</span>
+                                                <span>
+                                                    <a href="{{ route('categories.show', ['id' => $article->category->id]) }}" itemprop="url" rel="index">
+                                                        <span itemprop="name">{{ $article->category->name }}</span>
+                                                    </a>
+                                                </span>
+                                            </span>
 
                                             <span class="article-meta-divider">|</span>
 
                                             <span class="page-pv">
-                                        <i class="fa fa-file-o"></i> 浏览
-                                        <span class="busuanzi-value" id="busuanzi_value_page_pv"> {{ $article->read_count }} </span>次
-                                    </span>
+                                                <i class="fa fa-file-o"></i> 浏览
+                                                <span class="busuanzi-value" id="busuanzi_value_page_pv"> {{ $article->read_count }} </span>次
+                                            </span>
 
                                             <div class="article-wordcount">
                                                 <span class="article-meta-item-icon"><i class="fa fa-file-word-o"></i></span>
@@ -92,19 +84,27 @@
             </div>
 
             {{-- 侧边栏 --}}
-            <nav class="col-xs-3 col-md-3">
-                <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="200">
-                    <li class="active"><a href="#section1">Section 1</a></li>
-                    <li><a href="#section2">Section 2</a></li>
-                    <li><a href="#section3">Section 3</a></li>
+            <nav class="col-xs-3 col-md-3" style="margin-top: 251px;" id="myScrollspy">
+                <ul class="nav nav-tabs nav-stacked" style="border-left: 1px solid #eee;width: 262px;"
+                    data-spy="affix" data-offset-top="251" id="scrollspy">
+                    {{--<li class="active"><a href="#section1">Section 1</a></li>--}}
+                    {{--<li><a href="#section2">Section 2</a></li>--}}
                 </ul>
             </nav>
-            {{--<div class="col-xs-3 col-md-3 sidebar-offcanvas" style="margin-top: 0;" id="navbar-example">--}}
-                {{--<ul class="nav nav-tabs" role="tablist" data-spy="affix" data-offset-top="200">--}}
-                    {{--<li>a</li>--}}
-                    {{--<li>b</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("h2,h3,h4,h5,h6").each(function(i, item) {
+                $(item).attr("id", "section-" + i);
+
+                let nav = $(item).get(0).localName;
+                let li = '<li><a class="section-' + nav +'" href="#section-' + i + '">' + $(this).text() + '</a></li>';
+                $("#scrollspy").append(li);
+            });
+        });
+    </script>
 @endsection

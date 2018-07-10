@@ -10,11 +10,11 @@
             <div style="z-index: 1; height: 50px;">
                 <div class="sub-navbar draft" style="top: 0px; z-index: 1; height: 50px;">
                     <template v-if="isEdit">
-                        <el-button round v-loading="loading" type="primary" @click="handleUpdateArticle">更新</el-button>
+                        <el-button v-loading="loading" type="primary" @click="handleUpdateArticle">更新</el-button>
                     </template>
                     <template v-else>
-                        <el-button round v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>
-                        <el-button round v-loading="loading" type="success" @click="handleCreateArticle">发布</el-button>
+                        <el-button v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>
+                        <el-button v-loading="loading" type="success" @click="handleCreateArticle">发布</el-button>
                     </template>
                 </div>
             </div>

@@ -180,3 +180,47 @@
     }
   }
 }
+
+ul.nav-tabs {
+  border: none;
+}
+ul.nav-tabs li a {
+  color: #0e0e0e;
+  display: block;
+  padding: 3px 2px 3px 15px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+ul.nav-tabs li.active {
+  background: #eaeaea;
+  border-left: 2px solid #2ca02c;
+}
+ul.nav-tabs li.active a,
+ul.nav-tabs li.active a:hover {
+  color: #2ca02c;
+  border: none;
+  border-radius: 0;
+  background-color: #eaeaea;
+  text-decoration: none;
+}
+ul.nav-tabs li a:hover {
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+  text-decoration: underline #2ca02c;
+}
+.section-h2 {
+  margin-left: 0;
+}
+.section-h3 {
+  margin-left: 20px;
+}
+.section-h4 {
+  margin-left: 40px;
+}
+.section-h5 {
+  margin-left: 60px;
+}
+.section-h6 {
+  margin-left: 80px;
+}

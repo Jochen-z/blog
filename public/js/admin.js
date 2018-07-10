@@ -90431,7 +90431,7 @@ var render = function() {
                               expression: "loading"
                             }
                           ],
-                          attrs: { round: "", type: "primary" },
+                          attrs: { type: "primary" },
                           on: { click: _vm.handleUpdateArticle }
                         },
                         [_vm._v("更新")]
@@ -90449,7 +90449,7 @@ var render = function() {
                               expression: "loading"
                             }
                           ],
-                          attrs: { round: "", type: "warning" },
+                          attrs: { type: "warning" },
                           on: { click: _vm.handleDraftArticle }
                         },
                         [_vm._v("草稿")]
@@ -90466,7 +90466,7 @@ var render = function() {
                               expression: "loading"
                             }
                           ],
-                          attrs: { round: "", type: "success" },
+                          attrs: { type: "success" },
                           on: { click: _vm.handleCreateArticle }
                         },
                         [_vm._v("发布")]
