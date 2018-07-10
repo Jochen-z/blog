@@ -53,3 +53,6 @@ if (token) {
 //     cluster: 'mt1',
 //     encrypted: true
 // });
+
+// Javascript syntax highlighter
+window.hljs = require('highlight.js');

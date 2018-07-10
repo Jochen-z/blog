@@ -65,7 +65,7 @@
                                         </div>
                                     </header>
 
-                                    <section class="article-content">
+                                    <section class="markdown">
                                         {!! $article->content !!}
                                     </section>
 
@@ -87,8 +87,6 @@
             <nav class="col-xs-3 col-md-3" style="margin-top: 251px;" id="myScrollspy">
                 <ul class="nav nav-tabs nav-stacked" style="border-left: 1px solid #eee;width: 262px;"
                     data-spy="affix" data-offset-top="251" id="scrollspy">
-                    {{--<li class="active"><a href="#section1">Section 1</a></li>--}}
-                    {{--<li><a href="#section2">Section 2</a></li>--}}
                 </ul>
             </nav>
         </div>
@@ -96,8 +94,9 @@
 @endsection
 
 @section('script')
+    <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
             $("h2,h3,h4,h5,h6").each(function(i, item) {
                 $(item).attr("id", "section-" + i);
 

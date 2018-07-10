@@ -1,7 +1,7 @@
 <header class="header">
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-2">
                 <nav class="site-nav">
                     <ul class="menu">
                         <li class="{{ active_class(if_uri('/')) }}">

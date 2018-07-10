@@ -53,7 +53,8 @@
                 </el-form-item>
                 <div class="editor-container">
                     <markdown-editor ref="editor"
-                                     preview-class="markdown-body"
+                                     preview-class="markdown"
+                                     :highlight="true"
                                      :configs="editorConfig"
                                      v-model="article.content">
                     </markdown-editor>
@@ -70,9 +71,12 @@
     import 'vue-multiselect/dist/vue-multiselect.min.css'
     import Multiselect from 'vue-multiselect'
     import 'simplemde/dist/simplemde.min.css'
-    import 'github-markdown-css'
     import MarkdownEditor from 'vue-simplemde/src/markdown-editor'
+    import '../../../../sass/markdown.scss'
+    import hljs from 'highlight.js'
 
+
+    window.hljs = hljs;
 
     export default {
         name: 'articleDetail',
@@ -221,6 +225,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     @import "../../../styles/mixin.scss";
+    @import '~highlight.js/styles/atom-one-dark.css';
 
     .createPost-container {
         position: relative;

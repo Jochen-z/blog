@@ -1,9 +1,9 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+//@import "variables";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
@@ -11,112 +11,16 @@
 // Font Awesome
 @import "~font-awesome/scss/font-awesome";
 
+// Universal
+@import "universal";
+
 // Article
 @import "article";
+// Markdown
+@import "markdown";
 
 // Archive
 @import "archive";
 
 // Tag
 @import "tag";
-
-
-// Universal
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
-  line-height: 2;
-  color: #555;
-  background: #fff;
-}
-
-.header {
-  padding: 10px 0;
-  width: 100%;
-  min-height: 70px;
-  background-color: #eaeaea;
-
-  .site-nav {
-    display: block !important;
-
-    .menu {
-      float: left;
-      margin: 0 0 0 -15px;
-      padding-left: 0;
-      list-style: none;
-
-      li {
-        float: left;
-        position: relative;
-        display: block;
-
-        a {
-          color: #777;
-          font-size: 15px;
-          text-decoration: none;
-        }
-        a:hover {
-          color: #222;
-        }
-      }
-      .active {
-        a {
-          color: #222;
-        }
-      }
-    }
-
-    .menu:before, .menu:after {
-      content: " ";
-      display: table;
-    }
-    .menu:after {
-      clear: both;
-    }
-  }
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  padding: 10px 0;
-  width: 100%;
-  min-height: 70px;
-  font-size: 14px;
-  color: #666;
-  background-color: #eaeaea;
-
-  .container {
-    padding-right: 15px;
-    padding-left: 15px;
-
-    a {
-      color: inherit;
-    }
-  }
-}
-
-.nav-pagination {
-  margin-bottom: 140px;
-
-  .pagination {
-    .active {
-      span {
-        background-color: #717171;
-        border-color: #717171;
-      }
-    }
-  }
-
-  .pagination > li > a {
-    color: #555;
-  }
-  .pagination > li > a:hover {
-    color: #222;
-  }
-}
