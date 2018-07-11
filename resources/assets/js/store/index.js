@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import app from './modules/app';
 import user from './modules/user';
+import tagsView from './modules/tagsView';
 
 
 Vue.use(Vuex);
@@ -11,6 +12,7 @@ export default new Vuex.Store({
     modules: {
         app,
         user,
+        tagsView,
     },
     // “getter” 可以认为是 store 的计算属性，作为共享函数使用，例如 this.$store.getters.sidebar
     getters: {

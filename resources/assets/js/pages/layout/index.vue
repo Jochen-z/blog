@@ -8,7 +8,8 @@
         <div class="main-container">
             <!-- 顶部导航栏 -->
             <navbar></navbar>
-
+            <!--  -->
+            <tags-view></tags-view>
             <!-- 内容主体 -->
             <app-main></app-main>
         </div>
@@ -20,13 +21,15 @@
     import { default as Navbar } from "./components/Navbar";
     import { default as Sidebar } from "./components/Sidebar/index";
     import { default as AppMain } from './components/AppMain';
+    import { default as TagsView } from './components/TagsView';
 
     export default {
         name: 'layout',
         components: {
             Sidebar,
             Navbar,
-            AppMain
+            AppMain,
+            TagsView
         },
         mixins: [ResizeMixin],
         computed: {

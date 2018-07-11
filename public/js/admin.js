@@ -24475,6 +24475,8 @@ process.umask = function() { return 0; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_app__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_user__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_tagsView__ = __webpack_require__(535);
+
 
 
 
@@ -24486,7 +24488,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
     // Vuex 允许我们将 store 分割成模块，每个模块拥有自己的 mutation、state、action、getter、甚至是嵌套子模块
     modules: {
         app: __WEBPACK_IMPORTED_MODULE_2__modules_app__["a" /* default */],
-        user: __WEBPACK_IMPORTED_MODULE_3__modules_user__["a" /* default */]
+        user: __WEBPACK_IMPORTED_MODULE_3__modules_user__["a" /* default */],
+        tagsView: __WEBPACK_IMPORTED_MODULE_4__modules_tagsView__["a" /* default */]
     },
     // “getter” 可以认为是 store 的计算属性，作为共享函数使用，例如 this.$store.getters.sidebar
     getters: {
@@ -95548,6 +95551,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Sidebar_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Sidebar_index__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AppMain__ = __webpack_require__(429);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AppMain___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_AppMain__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TagsView__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TagsView___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_TagsView__);
 //
 //
 //
@@ -95565,6 +95570,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -95576,7 +95583,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Sidebar: __WEBPACK_IMPORTED_MODULE_2__components_Sidebar_index___default.a,
         Navbar: __WEBPACK_IMPORTED_MODULE_1__components_Navbar___default.a,
-        AppMain: __WEBPACK_IMPORTED_MODULE_3__components_AppMain___default.a
+        AppMain: __WEBPACK_IMPORTED_MODULE_3__components_AppMain___default.a,
+        TagsView: __WEBPACK_IMPORTED_MODULE_4__components_TagsView___default.a
     },
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_ResizeHandler__["a" /* default */]],
     computed: {
@@ -97300,7 +97308,13 @@ var render = function() {
       _c(
         "div",
         { staticClass: "main-container" },
-        [_c("navbar"), _vm._v(" "), _c("app-main")],
+        [
+          _c("navbar"),
+          _vm._v(" "),
+          _c("tags-view"),
+          _vm._v(" "),
+          _c("app-main")
+        ],
         1
       )
     ],
@@ -110438,6 +110452,787 @@ exports.push([module.i, "\n.markdown-editor .CodeMirror,\n.markdown-editor .Code
 
 // exports
 
+
+/***/ }),
+/* 535 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var tagsView = {
+    state: {
+        visitedViews: [],
+        cachedViews: []
+    },
+    mutations: {
+        ADD_VISITED_VIEWS: function ADD_VISITED_VIEWS(state, view) {
+            if (state.visitedViews.some(function (v) {
+                return v.path === view.path;
+            })) return;
+
+            state.visitedViews.push(Object.assign({}, view, {
+                title: view.meta.title || 'no-name'
+            }));
+
+            if (!view.meta.noCache) {
+                state.cachedViews.push(view.name);
+            }
+        },
+        DEL_VISITED_VIEWS: function DEL_VISITED_VIEWS(state, view) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = state.visitedViews.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var _ref = _step.value;
+
+                    var _ref2 = _slicedToArray(_ref, 2);
+
+                    var i = _ref2[0];
+                    var v = _ref2[1];
+
+                    if (v.path === view.path) {
+                        state.visitedViews.splice(i, 1);
+                        break;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = state.cachedViews[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var _i = _step2.value;
+
+                    if (_i === view.name) {
+                        var index = state.cachedViews.indexOf(_i);
+                        state.cachedViews.splice(index, 1);
+                        break;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        },
+        DEL_OTHERS_VIEWS: function DEL_OTHERS_VIEWS(state, view) {
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = state.visitedViews.entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var _ref3 = _step3.value;
+
+                    var _ref4 = _slicedToArray(_ref3, 2);
+
+                    var i = _ref4[0];
+                    var v = _ref4[1];
+
+                    if (v.path === view.path) {
+                        state.visitedViews = state.visitedViews.slice(i, i + 1);
+                        break;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+                for (var _iterator4 = state.cachedViews[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var _i2 = _step4.value;
+
+                    if (_i2 === view.name) {
+                        var index = state.cachedViews.indexOf(_i2);
+                        state.cachedViews = state.cachedViews.slice(index, _i2 + 1);
+                        break;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
+        },
+        DEL_ALL_VIEWS: function DEL_ALL_VIEWS(state) {
+            state.visitedViews = [];
+            state.cachedViews = [];
+        }
+    },
+    actions: {
+        addVisitedViews: function addVisitedViews(_ref5, view) {
+            var commit = _ref5.commit;
+
+            commit('ADD_VISITED_VIEWS', view);
+        },
+        delVisitedViews: function delVisitedViews(_ref6, view) {
+            var commit = _ref6.commit,
+                state = _ref6.state;
+
+            return new Promise(function (resolve) {
+                commit('DEL_VISITED_VIEWS', view);
+                resolve([].concat(_toConsumableArray(state.visitedViews)));
+            });
+        },
+        delOthersViews: function delOthersViews(_ref7, view) {
+            var commit = _ref7.commit,
+                state = _ref7.state;
+
+            return new Promise(function (resolve) {
+                commit('DEL_OTHERS_VIEWS', view);
+                resolve([].concat(_toConsumableArray(state.visitedViews)));
+            });
+        },
+        delAllViews: function delAllViews(_ref8) {
+            var commit = _ref8.commit,
+                state = _ref8.state;
+
+            return new Promise(function (resolve) {
+                commit('DEL_ALL_VIEWS');
+                resolve([].concat(_toConsumableArray(state.visitedViews)));
+            });
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (tagsView);
+
+/***/ }),
+/* 536 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(537)
+  __webpack_require__(539)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(541)
+/* template */
+var __vue_template__ = __webpack_require__(547)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6febc9cf"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/pages/layout/components/TagsView.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6febc9cf", Component.options)
+  } else {
+    hotAPI.reload("data-v-6febc9cf", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 537 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(538);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("27341da1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6febc9cf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TagsView.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6febc9cf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TagsView.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 538 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tags-view-container .tags-view-wrapper[data-v-6febc9cf] {\n  background: #fff;\n  height: 34px;\n  border-bottom: 1px solid #d8dce5;\n  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);\n          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);\n}\n.tags-view-container .tags-view-wrapper .tags-view-item[data-v-6febc9cf] {\n    display: inline-block;\n    position: relative;\n    height: 26px;\n    line-height: 26px;\n    border: 1px solid #d8dce5;\n    color: #495060;\n    background: #fff;\n    padding: 0 8px;\n    font-size: 12px;\n    margin-left: 5px;\n    margin-top: 4px;\n}\n.tags-view-container .tags-view-wrapper .tags-view-item[data-v-6febc9cf]:first-of-type {\n      margin-left: 15px;\n}\n.tags-view-container .tags-view-wrapper .tags-view-item.active[data-v-6febc9cf] {\n      background-color: #42b983;\n      color: #fff;\n      border-color: #42b983;\n}\n.tags-view-container .tags-view-wrapper .tags-view-item.active[data-v-6febc9cf]::before {\n        content: '';\n        background: #fff;\n        display: inline-block;\n        width: 8px;\n        height: 8px;\n        border-radius: 50%;\n        position: relative;\n        margin-right: 2px;\n}\n.tags-view-container .contextmenu[data-v-6febc9cf] {\n  margin: 0;\n  background: #fff;\n  z-index: 100;\n  position: absolute;\n  list-style-type: none;\n  padding: 5px 0;\n  border-radius: 4px;\n  font-size: 12px;\n  font-weight: 400;\n  color: #333;\n  -webkit-box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);\n          box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);\n}\n.tags-view-container .contextmenu li[data-v-6febc9cf] {\n    margin: 0;\n    padding: 7px 16px;\n    cursor: pointer;\n}\n.tags-view-container .contextmenu li[data-v-6febc9cf]:hover {\n      background: #eee;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 539 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(540);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("37d66fa2", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6febc9cf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./TagsView.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6febc9cf\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./TagsView.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 540 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tags-view-wrapper .tags-view-item .el-icon-close {\n  width: 16px;\n  height: 16px;\n  vertical-align: 2px;\n  border-radius: 50%;\n  text-align: center;\n  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);\n  -webkit-transform-origin: 100% 50%;\n          transform-origin: 100% 50%;\n}\n.tags-view-wrapper .tags-view-item .el-icon-close:before {\n    -webkit-transform: scale(0.6);\n            transform: scale(0.6);\n    display: inline-block;\n    vertical-align: -3px;\n}\n.tags-view-wrapper .tags-view-item .el-icon-close:hover {\n    background-color: #b4bccc;\n    color: #fff;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 541 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ScrollPane__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ScrollPane___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ScrollPane__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ScrollPane: __WEBPACK_IMPORTED_MODULE_0__components_ScrollPane___default.a },
+    data: function data() {
+        return {
+            visible: false,
+            top: 0,
+            left: 0,
+            selectedTag: {}
+        };
+    },
+
+    computed: {
+        visitedViews: function visitedViews() {
+            return this.$store.state.tagsView.visitedViews;
+        }
+    },
+    watch: {
+        $route: function $route() {
+            this.addViewTags();
+            this.moveToCurrentTag();
+        },
+        visible: function visible(value) {
+            if (value) {
+                document.body.addEventListener('click', this.closeMenu);
+            } else {
+                document.body.removeEventListener('click', this.closeMenu);
+            }
+        }
+    },
+    mounted: function mounted() {
+        this.addViewTags();
+    },
+
+    methods: {
+        generateRoute: function generateRoute() {
+            if (this.$route.name) {
+                return this.$route;
+            }
+            return false;
+        },
+        isActive: function isActive(route) {
+            return route.path === this.$route.path;
+        },
+        addViewTags: function addViewTags() {
+            var route = this.generateRoute();
+            if (!route) {
+                return false;
+            }
+            return this.$store.dispatch('addVisitedViews', route);
+        },
+        moveToCurrentTag: function moveToCurrentTag() {
+            var _this = this;
+
+            var tags = this.$refs.tag;
+            this.$nextTick(function () {
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = tags[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var tag = _step.value;
+
+                        if (tag.to.path === _this.$route.path) {
+                            _this.$refs.scrollPane.moveToTarget(tag.$el);
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+            });
+        },
+        closeSelectedTag: function closeSelectedTag(view) {
+            var _this2 = this;
+
+            this.$store.dispatch('delVisitedViews', view).then(function (views) {
+                if (_this2.isActive(view)) {
+                    var latestView = views.slice(-1)[0];
+                    if (latestView) {
+                        _this2.$router.push(latestView);
+                    } else {
+                        _this2.$router.push('/');
+                    }
+                }
+            });
+        },
+        closeOthersTags: function closeOthersTags() {
+            var _this3 = this;
+
+            this.$router.push(this.selectedTag);
+            this.$store.dispatch('delOthersViews', this.selectedTag).then(function () {
+                _this3.moveToCurrentTag();
+            });
+        },
+        closeAllTags: function closeAllTags() {
+            this.$store.dispatch('delAllViews');
+            this.$router.push('/');
+        },
+        openMenu: function openMenu(tag, e) {
+            this.visible = true;
+            this.selectedTag = tag;
+            this.left = e.clientX;
+            this.top = e.clientY;
+        },
+        closeMenu: function closeMenu() {
+            this.visible = false;
+        }
+    }
+});
+
+/***/ }),
+/* 542 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(543)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(545)
+/* template */
+var __vue_template__ = __webpack_require__(546)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5f0d284f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ScrollPane/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5f0d284f", Component.options)
+  } else {
+    hotAPI.reload("data-v-5f0d284f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 543 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(544);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("9d81d074", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5f0d284f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5f0d284f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 544 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.scroll-container[data-v-5f0d284f] {\n  white-space: nowrap;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n}\n.scroll-container .scroll-wrapper[data-v-5f0d284f] {\n    position: absolute;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 545 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+var padding = 15; // tag's padding
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'scrollPane',
+  data: function data() {
+    return {
+      left: 0
+    };
+  },
+
+  methods: {
+    handleScroll: function handleScroll(e) {
+      var eventDelta = e.wheelDelta || -e.deltaY * 3;
+      var $container = this.$refs.scrollContainer;
+      var $containerWidth = $container.offsetWidth;
+      var $wrapper = this.$refs.scrollWrapper;
+      var $wrapperWidth = $wrapper.offsetWidth;
+
+      if (eventDelta > 0) {
+        this.left = Math.min(0, this.left + eventDelta);
+      } else {
+        if ($containerWidth - padding < $wrapperWidth) {
+          if (this.left < -($wrapperWidth - $containerWidth + padding)) {
+            this.left = this.left;
+          } else {
+            this.left = Math.max(this.left + eventDelta, $containerWidth - $wrapperWidth - padding);
+          }
+        } else {
+          this.left = 0;
+        }
+      }
+    },
+    moveToTarget: function moveToTarget($target) {
+      var $container = this.$refs.scrollContainer;
+      var $containerWidth = $container.offsetWidth;
+      var $targetLeft = $target.offsetLeft;
+      var $targetWidth = $target.offsetWidth;
+
+      if ($targetLeft < -this.left) {
+        // tag in the left
+        this.left = -$targetLeft + padding;
+      } else if ($targetLeft + padding > -this.left && $targetLeft + $targetWidth < -this.left + $containerWidth - padding) {
+        // tag in the current view
+        // eslint-disable-line
+      } else {
+        // tag in the right
+        this.left = -($targetLeft - ($containerWidth - $targetWidth) + padding);
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 546 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      ref: "scrollContainer",
+      staticClass: "scroll-container",
+      on: {
+        wheel: function($event) {
+          $event.preventDefault()
+          return _vm.handleScroll($event)
+        }
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          ref: "scrollWrapper",
+          staticClass: "scroll-wrapper",
+          style: { left: _vm.left + "px" }
+        },
+        [_vm._t("default")],
+        2
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5f0d284f", module.exports)
+  }
+}
+
+/***/ }),
+/* 547 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "tags-view-container" },
+    [
+      _c(
+        "scroll-pane",
+        { ref: "scrollPane", staticClass: "tags-view-wrapper" },
+        _vm._l(Array.from(_vm.visitedViews), function(tag) {
+          return _c(
+            "router-link",
+            {
+              key: tag.path,
+              ref: "tag",
+              refInFor: true,
+              staticClass: "tags-view-item",
+              class: _vm.isActive(tag) ? "active" : "",
+              attrs: { to: tag },
+              nativeOn: {
+                contextmenu: function($event) {
+                  $event.preventDefault()
+                  _vm.openMenu(tag, $event)
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n                " + _vm._s(tag.title) + "\n            "
+              ),
+              _c("span", {
+                staticClass: "el-icon-close",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    $event.stopPropagation()
+                    _vm.closeSelectedTag(tag)
+                  }
+                }
+              })
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.visible,
+              expression: "visible"
+            }
+          ],
+          staticClass: "contextmenu",
+          style: { left: _vm.left + "px", top: _vm.top + "px" }
+        },
+        [
+          _c(
+            "li",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeSelectedTag(_vm.selectedTag)
+                }
+              }
+            },
+            [_vm._v("关闭当前")]
+          ),
+          _vm._v(" "),
+          _c("li", { on: { click: _vm.closeOthersTags } }, [
+            _vm._v("关闭其他")
+          ]),
+          _vm._v(" "),
+          _c("li", { on: { click: _vm.closeAllTags } }, [_vm._v("关闭所有")])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6febc9cf", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
