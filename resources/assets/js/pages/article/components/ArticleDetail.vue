@@ -13,7 +13,7 @@
                         <el-button v-loading="loading" type="primary" @click="handleUpdateArticle">更新</el-button>
                     </template>
                     <template v-else>
-                        <el-button v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>
+                        <!--<el-button v-loading="loading" type="warning" @click="handleDraftArticle">草稿</el-button>-->
                         <el-button v-loading="loading" type="success" @click="handleCreateArticle">发布</el-button>
                     </template>
                 </div>
@@ -26,9 +26,7 @@
                 <el-form-item label="摘要" prop="excerpt">
                     <el-input type="textarea" rows="3" v-model="article.excerpt"></el-input>
                 </el-form-item>
-                <el-form-item label="是否公开">
-                    <el-switch v-model="article.status"></el-switch>
-                </el-form-item>
+
                 <el-form-item label="分类" prop="category_id">
                     <el-select v-model="article.category_id" placeholder="请选择">
                         <el-option v-for="category in categoryList"
@@ -39,20 +37,23 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="标签">
-                    <multiselect label="name"
-                                 track-by="id"
-                                 tag="addTag"
-                                 placeholder="请选择"
-                                 :multiple="true"
-                                 :options="tagList"
-                                 :show-labels="false"
-                                 :hide-selected="true"
-                                 :preserve-search="true"
-                                 v-model="selectTag">
-                    </multiselect>
+                    <multi-select label="name"
+                                  track-by="id"
+                                  tag="addTag"
+                                  placeholder="请选择"
+                                  :multiple="true"
+                                  :options="tagList"
+                                  :show-labels="false"
+                                  :hide-selected="true"
+                                  :preserve-search="true"
+                                  v-model="selectTag">
+                    </multi-select>
+                </el-form-item>
+                <el-form-item label="是否公开">
+                    <el-switch v-model="article.status"></el-switch>
                 </el-form-item>
                 <div class="editor-container">
-                    <markdown-editor ref="editor"
+                    <markdown-editor ref="markdownEditor"
                                      preview-class="markdown"
                                      :highlight="true"
                                      :configs="editorConfig"
@@ -66,10 +67,11 @@
 
 <script>
     import { getTagList } from '../../../api/tag'
+    import { uploadImage } from "../../../api/upload"
     import { getCategoryList } from '../../../api/category'
     import { createArticle, updateArticle } from '../../../api/article'
     import 'vue-multiselect/dist/vue-multiselect.min.css'
-    import Multiselect from 'vue-multiselect'
+    import MultiSelect from 'vue-multiselect'
     import 'simplemde/dist/simplemde.min.css'
     import MarkdownEditor from 'vue-simplemde/src/markdown-editor'
     import '../../../../sass/markdown.scss'
@@ -81,7 +83,7 @@
     export default {
         name: 'articleDetail',
         components: {
-            Multiselect,
+            MultiSelect,
             MarkdownEditor,
         },
         props: {
@@ -123,11 +125,11 @@
                     spellChecker: false,
                     forceSync: true,
                     tabSize: 4,
-                    // autosave: {
-                    //     enabled: true,
-                    //     delay: 5000,
-                    //     unique_id: "topic_content"
-                    // },
+                    toolbar: [
+                        "bold", "italic", "heading", "|", "quote", "code", "table",
+                        "horizontal-rule", "unordered-list", "ordered-list", "|",
+                        "link", "image", "|",  "side-by-side", 'fullscreen',
+                    ],
                 }
             }
         },
@@ -139,6 +141,31 @@
             }
             this.getTagList();
             this.getCategoryList();
+        },
+        mounted() {
+            let _this = this;
+            let editor = this.$refs['markdownEditor'].simplemde;
+
+            // 图片拖拽
+            editor.codemirror.on('drop', function (editor, e) {
+                let files = e.dataTransfer.files;
+
+                if (! (e.dataTransfer && files)) {
+                    return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 100 });
+                }
+
+                if (files.length > 1) {
+                    return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 100 });
+                }
+
+                if (files[0].type.indexOf('image') === -1) {
+                    return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 100 });
+                }
+
+                _this.uploadImagesFile(editor, files[0]);
+
+                e.preventDefault();
+            });
         },
         methods: {
             getTagList() {
@@ -154,13 +181,7 @@
             handleCreateArticle() {
                 this.$refs['articleForm'].validate((valid) => {
                     if (! this.article.content.length) {
-                        return this.$notify({
-                            title: '错误',
-                            message: '请填写文章内容',
-                            type: 'error',
-                            offset: 100,
-                            duration: 2000,
-                        });
+                        return this.$notify({title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
                     }
 
                     if (valid) {
@@ -171,13 +192,7 @@
                         });
 
                         createArticle(this.article).then(() => {
-                            this.$notify({
-                                title: '成功',
-                                message: '创建成功',
-                                type: 'success',
-                                offset: 100,
-                                duration: 2000
-                            });
+                            this.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 100 });
                             this.loading = false;
                         });
                     }
@@ -189,13 +204,7 @@
             handleUpdateArticle() {
                 this.$refs['articleForm'].validate((valid) => {
                     if (! this.article.content.length) {
-                        return this.$notify({
-                            title: '错误',
-                            message: '请填写文章内容',
-                            type: 'error',
-                            offset: 100,
-                            duration: 2000
-                        });
+                        return this.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
                     }
 
                     if (valid) {
@@ -207,17 +216,21 @@
                         });
 
                         updateArticle(this.article.id, this.article).then(() => {
-                            this.$notify({
-                                title: '成功',
-                                message: '更新成功',
-                                type: 'success',
-                                offset: 100,
-                                duration: 2000
-                            });
+                            this.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 100 });
                             this.loading = false;
                         });
                     }
                 })
+            },
+            uploadImagesFile(editor, file) {
+                let image = new FormData();
+                image.append('image', file);
+
+                uploadImage(image).then((response) => {
+                    if (response.data.code === 200) {
+                        editor.setValue(editor.getValue() + `![file](${response.data.data.path})` + '\n');
+                    }
+                });
             }
         }
     }
@@ -234,7 +247,7 @@
             padding: 40px 250px 20px 50px;
 
             .multiselect {
-                width: 30%;
+                width: 217px;
             }
 
             .editor-container {
@@ -248,5 +261,12 @@
             right: -10px;
             top: 0;
         }
+    }
+</style>
+
+<style>
+    .markdown-editor .CodeMirror,
+    .markdown-editor .CodeMirror-scroll {
+        min-height: 400px;
     }
 </style>
