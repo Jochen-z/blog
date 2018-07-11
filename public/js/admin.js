@@ -98688,15 +98688,15 @@ window.hljs = __WEBPACK_IMPORTED_MODULE_9_highlight_js___default.a;
             var files = e.dataTransfer.files;
 
             if (!(e.dataTransfer && files)) {
-                return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 100 });
+                return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 130 });
             }
 
             if (files.length > 1) {
-                return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 100 });
+                return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 130 });
             }
 
             if (files[0].type.indexOf('image') === -1) {
-                return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 100 });
+                return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 130 });
             }
 
             _this.uploadImagesFile(editor, files[0]);
@@ -98725,7 +98725,7 @@ window.hljs = __WEBPACK_IMPORTED_MODULE_9_highlight_js___default.a;
 
             this.$refs['articleForm'].validate(function (valid) {
                 if (!_this4.article.content.length) {
-                    return _this4.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
+                    return _this4.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 130 });
                 }
 
                 if (valid) {
@@ -98736,7 +98736,7 @@ window.hljs = __WEBPACK_IMPORTED_MODULE_9_highlight_js___default.a;
                     });
 
                     Object(__WEBPACK_IMPORTED_MODULE_3__api_article__["a" /* createArticle */])(_this4.article).then(function () {
-                        _this4.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 100 });
+                        _this4.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                         _this4.loading = false;
                     });
                 }
@@ -98748,7 +98748,7 @@ window.hljs = __WEBPACK_IMPORTED_MODULE_9_highlight_js___default.a;
 
             this.$refs['articleForm'].validate(function (valid) {
                 if (!_this5.article.content.length) {
-                    return _this5.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
+                    return _this5.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 130 });
                 }
 
                 if (valid) {
@@ -98760,7 +98760,7 @@ window.hljs = __WEBPACK_IMPORTED_MODULE_9_highlight_js___default.a;
                     });
 
                     Object(__WEBPACK_IMPORTED_MODULE_3__api_article__["e" /* updateArticle */])(_this5.article.id, _this5.article).then(function () {
-                        _this5.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 100 });
+                        _this5.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 130 });
                         _this5.loading = false;
                     });
                 }
@@ -108525,7 +108525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     Object(__WEBPACK_IMPORTED_MODULE_1__api_category__["a" /* createCategory */])(_this3.category).then(function () {
                         _this3.dialogFormVisible = false;
-                        _this3.$message({ message: '创建成功', type: 'success' });
+                        _this3.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                         _this3.getCategoryList();
                     });
                 }
@@ -108548,10 +108548,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     Object(__WEBPACK_IMPORTED_MODULE_1__api_category__["d" /* updateCategory */])(_this5.category.id, _this5.category.name).then(function () {
                         _this5.dialogFormVisible = false;
-                        _this5.$message({ message: '更新成功', type: 'success' });
+                        _this5.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 130 });
                         _this5.getCategoryList();
                     }).catch(function () {
-                        _this5.$message({ message: '更新失败', type: 'error' });
+                        _this5.$notify({ title: '错误', message: '更新失败', type: 'error', offset: 130 });
                     });
                 }
             });
@@ -108565,11 +108565,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 'warning'
             }).then(function () {
                 Object(__WEBPACK_IMPORTED_MODULE_1__api_category__["b" /* deleteCategory */])(category.id).then(function () {
-                    _this6.$message({ message: '删除成功', type: 'success' });
+                    _this6.$notify({ title: '成功', message: '删除成功', type: 'success', offset: 130 });
                     _this6.getCategoryList();
                 });
             }).catch(function () {
-                _this6.$message({ type: 'info', message: '已取消删除' });
+                _this6.$notify({ title: '消息', message: '已取消删除', type: 'info', offset: 130 });
             });
         },
         handleSizeChange: function handleSizeChange(val) {
@@ -109073,7 +109073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     Object(__WEBPACK_IMPORTED_MODULE_1__api_tag__["a" /* createTag */])(_this3.tag).then(function () {
                         _this3.dialogFormVisible = false;
-                        _this3.$message({ message: '创建成功', type: 'success' });
+                        _this3.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                         _this3.getTagList();
                     });
                 }
@@ -109096,10 +109096,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (valid) {
                     Object(__WEBPACK_IMPORTED_MODULE_1__api_tag__["d" /* updateTag */])(_this5.tag.id, _this5.tag.name).then(function () {
                         _this5.dialogFormVisible = false;
-                        _this5.$message({ message: '更新成功', type: 'success' });
+                        _this5.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 130 });
                         _this5.getTagList();
                     }).catch(function () {
-                        _this5.$message({ message: '更新失败', type: 'error' });
+                        _this5.$notify({ title: '错误', message: '更新失败', type: 'error', offset: 130 });
                     });
                 }
             });
@@ -109113,11 +109113,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 'warning'
             }).then(function () {
                 Object(__WEBPACK_IMPORTED_MODULE_1__api_tag__["b" /* deleteTag */])(tag.id).then(function () {
-                    _this6.$message({ message: '删除成功', type: 'success' });
+                    _this6.$notify({ title: '成功', message: '删除成功', type: 'success', offset: 130 });
                     _this6.getTagList();
                 });
             }).catch(function () {
-                _this6.$message({ type: 'info', message: '已取消删除' });
+                _this6.$notify({ title: '消息', message: '已取消删除', type: 'info', offset: 130 });
             });
         },
         handleSizeChange: function handleSizeChange(val) {

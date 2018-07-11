@@ -8,7 +8,7 @@
         <div class="main-container">
             <!-- 顶部导航栏 -->
             <navbar></navbar>
-            <!--  -->
+            <!-- 历史路径 -->
             <tags-view></tags-view>
             <!-- 内容主体 -->
             <app-main></app-main>

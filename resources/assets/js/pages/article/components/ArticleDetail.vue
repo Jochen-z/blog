@@ -151,15 +151,15 @@
                 let files = e.dataTransfer.files;
 
                 if (! (e.dataTransfer && files)) {
-                    return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 100 });
+                    return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 130 });
                 }
 
                 if (files.length > 1) {
-                    return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 100 });
+                    return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 130 });
                 }
 
                 if (files[0].type.indexOf('image') === -1) {
-                    return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 100 });
+                    return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 130 });
                 }
 
                 _this.uploadImagesFile(editor, files[0]);
@@ -181,7 +181,7 @@
             handleCreateArticle() {
                 this.$refs['articleForm'].validate((valid) => {
                     if (! this.article.content.length) {
-                        return this.$notify({title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
+                        return this.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 130 });
                     }
 
                     if (valid) {
@@ -192,7 +192,7 @@
                         });
 
                         createArticle(this.article).then(() => {
-                            this.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 100 });
+                            this.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                             this.loading = false;
                         });
                     }
@@ -204,7 +204,7 @@
             handleUpdateArticle() {
                 this.$refs['articleForm'].validate((valid) => {
                     if (! this.article.content.length) {
-                        return this.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 100 });
+                        return this.$notify({ title: '错误', message: '请填写文章内容', type: 'error', offset: 130 });
                     }
 
                     if (valid) {
@@ -216,7 +216,7 @@
                         });
 
                         updateArticle(this.article.id, this.article).then(() => {
-                            this.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 100 });
+                            this.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 130 });
                             this.loading = false;
                         });
                     }

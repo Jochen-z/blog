@@ -121,7 +121,7 @@
                     if (valid) {
                         createTag(this.tag).then(() => {
                             this.dialogFormVisible = false;
-                            this.$message({ message: '创建成功', type: 'success' });
+                            this.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                             this.getTagList();
                         })
                     }
@@ -140,10 +140,10 @@
                     if (valid) {
                         updateTag(this.tag.id, this.tag.name).then(() => {
                             this.dialogFormVisible = false;
-                            this.$message({ message: '更新成功', type: 'success' });
+                            this.$notify({ title: '成功', message: '更新成功', type: 'success', offset: 130 });
                             this.getTagList();
                         }).catch(() => {
-                            this.$message({ message: '更新失败', type: 'error' });
+                            this.$notify({ title: '错误', message: '更新失败', type: 'error', offset: 130 });
                         })
                     }
                 })
@@ -155,11 +155,11 @@
                     type: 'warning'
                 }).then(() => {
                     deleteTag(tag.id).then(() => {
-                        this.$message({ message: '删除成功', type: 'success' });
+                        this.$notify({ title: '成功', message: '删除成功', type: 'success', offset: 130 });
                         this.getTagList();
                     });
                 }).catch(() => {
-                    this.$message({ type: 'info', message: '已取消删除' });
+                    this.$notify({ title: '消息', message: '已取消删除', type: 'info', offset: 130 });
                 });
             },
             handleSizeChange(val) {
