@@ -10,7 +10,7 @@
 
     <title>@yield('title', '管理后台')</title>
 
-    {{--<link rel="Shortcut Icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">--}}
+    <link rel="Shortcut Icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
 </head>
 
 <body>

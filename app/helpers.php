@@ -16,3 +16,16 @@ function countWords($str)
 
     return (int)($chineseLength + $englishLength);
 }
+
+/**
+ * 获取当前控制器与方法
+ *
+ * @return array
+ */
+function currentAction()
+{
+    $action = \Route::current()->getActionName();
+    list($class, $method) = explode('@', $action);
+
+    return ['controller' => $class, 'method' => $method];
+}

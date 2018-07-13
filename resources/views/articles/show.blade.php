@@ -78,6 +78,14 @@
                                     </footer>
                                 </div>
                             </article>
+
+                            <div class="article-divider">
+                                <div class="container">
+                                    <div class="label label--divider">
+                                        <span>JOCHEN</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>

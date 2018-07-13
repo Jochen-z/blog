@@ -5,8 +5,6 @@
   padding-bottom: 50px;
 
   .main-inner {
-    margin: 80px auto;
-
     .content-wrap {
       .content {
         .article-block {
@@ -183,6 +181,45 @@
             }
           }
         }
+
+        .article-divider {
+          margin-bottom: 250px;
+
+          .label {
+            font-size: .6875rem;
+            font-family: Miriam Libre,sans-serif;
+            letter-spacing: .2em;
+            line-height: 1em;
+            text-transform: uppercase;
+            color: #636b6f;
+            font-weight: 700;
+            margin-bottom: .5rem;
+          }
+
+          .label.label--divider {
+            display: block;
+            text-align: center;
+            position: relative;
+          }
+
+          .label.label--divider:before {
+            display: block;
+            content: "";
+            background-color: #e8e8e8;
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-1px);
+          }
+
+          .label.label--divider span {
+            background-color: #fff;
+            position: relative;
+            z-index: 100;
+            padding: 0 .9375rem;
+          }
+        }
       }
     }
   }
@@ -200,11 +237,11 @@ ul.nav-tabs li a {
 }
 ul.nav-tabs li.active {
   background: #eaeaea;
-  border-left: 2px solid #2ca02c;
+  border-left: 2px solid #16A085;
 }
 ul.nav-tabs li.active a,
 ul.nav-tabs li.active a:hover {
-  color: #2ca02c;
+  color: #16A085;
   border: none;
   border-radius: 0;
   background-color: #eaeaea;
@@ -214,7 +251,7 @@ ul.nav-tabs li a:hover {
   border: none;
   border-radius: 0;
   background-color: #fff;
-  text-decoration: underline #2ca02c;
+  text-decoration: underline #16A085;
 }
 .section-h2 {
   margin-left: 0;

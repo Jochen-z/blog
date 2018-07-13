@@ -36,6 +36,9 @@ class ArticleController extends Controller
 
         $article->content = $parsedown->text($article->content);
 
+        // 文章阅读数+1
+        $article->increment('read_count');
+
         return view('articles.show', compact('article'));
     }
 }

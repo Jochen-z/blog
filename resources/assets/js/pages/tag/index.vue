@@ -15,6 +15,7 @@
         <el-table style="width: 100%" :data="tagList" v-loading="listLoading" border fit highlight-current-row>
             <el-table-column align="center" prop="id" label="ID" width="80"></el-table-column>
             <el-table-column align="center" prop="name" label="名称"></el-table-column>
+            <el-table-column align="center" prop="sum" label="文章总数"></el-table-column>
             <el-table-column align="center" prop="created_at" label="创建时间"></el-table-column>
             <el-table-column align="center" prop="updated_at" label="更新时间"></el-table-column>
             <el-table-column align="center" label="行为" width="200">

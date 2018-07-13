@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder
     {
         $user = new User();
         $user->makeVisible(['password', 'remember_token']);
-        $user->name = 'jochen';
-        $user->email = 'jochenzhang94@gmail.com';
+        $user->name = 'admin';
+        $user->email = 'admin@gmail.com';
         $user->password = '$2y$10$Iwt1Bq4kJfxOcBpmfsAqYu9hhGoTaHl/J3ld0tGVJobQtByCxt3ry'; # 123456
         $user->remember_token = str_random(10);
         $user->save();
