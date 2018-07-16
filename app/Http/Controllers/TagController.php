@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
@@ -36,10 +36,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        $articles = $tag->articles()
-            ->with('category')
-            ->recent()
-            ->paginate(10);
+        $articles = $tag->articles()->with('category')->recent()->paginate(10);
 
         return view('articles.index', compact('articles'));
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -15,10 +14,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $articles = $category->articles()
-            ->with('category')
-            ->recent()
-            ->paginate(10);
+        $articles = $category->articles()->with('category')->recent()->paginate(10);
 
         return view('articles.index', compact('articles'));
     }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Parsedown;
+use App\Models\About;
+
 class AdminController extends Controller
 {
     /**
@@ -17,10 +20,15 @@ class AdminController extends Controller
     /**
      * Display personal information.
      *
+     * @param About $about
+     * @param Parsedown $parsedown
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function about()
+    public function about(About $about, Parsedown $parsedown)
     {
-        return view('admin.about');
+        $about = About::findOrFail(1);
+        $introduction = $parsedown->text($about->content);
+
+        return view('admin.about', compact('introduction'));
     }
 }

@@ -22,4 +22,6 @@ Route::resource('tags', 'TagController', ['only' => ['index', 'show']]);
 
 Route::get('archive', 'ArchiveController@index')->name('archive.index');
 
+Route::get('about', 'AdminController@about')->name('about');
+
 Route::get('admin', 'AdminController@index')->name('admin');

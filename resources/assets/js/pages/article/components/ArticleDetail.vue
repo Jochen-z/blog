@@ -8,7 +8,7 @@
                  :rules="rules">
 
             <div style="z-index: 1; height: 50px;">
-                <div class="sub-navbar draft" style="top: 0px; z-index: 1; height: 50px;">
+                <div class="sub-navbar draft" style="top: 0; z-index: 1; height: 50px;">
                     <template v-if="isEdit">
                         <el-button v-loading="loading" type="primary" @click="handleUpdateArticle">更新</el-button>
                     </template>

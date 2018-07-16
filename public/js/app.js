@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 294);
+/******/ 	return __webpack_require__(__webpack_require__.s = 295);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -19481,15 +19481,16 @@ module.exports = function(hljs) {
 /* 291 */,
 /* 292 */,
 /* 293 */,
-/* 294 */
+/* 294 */,
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(295);
-module.exports = __webpack_require__(301);
+__webpack_require__(296);
+module.exports = __webpack_require__(303);
 
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -19499,7 +19500,7 @@ module.exports = __webpack_require__(301);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(296);
+__webpack_require__(297);
 
 // window.Vue = require('vue');
 
@@ -19515,12 +19516,14 @@ __webpack_require__(296);
 //     el: '#app'
 // });
 
+__webpack_require__(302);
+
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(297);
+window._ = __webpack_require__(298);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -19529,9 +19532,9 @@ window._ = __webpack_require__(297);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(299);
+  window.$ = window.jQuery = __webpack_require__(300);
 
-  __webpack_require__(300);
+  __webpack_require__(301);
 } catch (e) {}
 
 /**
@@ -19579,7 +19582,7 @@ if (token) {
 window.hljs = __webpack_require__(60);
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36689,10 +36692,10 @@ window.hljs = __webpack_require__(60);
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(298)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(299)(module)))
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -36720,7 +36723,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -47091,7 +47094,7 @@ return jQuery;
 
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports) {
 
 /*!
@@ -49474,7 +49477,61 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 301 */
+/* 302 */
+/***/ (function(module, exports) {
+
+/**
+ * @preserve
+ * Project: Bootstrap Hover Dropdown
+ * Author: Cameron Spear
+ * Version: v2.2.1
+ * Contributors: Mattia Larentis
+ * Dependencies: Bootstrap's Dropdown plugin, jQuery
+ * Description: A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
+ * License: MIT
+ * Homepage: http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
+ */
+!function (e, n) {
+  var o = e();e.fn.dropdownHover = function (t) {
+    return "ontouchstart" in document ? this : (o = o.add(this.parent()), this.each(function () {
+      function r() {
+        d.parents(".navbar").find(".navbar-toggle").is(":visible") || (n.clearTimeout(a), n.clearTimeout(i), i = n.setTimeout(function () {
+          o.find(":focus").blur(), v.instantlyCloseOthers === !0 && o.removeClass("open"), n.clearTimeout(i), d.attr("aria-expanded", "true"), s.addClass("open"), d.trigger(h);
+        }, v.hoverDelay));
+      }var a,
+          i,
+          d = e(this),
+          s = d.parent(),
+          u = { delay: 500, hoverDelay: 0, instantlyCloseOthers: !0 },
+          l = { delay: e(this).data("delay"), hoverDelay: e(this).data("hover-delay"), instantlyCloseOthers: e(this).data("close-others") },
+          h = "show.bs.dropdown",
+          c = "hide.bs.dropdown",
+          v = e.extend(!0, {}, u, t, l);s.hover(function (e) {
+        return s.hasClass("open") || d.is(e.target) ? void r(e) : !0;
+      }, function () {
+        n.clearTimeout(i), a = n.setTimeout(function () {
+          d.attr("aria-expanded", "false"), s.removeClass("open"), d.trigger(c);
+        }, v.delay);
+      }), d.hover(function (e) {
+        return s.hasClass("open") || s.is(e.target) ? void r(e) : !0;
+      }), s.find(".dropdown-submenu").each(function () {
+        var o,
+            t = e(this);t.hover(function () {
+          n.clearTimeout(o), t.children(".dropdown-menu").show(), t.siblings().children(".dropdown-menu").hide();
+        }, function () {
+          var e = t.children(".dropdown-menu");o = n.setTimeout(function () {
+            e.hide();
+          }, v.delay);
+        });
+      });
+    }));
+  }, e(document).ready(function () {
+    e('[data-hover="dropdown"]').dropdownHover();
+  });
+}(jQuery, window);
+
+/***/ }),
+/* 303 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

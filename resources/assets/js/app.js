@@ -20,3 +20,5 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app'
 // });
+
+require('./bootstrap-hover-dropdown.min');

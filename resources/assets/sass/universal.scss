@@ -34,11 +34,33 @@ body {
 
   .navbar-nav {
     margin-left: 28px;
-  }
 
-  .navbar-nav > li > a {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    li > a {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    .dropdown-menu {
+      background-color: #fff;
+      color: inherit;
+      padding: 0;
+      min-width: 120px;
+
+      li > a {
+        color: inherit;
+        border-bottom: 1px solid #d8d8d8;
+        line-height: 2.3;
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        white-space: nowrap;
+      }
+
+      .fa {
+        margin-right: 16px;
+      }
+    }
   }
 
   .header-search {

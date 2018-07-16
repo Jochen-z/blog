@@ -25,6 +25,8 @@ Route::group(['namespace' => 'Admin'], function() {
 
         Route::resource('tags', 'TagController', ['except' => ['create', 'edit']]);
 
+        Route::resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
+
         Route::post('upload/image', 'UploadController@image');
     });
 });

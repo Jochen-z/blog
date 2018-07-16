@@ -73,5 +73,17 @@ export default new Router({
                 }
             ]
         },
+        {
+            path: '/about',
+            component: Layout,
+            children: [
+                {
+                    path: 'index',
+                    name: 'About',
+                    meta: { title: '关于', icon: 'about' },
+                    component: require('../pages/about/index'),
+                }
+            ]
+        },
     ]
 });
