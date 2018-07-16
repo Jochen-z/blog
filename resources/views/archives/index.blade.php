@@ -19,8 +19,8 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/velocity.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/velocity.ui.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.archive-year').velocity('transition.slideLeftIn');

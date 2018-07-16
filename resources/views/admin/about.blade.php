@@ -6,7 +6,7 @@
 @section('content')
     <main class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1" style="min-height: 700px;">
                 <article class="markdown">
                     {!! $introduction !!}
                 </article>
