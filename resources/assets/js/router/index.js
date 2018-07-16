@@ -6,7 +6,7 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        { path: '/login', component: require('../pages/login/index') },
+        { path: '/login', component: () => import('../pages/login/index') },
 
         {
             path: '',
@@ -17,7 +17,7 @@ export default new Router({
                     path: 'dashboard',
                     name: 'Dashboard',
                     meta: { title: '仪表盘', icon: 'dashboard' },
-                    component: require('../pages/dashboard/index'),
+                    component: () => import('../pages/dashboard/index'),
                 }
             ]
         },
@@ -32,19 +32,19 @@ export default new Router({
                     path: 'index',
                     name: 'articleList',
                     meta: { title: '列表', icon: 'list' },
-                    component: require('../pages/article/index'),
+                    component: () => import('../pages/article/index'),
                 },
                 {
                     path: 'create',
                     name: 'createArticle',
                     meta: { title: '新建', icon: 'edit' },
-                    component: require('../pages/article/create'),
+                    component: () => import('../pages/article/create'),
                 },
                 {
                     path: 'edit/:id(\\d+)',
                     name: 'editArticle',
                     meta: { title: '修改' },
-                    component: require('../pages/article/edit'),
+                    component: () => import('../pages/article/edit'),
                     hidden: true
                 }
             ]
@@ -57,7 +57,7 @@ export default new Router({
                     path: 'index',
                     name: 'Category',
                     meta: { title: '分类', icon: 'category' },
-                    component: require('../pages/category/index'),
+                    component: () => import('../pages/category/index'),
                 }
             ]
         },
@@ -69,7 +69,7 @@ export default new Router({
                     path: 'index',
                     name: 'Tag',
                     meta: { title: '标签', icon: 'tag' },
-                    component: require('../pages/tag/index'),
+                    component: () => import('../pages/tag/index'),
                 }
             ]
         },
@@ -81,7 +81,7 @@ export default new Router({
                     path: 'index',
                     name: 'About',
                     meta: { title: '关于', icon: 'about' },
-                    component: require('../pages/about/index'),
+                    component: () => import('../pages/about/index'),
                 }
             ]
         },

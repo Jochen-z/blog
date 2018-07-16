@@ -18,6 +18,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.js('resources/assets/js/admin.js', 'public/js');
 
 
+mix.webpackConfig({
+    // Vue.js Async Component Chunks
+    output: {
+        publicPath: '/',
+        chunkFilename: 'js/chunks/[name].[chunkhash].js',
+    },
+});
+
+
 Mix.listen('configReady', (webpackConfig) => {
     // Create SVG sprites
     webpackConfig.module.rules.unshift({
