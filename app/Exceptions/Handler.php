@@ -82,7 +82,8 @@ class Handler extends ExceptionHandler
             $response = $api->methodNotAllow();
         } else {
             // 其他异常
-            $response = $api->serviceUnavailable($exception->getTraceAsString());
+            # $response = $api->serviceUnavailable($exception->getTraceAsString()); // debug
+            $response = $api->serviceUnavailable('系统错误');
         }
 
         return $response;

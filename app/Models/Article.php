@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -39,6 +40,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'title',
         'excerpt',
@@ -102,5 +105,20 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'article_tags');
+    }
+
+    /**
+     * 索引的字段
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'id',
+            'title',
+            'excerpt',
+            'content'
+        ]);
     }
 }

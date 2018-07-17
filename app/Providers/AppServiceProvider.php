@@ -15,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // 增加内存防止中文分词报错
+        ini_set('memory_limit', '256M');
+
+        // 注册观察者
         Article::observe(ArticleObserver::class);
     }
 

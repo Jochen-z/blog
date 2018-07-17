@@ -57,7 +57,7 @@
                         <li><a href="{{ route('about') }}">关于</a></li>
                     </ul>
 
-                    <form action="/search" class="nav navbar-nav navbar-right header-search">
+                    <form action="{{ route('search') }}" class="nav navbar-nav navbar-right header-search">
                         <button class="btn btn-link">
                             <span class="sr-only">搜索</span>
                             <span class="glyphicon glyphicon-search"></span>

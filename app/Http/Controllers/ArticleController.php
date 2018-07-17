@@ -41,4 +41,11 @@ class ArticleController extends Controller
 
         return view('articles.show', compact('article'));
     }
+
+
+    public function search(Request $request)
+    {
+        $articles = Article::search($request->get('q'))->get()->toArray();
+        dd($articles);
+    }
 }

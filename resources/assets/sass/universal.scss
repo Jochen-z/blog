@@ -23,8 +23,13 @@ body {
     padding: 25px 18px;
     height: 70px;
     font-weight: 700;
-    color: #555;
+    color: #222;
     font-size: 1.4em;
+  }
+  .navbar-brand:hover,
+  .navbar-brand:focus {
+    color: #222;
+    background-color: transparent;
   }
 
   .navbar-toggle {
