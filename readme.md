@@ -1,58 +1,141 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## 项目概述
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+* 项目名称：个人博客
+* 项目运行地址：http://jochen-z.com/
 
-## About Laravel
+这是我的个人博客，使用 [laravel 5.5](https://laravel.com/) 和 [Vue 2.0](https://cn.vuejs.org/) 框架进行开发。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+系统后台使用 Vuejs + Element-UI + JWT 实现了前后端分离。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### 博客功能
 
-## Laravel Sponsors
+前端：
+- 分类导航
+- 标签云
+- 文章日志
+- 全文搜索（未实现）
+- RSS 订阅（未实现）
+- SEO 友好 URL
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+管理后台：
+- 分类管理
+- 文章管理
+- 标签管理
+- Log 日志查阅（未实现）
+- 访问统计（未实现）
+- About 页面管理
+- Simplemde Markdown 编辑器 + 图片拖拽上传
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+## 运行环境要求
 
-## Contributing
+- Nginx 1.8+
+- PHP 7.1+
+- Mysql 5.7+
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 部署/安装
 
-## Security Vulnerabilities
+本项目代码使用 Docker PHP 开发环境 [Laradock](http://laradock.io/) 进行开发和部署。
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 基础安装
 
-## License
+#### 1. 克隆源代码
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell
+git clone git@github.com:Jochen-z/blog.git
+```
+
+#### 2. 安装扩展包依赖
+
+```shell
+composer install
+```
+
+#### 3. 生成配置文件
+
+```shell
+cp .env.example .env
+```
+
+然后在 `.env` 的配置文件里面完成如下配置项：
+
+> 为了生成 SEO 友好的文章 URL，使用了百度翻译 API。（必须）
+
+```
+ # 数据库
+ DB_CONNECTION=
+ DB_HOST=
+ DB_PORT=
+ DB_DATABASE=
+ DB_USERNAME=
+ DB_PASSWORD=
+
+ # 百度翻译平台
+ BAIDU_TRANSLATE_APP_ID=
+ BAIDU_TRANSLATE_KEY=
+ ```
+
+#### 4. 生成秘钥
+
+```shell
+php artisan key:generate
+```
+
+#### 5. 生成 JWT 的 secret
+
+```shell
+php artisan jwt:secret
+```
+
+#### 6. 创建符号链接
+
+```shell
+php artisan storage:link
+```
+
+#### 7. 生成数据表及测试数据
+
+```shell
+php artisan migrate --seed
+```
+
+### 前端框架安装
+
+#### 1. 安装前端所需要的依赖
+
+```shell
+yarn install
+```
+
+#### 2. 编译前端内容
+
+开发环境使用：
+
+```shell
+npm run dev
+```
+
+生产环境请使用：
+
+```shell
+npm run production
+```
+
+### 链接入口
+
+* 首页地址：http://blog.me/
+* 管理后台：http://blog.me/admin#/login
+
+管理员账号密码如下:
+
+```
+username: admin@gmail.com
+password: 123456
+```
+
+至此, 安装完成 ^_^。
+
+如果你发现 bugs，或者有一些好的建议，欢迎 issue。
