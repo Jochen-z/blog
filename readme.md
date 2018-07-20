@@ -3,7 +3,7 @@
 * 项目名称：个人博客
 * 项目运行地址：http://jochen-z.com/
 
-这是我的个人博客，使用 [laravel 5.5](https://laravel.com/) 和 [Vue 2.0](https://cn.vuejs.org/) 框架进行开发。
+这是我的个人博客，使用 [Laravel 5.5](https://laravel.com/) 和 [Vue 2.0](https://cn.vuejs.org/) 框架进行开发。
 
 系统后台使用 Vuejs + Element-UI + JWT 实现了前后端分离。
 

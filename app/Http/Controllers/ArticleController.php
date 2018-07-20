@@ -45,7 +45,7 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
-        $articles = Article::search($request->get('q'))->get()->toArray();
-        dd($articles);
+//        $articles = Article::search($request->get('q'))->get()->toArray();
+//        dd($articles);
     }
 }

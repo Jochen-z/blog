@@ -15,7 +15,7 @@ class AboutsTableSeed extends Seeder
         $time = app(Faker\Generator::class)->dateTimeThisYear();
 
         $about = new About();
-        $about->content = '# Hello World! I\'m Jochen.</h1>';
+        $about->content = '# Hello World! I\'m Jochen.';
         $about->created_at = $time;
         $about->updated_at = $time;
         $about->save();

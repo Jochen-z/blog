@@ -42,7 +42,7 @@
         <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="25%" center>
             <el-form ref="dataForm" :rules="rules" :model="tag" label-position="left" label-width="70px">
                 <el-form-item label="名称" prop="name">
-                    <el-input v-model="tag.name" autofocus></el-input>
+                    <el-input v-model="tag.name" @keyup.enter.native="submit" autofocus></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -89,6 +89,13 @@
             this.getTagList();
         },
         methods: {
+            submit() {
+                if (this.dialogStatus === 'create') {
+                    return this.createData();
+                }
+
+                this.updateData();
+            },
             getTagList() {
                 this.listLoading = true;
 

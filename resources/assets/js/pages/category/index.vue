@@ -42,7 +42,7 @@
         <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" width="25%" center>
             <el-form ref="dataForm" :rules="rules" :model="category" label-position="left" label-width="70px">
                 <el-form-item label="名称" prop="name">
-                    <el-input v-model="category.name" autofocus></el-input>
+                    <el-input v-model="category.name" @keyup.enter.native="submit" autofocus></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
@@ -89,6 +89,13 @@
             this.getCategoryList();
         },
         methods: {
+            submit() {
+                if (this.dialogStatus === 'create') {
+                    return this.createData();
+                }
+
+                this.updateData();
+            },
             getCategoryList() {
                 this.listLoading = true;
 

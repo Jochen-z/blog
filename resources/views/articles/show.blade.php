@@ -92,9 +92,9 @@
             </div>
 
             {{-- 侧边栏 --}}
-            <nav class="col-xs-3 col-md-3" style="margin-top: 251px;" id="myScrollspy">
+            <nav class="col-xs-3 col-md-3" id="myScrollspy" style="margin-top: 40px;">
                 <ul class="nav nav-tabs nav-stacked" style="border-left: 1px solid #eee;width: 262px;"
-                    data-spy="affix" data-offset-top="251" id="scrollspy">
+                    data-spy="affix" id="scrollspy">
                 </ul>
             </nav>
         </div>

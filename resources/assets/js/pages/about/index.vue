@@ -49,29 +49,7 @@
             this.getAbout();
         },
         mounted() {
-            let _this = this;
-            let editor = this.$refs['markdownEditor'].simplemde;
-
-            // 图片拖拽
-            editor.codemirror.on('drop', function (editor, e) {
-                let files = e.dataTransfer.files;
-
-                if (! (e.dataTransfer && files)) {
-                    return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 130 });
-                }
-
-                if (files.length > 1) {
-                    return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 130 });
-                }
-
-                if (files[0].type.indexOf('image') === -1) {
-                    return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 130 });
-                }
-
-                _this.uploadImagesFile(editor, files[0]);
-
-                e.preventDefault();
-            });
+            this.dropImage();
         },
         methods: {
             getAbout() {
@@ -89,14 +67,46 @@
                     this.loading = false;
                 });
             },
-            uploadImagesFile(editor, file) {
-                let image = new FormData();
-                image.append('image', file);
+            dropImage() {
+                let _this = this;
+                let editor = this.$refs['markdownEditor'].simplemde;
 
-                uploadImage(image).then((response) => {
-                    if (response.data.code === 200) {
-                        editor.setValue(editor.getValue() + `![file](${response.data.data.path})` + '\n');
+                // 图片拖拽上传
+                editor.codemirror.on('drop', function (editor, e) {
+                    let files = e.dataTransfer.files;
+
+                    if (! (e.dataTransfer && files)) {
+                        return _this.$notify({ title: '错误', message: '浏览器不支持此操作', type: 'error', offset: 130 });
                     }
+
+                    if (files.length > 1) {
+                        return _this.$notify({ title: '错误', message: '一次只能上传一张图片', type: 'error', offset: 130 });
+                    }
+
+                    if (files[0].type.indexOf('image') === -1) {
+                        return _this.$notify.error({ title: '错误', message: '只能上传图片', type: 'error', offset: 130 });
+                    }
+
+                    let image = new FormData();
+                    image.append('image', files[0]);
+
+                    // 占位符
+                    let placeholder = `![Uploading ${files[0]['name']} ...]()`;
+                    editor.replaceRange(placeholder, {
+                        line: editor.getCursor().line,
+                        ch: editor.getCursor().ch
+                    });
+
+                    uploadImage(image).then((response) => {
+                        if (response.data.code === 200) {
+                            let imagePath = `\n![](${response.data.data.path})\n`;
+                            editor.setValue(editor.getValue().replace(placeholder, imagePath));
+                        } else {
+                            _this.$notify.error({ title: '错误', message: response.data.message, type: 'error', offset: 130 });
+                        }
+                    });
+
+                    e.preventDefault();
                 });
             }
         },

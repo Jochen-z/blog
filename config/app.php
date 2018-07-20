@@ -179,9 +179,8 @@ return [
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
-        Laravel\Scout\ScoutServiceProvider::class,
+//        Laravel\Scout\ScoutServiceProvider::class,
         // TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
-        App\Providers\ScoutServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 

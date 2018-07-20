@@ -12351,7 +12351,7 @@ ul.nav-tabs li a:hover {
   margin-top: 100px;
   margin-bottom: 100px;
   position: relative;
-  z-index: 1010;
+  z-index: 10;
   margin-left: 0;
   display: block;
   width: auto;
