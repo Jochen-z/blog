@@ -13,16 +13,15 @@
 
     <link href="{{ asset('/favicon.ico') }}" rel="Shortcut Icon" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/semantic.min.css') }}" rel="stylesheet" type="text/css">
 </head>
 
-<body class="pushable">
+<body data-spy="scroll" data-target="#myScrollspy">
     @include('layouts.header')
 
-    <div class="pusher">
-        <div class="container">
+    <div class="container">
+        <div class="row">
             {{-- 文章内容 --}}
-            <main class="col-xs-9 col-md-9 main-inner">
+            <main class="col-xs-12 col-md-9 main-inner">
                 <article class="article-block">
                     <div class="article-detail">
                         <header class="article-header">
@@ -101,10 +100,8 @@
             </main>
 
             {{-- 侧边栏 --}}
-            <nav class="col-xs-3 col-md-3" id="myScrollspy" style="margin-top: 40px;">
-                <ul class="nav nav-tabs nav-stacked" style="border-left: 1px solid #eee;width: 262px;"
-                    data-spy="affix" id="scrollspy">
-                </ul>
+            <nav class="col-md-3 hidden-sm hidden-xs" id="myScrollspy" style="margin-top: 40px;">
+                <ul class="nav nav-tabs nav-stacked" data-spy="affix" id="scrollspy"></ul>
             </nav>
         </div>
     </div>
@@ -112,7 +109,6 @@
     @include('layouts.footer')
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/semantic.min.js') }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script type="text/javascript">
         $(document).ready(function() {

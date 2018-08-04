@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="container">
+    <main class="container" style="min-height: 680px">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="tag-cloud">
