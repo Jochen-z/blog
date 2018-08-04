@@ -11674,12 +11674,12 @@ body {
   color: #222;
 }
 
-.main {
+.main-inner {
   display: block;
   padding-bottom: 50px;
 }
 
-.main .main-inner .content-wrap .content .article-block {
+.main-inner .article-block {
   margin-top: 0;
   opacity: 1;
   display: block;
@@ -11687,7 +11687,7 @@ body {
           transform: translateY(0px);
 }
 
-.main .main-inner .content-wrap .content .article-block .article-header .article-title {
+.main-inner .article-block .article-header .article-title {
   color: #636b6f;
   font-size: 2.25em;
   font-weight: 500;
@@ -11697,7 +11697,7 @@ body {
   position: relative;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-header .article-title-link {
+.main-inner .article-block .article-header .article-title-link {
   display: inline-block;
   position: relative;
   color: #555;
@@ -11708,7 +11708,7 @@ body {
   word-wrap: break-word;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-header .article-title-link::before {
+.main-inner .article-block .article-header .article-title-link::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -11727,13 +11727,13 @@ body {
           transition-delay: 0s;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-header .article-title-link:hover::before {
+.main-inner .article-block .article-header .article-title-link:hover::before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta {
+.main-inner .article-block .article-meta {
   margin: 3px 0 30px 0;
   color: #999;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -11741,50 +11741,50 @@ body {
   text-align: left;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta .article-meta-item-icon {
+.main-inner .article-block .article-meta .article-meta-item-icon {
   margin-right: 3px;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta .article-meta-divider {
+.main-inner .article-block .article-meta .article-meta-divider {
   margin: 0 0.5em;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta .page-pv {
+.main-inner .article-block .article-meta .page-pv {
   display: inline-block;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta a {
+.main-inner .article-block .article-meta a {
   color: #555;
   text-decoration: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-meta a:hover {
+.main-inner .article-block .article-meta a:hover {
   color: #222;
   border-bottom-color: #222;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-detail .article-title,
-.main .main-inner .content-wrap .content .article-block .article-detail .article-meta {
+.main-inner .article-block .article-detail .article-title,
+.main-inner .article-block .article-detail .article-meta {
   text-align: center;
   line-height: 2;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-detail .article-title:before {
+.main-inner .article-block .article-detail .article-title:before {
   display: none;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-detail .article-meta {
+.main-inner .article-block .article-detail .article-meta {
   margin-bottom: 60px;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-button {
+.main-inner .article-block .article-button {
   margin-top: 20px;
   text-align: left;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-button a {
+.main-inner .article-block .article-button a {
   font-size: 16px;
   margin: 0 8px 8px 0 !important;
   padding: 0;
@@ -11796,11 +11796,11 @@ body {
   transition-property: border;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-button a:hover {
+.main-inner .article-block .article-button a:hover {
   border-bottom-color: #222;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-button .btn {
+.main-inner .article-block .article-button .btn {
   border-radius: 0;
   display: inline-block;
   text-decoration: none;
@@ -11812,22 +11812,22 @@ body {
           transition-delay: 0s;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-button .btn:hover {
+.main-inner .article-block .article-button .btn:hover {
   border-color: #222;
   color: #222;
   background: #fff;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-footer {
+.main-inner .article-block .article-footer {
   margin-bottom: 120px;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-footer .article-tags {
+.main-inner .article-block .article-footer .article-tags {
   text-align: left;
   margin-top: 40px;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-footer .article-tags a {
+.main-inner .article-block .article-footer .article-tags a {
   padding: 1px 5px;
   background: #f5f5f5;
   border-bottom: none;
@@ -11839,22 +11839,22 @@ body {
   word-wrap: break-word;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-footer .article-tags a:hover {
+.main-inner .article-block .article-footer .article-tags a:hover {
   background: #ccc;
 }
 
-.main .main-inner .content-wrap .content .article-block .article-footer blockquote {
+.main-inner .article-block .article-footer blockquote {
   padding: 0 15px;
   margin: 0;
   color: #666;
   border-left: 4px solid #ddd;
 }
 
-.main .main-inner .content-wrap .content .article-divider {
+.main-inner .article-divider {
   margin-bottom: 250px;
 }
 
-.main .main-inner .content-wrap .content .article-divider .label {
+.main-inner .article-divider .label {
   font-size: .6875rem;
   font-family: Miriam Libre,sans-serif;
   letter-spacing: .2em;
@@ -11865,13 +11865,13 @@ body {
   margin-bottom: .5rem;
 }
 
-.main .main-inner .content-wrap .content .article-divider .label.label--divider {
+.main-inner .article-divider .label.label--divider {
   display: block;
   text-align: center;
   position: relative;
 }
 
-.main .main-inner .content-wrap .content .article-divider .label.label--divider:before {
+.main-inner .article-divider .label.label--divider:before {
   display: block;
   content: "";
   background-color: #e8e8e8;
@@ -11883,7 +11883,7 @@ body {
           transform: translateY(-1px);
 }
 
-.main .main-inner .content-wrap .content .article-divider .label.label--divider span {
+.main-inner .article-divider .label.label--divider span {
   background-color: #fff;
   position: relative;
   z-index: 100;

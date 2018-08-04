@@ -11,12 +11,12 @@
 
     <title>@yield('title', 'Jochen Blog')</title>
 
-    <link rel="Shortcut Icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/favicon.ico') }}" rel="Shortcut Icon" type="image/x-icon">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     @yield('style')
 </head>
 
-<body data-spy="scroll" data-target="#myScrollspy">
+<body>
     @include('layouts.header')
 
     @yield('content')
