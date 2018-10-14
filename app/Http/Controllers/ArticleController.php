@@ -26,7 +26,7 @@ class ArticleController extends Controller
      * @param Request $request
      * @param Article $article
      * @param Parsedown $parsedown
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function show(Request $request, Article $article, Parsedown $parsedown)
     {
@@ -42,10 +42,18 @@ class ArticleController extends Controller
         return view('articles.show', compact('article'));
     }
 
-
+    /**
+     * 搜索文章
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request)
     {
-//        $articles = Article::search($request->get('q'))->get()->toArray();
-//        dd($articles);
+        $this->validate($request, ['q' => 'required|string']);
+
+        $articles = Article::search(trim($request->get('q')))->paginate();
+
+        return view('articles.index', compact('articles'));
     }
 }

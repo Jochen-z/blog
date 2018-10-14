@@ -88,23 +88,10 @@ return [
         'secret' => env('ALGOLIA_SECRET', ''),
     ],
 
-    'tntsearch' => [
-        'storage' => storage_path('app'),
-        'asYouType' => false,
-        'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
-        'fuzziness' => env('TNTSEARCH_FUZZINESS', false),
-        'fuzzy' => [
-            'prefix_length' => 2,
-            'max_expansions' => 50,
-            'distance' => 2
+    'elasticsearch' => [
+        'index' => env('ELASTICSEARCH_INDEX', 'laravel'),
+        'hosts' => [
+            env('ELASTICSEARCH_HOST', 'http://localhost:9200'),
         ],
-
-        'tokenizer' => [
-            'driver' => env('TNTSEARCH_TOKENIZER', 'default'),
-
-            'jieba' => [
-                'dict' => 'small',
-            ],
-        ],
-    ]
+    ],
 ];

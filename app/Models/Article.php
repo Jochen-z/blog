@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -39,6 +40,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'title',
         'excerpt',
@@ -49,6 +52,19 @@ class Article extends Model
         'read_time',
         'status',
     ];
+
+    /**
+     * 搜索索引字段
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'content' => $this->content
+        ];
+    }
 
     /**
      * 使用 Slug 作为 URL

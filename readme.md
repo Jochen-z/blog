@@ -17,7 +17,7 @@
 - 分类导航
 - 标签云
 - 文章日志
-- 全文搜索（未实现）
+- 全文搜索
 - RSS 订阅（未实现）
 - SEO 友好 URL
 
@@ -35,6 +35,7 @@
 - Nginx 1.8+
 - PHP 7.1+
 - Mysql 5.7+
+- Elasticsearch 5.6
 
 ## 部署/安装
 
@@ -100,6 +101,12 @@ php artisan storage:link
 
 ```shell
 php artisan migrate --seed
+```
+
+#### 8. 创建 Elasticsearch 索引
+
+```shell
+php artisan es:init
 ```
 
 ### 前端框架安装
