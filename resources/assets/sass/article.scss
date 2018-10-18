@@ -29,6 +29,11 @@
         vertical-align: top;
         text-decoration: none;
         word-wrap: break-word;
+
+        em {
+          color: #EB5424;
+          font-style: normal;
+        }
       }
       .article-title-link::before {
         content: "";
@@ -86,6 +91,13 @@
       a:hover {
         color: #222;
         border-bottom-color: #222;
+      }
+    }
+
+    .article-content {
+      em {
+        color: #F86334;
+        font-style: normal;
       }
     }
 
@@ -254,10 +266,8 @@ ul.nav-tabs {
     line-height: 1.2;
   }
   li a:hover {
-    border: none;
-    border-radius: 0;
+    border-color: #fff;
     background-color: #fff;
-    text-decoration: underline #16A085;
   }
 }
 

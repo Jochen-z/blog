@@ -4,7 +4,11 @@
             <header class="article-header">
                 <h2 class="article-title">
                     <a class="article-title-link" href="{{ $article->link() }}" title="{{ $article->title }}">
-                        {{ $article->title }}
+                        @if(isset($article->highlight['title']))
+                            {!! $article->highlight['title'][0] !!}
+                        @else
+                            {{ $article->title }}
+                        @endif
                     </a>
                 </h2>
             </header>
@@ -52,8 +56,16 @@
             </aside>
 
             <div class="article-content" itemprop="articleBody">
-                {{-- 文章概要--}}
-                <p>{{ $article->excerpt }}</P>
+                <p>
+                    @if(isset($article->highlight['content']))
+                        @foreach($article->highlight['content'] as $content)
+                            ......{!! $content !!}...... 
+                        @endforeach
+                    @else
+                        {{-- 文章概要--}}
+                        {{ $article->excerpt }}
+                    @endif
+                </P>
 
                 <div class="article-button text-center">
                     <a class="btn" href="{{ route('articles.show', [$article->id]) }}" rel="contents">

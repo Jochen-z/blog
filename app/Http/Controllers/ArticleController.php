@@ -50,10 +50,11 @@ class ArticleController extends Controller
      */
     public function search(Request $request)
     {
-        $this->validate($request, ['q' => 'required|string']);
+        $this->validate($request, ['query' => 'required|string']);
 
-        $articles = Article::search(trim($request->get('q')))->paginate();
+        $query = trim($request->get('query'));
+        $articles = Article::search($query)->paginate(10);
 
-        return view('articles.index', compact('articles'));
+        return view('articles.index', compact('articles', 'query'));
     }
 }

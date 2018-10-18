@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Tools\EsSearchable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,7 +41,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
-    use Searchable;
+    use Searchable, EsSearchable;
 
     protected $fillable = [
         'title',

@@ -66,7 +66,7 @@
                                 <span class="sr-only">搜索</span>
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
-                            <input id="searchBox" name="q" type="text" placeholder="搜索文章" class="form-control" value="">
+                            <input id="searchBox" name="query" type="text" class="form-control" placeholder="搜索文章" value="" required >
                         </form>
                     </div>
                 </div>
