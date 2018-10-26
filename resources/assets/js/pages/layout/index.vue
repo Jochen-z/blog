@@ -18,8 +18,8 @@
 
 <script>
     import ResizeMixin from './mixin/ResizeHandler';
-    import { default as Navbar } from "./components/Navbar";
-    import { default as Sidebar } from "./components/Sidebar/index";
+    import { default as Navbar } from './components/Navbar';
+    import { default as Sidebar } from './components/Sidebar/index';
     import { default as AppMain } from './components/AppMain';
     import { default as TagsView } from './components/TagsView';
 

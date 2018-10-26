@@ -9,13 +9,25 @@ export default new Router({
         { path: '/login', component: () => import('../pages/login/index') },
 
         {
+            path: '/redirect',
+            component: Layout,
+            hidden: true,
+            children: [
+                {
+                    path: '/redirect/:path*',
+                    component: () => import('../pages/redirect/index')
+                }
+            ]
+        },
+
+        {
             path: '',
             component: Layout,
             redirect: 'dashboard',
             children: [
                 {
                     path: 'dashboard',
-                    name: 'Dashboard',
+                    name: 'Dashboard', // 必须与组件名称一致，否则不能页面缓存
                     meta: { title: '仪表盘', icon: 'dashboard' },
                     component: () => import('../pages/dashboard/index'),
                 }

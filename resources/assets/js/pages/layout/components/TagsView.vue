@@ -1,14 +1,15 @@
 <template>
     <div class="tags-view-container">
         <scroll-pane class='tags-view-wrapper' ref='scrollPane'>
-            <router-link ref='tag' class="tags-view-item" :class="isActive(tag) ? 'active' : ''"
-                         v-for="tag in Array.from(visitedViews)" :to="tag" :key="tag.path"
+            <router-link v-for="tag in visitedViews" :to="tag" :key="tag.path"
+                         ref='tag' class="tags-view-item" :class="isActive(tag) ? 'active' : ''"
                          @contextmenu.prevent.native="openMenu(tag, $event)">
                     {{tag.title}}
                 <span class='el-icon-close' @click.prevent.stop='closeSelectedTag(tag)'></span>
             </router-link>
         </scroll-pane>
-        <ul class='contextmenu' v-show="visible" :style="{ left: left + 'px', top: top + 'px' } ">
+        <ul class='context-menu' v-show="visible" :style="{ left: left + 'px', top: top + 'px' } ">
+            <li @click="refreshSelectedTag(selectedTag)">刷新页面</li>
             <li @click="closeSelectedTag(selectedTag)">关闭当前</li>
             <li @click="closeOthersTags">关闭其他</li>
             <li @click="closeAllTags">关闭所有</li>
@@ -51,21 +52,13 @@
             this.addViewTags();
         },
         methods: {
-            generateRoute() {
-                if (this.$route.name) {
-                    return this.$route;
-                }
-                return false;
-            },
             isActive(route) {
                 return route.path === this.$route.path;
             },
             addViewTags() {
-                const route = this.generateRoute();
-                if (!route) {
-                    return false;
-                }
-                return this.$store.dispatch('addVisitedViews', route);
+                const { name } = this.$route;
+                if (!name) return false;
+                this.$store.dispatch('addView', this.$route);
             },
             moveToCurrentTag() {
                 const tags = this.$refs.tag;
@@ -73,15 +66,31 @@
                     for (const tag of tags) {
                         if (tag.to.path === this.$route.path) {
                             this.$refs.scrollPane.moveToTarget(tag.$el);
+
+                            // when query is different then update
+                            if (tag.to.fullPath !== this.$route.fullPath) {
+                                this.$store.dispatch('updateVisitedView', this.$route);
+                            }
+
                             break;
                         }
                     }
                 })
             },
+            refreshSelectedTag(view) {
+                this.$store.dispatch('delCachedView', view).then(() => {
+                    const { fullPath } = view;
+                    this.$nextTick(() => {
+                        this.$router.replace({
+                            path: '/redirect' + fullPath
+                        })
+                    })
+                })
+            },
             closeSelectedTag(view) {
-                this.$store.dispatch('delVisitedViews', view).then((views) => {
+                this.$store.dispatch('delView', view).then((visitedViews) => {
                     if (this.isActive(view)) {
-                        const latestView = views.slice(-1)[0];
+                        const latestView = visitedViews.slice(-1)[0];
                         if (latestView) {
                             this.$router.push(latestView);
                         } else {
@@ -152,7 +161,7 @@
       }
     }
   }
-  .contextmenu {
+  .context-menu {
     margin: 0;
     background: #fff;
     z-index: 100;

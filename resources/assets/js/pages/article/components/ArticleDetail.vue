@@ -82,6 +82,7 @@
 
     export default {
         name: 'articleDetail',
+        inject: ['reloadPage'],
         components: {
             MultiSelect,
             MarkdownEditor,
@@ -172,6 +173,9 @@
                         createArticle(this.article).then(() => {
                             this.$notify({ title: '成功', message: '创建成功', type: 'success', offset: 130 });
                             this.loading = false;
+                            setTimeout(() => {
+                                this.reloadPage(); // 刷新页面
+                            }, 2000)
                         });
                     }
                 })

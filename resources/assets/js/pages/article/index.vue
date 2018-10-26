@@ -52,7 +52,7 @@
     import { getArticleList, deleteArticle } from '../../api/article';
 
     export default {
-        name: "Article",
+        name: "articleList",
         directives: { waves },
         data() {
             return {
@@ -96,7 +96,7 @@
                 this.getArticleList();
             },
             handleCreate() {
-
+                this.$router.push('/article/create');
             },
             handleUpdate(id) {
                 this.$router.push('/article/edit/' + id);
