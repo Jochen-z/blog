@@ -88,7 +88,7 @@
                 })
             },
             closeSelectedTag(view) {
-                this.$store.dispatch('delView', view).then((visitedViews) => {
+                this.$store.dispatch('delView', view).then(({ visitedViews }) => {
                     if (this.isActive(view)) {
                         const latestView = visitedViews.slice(-1)[0];
                         if (latestView) {
