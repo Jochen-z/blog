@@ -38,7 +38,7 @@ export default new Router({
             name: 'article',
             component: Layout,
             redirect: '/article/index',
-            meta: { title: '文章', icon: 'article' },
+            meta: { title: '文章管理', icon: 'article' },
             children: [
                 {
                     path: 'index',
@@ -68,7 +68,7 @@ export default new Router({
                 {
                     path: 'index',
                     name: 'Category',
-                    meta: { title: '分类', icon: 'category' },
+                    meta: { title: '分类管理', icon: 'category' },
                     component: () => import('../pages/category/index'),
                 }
             ]
@@ -80,7 +80,7 @@ export default new Router({
                 {
                     path: 'index',
                     name: 'Tag',
-                    meta: { title: '标签', icon: 'tag' },
+                    meta: { title: '标签管理', icon: 'tag' },
                     component: () => import('../pages/tag/index'),
                 }
             ]
@@ -92,8 +92,20 @@ export default new Router({
                 {
                     path: 'index',
                     name: 'About',
-                    meta: { title: '关于', icon: 'about' },
+                    meta: { title: '关于页面', icon: 'about' },
                     component: () => import('../pages/about/index'),
+                }
+            ]
+        },
+        {
+            path: '/visitor',
+            component: Layout,
+            children: [
+                {
+                    path: 'index',
+                    name: 'Visitor',
+                    meta: { title: '访客记录', icon: 'visitor' },
+                    component: () => import('../pages/visitor/index')
                 }
             ]
         },

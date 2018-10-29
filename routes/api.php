@@ -28,5 +28,7 @@ Route::group(['namespace' => 'Admin'], function() {
         Route::resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
 
         Route::post('upload/image', 'UploadController@image');
+
+        Route::get('visitors', 'VisitorController@index');
     });
 });
