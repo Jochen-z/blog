@@ -30,5 +30,8 @@ Route::group(['namespace' => 'Admin'], function() {
         Route::post('upload/image', 'UploadController@image');
 
         Route::get('visitors', 'VisitorController@index');
+
+        Route::get('dashboard', 'DashboardController@index');
+        Route::get('dashboard/traffic', 'DashboardController@traffic');
     });
 });

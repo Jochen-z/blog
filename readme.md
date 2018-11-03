@@ -18,18 +18,18 @@
 - 标签云
 - 文章日志
 - 全文搜索
-- RSS 订阅（未实现）
 - SEO 友好 URL
+- RSS 订阅（未实现）
 
 管理后台：
+- Dashboard
 - 分类管理
 - 文章管理
 - 标签管理
 - 访客记录
-- Log 日志查阅（未实现）
-- 访问统计（未实现）
 - About 页面管理
 - Simplemde Markdown 编辑器 + 图片拖拽上传
+- Log 日志查阅（未实现）
 
 ## 运行环境要求
 
@@ -108,6 +108,14 @@ php artisan migrate --seed
 
 ```shell
 php artisan es:init
+```
+
+#### 9. 开启流量统计定时器
+
+```shell
+crontab -e
+
+* * * * * php /you/project/path/artisan schedule:run
 ```
 
 ### 前端框架安装

@@ -1,24 +1,28 @@
 <template>
     <div class="dashboard-container">
-        <div class="dashboard-text">Hello World</div>
+        <panel-group></panel-group>
+
+        <traffic-chart></traffic-chart>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'dashboard',
-        computed: {
+    import PanelGroup from './components/PanelGroup'
+    import TrafficChart from './components/TrafficChart'
 
-        }
+    export default {
+        name: 'Dashboard',
+        components: {
+            PanelGroup,
+            TrafficChart,
+        },
     }
 </script>
 
 <style scoped>
     .dashboard-container {
-        margin: 30px;
-    }
-    .dashboard-text {
-        font-size: 30px;
-        line-height: 46px;
+        padding: 32px;
+        background-color: rgb(240, 242, 245);
+        height: -webkit-fill-available;
     }
 </style>
