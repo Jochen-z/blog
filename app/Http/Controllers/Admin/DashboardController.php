@@ -38,7 +38,14 @@ class DashboardController extends ApiController
     {
         $dates = $request->get('dates', 7);
 
-        $response = [];
+        $response = [
+            'xAxis' => [],
+            'yAxis' => [
+                'pv' => [],
+                'uv' => []
+            ]
+        ];
+
         $pv = TrafficResource::collection(Traffic::pv($dates))->toArray($request);
         foreach($pv as $item) {
             $response['xAxis'][] = $item['created_at'];
