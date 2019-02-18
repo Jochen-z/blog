@@ -21,32 +21,11 @@ class RecordVisitor
             'ip' => $request->ip(),
             'agent' => $request->userAgent()
         ];
-        if ($location = $this->getLocation($visitor['ip'])) {
+        if ($location = getIpLocation($visitor['ip'])) {
             $visitor['location'] = "{$location[0]} - {$location[1]} - {$location[2]}";
         }
         Visitor::create($visitor);
 
         return $next($request);
-    }
-
-    /**
-     * 获取IP地理位置
-     *
-     * @param $ip
-     * @return array|mixed
-     */
-    protected function getLocation($ip)
-    {
-        $url = "http://freeapi.ipip.net/{$ip}";
-
-        try {
-            $response = file_get_contents($url);
-            if (!empty($response) && $location = json_decode($response, true)) {
-                return $location;
-            }
-            return [];
-        } catch (\Exception $exception) {
-            return [];
-        }
     }
 }

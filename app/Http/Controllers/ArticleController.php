@@ -47,6 +47,7 @@ class ArticleController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function search(Request $request)
     {

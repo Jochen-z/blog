@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Visitor;
 use App\Http\Requests\LoginPost;
 
 class AuthController extends ApiController
@@ -25,6 +26,16 @@ class AuthController extends ApiController
         if (! $token = auth('api')->attempt($request->all())) {
             return $this->unAuthorized('密码错误');
         }
+
+        $visitor = [
+            'path' => $request->get('email'),
+            'ip' => $request->ip(),
+            'agent' => $request->userAgent()
+        ];
+        if ($location = getIpLocation($visitor['ip'])) {
+            $visitor['location'] = "{$location[0]} - {$location[1]} - {$location[2]}";
+        }
+        Visitor::create($visitor);
 
         return $this->success([
             'access_token' => 'bearer ' . $token,

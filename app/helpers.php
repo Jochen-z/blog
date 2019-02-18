@@ -29,3 +29,24 @@ function currentAction()
 
     return ['controller' => $class, 'method' => $method];
 }
+
+/**
+ * 获取IP地理位置
+ *
+ * @param $ip
+ * @return array|mixed
+ */
+function getIpLocation($ip)
+{
+    $url = "http://freeapi.ipip.net/{$ip}";
+
+    try {
+        $response = file_get_contents($url);
+        if (!empty($response) && $location = json_decode($response, true)) {
+            return $location;
+        }
+        return [];
+    } catch (\Exception $exception) {
+        return [];
+    }
+}

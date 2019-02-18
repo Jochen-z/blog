@@ -20,11 +20,10 @@ class AdminController extends Controller
     /**
      * Display personal information.
      *
-     * @param About $about
      * @param Parsedown $parsedown
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function about(About $about, Parsedown $parsedown)
+    public function about(Parsedown $parsedown)
     {
         $about = About::findOrFail(1);
         $introduction = $parsedown->text($about->content);
