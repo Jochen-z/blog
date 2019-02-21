@@ -10,28 +10,34 @@
 |
 */
 
-Route::group(['namespace' => 'Admin'], function() {
+Route::group([
+    'namespace' => 'Admin',
+], function (Route $route) {
 
-    Route::group(['prefix' => 'auth'], function() {
-        Route::post('login', 'AuthController@login')->name('login');
-        Route::get('user', 'AuthController@user')->name('auth.user');
-        Route::get('logout', 'AuthController@logout')->name('logout');
+    $route->group([
+        'prefix' => 'auth',
+    ], function (Route $route) {
+        $route->post('login', 'AuthController@login')->name('login');
+        $route->get('logout', 'AuthController@logout')->name('logout');
+        $route->get('user', 'AuthController@user')->name('auth.user');
     });
     
-    Route::group(['middleware' => 'refresh'], function() {
-        Route::resource('articles', 'ArticleController', ['except' => ['create']]);
+    $route->group([
+        'middleware' => 'refresh',
+    ], function (Route $route) {
+        $route->resource('articles', 'ArticleController', ['except' => ['create']]);
 
-        Route::resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
+        $route->resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
 
-        Route::resource('tags', 'TagController', ['except' => ['create', 'edit']]);
+        $route->resource('tags', 'TagController', ['except' => ['create', 'edit']]);
 
-        Route::resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
+        $route->resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
 
-        Route::post('upload/image', 'UploadController@image');
+        $route->post('upload/image', 'UploadController@image')->name('upload.image');
 
-        Route::get('visitors', 'VisitorController@index');
+        $route->get('visitors', 'VisitorController@index');
 
-        Route::get('dashboard', 'DashboardController@index');
-        Route::get('dashboard/traffic', 'DashboardController@traffic');
+        $route->get('dashboard', 'DashboardController@index');
+        $route->get('dashboard/traffic', 'DashboardController@traffic');
     });
 });

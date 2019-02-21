@@ -16,15 +16,17 @@ class RecordVisitor
      */
     public function handle($request, Closure $next)
     {
-        $visitor = [
-            'path' => $request->path(),
-            'ip' => $request->ip(),
-            'agent' => $request->userAgent()
-        ];
-        if ($location = getIpLocation($visitor['ip'])) {
-            $visitor['location'] = "{$location[0]} - {$location[1]} - {$location[2]}";
+        if (env('APP_ENV') == 'production') {
+            $visitor = [
+                'ip'    => $request->ip(),
+                'path'  => $request->path(),
+                'agent' => $request->userAgent()
+            ];
+            if ($location = getIpLocation($visitor['ip'])) {
+                $visitor['location'] = "{$location[0]} - {$location[1]} - {$location[2]}";
+            }
+            Visitor::create($visitor);
         }
-        Visitor::create($visitor);
 
         return $next($request);
     }
