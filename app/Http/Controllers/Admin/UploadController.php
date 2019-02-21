@@ -13,6 +13,7 @@ class UploadController extends ApiController
      * @param Request $request
      * @param ImageUploader $uploader
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function image(Request $request, ImageUploader $uploader)
     {

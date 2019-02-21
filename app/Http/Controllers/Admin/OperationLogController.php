@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\Visitor;
-use App\Http\Resources\VisitorResource;
+use App\Models\OperationLog;
+use App\Http\Resources\OperationLogResource;
 
-class VisitorController extends ApiController
+class OperationLogController extends ApiController
 {
     /**
-     * 访客列表
+     * 操作日志
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function index(Request $request)
     {
@@ -24,10 +25,8 @@ class VisitorController extends ApiController
 
         $order = $request->get('order', 'asc');
         $limit = $request->get('limit', 15);
-        $visitors = Visitor::orderBy('created_at', $order)->paginate($limit);
+        $logs = OperationLogResource::collection(OperationLog::orderBy('created_at', $order)->paginate($limit));
 
-        $visitors = VisitorResource::collection($visitors);
-
-        return $this->responseWithPaginate($visitors);
+        return $this->responseWithPaginate($logs);
     }
 }

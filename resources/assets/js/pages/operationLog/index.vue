@@ -4,6 +4,7 @@
         <el-table style="width: 100%" :data="visitorList" v-loading="listLoading" border fit highlight-current-row>
             <el-table-column align="center" prop="id" label="ID" width="60"></el-table-column>
             <el-table-column align="center" prop="path" label="路径" width="140"></el-table-column>
+            <el-table-column align="center" prop="username" label="用户"></el-table-column>
             <el-table-column align="center" prop="ip" label="IP" width="120"></el-table-column>
             <el-table-column align="center" prop="location" label="位置"></el-table-column>
             <el-table-column align="center" prop="agent" label="代理"></el-table-column>
@@ -26,10 +27,10 @@
 
 <script>
     import waves from '../../directives/waves'; // 水波纹指令
-    import { getVisitorList } from '../../api/visitor';
+    import { getVisitorList } from '../../api/operationLog';
 
     export default {
-        name: 'Visitor',
+        name: 'OperationLog',
         directives: { waves },
         data() {
             return {

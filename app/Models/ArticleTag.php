@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ArticleTag whereTagId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ArticleTag whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ArticleTag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ArticleTag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ArticleTag query()
  */
 class ArticleTag extends Model
 {

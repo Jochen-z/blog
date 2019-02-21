@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
-            \App\Http\Middleware\RecordVisitor::class,
+            \App\Http\Middleware\OperationLog::class,
         ],
     ];
 

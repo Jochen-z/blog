@@ -98,14 +98,14 @@ export default new Router({
             ]
         },
         {
-            path: '/visitor',
+            path: '/operationLog',
             component: Layout,
             children: [
                 {
                     path: 'index',
-                    name: 'Visitor',
-                    meta: { title: '访客记录', icon: 'visitor' },
-                    component: () => import('../pages/visitor/index')
+                    name: 'OperationLog',
+                    meta: { title: '操作日志', icon: 'visitor' },
+                    component: () => import('../pages/operationLog/index')
                 }
             ]
         },

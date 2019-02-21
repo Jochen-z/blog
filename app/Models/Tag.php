@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag search($name)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag query()
  */
 class Tag extends Model
 {

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class VisitorResource extends Resource
+class OperationLogResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -17,6 +17,7 @@ class VisitorResource extends Resource
         return [
             'id'         => $this->id,
             'path'       => $this->path,
+            'username'   => $this->username,
             'ip'         => $this->ip,
             'location'   => $this->location,
             'agent'      => $this->agent,

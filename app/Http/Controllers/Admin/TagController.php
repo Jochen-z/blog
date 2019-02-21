@@ -15,6 +15,7 @@ class TagController extends ApiController
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function index(Request $request)
     {

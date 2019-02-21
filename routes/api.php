@@ -10,34 +10,28 @@
 |
 */
 
-Route::group([
-    'namespace' => 'Admin',
-], function (Route $route) {
+Route::group(['namespace' => 'Admin'], function () {
 
-    $route->group([
-        'prefix' => 'auth',
-    ], function (Route $route) {
-        $route->post('login', 'AuthController@login')->name('login');
-        $route->get('logout', 'AuthController@logout')->name('logout');
-        $route->get('user', 'AuthController@user')->name('auth.user');
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('login', 'AuthController@login')->name('login');
+        Route::get('logout', 'AuthController@logout')->name('logout');
+        Route::get('user', 'AuthController@user')->name('auth.user');
     });
     
-    $route->group([
-        'middleware' => 'refresh',
-    ], function (Route $route) {
-        $route->resource('articles', 'ArticleController', ['except' => ['create']]);
+    Route::group(['middleware' => 'refresh'], function () {
+        Route::resource('articles', 'ArticleController', ['except' => ['create']]);
 
-        $route->resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
+        Route::resource('categories', 'CategoryController', ['except' => ['create', 'edit']]);
 
-        $route->resource('tags', 'TagController', ['except' => ['create', 'edit']]);
+        Route::resource('tags', 'TagController', ['except' => ['create', 'edit']]);
 
-        $route->resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
+        Route::resource('abouts', 'AboutController', ['only' => ['show', 'update']]);
 
-        $route->post('upload/image', 'UploadController@image')->name('upload.image');
+        Route::post('upload/image', 'UploadController@image')->name('upload.image');
 
-        $route->get('visitors', 'VisitorController@index');
+        Route::get('operation/logs', 'OperationLogController@index');
 
-        $route->get('dashboard', 'DashboardController@index');
-        $route->get('dashboard/traffic', 'DashboardController@traffic');
+        Route::get('dashboard', 'DashboardController@index');
+        Route::get('dashboard/traffic', 'DashboardController@traffic');
     });
 });

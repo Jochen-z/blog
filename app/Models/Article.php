@@ -38,6 +38,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereReadTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereWordCount($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article query()
  */
 class Article extends Model
 {
