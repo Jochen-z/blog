@@ -50,3 +50,13 @@ function getIpLocation($ip)
         return [];
     }
 }
+
+/**
+ * 获取不带域名的URL
+ *
+ * @return mixed
+ */
+function url_without_host()
+{
+    return ltrim(str_replace($_SERVER["REQUEST_SCHEME"] . '://' . $_SERVER["HTTP_HOST"], '', request()->fullUrl()), '/');
+}

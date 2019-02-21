@@ -19,7 +19,7 @@ class RecordVisitor
         if (env('APP_ENV') == 'production') {
             $visitor = [
                 'ip'    => $request->ip(),
-                'path'  => $request->path(),
+                'path'  => url_without_host(),
                 'agent' => $request->userAgent()
             ];
             if ($location = getIpLocation($visitor['ip'])) {
