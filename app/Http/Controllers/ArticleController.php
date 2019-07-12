@@ -34,12 +34,16 @@ class ArticleController extends Controller
             return redirect($article->link(), 301);
         }
 
+        // Markdown解析为HTML
         $article->content = $parsedown->text($article->content);
-
         // 文章阅读数+1
         $article->increment('read_count');
 
-        return view('articles.show', compact('article'));
+        // 获取上一篇下一篇的实质就是获取本条记录的上下两个id
+        $prevArticle = Article::query()->where('id', '<', $article->id)->orderBy('id', 'desc')->first();
+        $nextArticle = Article::query()->where('id', '>', $article->id)->orderBy('id', 'asc')->first();
+
+        return view('articles.show', compact('article', 'prevArticle', 'nextArticle'));
     }
 
     /**
