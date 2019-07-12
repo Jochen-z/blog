@@ -90,15 +90,15 @@
                     </div>
                 </article>
 
-                <div class="relevant-article-link">
-                    @if($prevArticle)
-                        <a href="{{ route('articles.show', ['id' => $prevArticle->id]) }}">{{ $prevArticle->title }}</a>
-                    @endif
+{{--                <div class="relevant-article-link">--}}
+{{--                    @if($prevArticle)--}}
+{{--                        <a href="{{ route('articles.show', ['id' => $prevArticle->id]) }}">{{ $prevArticle->title }}</a>--}}
+{{--                    @endif--}}
 
-                    @if($nextArticle)
-                        <a href="{{ route('articles.show', ['id' => $nextArticle->id]) }}">{{ $nextArticle->title }}</a>
-                    @endif
-                </div>
+{{--                    @if($nextArticle)--}}
+{{--                        <a href="{{ route('articles.show', ['id' => $nextArticle->id]) }}">{{ $nextArticle->title }}</a>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
 
                 <div class="article-divider">
                     <div class="container">
