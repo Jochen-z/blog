@@ -18,7 +18,7 @@
     "font-awesome": "^4.7.0",
     "gentelella": "^1.4.0",
     "highlight.js": "^9.15.8",
-    "jquery": "^3.2",
+    "jquery": "^3.4",
     "js-cookie": "^2.2.0",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.14",
