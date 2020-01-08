@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 294);
+/******/ 	return __webpack_require__(__webpack_require__.s = 299);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(20);
-var isBuffer = __webpack_require__(43);
+var isBuffer = __webpack_require__(48);
 
 /*global toString:true*/
 
@@ -565,7 +565,7 @@ module.exports = function isCancel(value) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(48);
+var normalizeHeaderName = __webpack_require__(53);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -671,10 +671,10 @@ module.exports = defaults;
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(49);
+var settle = __webpack_require__(54);
 var buildURL = __webpack_require__(21);
-var parseHeaders = __webpack_require__(51);
-var isURLSameOrigin = __webpack_require__(52);
+var parseHeaders = __webpack_require__(56);
+var isURLSameOrigin = __webpack_require__(57);
 var createError = __webpack_require__(25);
 
 module.exports = function xhrAdapter(config) {
@@ -767,7 +767,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(53);
+      var cookies = __webpack_require__(58);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -851,7 +851,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(50);
+var enhanceError = __webpack_require__(55);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1156,13 +1156,18 @@ process.umask = function() { return 0; };
 /* 38 */,
 /* 39 */,
 /* 40 */,
-/* 41 */
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(47);
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1170,7 +1175,7 @@ module.exports = __webpack_require__(42);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(20);
-var Axios = __webpack_require__(44);
+var Axios = __webpack_require__(49);
 var mergeConfig = __webpack_require__(26);
 var defaults = __webpack_require__(23);
 
@@ -1206,14 +1211,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(27);
-axios.CancelToken = __webpack_require__(56);
+axios.CancelToken = __webpack_require__(61);
 axios.isCancel = __webpack_require__(22);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(57);
+axios.spread = __webpack_require__(62);
 
 module.exports = axios;
 
@@ -1222,7 +1227,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 43 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /*!
@@ -1239,7 +1244,7 @@ module.exports = function isBuffer (obj) {
 
 
 /***/ }),
-/* 44 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1247,8 +1252,8 @@ module.exports = function isBuffer (obj) {
 
 var utils = __webpack_require__(0);
 var buildURL = __webpack_require__(21);
-var InterceptorManager = __webpack_require__(45);
-var dispatchRequest = __webpack_require__(46);
+var InterceptorManager = __webpack_require__(50);
+var dispatchRequest = __webpack_require__(51);
 var mergeConfig = __webpack_require__(26);
 
 /**
@@ -1332,7 +1337,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 45 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1391,18 +1396,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 46 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(47);
+var transformData = __webpack_require__(52);
 var isCancel = __webpack_require__(22);
 var defaults = __webpack_require__(23);
-var isAbsoluteURL = __webpack_require__(54);
-var combineURLs = __webpack_require__(55);
+var isAbsoluteURL = __webpack_require__(59);
+var combineURLs = __webpack_require__(60);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -1484,7 +1489,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 47 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1511,7 +1516,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 48 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1530,7 +1535,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 49 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1562,7 +1567,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 50 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1611,7 +1616,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 51 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1671,7 +1676,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 52 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1746,7 +1751,7 @@ module.exports = (
 
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1806,7 +1811,7 @@ module.exports = (
 
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1827,7 +1832,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1848,7 +1853,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1912,7 +1917,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1946,11 +1951,6 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
 /* 63 */,
 /* 64 */,
 /* 65 */,
@@ -1995,204 +1995,209 @@ module.exports = function spread(callback) {
 /* 104 */,
 /* 105 */,
 /* 106 */,
-/* 107 */
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hljs = __webpack_require__(108);
+var hljs = __webpack_require__(113);
 
-hljs.registerLanguage('1c', __webpack_require__(109));
-hljs.registerLanguage('abnf', __webpack_require__(110));
-hljs.registerLanguage('accesslog', __webpack_require__(111));
-hljs.registerLanguage('actionscript', __webpack_require__(112));
-hljs.registerLanguage('ada', __webpack_require__(113));
-hljs.registerLanguage('angelscript', __webpack_require__(114));
-hljs.registerLanguage('apache', __webpack_require__(115));
-hljs.registerLanguage('applescript', __webpack_require__(116));
-hljs.registerLanguage('arcade', __webpack_require__(117));
-hljs.registerLanguage('cpp', __webpack_require__(118));
-hljs.registerLanguage('arduino', __webpack_require__(119));
-hljs.registerLanguage('armasm', __webpack_require__(120));
-hljs.registerLanguage('xml', __webpack_require__(121));
-hljs.registerLanguage('asciidoc', __webpack_require__(122));
-hljs.registerLanguage('aspectj', __webpack_require__(123));
-hljs.registerLanguage('autohotkey', __webpack_require__(124));
-hljs.registerLanguage('autoit', __webpack_require__(125));
-hljs.registerLanguage('avrasm', __webpack_require__(126));
-hljs.registerLanguage('awk', __webpack_require__(127));
-hljs.registerLanguage('axapta', __webpack_require__(128));
-hljs.registerLanguage('bash', __webpack_require__(129));
-hljs.registerLanguage('basic', __webpack_require__(130));
-hljs.registerLanguage('bnf', __webpack_require__(131));
-hljs.registerLanguage('brainfuck', __webpack_require__(132));
-hljs.registerLanguage('cal', __webpack_require__(133));
-hljs.registerLanguage('capnproto', __webpack_require__(134));
-hljs.registerLanguage('ceylon', __webpack_require__(135));
-hljs.registerLanguage('clean', __webpack_require__(136));
-hljs.registerLanguage('clojure', __webpack_require__(137));
-hljs.registerLanguage('clojure-repl', __webpack_require__(138));
-hljs.registerLanguage('cmake', __webpack_require__(139));
-hljs.registerLanguage('coffeescript', __webpack_require__(140));
-hljs.registerLanguage('coq', __webpack_require__(141));
-hljs.registerLanguage('cos', __webpack_require__(142));
-hljs.registerLanguage('crmsh', __webpack_require__(143));
-hljs.registerLanguage('crystal', __webpack_require__(144));
-hljs.registerLanguage('cs', __webpack_require__(145));
-hljs.registerLanguage('csp', __webpack_require__(146));
-hljs.registerLanguage('css', __webpack_require__(147));
-hljs.registerLanguage('d', __webpack_require__(148));
-hljs.registerLanguage('markdown', __webpack_require__(149));
-hljs.registerLanguage('dart', __webpack_require__(150));
-hljs.registerLanguage('delphi', __webpack_require__(151));
-hljs.registerLanguage('diff', __webpack_require__(152));
-hljs.registerLanguage('django', __webpack_require__(153));
-hljs.registerLanguage('dns', __webpack_require__(154));
-hljs.registerLanguage('dockerfile', __webpack_require__(155));
-hljs.registerLanguage('dos', __webpack_require__(156));
-hljs.registerLanguage('dsconfig', __webpack_require__(157));
-hljs.registerLanguage('dts', __webpack_require__(158));
-hljs.registerLanguage('dust', __webpack_require__(159));
-hljs.registerLanguage('ebnf', __webpack_require__(160));
-hljs.registerLanguage('elixir', __webpack_require__(161));
-hljs.registerLanguage('elm', __webpack_require__(162));
-hljs.registerLanguage('ruby', __webpack_require__(163));
-hljs.registerLanguage('erb', __webpack_require__(164));
-hljs.registerLanguage('erlang-repl', __webpack_require__(165));
-hljs.registerLanguage('erlang', __webpack_require__(166));
-hljs.registerLanguage('excel', __webpack_require__(167));
-hljs.registerLanguage('fix', __webpack_require__(168));
-hljs.registerLanguage('flix', __webpack_require__(169));
-hljs.registerLanguage('fortran', __webpack_require__(170));
-hljs.registerLanguage('fsharp', __webpack_require__(171));
-hljs.registerLanguage('gams', __webpack_require__(172));
-hljs.registerLanguage('gauss', __webpack_require__(173));
-hljs.registerLanguage('gcode', __webpack_require__(174));
-hljs.registerLanguage('gherkin', __webpack_require__(175));
-hljs.registerLanguage('glsl', __webpack_require__(176));
-hljs.registerLanguage('gml', __webpack_require__(177));
-hljs.registerLanguage('go', __webpack_require__(178));
-hljs.registerLanguage('golo', __webpack_require__(179));
-hljs.registerLanguage('gradle', __webpack_require__(180));
-hljs.registerLanguage('groovy', __webpack_require__(181));
-hljs.registerLanguage('haml', __webpack_require__(182));
-hljs.registerLanguage('handlebars', __webpack_require__(183));
-hljs.registerLanguage('haskell', __webpack_require__(184));
-hljs.registerLanguage('haxe', __webpack_require__(185));
-hljs.registerLanguage('hsp', __webpack_require__(186));
-hljs.registerLanguage('htmlbars', __webpack_require__(187));
-hljs.registerLanguage('http', __webpack_require__(188));
-hljs.registerLanguage('hy', __webpack_require__(189));
-hljs.registerLanguage('inform7', __webpack_require__(190));
-hljs.registerLanguage('ini', __webpack_require__(191));
-hljs.registerLanguage('irpf90', __webpack_require__(192));
-hljs.registerLanguage('isbl', __webpack_require__(193));
-hljs.registerLanguage('java', __webpack_require__(194));
-hljs.registerLanguage('javascript', __webpack_require__(195));
-hljs.registerLanguage('jboss-cli', __webpack_require__(196));
-hljs.registerLanguage('json', __webpack_require__(197));
-hljs.registerLanguage('julia', __webpack_require__(198));
-hljs.registerLanguage('julia-repl', __webpack_require__(199));
-hljs.registerLanguage('kotlin', __webpack_require__(200));
-hljs.registerLanguage('lasso', __webpack_require__(201));
-hljs.registerLanguage('ldif', __webpack_require__(202));
-hljs.registerLanguage('leaf', __webpack_require__(203));
-hljs.registerLanguage('less', __webpack_require__(204));
-hljs.registerLanguage('lisp', __webpack_require__(205));
-hljs.registerLanguage('livecodeserver', __webpack_require__(206));
-hljs.registerLanguage('livescript', __webpack_require__(207));
-hljs.registerLanguage('llvm', __webpack_require__(208));
-hljs.registerLanguage('lsl', __webpack_require__(209));
-hljs.registerLanguage('lua', __webpack_require__(210));
-hljs.registerLanguage('makefile', __webpack_require__(211));
-hljs.registerLanguage('mathematica', __webpack_require__(212));
-hljs.registerLanguage('matlab', __webpack_require__(213));
-hljs.registerLanguage('maxima', __webpack_require__(214));
-hljs.registerLanguage('mel', __webpack_require__(215));
-hljs.registerLanguage('mercury', __webpack_require__(216));
-hljs.registerLanguage('mipsasm', __webpack_require__(217));
-hljs.registerLanguage('mizar', __webpack_require__(218));
-hljs.registerLanguage('perl', __webpack_require__(219));
-hljs.registerLanguage('mojolicious', __webpack_require__(220));
-hljs.registerLanguage('monkey', __webpack_require__(221));
-hljs.registerLanguage('moonscript', __webpack_require__(222));
-hljs.registerLanguage('n1ql', __webpack_require__(223));
-hljs.registerLanguage('nginx', __webpack_require__(224));
-hljs.registerLanguage('nimrod', __webpack_require__(225));
-hljs.registerLanguage('nix', __webpack_require__(226));
-hljs.registerLanguage('nsis', __webpack_require__(227));
-hljs.registerLanguage('objectivec', __webpack_require__(228));
-hljs.registerLanguage('ocaml', __webpack_require__(229));
-hljs.registerLanguage('openscad', __webpack_require__(230));
-hljs.registerLanguage('oxygene', __webpack_require__(231));
-hljs.registerLanguage('parser3', __webpack_require__(232));
-hljs.registerLanguage('pf', __webpack_require__(233));
-hljs.registerLanguage('pgsql', __webpack_require__(234));
-hljs.registerLanguage('php', __webpack_require__(235));
-hljs.registerLanguage('plaintext', __webpack_require__(236));
-hljs.registerLanguage('pony', __webpack_require__(237));
-hljs.registerLanguage('powershell', __webpack_require__(238));
-hljs.registerLanguage('processing', __webpack_require__(239));
-hljs.registerLanguage('profile', __webpack_require__(240));
-hljs.registerLanguage('prolog', __webpack_require__(241));
-hljs.registerLanguage('properties', __webpack_require__(242));
-hljs.registerLanguage('protobuf', __webpack_require__(243));
-hljs.registerLanguage('puppet', __webpack_require__(244));
-hljs.registerLanguage('purebasic', __webpack_require__(245));
-hljs.registerLanguage('python', __webpack_require__(246));
-hljs.registerLanguage('q', __webpack_require__(247));
-hljs.registerLanguage('qml', __webpack_require__(248));
-hljs.registerLanguage('r', __webpack_require__(249));
-hljs.registerLanguage('reasonml', __webpack_require__(250));
-hljs.registerLanguage('rib', __webpack_require__(251));
-hljs.registerLanguage('roboconf', __webpack_require__(252));
-hljs.registerLanguage('routeros', __webpack_require__(253));
-hljs.registerLanguage('rsl', __webpack_require__(254));
-hljs.registerLanguage('ruleslanguage', __webpack_require__(255));
-hljs.registerLanguage('rust', __webpack_require__(256));
-hljs.registerLanguage('sas', __webpack_require__(257));
-hljs.registerLanguage('scala', __webpack_require__(258));
-hljs.registerLanguage('scheme', __webpack_require__(259));
-hljs.registerLanguage('scilab', __webpack_require__(260));
-hljs.registerLanguage('scss', __webpack_require__(261));
-hljs.registerLanguage('shell', __webpack_require__(262));
-hljs.registerLanguage('smali', __webpack_require__(263));
-hljs.registerLanguage('smalltalk', __webpack_require__(264));
-hljs.registerLanguage('sml', __webpack_require__(265));
-hljs.registerLanguage('sqf', __webpack_require__(266));
-hljs.registerLanguage('sql', __webpack_require__(267));
-hljs.registerLanguage('stan', __webpack_require__(268));
-hljs.registerLanguage('stata', __webpack_require__(269));
-hljs.registerLanguage('step21', __webpack_require__(270));
-hljs.registerLanguage('stylus', __webpack_require__(271));
-hljs.registerLanguage('subunit', __webpack_require__(272));
-hljs.registerLanguage('swift', __webpack_require__(273));
-hljs.registerLanguage('taggerscript', __webpack_require__(274));
-hljs.registerLanguage('yaml', __webpack_require__(275));
-hljs.registerLanguage('tap', __webpack_require__(276));
-hljs.registerLanguage('tcl', __webpack_require__(277));
-hljs.registerLanguage('tex', __webpack_require__(278));
-hljs.registerLanguage('thrift', __webpack_require__(279));
-hljs.registerLanguage('tp', __webpack_require__(280));
-hljs.registerLanguage('twig', __webpack_require__(281));
-hljs.registerLanguage('typescript', __webpack_require__(282));
-hljs.registerLanguage('vala', __webpack_require__(283));
-hljs.registerLanguage('vbnet', __webpack_require__(284));
-hljs.registerLanguage('vbscript', __webpack_require__(285));
-hljs.registerLanguage('vbscript-html', __webpack_require__(286));
-hljs.registerLanguage('verilog', __webpack_require__(287));
-hljs.registerLanguage('vhdl', __webpack_require__(288));
-hljs.registerLanguage('vim', __webpack_require__(289));
-hljs.registerLanguage('x86asm', __webpack_require__(290));
-hljs.registerLanguage('xl', __webpack_require__(291));
-hljs.registerLanguage('xquery', __webpack_require__(292));
-hljs.registerLanguage('zephir', __webpack_require__(293));
+hljs.registerLanguage('1c', __webpack_require__(114));
+hljs.registerLanguage('abnf', __webpack_require__(115));
+hljs.registerLanguage('accesslog', __webpack_require__(116));
+hljs.registerLanguage('actionscript', __webpack_require__(117));
+hljs.registerLanguage('ada', __webpack_require__(118));
+hljs.registerLanguage('angelscript', __webpack_require__(119));
+hljs.registerLanguage('apache', __webpack_require__(120));
+hljs.registerLanguage('applescript', __webpack_require__(121));
+hljs.registerLanguage('arcade', __webpack_require__(122));
+hljs.registerLanguage('cpp', __webpack_require__(123));
+hljs.registerLanguage('arduino', __webpack_require__(124));
+hljs.registerLanguage('armasm', __webpack_require__(125));
+hljs.registerLanguage('xml', __webpack_require__(126));
+hljs.registerLanguage('asciidoc', __webpack_require__(127));
+hljs.registerLanguage('aspectj', __webpack_require__(128));
+hljs.registerLanguage('autohotkey', __webpack_require__(129));
+hljs.registerLanguage('autoit', __webpack_require__(130));
+hljs.registerLanguage('avrasm', __webpack_require__(131));
+hljs.registerLanguage('awk', __webpack_require__(132));
+hljs.registerLanguage('axapta', __webpack_require__(133));
+hljs.registerLanguage('bash', __webpack_require__(134));
+hljs.registerLanguage('basic', __webpack_require__(135));
+hljs.registerLanguage('bnf', __webpack_require__(136));
+hljs.registerLanguage('brainfuck', __webpack_require__(137));
+hljs.registerLanguage('cal', __webpack_require__(138));
+hljs.registerLanguage('capnproto', __webpack_require__(139));
+hljs.registerLanguage('ceylon', __webpack_require__(140));
+hljs.registerLanguage('clean', __webpack_require__(141));
+hljs.registerLanguage('clojure', __webpack_require__(142));
+hljs.registerLanguage('clojure-repl', __webpack_require__(143));
+hljs.registerLanguage('cmake', __webpack_require__(144));
+hljs.registerLanguage('coffeescript', __webpack_require__(145));
+hljs.registerLanguage('coq', __webpack_require__(146));
+hljs.registerLanguage('cos', __webpack_require__(147));
+hljs.registerLanguage('crmsh', __webpack_require__(148));
+hljs.registerLanguage('crystal', __webpack_require__(149));
+hljs.registerLanguage('cs', __webpack_require__(150));
+hljs.registerLanguage('csp', __webpack_require__(151));
+hljs.registerLanguage('css', __webpack_require__(152));
+hljs.registerLanguage('d', __webpack_require__(153));
+hljs.registerLanguage('markdown', __webpack_require__(154));
+hljs.registerLanguage('dart', __webpack_require__(155));
+hljs.registerLanguage('delphi', __webpack_require__(156));
+hljs.registerLanguage('diff', __webpack_require__(157));
+hljs.registerLanguage('django', __webpack_require__(158));
+hljs.registerLanguage('dns', __webpack_require__(159));
+hljs.registerLanguage('dockerfile', __webpack_require__(160));
+hljs.registerLanguage('dos', __webpack_require__(161));
+hljs.registerLanguage('dsconfig', __webpack_require__(162));
+hljs.registerLanguage('dts', __webpack_require__(163));
+hljs.registerLanguage('dust', __webpack_require__(164));
+hljs.registerLanguage('ebnf', __webpack_require__(165));
+hljs.registerLanguage('elixir', __webpack_require__(166));
+hljs.registerLanguage('elm', __webpack_require__(167));
+hljs.registerLanguage('ruby', __webpack_require__(168));
+hljs.registerLanguage('erb', __webpack_require__(169));
+hljs.registerLanguage('erlang-repl', __webpack_require__(170));
+hljs.registerLanguage('erlang', __webpack_require__(171));
+hljs.registerLanguage('excel', __webpack_require__(172));
+hljs.registerLanguage('fix', __webpack_require__(173));
+hljs.registerLanguage('flix', __webpack_require__(174));
+hljs.registerLanguage('fortran', __webpack_require__(175));
+hljs.registerLanguage('fsharp', __webpack_require__(176));
+hljs.registerLanguage('gams', __webpack_require__(177));
+hljs.registerLanguage('gauss', __webpack_require__(178));
+hljs.registerLanguage('gcode', __webpack_require__(179));
+hljs.registerLanguage('gherkin', __webpack_require__(180));
+hljs.registerLanguage('glsl', __webpack_require__(181));
+hljs.registerLanguage('gml', __webpack_require__(182));
+hljs.registerLanguage('go', __webpack_require__(183));
+hljs.registerLanguage('golo', __webpack_require__(184));
+hljs.registerLanguage('gradle', __webpack_require__(185));
+hljs.registerLanguage('groovy', __webpack_require__(186));
+hljs.registerLanguage('haml', __webpack_require__(187));
+hljs.registerLanguage('handlebars', __webpack_require__(188));
+hljs.registerLanguage('haskell', __webpack_require__(189));
+hljs.registerLanguage('haxe', __webpack_require__(190));
+hljs.registerLanguage('hsp', __webpack_require__(191));
+hljs.registerLanguage('htmlbars', __webpack_require__(192));
+hljs.registerLanguage('http', __webpack_require__(193));
+hljs.registerLanguage('hy', __webpack_require__(194));
+hljs.registerLanguage('inform7', __webpack_require__(195));
+hljs.registerLanguage('ini', __webpack_require__(196));
+hljs.registerLanguage('irpf90', __webpack_require__(197));
+hljs.registerLanguage('isbl', __webpack_require__(198));
+hljs.registerLanguage('java', __webpack_require__(199));
+hljs.registerLanguage('javascript', __webpack_require__(200));
+hljs.registerLanguage('jboss-cli', __webpack_require__(201));
+hljs.registerLanguage('json', __webpack_require__(202));
+hljs.registerLanguage('julia', __webpack_require__(203));
+hljs.registerLanguage('julia-repl', __webpack_require__(204));
+hljs.registerLanguage('kotlin', __webpack_require__(205));
+hljs.registerLanguage('lasso', __webpack_require__(206));
+hljs.registerLanguage('ldif', __webpack_require__(207));
+hljs.registerLanguage('leaf', __webpack_require__(208));
+hljs.registerLanguage('less', __webpack_require__(209));
+hljs.registerLanguage('lisp', __webpack_require__(210));
+hljs.registerLanguage('livecodeserver', __webpack_require__(211));
+hljs.registerLanguage('livescript', __webpack_require__(212));
+hljs.registerLanguage('llvm', __webpack_require__(213));
+hljs.registerLanguage('lsl', __webpack_require__(214));
+hljs.registerLanguage('lua', __webpack_require__(215));
+hljs.registerLanguage('makefile', __webpack_require__(216));
+hljs.registerLanguage('mathematica', __webpack_require__(217));
+hljs.registerLanguage('matlab', __webpack_require__(218));
+hljs.registerLanguage('maxima', __webpack_require__(219));
+hljs.registerLanguage('mel', __webpack_require__(220));
+hljs.registerLanguage('mercury', __webpack_require__(221));
+hljs.registerLanguage('mipsasm', __webpack_require__(222));
+hljs.registerLanguage('mizar', __webpack_require__(223));
+hljs.registerLanguage('perl', __webpack_require__(224));
+hljs.registerLanguage('mojolicious', __webpack_require__(225));
+hljs.registerLanguage('monkey', __webpack_require__(226));
+hljs.registerLanguage('moonscript', __webpack_require__(227));
+hljs.registerLanguage('n1ql', __webpack_require__(228));
+hljs.registerLanguage('nginx', __webpack_require__(229));
+hljs.registerLanguage('nimrod', __webpack_require__(230));
+hljs.registerLanguage('nix', __webpack_require__(231));
+hljs.registerLanguage('nsis', __webpack_require__(232));
+hljs.registerLanguage('objectivec', __webpack_require__(233));
+hljs.registerLanguage('ocaml', __webpack_require__(234));
+hljs.registerLanguage('openscad', __webpack_require__(235));
+hljs.registerLanguage('oxygene', __webpack_require__(236));
+hljs.registerLanguage('parser3', __webpack_require__(237));
+hljs.registerLanguage('pf', __webpack_require__(238));
+hljs.registerLanguage('pgsql', __webpack_require__(239));
+hljs.registerLanguage('php', __webpack_require__(240));
+hljs.registerLanguage('plaintext', __webpack_require__(241));
+hljs.registerLanguage('pony', __webpack_require__(242));
+hljs.registerLanguage('powershell', __webpack_require__(243));
+hljs.registerLanguage('processing', __webpack_require__(244));
+hljs.registerLanguage('profile', __webpack_require__(245));
+hljs.registerLanguage('prolog', __webpack_require__(246));
+hljs.registerLanguage('properties', __webpack_require__(247));
+hljs.registerLanguage('protobuf', __webpack_require__(248));
+hljs.registerLanguage('puppet', __webpack_require__(249));
+hljs.registerLanguage('purebasic', __webpack_require__(250));
+hljs.registerLanguage('python', __webpack_require__(251));
+hljs.registerLanguage('q', __webpack_require__(252));
+hljs.registerLanguage('qml', __webpack_require__(253));
+hljs.registerLanguage('r', __webpack_require__(254));
+hljs.registerLanguage('reasonml', __webpack_require__(255));
+hljs.registerLanguage('rib', __webpack_require__(256));
+hljs.registerLanguage('roboconf', __webpack_require__(257));
+hljs.registerLanguage('routeros', __webpack_require__(258));
+hljs.registerLanguage('rsl', __webpack_require__(259));
+hljs.registerLanguage('ruleslanguage', __webpack_require__(260));
+hljs.registerLanguage('rust', __webpack_require__(261));
+hljs.registerLanguage('sas', __webpack_require__(262));
+hljs.registerLanguage('scala', __webpack_require__(263));
+hljs.registerLanguage('scheme', __webpack_require__(264));
+hljs.registerLanguage('scilab', __webpack_require__(265));
+hljs.registerLanguage('scss', __webpack_require__(266));
+hljs.registerLanguage('shell', __webpack_require__(267));
+hljs.registerLanguage('smali', __webpack_require__(268));
+hljs.registerLanguage('smalltalk', __webpack_require__(269));
+hljs.registerLanguage('sml', __webpack_require__(270));
+hljs.registerLanguage('sqf', __webpack_require__(271));
+hljs.registerLanguage('sql', __webpack_require__(272));
+hljs.registerLanguage('stan', __webpack_require__(273));
+hljs.registerLanguage('stata', __webpack_require__(274));
+hljs.registerLanguage('step21', __webpack_require__(275));
+hljs.registerLanguage('stylus', __webpack_require__(276));
+hljs.registerLanguage('subunit', __webpack_require__(277));
+hljs.registerLanguage('swift', __webpack_require__(278));
+hljs.registerLanguage('taggerscript', __webpack_require__(279));
+hljs.registerLanguage('yaml', __webpack_require__(280));
+hljs.registerLanguage('tap', __webpack_require__(281));
+hljs.registerLanguage('tcl', __webpack_require__(282));
+hljs.registerLanguage('tex', __webpack_require__(283));
+hljs.registerLanguage('thrift', __webpack_require__(284));
+hljs.registerLanguage('tp', __webpack_require__(285));
+hljs.registerLanguage('twig', __webpack_require__(286));
+hljs.registerLanguage('typescript', __webpack_require__(287));
+hljs.registerLanguage('vala', __webpack_require__(288));
+hljs.registerLanguage('vbnet', __webpack_require__(289));
+hljs.registerLanguage('vbscript', __webpack_require__(290));
+hljs.registerLanguage('vbscript-html', __webpack_require__(291));
+hljs.registerLanguage('verilog', __webpack_require__(292));
+hljs.registerLanguage('vhdl', __webpack_require__(293));
+hljs.registerLanguage('vim', __webpack_require__(294));
+hljs.registerLanguage('x86asm', __webpack_require__(295));
+hljs.registerLanguage('xl', __webpack_require__(296));
+hljs.registerLanguage('xquery', __webpack_require__(297));
+hljs.registerLanguage('zephir', __webpack_require__(298));
 
 module.exports = hljs;
 
 /***/ }),
-/* 108 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 Syntax highlighting with language autodetection.
 https://highlightjs.org/
 */
@@ -2205,7 +2210,8 @@ https://highlightjs.org/
 
   // Setup highlight.js for different environments. First is Node.js or
   // CommonJS.
-  if(true) {
+  // `nodeType` is checked to ensure that `exports` is not a HTML element.
+  if(typeof exports !== 'undefined' && !exports.nodeType) {
     factory(exports);
   } else if(globalObject) {
     // Export hljs globally even when using AMD for cases when this script
@@ -2213,10 +2219,11 @@ https://highlightjs.org/
     globalObject.hljs = factory({});
 
     // Finally register the global hljs with AMD.
-    if(typeof define === 'function' && define.amd) {
-      define([], function() {
+    if(true) {
+      !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
         return globalObject.hljs;
-      });
+      }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
     }
   }
 
@@ -2229,16 +2236,21 @@ https://highlightjs.org/
   var languages = {},
       aliases   = {};
 
+  // safe/production mode - swallows more errors, tries to keep running
+  // even if a single syntax or parse hits a fatal error
+  var SAFE_MODE = true;
+
   // Regular expressions used throughout the highlight.js library.
   var noHighlightRe    = /^(no-?highlight|plain|text)$/i,
       languagePrefixRe = /\blang(?:uage)?-([\w-]+)\b/i,
       fixMarkupRe      = /((^(<[^>]+>|\t|)+|(?:\n)))/gm;
 
-  // The object will be assigned by the build tool. It used to synchronize API 
+  // The object will be assigned by the build tool. It used to synchronize API
   // of external language files with minified version of the highlight.js library.
   var API_REPLACES;
 
   var spanEndTag = '</span>';
+  var LANGUAGE_NOT_FOUND = "Could not find the language '{}', did you forget to load/include a language module?";
 
   // Global options used when within external APIs. This is modified when
   // calling the `hljs.configure` function.
@@ -2248,6 +2260,9 @@ https://highlightjs.org/
     useBR: false,
     languages: undefined
   };
+
+  // keywords that should have no default relevance value
+  var COMMON_KEYWORDS = 'of and for in not or if then'.split(' ');
 
 
   /* Utility functions */
@@ -2278,7 +2293,12 @@ https://highlightjs.org/
     // language-* takes precedence over non-prefixed class names.
     match = languagePrefixRe.exec(classes);
     if (match) {
-      return getLanguage(match[1]) ? match[1] : 'no-highlight';
+      var language = getLanguage(match[1]);
+      if (!language) {
+        console.warn(LANGUAGE_NOT_FOUND.replace("{}", match[1]));
+        console.warn("Falling back to no-highlight mode for this block.", block);
+      }
+      return language ? match[1] : 'no-highlight';
     }
 
     classes = classes.split(/\s+/);
@@ -2292,6 +2312,12 @@ https://highlightjs.org/
     }
   }
 
+  /**
+   * performs a shallow merge of multiple objects into one
+   *
+   * @arguments list of objects with properties to merge
+   * @returns a single new object
+   */
   function inherit(parent) {  // inherit(parent, override_obj, override_obj, ...)
     var key;
     var result = {};
@@ -2370,7 +2396,9 @@ https://highlightjs.org/
     }
 
     function open(node) {
-      function attr_str(a) {return ' ' + a.nodeName + '="' + escape(a.value).replace('"', '&quot;') + '"';}
+      function attr_str(a) {
+        return ' ' + a.nodeName + '="' + escape(a.value).replace(/"/g, '&quot;') + '"';
+      }
       result += '<' + tag(node) + ArrayProto.map.call(node.attributes, attr_str).join('') + '>';
     }
 
@@ -2413,22 +2441,87 @@ https://highlightjs.org/
 
   /* Initialization */
 
-  function expand_mode(mode) {
+  function dependencyOnParent(mode) {
+    if (!mode) return false;
+
+    return mode.endsWithParent || dependencyOnParent(mode.starts);
+  }
+
+  function expand_or_clone_mode(mode) {
     if (mode.variants && !mode.cached_variants) {
       mode.cached_variants = mode.variants.map(function(variant) {
         return inherit(mode, {variants: null}, variant);
       });
     }
-    return mode.cached_variants || (mode.endsWithParent && [inherit(mode)]) || [mode];
+
+    // EXPAND
+    // if we have variants then essentially "replace" the mode with the variants
+    // this happens in compileMode, where this function is called from
+    if (mode.cached_variants)
+      return mode.cached_variants;
+
+    // CLONE
+    // if we have dependencies on parents then we need a unique
+    // instance of ourselves, so we can be reused with many
+    // different parents without issue
+    if (dependencyOnParent(mode))
+      return [inherit(mode, { starts: mode.starts ? inherit(mode.starts) : null })];
+
+    if (Object.isFrozen(mode))
+      return [inherit(mode)];
+
+    // no special dependency issues, just return ourselves
+    return [mode];
   }
 
   function restoreLanguageApi(obj) {
     if(API_REPLACES && !obj.langApiRestored) {
       obj.langApiRestored = true;
-      for(var key in API_REPLACES)
-        obj[key] && (obj[API_REPLACES[key]] = obj[key]);
+      for(var key in API_REPLACES) {
+        if (obj[key]) {
+          obj[API_REPLACES[key]] = obj[key];
+        }
+      }
       (obj.contains || []).concat(obj.variants || []).forEach(restoreLanguageApi);
     }
+  }
+
+  function compileKeywords(rawKeywords, case_insensitive) {
+      var compiled_keywords = {};
+
+      if (typeof rawKeywords === 'string') { // string
+        splitAndCompile('keyword', rawKeywords);
+      } else {
+        objectKeys(rawKeywords).forEach(function (className) {
+          splitAndCompile(className, rawKeywords[className]);
+        });
+      }
+    return compiled_keywords;
+
+    // ---
+
+    function splitAndCompile(className, str) {
+      if (case_insensitive) {
+        str = str.toLowerCase();
+      }
+      str.split(' ').forEach(function(keyword) {
+        var pair = keyword.split('|');
+        compiled_keywords[pair[0]] = [className, scoreForKeyword(pair[0], pair[1])];
+      });
+    }
+  }
+
+  function scoreForKeyword(keyword, providedScore) {
+    // manual scores always win over common keywords
+    // so you can force a score of 1 if you really insist
+    if (providedScore)
+      return Number(providedScore);
+
+    return commonKeyword(keyword) ? 0 : 1;
+  }
+
+  function commonKeyword(word) {
+    return COMMON_KEYWORDS.indexOf(word.toLowerCase()) != -1;
   }
 
   function compileLanguage(language) {
@@ -2444,8 +2537,15 @@ https://highlightjs.org/
       );
     }
 
+    function reCountMatchGroups(re) {
+      return (new RegExp(re.toString() + '|')).exec('').length - 1;
+    }
+
     // joinRe logically computes regexps.join(separator), but fixes the
     // backreferences so they continue to match.
+    // it also places each individual regular expression into it's own
+    // match group, keeping track of the sequencing of those match groups
+    // is currently an exercise for the caller. :-)
     function joinRe(regexps, separator) {
       // backreferenceRe matches an open parenthesis or backreference. To avoid
       // an incorrect parse, it additionally matches the following:
@@ -2458,11 +2558,13 @@ https://highlightjs.org/
       var numCaptures = 0;
       var ret = '';
       for (var i = 0; i < regexps.length; i++) {
+        numCaptures += 1;
         var offset = numCaptures;
         var re = reStr(regexps[i]);
         if (i > 0) {
           ret += separator;
         }
+        ret += "(";
         while (re.length > 0) {
           var match = backreferenceRe.exec(re);
           if (match == null) {
@@ -2481,8 +2583,73 @@ https://highlightjs.org/
             }
           }
         }
+        ret += ")";
       }
       return ret;
+    }
+
+    function buildModeRegex(mode) {
+
+      var matchIndexes = {};
+      var matcherRe;
+      var regexes = [];
+      var matcher = {};
+      var matchAt = 1;
+
+      function addRule(rule, regex) {
+        matchIndexes[matchAt] = rule;
+        regexes.push([rule, regex]);
+        matchAt += reCountMatchGroups(regex) + 1;
+      }
+
+      var term;
+      for (var i=0; i < mode.contains.length; i++) {
+        var re;
+        term = mode.contains[i];
+        if (term.beginKeywords) {
+          re = '\\.?(?:' + term.begin + ')\\.?';
+        } else {
+          re = term.begin;
+        }
+        addRule(term, re);
+      }
+      if (mode.terminator_end)
+        addRule("end", mode.terminator_end);
+      if (mode.illegal)
+        addRule("illegal", mode.illegal);
+
+      var terminators = regexes.map(function(el) { return el[1]; });
+      matcherRe = langRe(joinRe(terminators, '|'), true);
+
+      matcher.lastIndex = 0;
+      matcher.exec = function(s) {
+        var rule;
+
+        if( regexes.length === 0) return null;
+
+        matcherRe.lastIndex = matcher.lastIndex;
+        var match = matcherRe.exec(s);
+        if (!match) { return null; }
+
+        for(var i = 0; i<match.length; i++) {
+          if (match[i] != undefined && matchIndexes["" +i] != undefined ) {
+            rule = matchIndexes[""+i];
+            break;
+          }
+        }
+
+        // illegal or end match
+        if (typeof rule === "string") {
+          match.type = rule;
+          match.extra = [mode.illegal, mode.terminator_end];
+        } else {
+          match.type = "begin";
+          match.rule = rule;
+        }
+        return match;
+      };
+
+      return matcher;
     }
 
     function compileMode(mode, parent) {
@@ -2491,28 +2658,9 @@ https://highlightjs.org/
       mode.compiled = true;
 
       mode.keywords = mode.keywords || mode.beginKeywords;
-      if (mode.keywords) {
-        var compiled_keywords = {};
+      if (mode.keywords)
+        mode.keywords = compileKeywords(mode.keywords, language.case_insensitive);
 
-        var flatten = function(className, str) {
-          if (language.case_insensitive) {
-            str = str.toLowerCase();
-          }
-          str.split(' ').forEach(function(kw) {
-            var pair = kw.split('|');
-            compiled_keywords[pair[0]] = [className, pair[1] ? Number(pair[1]) : 1];
-          });
-        };
-
-        if (typeof mode.keywords === 'string') { // string
-          flatten('keyword', mode.keywords);
-        } else {
-          objectKeys(mode.keywords).forEach(function (className) {
-            flatten(className, mode.keywords[className]);
-          });
-        }
-        mode.keywords = compiled_keywords;
-      }
       mode.lexemesRe = langRe(mode.lexemes || /\w+/, true);
 
       if (parent) {
@@ -2540,7 +2688,7 @@ https://highlightjs.org/
         mode.contains = [];
       }
       mode.contains = Array.prototype.concat.apply([], mode.contains.map(function(c) {
-        return expand_mode(c === 'self' ? mode : c);
+        return expand_or_clone_mode(c === 'self' ? mode : c);
       }));
       mode.contains.forEach(function(c) {compileMode(c, mode);});
 
@@ -2548,16 +2696,20 @@ https://highlightjs.org/
         compileMode(mode.starts, parent);
       }
 
-      var terminators =
-        mode.contains.map(function(c) {
-          return c.beginKeywords ? '\\.?(?:' + c.begin + ')\\.?' : c.begin;
-        })
-        .concat([mode.terminator_end, mode.illegal])
-        .map(reStr)
-        .filter(Boolean);
-      mode.terminators = terminators.length ? langRe(joinRe(terminators, '|'), true) : {exec: function(/*s*/) {return null;}};
+      mode.terminators = buildModeRegex(mode);
     }
-    
+
+    // self is not valid at the top-level
+    if (language.contains && language.contains.indexOf('self') != -1) {
+      if (!SAFE_MODE) {
+        throw new Error("ERR: contains `self` is not supported at the top-level of a language.  See documentation.")
+      } else {
+        // silently remove the broken rule (effectively ignoring it), this has historically
+        // been the behavior in the past, so this removal preserves compatibility with broken
+        // grammars when running in Safe Mode
+        language.contains = language.contains.filter(function(mode) { return mode != 'self'; });
+      }
+    }
     compileMode(language);
   }
 
@@ -2576,19 +2728,6 @@ https://highlightjs.org/
       return new RegExp(value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'm');
     }
 
-    function subMode(lexeme, mode) {
-      var i, length;
-
-      for (i = 0, length = mode.contains.length; i < length; i++) {
-        if (testRe(mode.contains[i].beginRe, lexeme)) {
-          if (mode.contains[i].endSameAsBegin) {
-            mode.contains[i].endRe = escapeRe( mode.contains[i].beginRe.exec(lexeme)[0] );
-          }
-          return mode.contains[i];
-        }
-      }
-    }
-
     function endOfMode(mode, lexeme) {
       if (testRe(mode.endRe, lexeme)) {
         while (mode.endsParent && mode.parent) {
@@ -2601,23 +2740,21 @@ https://highlightjs.org/
       }
     }
 
-    function isIllegal(lexeme, mode) {
-      return !ignore_illegals && testRe(mode.illegalRe, lexeme);
-    }
-
     function keywordMatch(mode, match) {
       var match_str = language.case_insensitive ? match[0].toLowerCase() : match[0];
       return mode.keywords.hasOwnProperty(match_str) && mode.keywords[match_str];
     }
 
-    function buildSpan(classname, insideSpan, leaveOpen, noPrefix) {
+    function buildSpan(className, insideSpan, leaveOpen, noPrefix) {
+      if (!leaveOpen && insideSpan === '') return '';
+      if (!className) return insideSpan;
+
       var classPrefix = noPrefix ? '' : options.classPrefix,
           openSpan    = '<span class="' + classPrefix,
           closeSpan   = leaveOpen ? '' : spanEndTag;
 
-      openSpan += classname + '">';
+      openSpan += className + '">';
 
-      if (!classname) return insideSpan;
       return openSpan + insideSpan + closeSpan;
     }
 
@@ -2658,7 +2795,7 @@ https://highlightjs.org/
                    highlightAuto(mode_buffer, top.subLanguage.length ? top.subLanguage : undefined);
 
       // Counting embedded language score towards the host language may be disabled
-      // with zeroing the containing mode relevance. Usecase in point is Markdown that
+      // with zeroing the containing mode relevance. Use case in point is Markdown that
       // allows XML everywhere and makes every XML snippet to have a much larger Markdown
       // score.
       if (top.relevance > 0) {
@@ -2680,78 +2817,120 @@ https://highlightjs.org/
       top = Object.create(mode, {parent: {value: top}});
     }
 
-    function processLexeme(buffer, lexeme) {
 
-      mode_buffer += buffer;
+    function doBeginMatch(match) {
+      var lexeme = match[0];
+      var new_mode = match.rule;
+
+      if (new_mode && new_mode.endSameAsBegin) {
+        new_mode.endRe = escapeRe( lexeme );
+      }
+
+      if (new_mode.skip) {
+        mode_buffer += lexeme;
+      } else {
+        if (new_mode.excludeBegin) {
+          mode_buffer += lexeme;
+        }
+        processBuffer();
+        if (!new_mode.returnBegin && !new_mode.excludeBegin) {
+          mode_buffer = lexeme;
+        }
+      }
+      startNewMode(new_mode);
+      return new_mode.returnBegin ? 0 : lexeme.length;
+    }
+
+    function doEndMatch(match) {
+      var lexeme = match[0];
+      var matchPlusRemainder = value.substr(match.index);
+      var end_mode = endOfMode(top, matchPlusRemainder);
+      if (!end_mode) { return; }
+
+      var origin = top;
+      if (origin.skip) {
+        mode_buffer += lexeme;
+      } else {
+        if (!(origin.returnEnd || origin.excludeEnd)) {
+          mode_buffer += lexeme;
+        }
+        processBuffer();
+        if (origin.excludeEnd) {
+          mode_buffer = lexeme;
+        }
+      }
+      do {
+        if (top.className) {
+          result += spanEndTag;
+        }
+        if (!top.skip && !top.subLanguage) {
+          relevance += top.relevance;
+        }
+        top = top.parent;
+      } while (top !== end_mode.parent);
+      if (end_mode.starts) {
+        if (end_mode.endSameAsBegin) {
+          end_mode.starts.endRe = end_mode.endRe;
+        }
+        startNewMode(end_mode.starts);
+      }
+      return origin.returnEnd ? 0 : lexeme.length;
+    }
+
+    var lastMatch = {};
+    function processLexeme(text_before_match, match) {
+
+      var lexeme = match && match[0];
+
+      // add non-matched text to the current mode buffer
+      mode_buffer += text_before_match;
 
       if (lexeme == null) {
         processBuffer();
         return 0;
       }
 
-      var new_mode = subMode(lexeme, top);
-      if (new_mode) {
-        if (new_mode.skip) {
-          mode_buffer += lexeme;
-        } else {
-          if (new_mode.excludeBegin) {
-            mode_buffer += lexeme;
-          }
-          processBuffer();
-          if (!new_mode.returnBegin && !new_mode.excludeBegin) {
-            mode_buffer = lexeme;
-          }
-        }
-        startNewMode(new_mode, lexeme);
-        return new_mode.returnBegin ? 0 : lexeme.length;
+      // we've found a 0 width match and we're stuck, so we need to advance
+      // this happens when we have badly behaved rules that have optional matchers to the degree that
+      // sometimes they can end up matching nothing at all
+      // Ref: https://github.com/highlightjs/highlight.js/issues/2140
+      if (lastMatch.type=="begin" && match.type=="end" && lastMatch.index == match.index && lexeme === "") {
+        // spit the "skipped" character that our regex choked on back into the output sequence
+        mode_buffer += value.slice(match.index, match.index + 1);
+        return 1;
       }
+      lastMatch = match;
 
-      var end_mode = endOfMode(top, lexeme);
-      if (end_mode) {
-        var origin = top;
-        if (origin.skip) {
-          mode_buffer += lexeme;
-        } else {
-          if (!(origin.returnEnd || origin.excludeEnd)) {
-            mode_buffer += lexeme;
-          }
-          processBuffer();
-          if (origin.excludeEnd) {
-            mode_buffer = lexeme;
-          }
-        }
-        do {
-          if (top.className) {
-            result += spanEndTag;
-          }
-          if (!top.skip && !top.subLanguage) {
-            relevance += top.relevance;
-          }
-          top = top.parent;
-        } while (top !== end_mode.parent);
-        if (end_mode.starts) {
-          if (end_mode.endSameAsBegin) {
-            end_mode.starts.endRe = end_mode.endRe;
-          }
-          startNewMode(end_mode.starts, '');
-        }
-        return origin.returnEnd ? 0 : lexeme.length;
-      }
-
-      if (isIllegal(lexeme, top))
+      if (match.type==="begin") {
+        return doBeginMatch(match);
+      } else if (match.type==="illegal" && !ignore_illegals) {
+        // illegal match, we do not continue processing
         throw new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top.className || '<unnamed>') + '"');
+      } else if (match.type==="end") {
+        var processed = doEndMatch(match);
+        if (processed != undefined)
+          return processed;
+      }
 
       /*
-      Parser should not reach this point as all types of lexemes should be caught
-      earlier, but if it does due to some bug make sure it advances at least one
-      character forward to prevent infinite looping.
+      Why might be find ourselves here?  Only one occasion now.  An end match that was
+      triggered but could not be completed.  When might this happen?  When an `endSameasBegin`
+      rule sets the end rule to a specific match.  Since the overall mode termination rule that's
+      being used to scan the text isn't recompiled that means that any match that LOOKS like
+      the end (but is not, because it is not an exact match to the beginning) will
+      end up here.  A definite end match, but when `doEndMatch` tries to "reapply"
+      the end rule and fails to match, we wind up here, and just silently ignore the end.
+
+      This causes no real harm other than stopping a few times too many.
       */
+
       mode_buffer += lexeme;
-      return lexeme.length || 1;
+      return lexeme.length;
     }
 
     var language = getLanguage(name);
     if (!language) {
+      console.error(LANGUAGE_NOT_FOUND.replace("{}", name));
       throw new Error('Unknown language: "' + name + '"');
     }
 
@@ -2773,7 +2952,7 @@ https://highlightjs.org/
         match = top.terminators.exec(value);
         if (!match)
           break;
-        count = processLexeme(value.substring(index, match.index), match[0]);
+        count = processLexeme(value.substring(index, match.index), match);
         index = match.index + count;
       }
       processLexeme(value.substr(index));
@@ -2785,17 +2964,27 @@ https://highlightjs.org/
       return {
         relevance: relevance,
         value: result,
+        illegal:false,
         language: name,
         top: top
       };
-    } catch (e) {
-      if (e.message && e.message.indexOf('Illegal') !== -1) {
+    } catch (err) {
+      if (err.message && err.message.indexOf('Illegal') !== -1) {
         return {
+          illegal: true,
           relevance: 0,
           value: escape(value)
         };
+      } else if (SAFE_MODE) {
+        return {
+          relevance: 0,
+          value: escape(value),
+          language: name,
+          top: top,
+          errorRaised: err
+        };
       } else {
-        throw e;
+        throw err;
       }
     }
   }
@@ -2843,16 +3032,18 @@ https://highlightjs.org/
 
   */
   function fixMarkup(value) {
-    return !(options.tabReplace || options.useBR)
-      ? value
-      : value.replace(fixMarkupRe, function(match, p1) {
-          if (options.useBR && match === '\n') {
-            return '<br>';
-          } else if (options.tabReplace) {
-            return p1.replace(/\t/g, options.tabReplace);
-          }
-          return '';
-      });
+    if (!(options.tabReplace || options.useBR)) {
+      return value;
+    }
+
+    return value.replace(fixMarkupRe, function(match, p1) {
+        if (options.useBR && match === '\n') {
+          return '<br>';
+        } else if (options.tabReplace) {
+          return p1.replace(/\t/g, options.tabReplace);
+        }
+        return '';
+    });
   }
 
   function buildClassName(prevClassName, currentLang, resultLang) {
@@ -2882,7 +3073,7 @@ https://highlightjs.org/
         return;
 
     if (options.useBR) {
-      node = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+      node = document.createElement('div');
       node.innerHTML = block.innerHTML.replace(/\n/g, '').replace(/<br[ \/]*>/g, '\n');
     } else {
       node = block;
@@ -2892,7 +3083,7 @@ https://highlightjs.org/
 
     originalStream = nodeStream(node);
     if (originalStream.length) {
-      resultNode = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+      resultNode = document.createElement('div');
       resultNode.innerHTML = result.value;
       result.value = mergeStreams(originalStream, nodeStream(resultNode), text);
     }
@@ -2935,13 +3126,29 @@ https://highlightjs.org/
   Attaches highlighting to the page load event.
   */
   function initHighlightingOnLoad() {
-    addEventListener('DOMContentLoaded', initHighlighting, false);
-    addEventListener('load', initHighlighting, false);
+    window.addEventListener('DOMContentLoaded', initHighlighting, false);
+    window.addEventListener('load', initHighlighting, false);
   }
 
+  var PLAINTEXT_LANGUAGE = { disableAutodetect: true };
+
   function registerLanguage(name, language) {
-    var lang = languages[name] = language(hljs);
+    var lang;
+    try { lang = language(hljs); }
+    catch (error) {
+      console.error("Language definition for '{}' could not be registered.".replace("{}", name));
+      // hard or soft error
+      if (!SAFE_MODE) { throw error; } else { console.error(error); }
+      // languages that have serious errors are replaced with essentially a
+      // "plaintext" stand-in so that the code blocks will still get normal
+      // css classes applied to them - and one bad language won't break the
+      // entire highlighter
+      lang = PLAINTEXT_LANGUAGE;
+    }
+    languages[name] = lang;
     restoreLanguageApi(lang);
+    lang.rawDefinition = language.bind(null,hljs);
+
     if (lang.aliases) {
       lang.aliases.forEach(function(alias) {aliases[alias] = name;});
     }
@@ -2949,6 +3156,20 @@ https://highlightjs.org/
 
   function listLanguages() {
     return objectKeys(languages);
+  }
+
+  /*
+    intended usage: When one language truly requires another
+
+    Unlike `getLanguage`, this will throw when the requested language
+    is not available.
+  */
+  function requireLanguage(name) {
+    var lang = getLanguage(name);
+    if (lang) { return lang; }
+
+    var err = new Error('The \'{}\' language is required, but not loaded.'.replace('{}',name));
+    throw err;
   }
 
   function getLanguage(name) {
@@ -2973,8 +3194,10 @@ https://highlightjs.org/
   hljs.registerLanguage = registerLanguage;
   hljs.listLanguages = listLanguages;
   hljs.getLanguage = getLanguage;
+  hljs.requireLanguage = requireLanguage;
   hljs.autoDetection = autoDetection;
   hljs.inherit = inherit;
+  hljs.debugMode = function() { SAFE_MODE = false; }
 
   // Common regexps
   hljs.IDENT_RE = '[a-zA-Z]\\w*';
@@ -3080,12 +3303,54 @@ https://highlightjs.org/
     relevance: 0
   };
 
+  var constants = [
+    hljs.BACKSLASH_ESCAPE,
+    hljs.APOS_STRING_MODE,
+    hljs.QUOTE_STRING_MODE,
+    hljs.PHRASAL_WORDS_MODE,
+    hljs.COMMENT,
+    hljs.C_LINE_COMMENT_MODE,
+    hljs.C_BLOCK_COMMENT_MODE,
+    hljs.HASH_COMMENT_MODE,
+    hljs.NUMBER_MODE,
+    hljs.C_NUMBER_MODE,
+    hljs.BINARY_NUMBER_MODE,
+    hljs.CSS_NUMBER_MODE,
+    hljs.REGEXP_MODE,
+    hljs.TITLE_MODE,
+    hljs.UNDERSCORE_TITLE_MODE,
+    hljs.METHOD_GUARD
+  ]
+  constants.forEach(function(obj) { deepFreeze(obj); });
+
+  // https://github.com/substack/deep-freeze/blob/master/index.js
+  function deepFreeze (o) {
+    Object.freeze(o);
+
+    var objIsFunction = typeof o === 'function';
+
+    Object.getOwnPropertyNames(o).forEach(function (prop) {
+      if (o.hasOwnProperty(prop)
+      && o[prop] !== null
+      && (typeof o[prop] === "object" || typeof o[prop] === "function")
+      // IE11 fix: https://github.com/highlightjs/highlight.js/issues/2318
+      // TODO: remove in the future
+      && (objIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
+      && !Object.isFrozen(o[prop])) {
+        deepFreeze(o[prop]);
+      }
+    });
+
+    return o;
+  };
+
+
   return hljs;
 }));
 
 
 /***/ }),
-/* 109 */
+/* 114 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs){
@@ -3599,7 +3864,7 @@ module.exports = function(hljs){
 };
 
 /***/ }),
-/* 110 */
+/* 115 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -3650,11 +3915,8 @@ module.exports = function(hljs) {
     };
 
     var ruleDeclarationMode = {
-        begin: regexes.ruleDeclaration + '\\s*=',
-        returnBegin: true,
-        end: /=/,
-        relevance: 0,
-        contains: [{className: "attribute", begin: regexes.ruleDeclaration}]
+        className: "attribute",
+        begin: regexes.ruleDeclaration + '(?=\\s*=)',
     };
 
     return {
@@ -3674,16 +3936,21 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 111 */
+/* 116 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+  var HTTP_VERBS = [
+    "GET", "POST", "HEAD", "PUT", "DELETE", "CONNECT", "OPTIONS", "PATCH", "TRACE"
+  ]
   return {
     contains: [
       // IP
       {
         className: 'number',
-        begin: '\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b'
+        begin: '^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b',
+        relevance:5
       },
       // Other numbers
       {
@@ -3694,29 +3961,51 @@ module.exports = function(hljs) {
       // Requests
       {
         className: 'string',
-        begin: '"(GET|POST|HEAD|PUT|DELETE|CONNECT|OPTIONS|PATCH|TRACE)', end: '"',
-        keywords: 'GET POST HEAD PUT DELETE CONNECT OPTIONS PATCH TRACE',
+        begin: '"(' + HTTP_VERBS.join("|") + ')', end: '"',
+        keywords: HTTP_VERBS.join(" "),
         illegal: '\\n',
-        relevance: 10
+        relevance: 5,
+        contains: [{
+          begin: 'HTTP/[12]\\.\\d',
+          relevance:5
+        }]
       },
       // Dates
       {
         className: 'string',
+        // dates must have a certain length, this prevents matching
+        // simple array accesses a[123] and [] and other common patterns
+        // found in other languages
+        begin: /\[\d[^\]\n]{8,}\]/,
+        illegal: '\\n',
+        relevance: 1
+      },
+      {
+        className: 'string',
         begin: /\[/, end: /\]/,
-        illegal: '\\n'
+        illegal: '\\n',
+        relevance: 0
+      },
+      // User agent / relevance boost
+      {
+        className: 'string',
+        begin: '"Mozilla/\\d\\.\\d \\\(', end: '"',
+        illegal: '\\n',
+        relevance: 3
       },
       // Strings
       {
         className: 'string',
         begin: '"', end: '"',
-        illegal: '\\n'
+        illegal: '\\n',
+        relevance: 0
       }
     ]
   };
 };
 
 /***/ }),
-/* 112 */
+/* 117 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -3794,7 +4083,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 113 */
+/* 118 */
 /***/ (function(module, exports) {
 
 module.exports = // We try to support full Ada2012
@@ -3971,7 +4260,7 @@ function(hljs) {
 };
 
 /***/ }),
-/* 114 */
+/* 119 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4001,7 +4290,7 @@ module.exports = function(hljs) {
       'for in|0 break continue while do|0 return if else case switch namespace is cast ' +
       'or and xor not get|0 in inout|10 out override set|0 private public const default|0 ' +
       'final shared external mixin|10 enum typedef funcdef this super import from interface ' +
-      'abstract|0 try catch protected explicit',
+      'abstract|0 try catch protected explicit property',
 
     // avoid close detection with C# and JS
     illegal: '(^using\\s+[A-Za-z0-9_\\.]+;$|\\bfunction\s*[^\\(])',
@@ -4082,7 +4371,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 115 */
+/* 120 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4132,7 +4421,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 116 */
+/* 121 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4222,7 +4511,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 117 */
+/* 122 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4231,23 +4520,24 @@ module.exports = function(hljs) {
     keyword:
       'if for while var new function do return void else break',
     literal:
-      'true false null undefined NaN Infinity PI BackSlash DoubleQuote ForwardSlash NewLine SingleQuote Tab',
+      'BackSlash DoubleQuote false ForwardSlash Infinity NaN NewLine null PI SingleQuote Tab TextFormatting true undefined',
     built_in:
-      'Abs Acos Area AreaGeodetic Asin Atan Atan2 Average Boolean Buffer BufferGeodetic ' +
+      'Abs Acos Angle Attachments Area AreaGeodetic Asin Atan Atan2 Average Bearing Boolean Buffer BufferGeodetic ' +
       'Ceil Centroid Clip Console Constrain Contains Cos Count Crosses Cut Date DateAdd ' +
-      'DateDiff Day Decode DefaultValue Dictionary Difference Disjoint Distance Distinct ' +
-      'DomainCode DomainName Equals Exp Extent Feature FeatureSet FeatureSetById FeatureSetByTitle ' +
-      'FeatureSetByUrl Filter First Floor Geometry Guid HasKey Hour IIf IndexOf Intersection ' +
-      'Intersects IsEmpty Length LengthGeodetic Log Max Mean Millisecond Min Minute Month ' +
+      'DateDiff Day Decode DefaultValue Dictionary Difference Disjoint Distance DistanceGeodetic Distinct ' +
+      'DomainCode DomainName Equals Exp Extent Feature FeatureSet FeatureSetByAssociation FeatureSetById FeatureSetByPortalItem ' +
+      'FeatureSetByRelationshipName FeatureSetByTitle FeatureSetByUrl Filter First Floor Geometry GroupBy Guid HasKey Hour IIf IndexOf ' +
+      'Intersection Intersects IsEmpty IsNan IsSelfIntersecting Length LengthGeodetic Log Max Mean Millisecond Min Minute Month ' +
       'MultiPartToSinglePart Multipoint NextSequenceValue Now Number OrderBy Overlaps Point Polygon ' +
-      'Polyline Pow Random Relate Reverse Round Second SetGeometry Sin Sort Sqrt Stdev Sum ' +
-      'SymmetricDifference Tan Text Timestamp Today ToLocal Top Touches ToUTC TypeOf Union Variance ' +
+      'Polyline Portal Pow Random Relate Reverse RingIsClockWise Round Second SetGeometry Sin Sort Sqrt Stdev Sum ' +
+      'SymmetricDifference Tan Text Timestamp Today ToLocal Top Touches ToUTC TrackCurrentTime ' +
+      'TrackGeometryWindow TrackIndex TrackStartTime TrackWindow TypeOf Union UrlEncode Variance ' +
       'Weekday When Within Year '
   };
   var EXPRESSIONS;
   var SYMBOL = {
     className: 'symbol',
-    begin: '\\$[feature|layer|map|value|view]+'
+    begin: '\\$[datastore|feature|layer|map|measure|sourcefeature|sourcelayer|targetfeature|targetlayer|value|view]+'
   };
   var NUMBER = {
     className: 'number',
@@ -4363,7 +4653,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 118 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4372,6 +4662,9 @@ module.exports = function(hljs) {
     begin: '\\b[a-z\\d_]*_t\\b'
   };
 
+  // https://en.cppreference.com/w/cpp/language/escape
+  // \\ \x \xFF \u2837 \u00323747 \374
+  var CHARACTER_ESCAPES = '\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\S)'
   var STRINGS = {
     className: 'string',
     variants: [
@@ -4380,11 +4673,11 @@ module.exports = function(hljs) {
         illegal: '\\n',
         contains: [hljs.BACKSLASH_ESCAPE]
       },
-      { begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\((?:.|\n)*?\)\1"/ },
       {
-        begin: '\'\\\\?.', end: '\'',
+        begin: '(u8?|U|L)?\'(' + CHARACTER_ESCAPES + "|.)", end: '\'',
         illegal: '.'
-      }
+      },
+      { begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\((?:.|\n)*?\)\1"/ }
     ]
   };
 
@@ -4404,7 +4697,7 @@ module.exports = function(hljs) {
     keywords: {
       'meta-keyword':
         'if else elif endif define undef warning error line ' +
-        'pragma ifdef ifndef include'
+        'pragma _Pragma ifdef ifndef include'
     },
     contains: [
       {
@@ -4413,7 +4706,7 @@ module.exports = function(hljs) {
       hljs.inherit(STRINGS, {className: 'meta-string'}),
       {
         className: 'meta-string',
-        begin: /<[^\n>]*>/, end: /$/,
+        begin: /<.*?>/, end: /$/,
         illegal: '\\n',
       },
       hljs.C_LINE_COMMENT_MODE,
@@ -4424,26 +4717,27 @@ module.exports = function(hljs) {
   var FUNCTION_TITLE = hljs.IDENT_RE + '\\s*\\(';
 
   var CPP_KEYWORDS = {
-    keyword: 'int float while private char catch import module export virtual operator sizeof ' +
+    keyword: 'int float while private char char8_t char16_t char32_t catch import module export virtual operator sizeof ' +
       'dynamic_cast|10 typedef const_cast|10 const for static_cast|10 union namespace ' +
       'unsigned long volatile static protected bool template mutable if public friend ' +
-      'do goto auto void enum else break extern using asm case typeid ' +
+      'do goto auto void enum else break extern using asm case typeid wchar_t' +
       'short reinterpret_cast|10 default double register explicit signed typename try this ' +
-      'switch continue inline delete alignof constexpr decltype ' +
-      'noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary ' +
+      'switch continue inline delete alignas alignof constexpr consteval constinit decltype ' +
+      'concept co_await co_return co_yield requires ' +
+      'noexcept static_assert thread_local restrict final override ' +
       'atomic_bool atomic_char atomic_schar ' +
       'atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong ' +
       'atomic_ullong new throw return ' +
-      'and or not',
-    built_in: 'std string cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
+      'and and_eq bitand bitor compl not not_eq or or_eq xor xor_eq',
+    built_in: 'std string wstring cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
       'auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set ' +
-      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos ' +
+      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort terminate abs acos ' +
       'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp ' +
-      'fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
+      'fscanf future isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
       'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow ' +
       'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp ' +
       'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan ' +
-      'vfprintf vprintf vsprintf endl initializer_list unique_ptr',
+      'vfprintf vprintf vsprintf endl initializer_list unique_ptr _Bool complex _Complex imaginary _Imaginary',
     literal: 'true false nullptr NULL'
   };
 
@@ -4553,18 +4847,16 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 119 */
+/* 124 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var CPP = hljs.getLanguage('cpp').exports;
-	return {
-    keywords: {
+
+	var ARDUINO_KW = {
       keyword:
-        'boolean byte word string String array ' + CPP.keywords.keyword,
+        'boolean byte word String',
       built_in:
-        'setup loop while catch for if do goto try switch case else ' +
-        'default break continue return ' +
+        'setup loop' +
         'KeyboardController MouseController SoftwareSerial ' +
         'EthernetServer EthernetClient LiquidCrystal ' +
         'RobotControl GSMVoiceCall EthernetUDP EsploraTFT ' +
@@ -4644,20 +4936,21 @@ module.exports = function(hljs) {
         'SET_PIN_MODE INTERNAL2V56 SYSTEM_RESET LED_BUILTIN ' +
         'INTERNAL1V1 SYSEX_START INTERNAL EXTERNAL ' +
         'DEFAULT OUTPUT INPUT HIGH LOW'
-    },
-    contains: [
-      CPP.preprocessor,
-      hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
-      hljs.APOS_STRING_MODE,
-      hljs.QUOTE_STRING_MODE,
-      hljs.C_NUMBER_MODE
-    ]
   };
+
+  var ARDUINO = hljs.requireLanguage('cpp').rawDefinition();
+
+  var kws = ARDUINO.keywords;
+
+  kws.keyword += ' ' + ARDUINO_KW.keyword;
+  kws.literal += ' ' + ARDUINO_KW.literal;
+  kws.built_in += ' ' + ARDUINO_KW.built_in;
+
+  return ARDUINO;
 };
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -4753,11 +5046,28 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 121 */
+/* 126 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var XML_IDENT_RE = '[A-Za-z0-9\\._:-]+';
+  var XML_ENTITIES = {
+    className: 'symbol',
+    begin: '&[a-z]+;|&#[0-9]+;|&#x[a-f0-9]+;'
+  };
+  var XML_META_KEYWORDS = {
+	  begin: '\\s',
+	  contains:[
+	    {
+	      className: 'meta-keyword',
+	      begin: '#?[a-z_][a-z1-9_-]+',
+	      illegal: '\\n',
+      }
+	  ]
+  };
+  var XML_META_PAR_KEYWORDS = hljs.inherit(XML_META_KEYWORDS, {begin: '\\(', end: '\\)'});
+  var APOS_META_STRING_MODE = hljs.inherit(hljs.APOS_STRING_MODE, {className: 'meta-string'});
+  var QUOTE_META_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {className: 'meta-string'});
   var TAG_INTERNALS = {
     endsWithParent: true,
     illegal: /</,
@@ -4776,8 +5086,8 @@ module.exports = function(hljs) {
             className: 'string',
             endsParent: true,
             variants: [
-              {begin: /"/, end: /"/},
-              {begin: /'/, end: /'/},
+              {begin: /"/, end: /"/, contains: [XML_ENTITIES]},
+              {begin: /'/, end: /'/, contains: [XML_ENTITIES]},
               {begin: /[^\s"'=<>`]+/}
             ]
           }
@@ -4786,14 +5096,34 @@ module.exports = function(hljs) {
     ]
   };
   return {
-    aliases: ['html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist'],
+    aliases: ['html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist', 'wsf', 'svg'],
     case_insensitive: true,
     contains: [
       {
         className: 'meta',
-        begin: '<!DOCTYPE', end: '>',
+        begin: '<![a-z]', end: '>',
         relevance: 10,
-        contains: [{begin: '\\[', end: '\\]'}]
+        contains: [
+				  XML_META_KEYWORDS,
+				  QUOTE_META_STRING_MODE,
+				  APOS_META_STRING_MODE,
+					XML_META_PAR_KEYWORDS,
+					{
+					  begin: '\\[', end: '\\]',
+					  contains:[
+						  {
+					      className: 'meta',
+					      begin: '<![a-z]', end: '>',
+					      contains: [
+					        XML_META_KEYWORDS,
+					        XML_META_PAR_KEYWORDS,
+					        QUOTE_META_STRING_MODE,
+					        APOS_META_STRING_MODE
+						    ]
+			        }
+					  ]
+				  }
+				]
       },
       hljs.COMMENT(
         '<!--',
@@ -4806,6 +5136,7 @@ module.exports = function(hljs) {
         begin: '<\\!\\[CDATA\\[', end: '\\]\\]>',
         relevance: 10
       },
+      XML_ENTITIES,
       {
         className: 'meta',
         begin: /<\?xml/, end: /\?>/, relevance: 10
@@ -4831,7 +5162,7 @@ module.exports = function(hljs) {
         ending braket. The '$' is needed for the lexeme to be recognized
         by hljs.subMode() that tests lexemes outside the stream.
         */
-        begin: '<style(?=\\s|>|$)', end: '>',
+        begin: '<style(?=\\s|>)', end: '>',
         keywords: {name: 'style'},
         contains: [TAG_INTERNALS],
         starts: {
@@ -4842,7 +5173,7 @@ module.exports = function(hljs) {
       {
         className: 'tag',
         // See the comment in the <style tag about the lookahead pattern
-        begin: '<script(?=\\s|>|$)', end: '>',
+        begin: '<script(?=\\s|>)', end: '>',
         keywords: {name: 'script'},
         contains: [TAG_INTERNALS],
         starts: {
@@ -4865,7 +5196,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5057,7 +5388,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -5206,7 +5537,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5219,14 +5550,10 @@ module.exports = function(hljs) {
     aliases: [ 'ahk' ],
     keywords: {
       keyword: 'Break Continue Critical Exit ExitApp Gosub Goto New OnExit Pause return SetBatchLines SetTimer Suspend Thread Throw Until ahk_id ahk_class ahk_pid ahk_exe ahk_group',
-      literal: 'A|0 true false NOT AND OR',
+      literal: 'true false NOT AND OR',
       built_in: 'ComSpec Clipboard ClipboardAll ErrorLevel',
     },
     contains: [
-      {
-        className: 'built_in',
-        begin: 'A_[a-zA-Z0-9]+'
-      },
       BACKTICK_ESCAPE,
       hljs.inherit(hljs.QUOTE_STRING_MODE, {contains: [BACKTICK_ESCAPE]}),
       hljs.COMMENT(';', '$', {relevance: 0}),
@@ -5237,28 +5564,31 @@ module.exports = function(hljs) {
         relevance: 0
       },
       {
-        className: 'subst', // FIXED
-        begin: '%(?=[a-zA-Z0-9#_$@])', end: '%',
-        illegal: '[^a-zA-Z0-9#_$@]'
+        className: 'variable', //subst would be the most accurate however fails the point of highlighting. variable is comparably the most accurate that actually has some effect
+        begin: '%[a-zA-Z0-9#_$@]+%'
       },
       {
         className: 'built_in',
-        begin: '^\\s*\\w+\\s*,'
+        begin: '^\\s*\\w+\\s*(,|%)'
         //I don't really know if this is totally relevant
       },
       {
-        className: 'meta', 
-        begin: '^\\s*#\w+', end:'$',
-        relevance: 0
-      },
-      {
-        className: 'symbol',
-        contains: [BACKTICK_ESCAPE],
+        className: 'title', //symbol would be most accurate however is higlighted just like built_in and that makes up a lot of AutoHotkey code
+		                        //meaning that it would fail to highlight anything
         variants: [
           {begin: '^[^\\n";]+::(?!=)'},
           {begin: '^[^\\n";]+:(?!=)', relevance: 0} // zero relevance as it catches a lot of things
                                                     // followed by a single ':' in many languages
         ]
+      },
+      {
+        className: 'meta', 
+        begin: '^\\s*#\\w+', end:'$',
+        relevance: 0
+      },
+	    {
+        className: 'built_in',
+        begin: 'A_[a-zA-Z0-9]+'
       },
       {
         // consecutive commas, not for highlighting but just for relevance
@@ -5269,7 +5599,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5409,7 +5739,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 126 */
+/* 131 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5466,7 +5796,7 @@ module.exports = function(hljs) {
       },
       {className: 'symbol',  begin: '^[A-Za-z0-9_.$]+:'},
       {className: 'meta', begin: '#', end: '$'},
-      {  // подстановка в «.macro»
+      {  // substitution within a macro
         className: 'subst',
         begin: '@[0-9]+'
       }
@@ -5475,7 +5805,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5532,7 +5862,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5567,7 +5897,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5590,6 +5920,11 @@ module.exports = function(hljs) {
         contains: [hljs.BACKSLASH_ESCAPE]
       }
     ]
+  };
+  var ESCAPED_QUOTE = {
+    className: '',
+    begin: /\\"/
+
   };
   var APOS_STRING = {
     className: 'string',
@@ -5639,6 +5974,7 @@ module.exports = function(hljs) {
       },
       hljs.HASH_COMMENT_MODE,
       QUOTE_STRING,
+      ESCAPED_QUOTE,
       APOS_STRING,
       VAR
     ]
@@ -5646,7 +5982,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5661,7 +5997,7 @@ module.exports = function(hljs) {
           'CLEAR CLOSE CLS COLOR COM COMMON CONT COS CSNG CSRLIN CVD CVI CVS DATA DATE$ ' +
           'DEFDBL DEFINT DEFSNG DEFSTR DEF|0 SEG USR DELETE DIM DRAW EDIT END ENVIRON ENVIRON$ ' +
           'EOF EQV ERASE ERDEV ERDEV$ ERL ERR ERROR EXP FIELD FILES FIX FOR|0 FRE GET GOSUB|10 GOTO ' +
-          'HEX$ IF|0 THEN ELSE|0 INKEY$ INP INPUT INPUT# INPUT$ INSTR IMP INT IOCTL IOCTL$ KEY ON ' +
+          'HEX$ IF THEN ELSE|0 INKEY$ INP INPUT INPUT# INPUT$ INSTR IMP INT IOCTL IOCTL$ KEY ON ' +
           'OFF LIST KILL LEFT$ LEN LET LINE LLIST LOAD LOC LOCATE LOF LOG LPRINT USING LSET ' +
           'MERGE MID$ MKDIR MKD$ MKI$ MKS$ MOD NAME NEW NEXT NOISE NOT OCT$ ON OR PEN PLAY STRIG OPEN OPTION ' +
           'BASE OUT PAINT PALETTE PCOPY PEEK PMAP POINT POKE POS PRINT PRINT] PSET PRESET ' +
@@ -5701,7 +6037,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs){
@@ -5734,7 +6070,7 @@ module.exports = function(hljs){
 };
 
 /***/ }),
-/* 132 */
+/* 137 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs){
@@ -5766,7 +6102,7 @@ module.exports = function(hljs){
       },
       {
         // this mode works as the only relevance counter
-        begin: /\+\+|\-\-/, returnBegin: true,
+        begin: /(?:\+\+|\-\-)/,
         contains: [LITERAL]
       },
       LITERAL
@@ -5775,7 +6111,7 @@ module.exports = function(hljs){
 };
 
 /***/ }),
-/* 133 */
+/* 138 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5859,7 +6195,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 134 */
+/* 139 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5912,7 +6248,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 135 */
+/* 140 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -5983,7 +6319,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 136 */
+/* 141 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6014,7 +6350,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 137 */
+/* 142 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6114,7 +6450,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 138 */
+/* 143 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6133,7 +6469,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 139 */
+/* 144 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6190,7 +6526,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 140 */
+/* 145 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6253,7 +6589,7 @@ module.exports = function(hljs) {
         {
           // regex can't start with space to parse x / 2 / 3 as two divisions
           // regex can't start with *, and it supports an "illegal" in the main mode
-          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W|$)/
+          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W)/
         }
       ]
     },
@@ -6340,14 +6676,14 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 141 */
+/* 146 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   return {
     keywords: {
       keyword:
-        '_ as at cofix else end exists exists2 fix for forall fun if IF in let ' +
+        '_|0 as at cofix else end exists exists2 fix for forall fun if IF in let ' +
         'match mod Prop return Set then Type using where with ' +
         'Abort About Add Admit Admitted All Arguments Assumptions Axiom Back BackTo ' +
         'Backtrack Bind Blacklist Canonical Cd Check Class Classes Close Coercion ' +
@@ -6411,7 +6747,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 142 */
+/* 147 */
 /***/ (function(module, exports) {
 
 module.exports = function cos (hljs) {
@@ -6539,7 +6875,7 @@ module.exports = function cos (hljs) {
 };
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6637,14 +6973,14 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var INT_SUFFIX = '(_*[ui](8|16|32|64|128))?';
   var FLOAT_SUFFIX = '(_*f(32|64))?';
   var CRYSTAL_IDENT_RE = '[a-zA-Z_]\\w*[!?=]?';
-  var CRYSTAL_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~|]|//|//=|&[-+*]=?|&\\*\\*|\\[\\][=?]?';
+  var CRYSTAL_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|[=!]~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~|]|//|//=|&[-+*]=?|&\\*\\*|\\[\\][=?]?';
   var CRYSTAL_PATH_RE = '[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?';
   var CRYSTAL_KEYWORDS = {
     keyword:
@@ -6829,7 +7165,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -6838,13 +7174,13 @@ module.exports = function(hljs) {
       // Normal keywords.
       'abstract as base bool break byte case catch char checked const continue decimal ' +
       'default delegate do double enum event explicit extern finally fixed float ' +
-      'for foreach goto if implicit in int interface internal is lock long nameof ' +
+      'for foreach goto if implicit in int interface internal is lock long ' +
       'object operator out override params private protected public readonly ref sbyte ' +
       'sealed short sizeof stackalloc static string struct switch this try typeof ' +
       'uint ulong unchecked unsafe ushort using virtual void volatile while ' +
       // Contextual keywords.
       'add alias ascending async await by descending dynamic equals from get global group into join ' +
-      'let on orderby partial remove select set value var where yield',
+      'let nameof on orderby partial remove select set value var when where yield',
     literal:
       'null false true'
   };
@@ -7018,7 +7354,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7028,7 +7364,7 @@ module.exports = function(hljs) {
     keywords: {
       keyword: 'base-uri child-src connect-src default-src font-src form-action' +
         ' frame-ancestors frame-src img-src media-src object-src plugin-types' +
-        ' report-uri sandbox script-src style-src', 
+        ' report-uri sandbox script-src style-src',
     },
     contains: [
     {
@@ -7044,49 +7380,56 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
-  var RULE = {
-    begin: /[A-Z\_\.\-]+\s*:/, returnBegin: true, end: ';', endsWithParent: true,
+  var FUNCTION_LIKE = {
+    begin: /[\w-]+\(/, returnBegin: true,
     contains: [
       {
-        className: 'attribute',
-        begin: /\S/, end: ':', excludeEnd: true,
-        starts: {
-          endsWithParent: true, excludeEnd: true,
-          contains: [
-            {
-              begin: /[\w-]+\(/, returnBegin: true,
-              contains: [
-                {
-                  className: 'built_in',
-                  begin: /[\w-]+/
-                },
-                {
-                  begin: /\(/, end: /\)/,
-                  contains: [
-                    hljs.APOS_STRING_MODE,
-                    hljs.QUOTE_STRING_MODE
-                  ]
-                }
-              ]
-            },
-            hljs.CSS_NUMBER_MODE,
-            hljs.QUOTE_STRING_MODE,
-            hljs.APOS_STRING_MODE,
-            hljs.C_BLOCK_COMMENT_MODE,
-            {
-              className: 'number', begin: '#[0-9A-Fa-f]+'
-            },
-            {
-              className: 'meta', begin: '!important'
-            }
-          ]
-        }
+        className: 'built_in',
+        begin: /[\w-]+/
+      },
+      {
+        begin: /\(/, end: /\)/,
+        contains: [
+          hljs.APOS_STRING_MODE,
+          hljs.QUOTE_STRING_MODE,
+          hljs.CSS_NUMBER_MODE,
+        ]
       }
+    ]
+  }
+  var ATTRIBUTE = {
+    className: 'attribute',
+    begin: /\S/, end: ':', excludeEnd: true,
+    starts: {
+      endsWithParent: true, excludeEnd: true,
+      contains: [
+        FUNCTION_LIKE,
+        hljs.CSS_NUMBER_MODE,
+        hljs.QUOTE_STRING_MODE,
+        hljs.APOS_STRING_MODE,
+        hljs.C_BLOCK_COMMENT_MODE,
+        {
+          className: 'number', begin: '#[0-9A-Fa-f]+'
+        },
+        {
+          className: 'meta', begin: '!important'
+        }
+      ]
+    }
+  }
+  var AT_IDENTIFIER = '@[a-z-]+' // @font-face
+  var AT_MODIFIERS = "and or not only"
+  var MEDIA_TYPES = "all print screen speech"
+  var AT_PROPERTY_RE = /@\-?\w[\w]*(\-\w+)*/ // @-webkit-keyframes
+  var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
+  var RULE = {
+    begin: /(?:[A-Z\_\.\-]+|--[a-zA-Z0-9_-]+)\s*:/, returnBegin: true, end: ';', endsWithParent: true,
+    contains: [
+      ATTRIBUTE
     ]
   };
 
@@ -7104,16 +7447,23 @@ module.exports = function(hljs) {
       {
         className: 'selector-attr',
         begin: /\[/, end: /\]/,
-        illegal: '$'
+        illegal: '$',
+        contains: [
+          hljs.APOS_STRING_MODE,
+          hljs.QUOTE_STRING_MODE,
+        ]
       },
       {
         className: 'selector-pseudo',
         begin: /:(:)?[a-zA-Z0-9\_\-\+\(\)"'.]+/
       },
+      // matching these here allows us to treat them more like regular CSS
+      // rules so everything between the {} gets regular rule highlighting,
+      // which is what we want for page and font-face
       {
-        begin: '@(font-face|page)',
-        lexemes: '[a-z-]+',
-        keywords: 'font-face page'
+        begin: '@(page|font-face)',
+        lexemes: AT_IDENTIFIER,
+        keywords: '@page @font-face'
       },
       {
         begin: '@', end: '[{;]', // at_rule eating first "{" is a good thing
@@ -7121,16 +7471,23 @@ module.exports = function(hljs) {
                                  // a rule set but instead drops parser into
                                  // the default mode which is how it should be.
         illegal: /:/, // break on Less variables @var: ...
+        returnBegin: true,
         contains: [
           {
             className: 'keyword',
-            begin: /\w+/
+            begin: AT_PROPERTY_RE
           },
           {
             begin: /\s/, endsWithParent: true, excludeEnd: true,
             relevance: 0,
+            keywords: AT_MODIFIERS,
             contains: [
-              hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE,
+              {
+                begin: /[a-z-]+:/,
+                className:"attribute"
+              },
+              hljs.APOS_STRING_MODE,
+              hljs.QUOTE_STRING_MODE,
               hljs.CSS_NUMBER_MODE
             ]
           }
@@ -7153,7 +7510,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports) {
 
 module.exports = /**
@@ -7415,7 +7772,7 @@ function(hljs) {
 };
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7466,13 +7823,13 @@ module.exports = function(hljs) {
         className: 'code',
         variants: [
           {
-            begin: '^```\w*\s*$', end: '^```\s*$'
+            begin: '^```\\w*\\s*$', end: '^```[ ]*$'
           },
           {
             begin: '`.+?`'
           },
           {
-            begin: '^( {4}|\t)', end: '$',
+            begin: '^( {4}|\\t)', end: '$',
             relevance: 0
           }
         ]
@@ -7527,57 +7884,65 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports) {
 
-module.exports = function (hljs) {
+module.exports = function(hljs) {
   var SUBST = {
     className: 'subst',
-    variants: [
-       {begin: '\\$[A-Za-z0-9_]+'}
-    ],
+    variants: [{
+      begin: '\\$[A-Za-z0-9_]+'
+    }],
   };
 
   var BRACED_SUBST = {
     className: 'subst',
-    variants: [
-       {begin: '\\${', end: '}'},
-    ],
+    variants: [{
+      begin: '\\${',
+      end: '}'
+    }, ],
     keywords: 'true false null this is new super',
   };
 
   var STRING = {
     className: 'string',
-    variants: [
-      {
-        begin: 'r\'\'\'', end: '\'\'\''
+    variants: [{
+        begin: 'r\'\'\'',
+        end: '\'\'\''
       },
       {
-        begin: 'r"""', end: '"""'
+        begin: 'r"""',
+        end: '"""'
       },
       {
-        begin: 'r\'', end: '\'',
+        begin: 'r\'',
+        end: '\'',
         illegal: '\\n'
       },
       {
-        begin: 'r"', end: '"',
+        begin: 'r"',
+        end: '"',
         illegal: '\\n'
       },
       {
-        begin: '\'\'\'', end: '\'\'\'',
+        begin: '\'\'\'',
+        end: '\'\'\'',
         contains: [hljs.BACKSLASH_ESCAPE, SUBST, BRACED_SUBST]
       },
       {
-        begin: '"""', end: '"""',
+        begin: '"""',
+        end: '"""',
         contains: [hljs.BACKSLASH_ESCAPE, SUBST, BRACED_SUBST]
       },
       {
-        begin: '\'', end: '\'',
+        begin: '\'',
+        end: '\'',
         illegal: '\\n',
         contains: [hljs.BACKSLASH_ESCAPE, SUBST, BRACED_SUBST]
       },
       {
-        begin: '"', end: '"',
+        begin: '"',
+        end: '"',
         illegal: '\\n',
         contains: [hljs.BACKSLASH_ESCAPE, SUBST, BRACED_SUBST]
       }
@@ -7588,15 +7953,16 @@ module.exports = function (hljs) {
   ];
 
   var KEYWORDS = {
-    keyword: 'assert async await break case catch class const continue default do else enum extends false final ' +
-      'finally for if in is new null rethrow return super switch sync this throw true try var void while with yield ' +
-      'abstract as dynamic export external factory get implements import library operator part set static typedef',
+    keyword: 'abstract as assert async await break case catch class const continue covariant default deferred do ' +
+      'dynamic else enum export extends extension external factory false final finally for Function get hide if ' +
+      'implements import in inferface is library mixin new null on operator part rethrow return set show static ' +
+      'super switch sync this throw true try typedef var void while with yield',
     built_in:
       // dart:core
-      'print Comparable DateTime Duration Function Iterable Iterator List Map Match Null Object Pattern RegExp Set ' +
-      'Stopwatch String StringBuffer StringSink Symbol Type Uri bool double int num ' +
+      'Comparable DateTime Duration Function Iterable Iterator List Map Match Null Object Pattern RegExp Set ' +
+      'Stopwatch String StringBuffer StringSink Symbol Type Uri bool double dynamic int num print ' +
       // dart:html
-      'document window querySelector querySelectorAll Element ElementList'
+      'Element ElementList document querySelector querySelectorAll window'
   };
 
   return {
@@ -7605,25 +7971,28 @@ module.exports = function (hljs) {
       STRING,
       hljs.COMMENT(
         '/\\*\\*',
-        '\\*/',
-        {
+        '\\*/', {
           subLanguage: 'markdown'
         }
       ),
       hljs.COMMENT(
-        '///',
-        '$',
-        {
-          subLanguage: 'markdown'
+        '///+\\s*',
+        '$', {
+          contains: [{
+            subLanguage: 'markdown',
+            begin: '.',
+            end: '$',
+          }]
         }
       ),
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
       {
         className: 'class',
-        beginKeywords: 'class interface', end: '{', excludeEnd: true,
-        contains: [
-          {
+        beginKeywords: 'class interface',
+        end: '{',
+        excludeEnd: true,
+        contains: [{
             beginKeywords: 'extends implements'
           },
           hljs.UNDERSCORE_TITLE_MODE
@@ -7631,7 +8000,8 @@ module.exports = function (hljs) {
       },
       hljs.C_NUMBER_MODE,
       {
-        className: 'meta', begin: '@[A-Za-z]+'
+        className: 'meta',
+        begin: '@[A-Za-z]+'
       },
       {
         begin: '=>' // No markup, just a relevance booster
@@ -7641,7 +8011,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7714,7 +8084,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7738,7 +8108,7 @@ module.exports = function(hljs) {
           {begin: /^\-{3}/, end: /$/},
           {begin: /^\*{3} /, end: /$/},
           {begin: /^\+{3}/, end: /$/},
-          {begin: /\*{5}/, end: /\*{5}$/}
+          {begin: /^\*{15}$/ }
         ]
       },
       {
@@ -7758,7 +8128,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7826,7 +8196,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7859,7 +8229,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7885,7 +8255,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7941,7 +8311,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -7992,7 +8362,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8120,7 +8490,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 159 */
+/* 164 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8156,7 +8526,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 160 */
+/* 165 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8164,7 +8534,7 @@ module.exports = function(hljs) {
 
     var nonTerminalMode = {
         className: "attribute",
-        begin: /^[ ]*[a-zA-Z][a-zA-Z-]*([\s-]+[a-zA-Z][a-zA-Z]*)*/
+        begin: /^[ ]*[a-zA-Z][a-zA-Z-_]*([\s-_]+[a-zA-Z][a-zA-Z]*)*/
     };
 
     var specialSequenceMode = {
@@ -8173,12 +8543,19 @@ module.exports = function(hljs) {
     };
 
     var ruleBodyMode = {
-        begin: /=/, end: /;/,
+        begin: /=/, end: /[.;]/,
         contains: [
             commentMode,
             specialSequenceMode,
-            // terminals
-            hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE
+            {
+              // terminals
+              className: 'string',
+              variants: [
+                hljs.APOS_STRING_MODE,
+                hljs.QUOTE_STRING_MODE,
+                {begin: '`', end: '`'},
+              ]
+            },
         ]
     };
 
@@ -8193,7 +8570,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8209,16 +8586,78 @@ module.exports = function(hljs) {
     lexemes: ELIXIR_IDENT_RE,
     keywords: ELIXIR_KEYWORDS
   };
+
+  var SIGIL_DELIMITERS = '[/|([{<"\']'
+  var LOWERCASE_SIGIL = {
+    className: 'string',
+    begin: '~[a-z]' + '(?=' + SIGIL_DELIMITERS + ')',
+    contains: [
+      {
+        endsParent:true,
+        contains: [{
+          contains: [hljs.BACKSLASH_ESCAPE, SUBST],
+          variants: [
+            { begin: /"/, end: /"/ },
+            { begin: /'/, end: /'/ },
+            { begin: /\//, end: /\// },
+            { begin: /\|/, end: /\|/ },
+            { begin: /\(/, end: /\)/ },
+            { begin: /\[/, end: /\]/ },
+            { begin: /\{/, end: /\}/ },
+            { begin: /</, end: />/ }
+          ]
+        }]
+      },
+    ],
+  };
+
+  var UPCASE_SIGIL = {
+    className: 'string',
+    begin: '~[A-Z]' + '(?=' + SIGIL_DELIMITERS + ')',
+    contains: [
+      { begin: /"/, end: /"/ },
+      { begin: /'/, end: /'/ },
+      { begin: /\//, end: /\// },
+      { begin: /\|/, end: /\|/ },
+      { begin: /\(/, end: /\)/ },
+      { begin: /\[/, end: /\]/ },
+      { begin: /\{/, end: /\}/ },
+      { begin: /\</, end: /\>/ }
+    ]
+  };
+
   var STRING = {
     className: 'string',
     contains: [hljs.BACKSLASH_ESCAPE, SUBST],
     variants: [
       {
+        begin: /"""/, end: /"""/,
+      },
+      {
+        begin: /'''/, end: /'''/,
+      },
+      {
+        begin: /~S"""/, end: /"""/,
+        contains: []
+      },
+      {
+        begin: /~S"/, end: /"/,
+        contains: []
+      },
+      {
+        begin: /~S'''/, end: /'''/,
+        contains: []
+      },
+      {
+        begin: /~S'/, end: /'/,
+        contains: []
+      },
+      {
         begin: /'/, end: /'/
       },
       {
         begin: /"/, end: /"/
-      }
+      },
     ]
   };
   var FUNCTION = {
@@ -8237,6 +8676,8 @@ module.exports = function(hljs) {
   });
   var ELIXIR_DEFAULT_CONTAINS = [
     STRING,
+    UPCASE_SIGIL,
+    LOWERCASE_SIGIL,
     hljs.HASH_COMMENT_MODE,
     CLASS,
     FUNCTION,
@@ -8256,7 +8697,7 @@ module.exports = function(hljs) {
     },
     {
       className: 'number',
-      begin: '(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b',
+      begin: '(\\b0o[0-7_]+)|(\\b0b[01_]+)|(\\b0x[0-9a-fA-F_]+)|(-?\\b[1-9][0-9_]*(.[0-9_]+([eE][-+]?[0-9]+)?)?)',
       relevance: 0
     },
     {
@@ -8297,7 +8738,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8391,7 +8832,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8454,8 +8895,16 @@ module.exports = function(hljs) {
         // is the last character of a preceding identifier, as in: `func?4`
         begin: /\B\?(\\\d{1,3}|\\x[A-Fa-f0-9]{1,2}|\\u[A-Fa-f0-9]{4}|\\?\S)\b/
       },
-      {
-        begin: /<<(-?)\w+$/, end: /^\s*\w+$/,
+      { // heredocs
+        begin: /<<[-~]?'?(\w+)(?:.|\n)*?\n\s*\1\b/,
+        returnBegin: true,
+        contains: [
+          { begin: /<<[-~]?'?/ },
+          { begin: /\w+/,
+            endSameAsBegin: true,
+            contains: [hljs.BACKSLASH_ESCAPE, SUBST],
+          }
+        ]
       }
     ]
   };
@@ -8572,7 +9021,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8591,7 +9040,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8641,7 +9090,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8791,7 +9240,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8801,11 +9250,11 @@ module.exports = function(hljs) {
     lexemes: /[a-zA-Z][\w\.]*/,
     // built-in functions imported from https://web.archive.org/web/20160513042710/https://support.office.com/en-us/article/Excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188
     keywords: {
-        built_in: 'ABS ACCRINT ACCRINTM ACOS ACOSH ACOT ACOTH AGGREGATE ADDRESS AMORDEGRC AMORLINC AND ARABIC AREAS ASC ASIN ASINH ATAN ATAN2 ATANH AVEDEV AVERAGE AVERAGEA AVERAGEIF AVERAGEIFS BAHTTEXT BASE BESSELI BESSELJ BESSELK BESSELY BETADIST BETA.DIST BETAINV BETA.INV BIN2DEC BIN2HEX BIN2OCT BINOMDIST BINOM.DIST BINOM.DIST.RANGE BINOM.INV BITAND BITLSHIFT BITOR BITRSHIFT BITXOR CALL CEILING CEILING.MATH CEILING.PRECISE CELL CHAR CHIDIST CHIINV CHITEST CHISQ.DIST CHISQ.DIST.RT CHISQ.INV CHISQ.INV.RT CHISQ.TEST CHOOSE CLEAN CODE COLUMN COLUMNS COMBIN COMBINA COMPLEX CONCAT CONCATENATE CONFIDENCE CONFIDENCE.NORM CONFIDENCE.T CONVERT CORREL COS COSH COT COTH COUNT COUNTA COUNTBLANK COUNTIF COUNTIFS COUPDAYBS COUPDAYS COUPDAYSNC COUPNCD COUPNUM COUPPCD COVAR COVARIANCE.P COVARIANCE.S CRITBINOM CSC CSCH CUBEKPIMEMBER CUBEMEMBER CUBEMEMBERPROPERTY CUBERANKEDMEMBER CUBESET CUBESETCOUNT CUBEVALUE CUMIPMT CUMPRINC DATE DATEDIF DATEVALUE DAVERAGE DAY DAYS DAYS360 DB DBCS DCOUNT DCOUNTA DDB DEC2BIN DEC2HEX DEC2OCT DECIMAL DEGREES DELTA DEVSQ DGET DISC DMAX DMIN DOLLAR DOLLARDE DOLLARFR DPRODUCT DSTDEV DSTDEVP DSUM DURATION DVAR DVARP EDATE EFFECT ENCODEURL EOMONTH ERF ERF.PRECISE ERFC ERFC.PRECISE ERROR.TYPE EUROCONVERT EVEN EXACT EXP EXPON.DIST EXPONDIST FACT FACTDOUBLE FALSE|0 F.DIST FDIST F.DIST.RT FILTERXML FIND FINDB F.INV F.INV.RT FINV FISHER FISHERINV FIXED FLOOR FLOOR.MATH FLOOR.PRECISE FORECAST FORECAST.ETS FORECAST.ETS.CONFINT FORECAST.ETS.SEASONALITY FORECAST.ETS.STAT FORECAST.LINEAR FORMULATEXT FREQUENCY F.TEST FTEST FV FVSCHEDULE GAMMA GAMMA.DIST GAMMADIST GAMMA.INV GAMMAINV GAMMALN GAMMALN.PRECISE GAUSS GCD GEOMEAN GESTEP GETPIVOTDATA GROWTH HARMEAN HEX2BIN HEX2DEC HEX2OCT HLOOKUP HOUR HYPERLINK HYPGEOM.DIST HYPGEOMDIST IF|0 IFERROR IFNA IFS IMABS IMAGINARY IMARGUMENT IMCONJUGATE IMCOS IMCOSH IMCOT IMCSC IMCSCH IMDIV IMEXP IMLN IMLOG10 IMLOG2 IMPOWER IMPRODUCT IMREAL IMSEC IMSECH IMSIN IMSINH IMSQRT IMSUB IMSUM IMTAN INDEX INDIRECT INFO INT INTERCEPT INTRATE IPMT IRR ISBLANK ISERR ISERROR ISEVEN ISFORMULA ISLOGICAL ISNA ISNONTEXT ISNUMBER ISODD ISREF ISTEXT ISO.CEILING ISOWEEKNUM ISPMT JIS KURT LARGE LCM LEFT LEFTB LEN LENB LINEST LN LOG LOG10 LOGEST LOGINV LOGNORM.DIST LOGNORMDIST LOGNORM.INV LOOKUP LOWER MATCH MAX MAXA MAXIFS MDETERM MDURATION MEDIAN MID MIDBs MIN MINIFS MINA MINUTE MINVERSE MIRR MMULT MOD MODE MODE.MULT MODE.SNGL MONTH MROUND MULTINOMIAL MUNIT N NA NEGBINOM.DIST NEGBINOMDIST NETWORKDAYS NETWORKDAYS.INTL NOMINAL NORM.DIST NORMDIST NORMINV NORM.INV NORM.S.DIST NORMSDIST NORM.S.INV NORMSINV NOT NOW NPER NPV NUMBERVALUE OCT2BIN OCT2DEC OCT2HEX ODD ODDFPRICE ODDFYIELD ODDLPRICE ODDLYIELD OFFSET OR PDURATION PEARSON PERCENTILE.EXC PERCENTILE.INC PERCENTILE PERCENTRANK.EXC PERCENTRANK.INC PERCENTRANK PERMUT PERMUTATIONA PHI PHONETIC PI PMT POISSON.DIST POISSON POWER PPMT PRICE PRICEDISC PRICEMAT PROB PRODUCT PROPER PV QUARTILE QUARTILE.EXC QUARTILE.INC QUOTIENT RADIANS RAND RANDBETWEEN RANK.AVG RANK.EQ RANK RATE RECEIVED REGISTER.ID REPLACE REPLACEB REPT RIGHT RIGHTB ROMAN ROUND ROUNDDOWN ROUNDUP ROW ROWS RRI RSQ RTD SEARCH SEARCHB SEC SECH SECOND SERIESSUM SHEET SHEETS SIGN SIN SINH SKEW SKEW.P SLN SLOPE SMALL SQL.REQUEST SQRT SQRTPI STANDARDIZE STDEV STDEV.P STDEV.S STDEVA STDEVP STDEVPA STEYX SUBSTITUTE SUBTOTAL SUM SUMIF SUMIFS SUMPRODUCT SUMSQ SUMX2MY2 SUMX2PY2 SUMXMY2 SWITCH SYD T TAN TANH TBILLEQ TBILLPRICE TBILLYIELD T.DIST T.DIST.2T T.DIST.RT TDIST TEXT TEXTJOIN TIME TIMEVALUE T.INV T.INV.2T TINV TODAY TRANSPOSE TREND TRIM TRIMMEAN TRUE|0 TRUNC T.TEST TTEST TYPE UNICHAR UNICODE UPPER VALUE VAR VAR.P VAR.S VARA VARP VARPA VDB VLOOKUP WEBSERVICE WEEKDAY WEEKNUM WEIBULL WEIBULL.DIST WORKDAY WORKDAY.INTL XIRR XNPV XOR YEAR YEARFRAC YIELD YIELDDISC YIELDMAT Z.TEST ZTEST'
+        built_in: 'ABS ACCRINT ACCRINTM ACOS ACOSH ACOT ACOTH AGGREGATE ADDRESS AMORDEGRC AMORLINC AND ARABIC AREAS ASC ASIN ASINH ATAN ATAN2 ATANH AVEDEV AVERAGE AVERAGEA AVERAGEIF AVERAGEIFS BAHTTEXT BASE BESSELI BESSELJ BESSELK BESSELY BETADIST BETA.DIST BETAINV BETA.INV BIN2DEC BIN2HEX BIN2OCT BINOMDIST BINOM.DIST BINOM.DIST.RANGE BINOM.INV BITAND BITLSHIFT BITOR BITRSHIFT BITXOR CALL CEILING CEILING.MATH CEILING.PRECISE CELL CHAR CHIDIST CHIINV CHITEST CHISQ.DIST CHISQ.DIST.RT CHISQ.INV CHISQ.INV.RT CHISQ.TEST CHOOSE CLEAN CODE COLUMN COLUMNS COMBIN COMBINA COMPLEX CONCAT CONCATENATE CONFIDENCE CONFIDENCE.NORM CONFIDENCE.T CONVERT CORREL COS COSH COT COTH COUNT COUNTA COUNTBLANK COUNTIF COUNTIFS COUPDAYBS COUPDAYS COUPDAYSNC COUPNCD COUPNUM COUPPCD COVAR COVARIANCE.P COVARIANCE.S CRITBINOM CSC CSCH CUBEKPIMEMBER CUBEMEMBER CUBEMEMBERPROPERTY CUBERANKEDMEMBER CUBESET CUBESETCOUNT CUBEVALUE CUMIPMT CUMPRINC DATE DATEDIF DATEVALUE DAVERAGE DAY DAYS DAYS360 DB DBCS DCOUNT DCOUNTA DDB DEC2BIN DEC2HEX DEC2OCT DECIMAL DEGREES DELTA DEVSQ DGET DISC DMAX DMIN DOLLAR DOLLARDE DOLLARFR DPRODUCT DSTDEV DSTDEVP DSUM DURATION DVAR DVARP EDATE EFFECT ENCODEURL EOMONTH ERF ERF.PRECISE ERFC ERFC.PRECISE ERROR.TYPE EUROCONVERT EVEN EXACT EXP EXPON.DIST EXPONDIST FACT FACTDOUBLE FALSE|0 F.DIST FDIST F.DIST.RT FILTERXML FIND FINDB F.INV F.INV.RT FINV FISHER FISHERINV FIXED FLOOR FLOOR.MATH FLOOR.PRECISE FORECAST FORECAST.ETS FORECAST.ETS.CONFINT FORECAST.ETS.SEASONALITY FORECAST.ETS.STAT FORECAST.LINEAR FORMULATEXT FREQUENCY F.TEST FTEST FV FVSCHEDULE GAMMA GAMMA.DIST GAMMADIST GAMMA.INV GAMMAINV GAMMALN GAMMALN.PRECISE GAUSS GCD GEOMEAN GESTEP GETPIVOTDATA GROWTH HARMEAN HEX2BIN HEX2DEC HEX2OCT HLOOKUP HOUR HYPERLINK HYPGEOM.DIST HYPGEOMDIST IF IFERROR IFNA IFS IMABS IMAGINARY IMARGUMENT IMCONJUGATE IMCOS IMCOSH IMCOT IMCSC IMCSCH IMDIV IMEXP IMLN IMLOG10 IMLOG2 IMPOWER IMPRODUCT IMREAL IMSEC IMSECH IMSIN IMSINH IMSQRT IMSUB IMSUM IMTAN INDEX INDIRECT INFO INT INTERCEPT INTRATE IPMT IRR ISBLANK ISERR ISERROR ISEVEN ISFORMULA ISLOGICAL ISNA ISNONTEXT ISNUMBER ISODD ISREF ISTEXT ISO.CEILING ISOWEEKNUM ISPMT JIS KURT LARGE LCM LEFT LEFTB LEN LENB LINEST LN LOG LOG10 LOGEST LOGINV LOGNORM.DIST LOGNORMDIST LOGNORM.INV LOOKUP LOWER MATCH MAX MAXA MAXIFS MDETERM MDURATION MEDIAN MID MIDBs MIN MINIFS MINA MINUTE MINVERSE MIRR MMULT MOD MODE MODE.MULT MODE.SNGL MONTH MROUND MULTINOMIAL MUNIT N NA NEGBINOM.DIST NEGBINOMDIST NETWORKDAYS NETWORKDAYS.INTL NOMINAL NORM.DIST NORMDIST NORMINV NORM.INV NORM.S.DIST NORMSDIST NORM.S.INV NORMSINV NOT NOW NPER NPV NUMBERVALUE OCT2BIN OCT2DEC OCT2HEX ODD ODDFPRICE ODDFYIELD ODDLPRICE ODDLYIELD OFFSET OR PDURATION PEARSON PERCENTILE.EXC PERCENTILE.INC PERCENTILE PERCENTRANK.EXC PERCENTRANK.INC PERCENTRANK PERMUT PERMUTATIONA PHI PHONETIC PI PMT POISSON.DIST POISSON POWER PPMT PRICE PRICEDISC PRICEMAT PROB PRODUCT PROPER PV QUARTILE QUARTILE.EXC QUARTILE.INC QUOTIENT RADIANS RAND RANDBETWEEN RANK.AVG RANK.EQ RANK RATE RECEIVED REGISTER.ID REPLACE REPLACEB REPT RIGHT RIGHTB ROMAN ROUND ROUNDDOWN ROUNDUP ROW ROWS RRI RSQ RTD SEARCH SEARCHB SEC SECH SECOND SERIESSUM SHEET SHEETS SIGN SIN SINH SKEW SKEW.P SLN SLOPE SMALL SQL.REQUEST SQRT SQRTPI STANDARDIZE STDEV STDEV.P STDEV.S STDEVA STDEVP STDEVPA STEYX SUBSTITUTE SUBTOTAL SUM SUMIF SUMIFS SUMPRODUCT SUMSQ SUMX2MY2 SUMX2PY2 SUMXMY2 SWITCH SYD T TAN TANH TBILLEQ TBILLPRICE TBILLYIELD T.DIST T.DIST.2T T.DIST.RT TDIST TEXT TEXTJOIN TIME TIMEVALUE T.INV T.INV.2T TINV TODAY TRANSPOSE TREND TRIM TRIMMEAN TRUE|0 TRUNC T.TEST TTEST TYPE UNICHAR UNICODE UPPER VALUE VAR VAR.P VAR.S VARA VARP VARPA VDB VLOOKUP WEBSERVICE WEEKDAY WEEKNUM WEIBULL WEIBULL.DIST WORKDAY WORKDAY.INTL XIRR XNPV XOR YEAR YEARFRAC YIELD YIELDDISC YIELDMAT Z.TEST ZTEST'
     },
     contains: [
       {
-        /* matches a beginning equal sign found in Excel formula examples */ 
+        /* matches a beginning equal sign found in Excel formula examples */
         begin: /^=/,
         end: /[^=]/, returnEnd: true, illegal: /=/, /* only allow single equal sign at front of line */
         relevance: 10
@@ -8843,7 +9292,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -8876,7 +9325,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -8925,7 +9374,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -9000,7 +9449,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -9063,7 +9512,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -9221,7 +9670,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -9516,7 +9965,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -9587,7 +10036,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -9628,7 +10077,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -9749,12 +10198,12 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var GML_KEYWORDS = {
-    keywords: 'begin end if then else while do for break continue with until ' +
+    keyword: 'begin end if then else while do for break continue with until ' +
       'repeat exit and or xor not return mod div switch case default var ' +
       'globalvar enum #macro #region #endregion',
     built_in: 'is_real is_string is_array is_undefined is_int32 is_int64 ' +
@@ -10626,7 +11075,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -10652,14 +11101,14 @@ module.exports = function(hljs) {
         className: 'string',
         variants: [
           hljs.QUOTE_STRING_MODE,
-          {begin: '\'', end: '[^\\\\]\''},
+          hljs.APOS_STRING_MODE,
           {begin: '`', end: '`'},
         ]
       },
       {
         className: 'number',
         variants: [
-          {begin: hljs.C_NUMBER_RE + '[dflsi]', relevance: 1},
+          {begin: hljs.C_NUMBER_RE + '[i]', relevance: 1},
           hljs.C_NUMBER_MODE
         ]
       },
@@ -10668,7 +11117,7 @@ module.exports = function(hljs) {
       },
       {
         className: 'function',
-        beginKeywords: 'func', end: /\s*\{/, excludeEnd: true,
+        beginKeywords: 'func', end: '\\s*(\\{|$)', excludeEnd: true,
         contains: [
           hljs.TITLE_MODE,
           {
@@ -10684,7 +11133,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -10711,7 +11160,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -10750,7 +11199,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -10848,7 +11297,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 182 */
+/* 187 */
 /***/ (function(module, exports) {
 
 module.exports = // TODO support filter tags like :javascript, support inline HTML
@@ -10959,45 +11408,86 @@ function(hljs) {
 };
 
 /***/ }),
-/* 183 */
+/* 188 */
 /***/ (function(module, exports) {
 
-module.exports = function(hljs) {
-  var BUILT_INS = {'builtin-name': 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield'};
+module.exports = function (hljs) {
+  var BUILT_INS = {'builtin-name': 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield lookup'};
+
+  var IDENTIFIER_PLAIN_OR_QUOTED = {
+    begin: /".*?"|'.*?'|\[.*?\]|\w+/
+  };
+
+  var EXPRESSION_OR_HELPER_CALL = hljs.inherit(IDENTIFIER_PLAIN_OR_QUOTED, {
+    keywords: BUILT_INS,
+    starts: {
+      // helper params
+      endsWithParent: true,
+      relevance: 0,
+      contains: [hljs.inherit(IDENTIFIER_PLAIN_OR_QUOTED, {relevance: 0})]
+    }
+  });
+
+  var BLOCK_MUSTACHE_CONTENTS = hljs.inherit(EXPRESSION_OR_HELPER_CALL, {
+    className: 'name'
+  });
+
+  var BASIC_MUSTACHE_CONTENTS = hljs.inherit(EXPRESSION_OR_HELPER_CALL, {
+    // relevance 0 for backward compatibility concerning auto-detection
+    relevance: 0
+  });
+
+  var ESCAPE_MUSTACHE_WITH_PRECEEDING_BACKSLASH = {begin: /\\\{\{/, skip: true};
+  var PREVENT_ESCAPE_WITH_ANOTHER_PRECEEDING_BACKSLASH = {begin: /\\\\(?=\{\{)/, skip: true};
+
   return {
     aliases: ['hbs', 'html.hbs', 'html.handlebars'],
     case_insensitive: true,
     subLanguage: 'xml',
     contains: [
-    hljs.COMMENT('{{!(--)?', '(--)?}}'),
+      ESCAPE_MUSTACHE_WITH_PRECEEDING_BACKSLASH,
+      PREVENT_ESCAPE_WITH_ANOTHER_PRECEEDING_BACKSLASH,
+      hljs.COMMENT(/\{\{!--/, /--\}\}/),
+      hljs.COMMENT(/\{\{!/, /\}\}/),
       {
+        // open raw block "{{{{raw}}}} content not evaluated {{{{/raw}}}}"
         className: 'template-tag',
-        begin: /\{\{[#\/]/, end: /\}\}/,
-        contains: [
-          {
-            className: 'name',
-            begin: /[a-zA-Z\.-]+/,
-            keywords: BUILT_INS,
-            starts: {
-              endsWithParent: true, relevance: 0,
-              contains: [
-                hljs.QUOTE_STRING_MODE
-              ]
-            }
-          }
-        ]
+        begin: /\{\{\{\{(?!\/)/, end: /\}\}\}\}/,
+        contains: [BLOCK_MUSTACHE_CONTENTS],
+        starts: {end: /\{\{\{\{\//, returnEnd: true, subLanguage: 'xml'}
       },
       {
+        // close raw block
+        className: 'template-tag',
+        begin: /\{\{\{\{\//, end: /\}\}\}\}/,
+        contains: [BLOCK_MUSTACHE_CONTENTS]
+      },
+      {
+        // open block statement
+        className: 'template-tag',
+        begin: /\{\{[#\/]/, end: /\}\}/,
+        contains: [BLOCK_MUSTACHE_CONTENTS],
+      },
+      {
+        // template variable or helper-call that is NOT html-escaped
+        className: 'template-variable',
+        begin: /\{\{\{/, end: /\}\}\}/,
+        keywords: BUILT_INS,
+        contains: [BASIC_MUSTACHE_CONTENTS]
+      },
+      {
+        // template variable or helper-call that is html-escaped
         className: 'template-variable',
         begin: /\{\{/, end: /\}\}/,
-        keywords: BUILT_INS
+        keywords: BUILT_INS,
+        contains: [BASIC_MUSTACHE_CONTENTS]
       }
     ]
   };
 };
 
 /***/ }),
-/* 184 */
+/* 189 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11123,7 +11613,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 185 */
+/* 190 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11239,7 +11729,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11289,7 +11779,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11364,7 +11854,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11409,7 +11899,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11515,7 +12005,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11576,7 +12066,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 191 */
+/* 196 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11648,7 +12138,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 192 */
+/* 197 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -11728,7 +12218,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 193 */
+/* 198 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -14856,7 +15346,7 @@ module.exports = function(hljs) {
     keywords: KEYWORDS,
     begin: UNDERSCORE_IDENT_RE,
     relevance: 0,
-    containts: [TYPES, METHODS],
+    contains: [TYPES, METHODS],
   };
 
   // Имена функций
@@ -14905,7 +15395,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 194 */
+/* 199 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15017,7 +15507,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 195 */
+/* 200 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15045,9 +15535,9 @@ module.exports = function(hljs) {
   var NUMBER = {
     className: 'number',
     variants: [
-      { begin: '\\b(0[bB][01]+)' },
-      { begin: '\\b(0[oO][0-7]+)' },
-      { begin: hljs.C_NUMBER_RE }
+      { begin: '\\b(0[bB][01]+)n?' },
+      { begin: '\\b(0[oO][0-7]+)n?' },
+      { begin: hljs.C_NUMBER_RE + 'n?' }
     ],
     relevance: 0
   };
@@ -15056,6 +15546,28 @@ module.exports = function(hljs) {
     begin: '\\$\\{', end: '\\}',
     keywords: KEYWORDS,
     contains: []  // defined later
+  };
+  var HTML_TEMPLATE = {
+    begin: 'html`', end: '',
+    starts: {
+      end: '`', returnEnd: false,
+      contains: [
+        hljs.BACKSLASH_ESCAPE,
+        SUBST
+      ],
+      subLanguage: 'xml',
+    }
+  };
+  var CSS_TEMPLATE = {
+    begin: 'css`', end: '',
+    starts: {
+      end: '`', returnEnd: false,
+      contains: [
+        hljs.BACKSLASH_ESCAPE,
+        SUBST
+      ],
+      subLanguage: 'css',
+    }
   };
   var TEMPLATE_STRING = {
     className: 'string',
@@ -15068,6 +15580,8 @@ module.exports = function(hljs) {
   SUBST.contains = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
+    HTML_TEMPLATE,
+    CSS_TEMPLATE,
     TEMPLATE_STRING,
     NUMBER,
     hljs.REGEXP_MODE
@@ -15078,7 +15592,7 @@ module.exports = function(hljs) {
   ]);
 
   return {
-    aliases: ['js', 'jsx'],
+    aliases: ['js', 'jsx', 'mjs', 'cjs'],
     keywords: KEYWORDS,
     contains: [
       {
@@ -15092,12 +15606,47 @@ module.exports = function(hljs) {
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
+      HTML_TEMPLATE,
+      CSS_TEMPLATE,
       TEMPLATE_STRING,
       hljs.C_LINE_COMMENT_MODE,
+      hljs.COMMENT(
+        '/\\*\\*',
+        '\\*/',
+        {
+          relevance : 0,
+          contains : [
+            {
+              className : 'doctag',
+              begin : '@[A-Za-z]+',
+              contains : [
+                {
+                  className: 'type',
+                  begin: '\\{',
+                  end: '\\}',
+                  relevance: 0
+                },
+                {
+                  className: 'variable',
+                  begin: IDENT_RE + '(?=\\s*(-)|$)',
+                  endsParent: true,
+                  relevance: 0
+                },
+                // eat spaces (not newlines) so we can find
+                // types or variables
+                {
+                  begin: /(?=[^\n])\s/,
+                  relevance: 0
+                },
+              ]
+            }
+          ]
+        }
+      ),
       hljs.C_BLOCK_COMMENT_MODE,
       NUMBER,
       { // object attr container
-        begin: /[{,]\s*/, relevance: 0,
+        begin: /[{,\n]\s*/, relevance: 0,
         contains: [
           {
             begin: IDENT_RE + '\\s*:', returnBegin: true,
@@ -15197,7 +15746,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 196 */
+/* 201 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -15248,11 +15797,15 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 197 */
+/* 202 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var LITERALS = {literal: 'true false null'};
+  var ALLOWED_COMMENTS = [
+    hljs.C_LINE_COMMENT_MODE,
+    hljs.C_BLOCK_COMMENT_MODE
+  ]
   var TYPES = [
     hljs.QUOTE_STRING_MODE,
     hljs.C_NUMBER_MODE
@@ -15272,7 +15825,7 @@ module.exports = function(hljs) {
         illegal: '\\n',
       },
       hljs.inherit(VALUE_CONTAINER, {begin: /:/})
-    ],
+    ].concat(ALLOWED_COMMENTS),
     illegal: '\\S'
   };
   var ARRAY = {
@@ -15280,7 +15833,10 @@ module.exports = function(hljs) {
     contains: [hljs.inherit(VALUE_CONTAINER)], // inherit is a workaround for a bug that makes shared modes with endsWithParent compile only the ending of one of the parents
     illegal: '\\S'
   };
-  TYPES.splice(TYPES.length, 0, OBJECT, ARRAY);
+  TYPES.push(OBJECT, ARRAY);
+  ALLOWED_COMMENTS.forEach(function(rule) {
+    TYPES.push(rule)
+  })
   return {
     contains: TYPES,
     keywords: LITERALS,
@@ -15289,7 +15845,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 198 */
+/* 203 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15455,7 +16011,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 199 */
+/* 204 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15483,7 +16039,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 200 */
+/* 205 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15520,7 +16076,7 @@ module.exports = function(hljs) {
   // for string templates
   var SUBST = {
     className: 'subst',
-    begin: '\\${', end: '}', contains: [hljs.APOS_STRING_MODE, hljs.C_NUMBER_MODE]
+    begin: '\\${', end: '}', contains: [hljs.C_NUMBER_MODE]
   };
   var VARIABLE = {
     className: 'variable', begin: '\\$' + hljs.UNDERSCORE_IDENT_RE
@@ -15529,7 +16085,7 @@ module.exports = function(hljs) {
     className: 'string',
     variants: [
       {
-        begin: '"""', end: '"""',
+        begin: '"""', end: '"""(?=[^"])',
         contains: [VARIABLE, SUBST]
       },
       // Can't use built-in modes easily, as we want to use STRING in the meta
@@ -15547,6 +16103,7 @@ module.exports = function(hljs) {
       }
     ]
   };
+  SUBST.contains.push(STRING)
 
   var ANNOTATION_USE_SITE = {
     className: 'meta', begin: '@(?:file|property|field|get|set|receiver|param|setparam|delegate)\\s*:(?:\\s*' + hljs.UNDERSCORE_IDENT_RE + ')?'
@@ -15585,6 +16142,23 @@ module.exports = function(hljs) {
     begin: KOTLIN_NUMBER_RE,
     relevance: 0
   };
+  var KOTLIN_NESTED_COMMENT = hljs.COMMENT(
+    '/\\*', '\\*/',
+    { contains: [ hljs.C_BLOCK_COMMENT_MODE ] }
+  );
+  var KOTLIN_PAREN_TYPE = {
+    variants: [
+	  { className: 'type',
+	    begin: hljs.UNDERSCORE_IDENT_RE
+	  },
+	  { begin: /\(/, end: /\)/,
+	    contains: [] //defined later
+	  }
+	]
+  };
+  var KOTLIN_PAREN_TYPE2 = KOTLIN_PAREN_TYPE;
+  KOTLIN_PAREN_TYPE2.variants[1].contains = [ KOTLIN_PAREN_TYPE ];
+  KOTLIN_PAREN_TYPE.variants[1].contains = [ KOTLIN_PAREN_TYPE2 ];
 
   return {
     aliases: ['kt'],
@@ -15602,7 +16176,7 @@ module.exports = function(hljs) {
         }
       ),
       hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
+      KOTLIN_NESTED_COMMENT,
       KEYWORDS_WITH_LABEL,
       LABEL,
       ANNOTATION_USE_SITE,
@@ -15636,21 +16210,21 @@ module.exports = function(hljs) {
               {
                 begin: /:/, end: /[=,\/]/, endsWithParent: true,
                 contains: [
-                  {className: 'type', begin: hljs.UNDERSCORE_IDENT_RE},
+                  KOTLIN_PAREN_TYPE,
                   hljs.C_LINE_COMMENT_MODE,
-                  hljs.C_BLOCK_COMMENT_MODE
+                  KOTLIN_NESTED_COMMENT
                 ],
                 relevance: 0
               },
               hljs.C_LINE_COMMENT_MODE,
-              hljs.C_BLOCK_COMMENT_MODE,
+              KOTLIN_NESTED_COMMENT,
               ANNOTATION_USE_SITE,
               ANNOTATION,
               STRING,
               hljs.C_NUMBER_MODE
             ]
           },
-          hljs.C_BLOCK_COMMENT_MODE
+          KOTLIN_NESTED_COMMENT
         ]
       },
       {
@@ -15686,7 +16260,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 201 */
+/* 206 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15853,7 +16427,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 202 */
+/* 207 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -15880,7 +16454,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 203 */
+/* 208 */
 /***/ (function(module, exports) {
 
 module.exports = function (hljs) {
@@ -15924,7 +16498,7 @@ module.exports = function (hljs) {
 };
 
 /***/ }),
-/* 204 */
+/* 209 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16068,7 +16642,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 205 */
+/* 210 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16175,7 +16749,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 206 */
+/* 211 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16340,7 +16914,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 207 */
+/* 212 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16351,7 +16925,7 @@ module.exports = function(hljs) {
       'switch continue typeof delete debugger case default function var with ' +
       // LiveScript keywords
       'then unless until loop of by when and or is isnt not it that otherwise from to til fallthrough super ' +
-      'case default function var void const let enum export import native ' +
+      'case default function var void const let enum export import native list map ' +
       '__hasProp __extends __slice __bind __indexOf',
     literal:
       // JS literals
@@ -16416,7 +16990,7 @@ module.exports = function(hljs) {
         {
           // regex can't start with space to parse x / 2 / 3 as two divisions
           // regex can't start with *, and it supports an "illegal" in the main mode
-          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W|$)/
+          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W)/
         }
       ]
     },
@@ -16445,6 +17019,10 @@ module.exports = function(hljs) {
     ]
   };
 
+  var SYMBOLS = {
+    begin: '(#=>|=>|\\|>>|-?->|\\!->)'
+  };
+
   return {
     aliases: ['ls'],
     keywords: KEYWORDS,
@@ -16452,6 +17030,7 @@ module.exports = function(hljs) {
     contains: EXPRESSIONS.concat([
       hljs.COMMENT('\\/\\*', '\\*\\/'),
       hljs.HASH_COMMENT_MODE,
+      SYMBOLS, // relevance booster
       {
         className: 'function',
         contains: [TITLE, PARAMS],
@@ -16493,7 +17072,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 208 */
+/* 213 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16586,7 +17165,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 209 */
+/* 214 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16617,7 +17196,7 @@ module.exports = function(hljs) {
                 begin: '\\b(?:PI|TWO_PI|PI_BY_TWO|DEG_TO_RAD|RAD_TO_DEG|SQRT2)\\b'
             },
             {
-                begin: '\\b(?:XP_ERROR_(?:EXPERIENCES_DISABLED|EXPERIENCE_(?:DISABLED|SUSPENDED)|INVALID_(?:EXPERIENCE|PARAMETERS)|KEY_NOT_FOUND|MATURITY_EXCEEDED|NONE|NOT_(?:FOUND|PERMITTED(?:_LAND)?)|NO_EXPERIENCE|QUOTA_EXCEEDED|RETRY_UPDATE|STORAGE_EXCEPTION|STORE_DISABLED|THROTTLED|UNKNOWN_ERROR)|JSON_APPEND|STATUS_(?:PHYSICS|ROTATE_[XYZ]|PHANTOM|SANDBOX|BLOCK_GRAB(?:_OBJECT)?|(?:DIE|RETURN)_AT_EDGE|CAST_SHADOWS|OK|MALFORMED_PARAMS|TYPE_MISMATCH|BOUNDS_ERROR|NOT_(?:FOUND|SUPPORTED)|INTERNAL_ERROR|WHITELIST_FAILED)|AGENT(?:_(?:BY_(?:LEGACY_|USER)NAME|FLYING|ATTACHMENTS|SCRIPTED|MOUSELOOK|SITTING|ON_OBJECT|AWAY|WALKING|IN_AIR|TYPING|CROUCHING|BUSY|ALWAYS_RUN|AUTOPILOT|LIST_(?:PARCEL(?:_OWNER)?|REGION)))?|CAMERA_(?:PITCH|DISTANCE|BEHINDNESS_(?:ANGLE|LAG)|(?:FOCUS|POSITION)(?:_(?:THRESHOLD|LOCKED|LAG))?|FOCUS_OFFSET|ACTIVE)|ANIM_ON|LOOP|REVERSE|PING_PONG|SMOOTH|ROTATE|SCALE|ALL_SIDES|LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)|ACTIVE|PASS(?:IVE|_(?:ALWAYS|IF_NOT_HANDLED|NEVER))|SCRIPTED|CONTROL_(?:FWD|BACK|(?:ROT_)?(?:LEFT|RIGHT)|UP|DOWN|(?:ML_)?LBUTTON)|PERMISSION_(?:RETURN_OBJECTS|DEBIT|OVERRIDE_ANIMATIONS|SILENT_ESTATE_MANAGEMENT|TAKE_CONTROLS|TRIGGER_ANIMATION|ATTACH|CHANGE_LINKS|(?:CONTROL|TRACK)_CAMERA|TELEPORT)|INVENTORY_(?:TEXTURE|SOUND|OBJECT|SCRIPT|LANDMARK|CLOTHING|NOTECARD|BODYPART|ANIMATION|GESTURE|ALL|NONE)|CHANGED_(?:INVENTORY|COLOR|SHAPE|SCALE|TEXTURE|LINK|ALLOWED_DROP|OWNER|REGION(?:_START)?|TELEPORT|MEDIA)|OBJECT_(?:CLICK_ACTION|HOVER_HEIGHT|LAST_OWNER_ID|(?:PHYSICS|SERVER|STREAMING)_COST|UNKNOWN_DETAIL|CHARACTER_TIME|PHANTOM|PHYSICS|TEMP_ON_REZ|NAME|DESC|POS|PRIM_(?:COUNT|EQUIVALENCE)|RETURN_(?:PARCEL(?:_OWNER)?|REGION)|REZZER_KEY|ROO?T|VELOCITY|OMEGA|OWNER|GROUP|CREATOR|ATTACHED_POINT|RENDER_WEIGHT|(?:BODY_SHAPE|PATHFINDING)_TYPE|(?:RUNNING|TOTAL)_SCRIPT_COUNT|TOTAL_INVENTORY_COUNT|SCRIPT_(?:MEMORY|TIME))|TYPE_(?:INTEGER|FLOAT|STRING|KEY|VECTOR|ROTATION|INVALID)|(?:DEBUG|PUBLIC)_CHANNEL|ATTACH_(?:AVATAR_CENTER|CHEST|HEAD|BACK|PELVIS|MOUTH|CHIN|NECK|NOSE|BELLY|[LR](?:SHOULDER|HAND|FOOT|EAR|EYE|[UL](?:ARM|LEG)|HIP)|(?:LEFT|RIGHT)_PEC|HUD_(?:CENTER_[12]|TOP_(?:RIGHT|CENTER|LEFT)|BOTTOM(?:_(?:RIGHT|LEFT))?)|[LR]HAND_RING1|TAIL_(?:BASE|TIP)|[LR]WING|FACE_(?:JAW|[LR]EAR|[LR]EYE|TOUNGE)|GROIN|HIND_[LR]FOOT)|LAND_(?:LEVEL|RAISE|LOWER|SMOOTH|NOISE|REVERT)|DATA_(?:ONLINE|NAME|BORN|SIM_(?:POS|STATUS|RATING)|PAYINFO)|PAYMENT_INFO_(?:ON_FILE|USED)|REMOTE_DATA_(?:CHANNEL|REQUEST|REPLY)|PSYS_(?:PART_(?:BF_(?:ZERO|ONE(?:_MINUS_(?:DEST_COLOR|SOURCE_(ALPHA|COLOR)))?|DEST_COLOR|SOURCE_(ALPHA|COLOR))|BLEND_FUNC_(DEST|SOURCE)|FLAGS|(?:START|END)_(?:COLOR|ALPHA|SCALE|GLOW)|MAX_AGE|(?:RIBBON|WIND|INTERP_(?:COLOR|SCALE)|BOUNCE|FOLLOW_(?:SRC|VELOCITY)|TARGET_(?:POS|LINEAR)|EMISSIVE)_MASK)|SRC_(?:MAX_AGE|PATTERN|ANGLE_(?:BEGIN|END)|BURST_(?:RATE|PART_COUNT|RADIUS|SPEED_(?:MIN|MAX))|ACCEL|TEXTURE|TARGET_KEY|OMEGA|PATTERN_(?:DROP|EXPLODE|ANGLE(?:_CONE(?:_EMPTY)?)?)))|VEHICLE_(?:REFERENCE_FRAME|TYPE_(?:NONE|SLED|CAR|BOAT|AIRPLANE|BALLOON)|(?:LINEAR|ANGULAR)_(?:FRICTION_TIMESCALE|MOTOR_DIRECTION)|LINEAR_MOTOR_OFFSET|HOVER_(?:HEIGHT|EFFICIENCY|TIMESCALE)|BUOYANCY|(?:LINEAR|ANGULAR)_(?:DEFLECTION_(?:EFFICIENCY|TIMESCALE)|MOTOR_(?:DECAY_)?TIMESCALE)|VERTICAL_ATTRACTION_(?:EFFICIENCY|TIMESCALE)|BANKING_(?:EFFICIENCY|MIX|TIMESCALE)|FLAG_(?:NO_DEFLECTION_UP|LIMIT_(?:ROLL_ONLY|MOTOR_UP)|HOVER_(?:(?:WATER|TERRAIN|UP)_ONLY|GLOBAL_HEIGHT)|MOUSELOOK_(?:STEER|BANK)|CAMERA_DECOUPLED))|PRIM_(?:ALPHA_MODE(?:_(?:BLEND|EMISSIVE|MASK|NONE))?|NORMAL|SPECULAR|TYPE(?:_(?:BOX|CYLINDER|PRISM|SPHERE|TORUS|TUBE|RING|SCULPT))?|HOLE_(?:DEFAULT|CIRCLE|SQUARE|TRIANGLE)|MATERIAL(?:_(?:STONE|METAL|GLASS|WOOD|FLESH|PLASTIC|RUBBER))?|SHINY_(?:NONE|LOW|MEDIUM|HIGH)|BUMP_(?:NONE|BRIGHT|DARK|WOOD|BARK|BRICKS|CHECKER|CONCRETE|TILE|STONE|DISKS|GRAVEL|BLOBS|SIDING|LARGETILE|STUCCO|SUCTION|WEAVE)|TEXGEN_(?:DEFAULT|PLANAR)|SCULPT_(?:TYPE_(?:SPHERE|TORUS|PLANE|CYLINDER|MASK)|FLAG_(?:MIRROR|INVERT))|PHYSICS(?:_(?:SHAPE_(?:CONVEX|NONE|PRIM|TYPE)))?|(?:POS|ROT)_LOCAL|SLICE|TEXT|FLEXIBLE|POINT_LIGHT|TEMP_ON_REZ|PHANTOM|POSITION|SIZE|ROTATION|TEXTURE|NAME|OMEGA|DESC|LINK_TARGET|COLOR|BUMP_SHINY|FULLBRIGHT|TEXGEN|GLOW|MEDIA_(?:ALT_IMAGE_ENABLE|CONTROLS|(?:CURRENT|HOME)_URL|AUTO_(?:LOOP|PLAY|SCALE|ZOOM)|FIRST_CLICK_INTERACT|(?:WIDTH|HEIGHT)_PIXELS|WHITELIST(?:_ENABLE)?|PERMS_(?:INTERACT|CONTROL)|PARAM_MAX|CONTROLS_(?:STANDARD|MINI)|PERM_(?:NONE|OWNER|GROUP|ANYONE)|MAX_(?:URL_LENGTH|WHITELIST_(?:SIZE|COUNT)|(?:WIDTH|HEIGHT)_PIXELS)))|MASK_(?:BASE|OWNER|GROUP|EVERYONE|NEXT)|PERM_(?:TRANSFER|MODIFY|COPY|MOVE|ALL)|PARCEL_(?:MEDIA_COMMAND_(?:STOP|PAUSE|PLAY|LOOP|TEXTURE|URL|TIME|AGENT|UNLOAD|AUTO_ALIGN|TYPE|SIZE|DESC|LOOP_SET)|FLAG_(?:ALLOW_(?:FLY|(?:GROUP_)?SCRIPTS|LANDMARK|TERRAFORM|DAMAGE|CREATE_(?:GROUP_)?OBJECTS)|USE_(?:ACCESS_(?:GROUP|LIST)|BAN_LIST|LAND_PASS_LIST)|LOCAL_SOUND_ONLY|RESTRICT_PUSHOBJECT|ALLOW_(?:GROUP|ALL)_OBJECT_ENTRY)|COUNT_(?:TOTAL|OWNER|GROUP|OTHER|SELECTED|TEMP)|DETAILS_(?:NAME|DESC|OWNER|GROUP|AREA|ID|SEE_AVATARS))|LIST_STAT_(?:MAX|MIN|MEAN|MEDIAN|STD_DEV|SUM(?:_SQUARES)?|NUM_COUNT|GEOMETRIC_MEAN|RANGE)|PAY_(?:HIDE|DEFAULT)|REGION_FLAG_(?:ALLOW_DAMAGE|FIXED_SUN|BLOCK_TERRAFORM|SANDBOX|DISABLE_(?:COLLISIONS|PHYSICS)|BLOCK_FLY|ALLOW_DIRECT_TELEPORT|RESTRICT_PUSHOBJECT)|HTTP_(?:METHOD|MIMETYPE|BODY_(?:MAXLENGTH|TRUNCATED)|CUSTOM_HEADER|PRAGMA_NO_CACHE|VERBOSE_THROTTLE|VERIFY_CERT)|STRING_(?:TRIM(?:_(?:HEAD|TAIL))?)|CLICK_ACTION_(?:NONE|TOUCH|SIT|BUY|PAY|OPEN(?:_MEDIA)?|PLAY|ZOOM)|TOUCH_INVALID_FACE|PROFILE_(?:NONE|SCRIPT_MEMORY)|RC_(?:DATA_FLAGS|DETECT_PHANTOM|GET_(?:LINK_NUM|NORMAL|ROOT_KEY)|MAX_HITS|REJECT_(?:TYPES|AGENTS|(?:NON)?PHYSICAL|LAND))|RCERR_(?:CAST_TIME_EXCEEDED|SIM_PERF_LOW|UNKNOWN)|ESTATE_ACCESS_(?:ALLOWED_(?:AGENT|GROUP)_(?:ADD|REMOVE)|BANNED_AGENT_(?:ADD|REMOVE))|DENSITY|FRICTION|RESTITUTION|GRAVITY_MULTIPLIER|KFM_(?:COMMAND|CMD_(?:PLAY|STOP|PAUSE)|MODE|FORWARD|LOOP|PING_PONG|REVERSE|DATA|ROTATION|TRANSLATION)|ERR_(?:GENERIC|PARCEL_PERMISSIONS|MALFORMED_PARAMS|RUNTIME_PERMISSIONS|THROTTLED)|CHARACTER_(?:CMD_(?:(?:SMOOTH_)?STOP|JUMP)|DESIRED_(?:TURN_)?SPEED|RADIUS|STAY_WITHIN_PARCEL|LENGTH|ORIENTATION|ACCOUNT_FOR_SKIPPED_FRAMES|AVOIDANCE_MODE|TYPE(?:_(?:[ABCD]|NONE))?|MAX_(?:DECEL|TURN_RADIUS|(?:ACCEL|SPEED)))|PURSUIT_(?:OFFSET|FUZZ_FACTOR|GOAL_TOLERANCE|INTERCEPT)|REQUIRE_LINE_OF_SIGHT|FORCE_DIRECT_PATH|VERTICAL|HORIZONTAL|AVOID_(?:CHARACTERS|DYNAMIC_OBSTACLES|NONE)|PU_(?:EVADE_(?:HIDDEN|SPOTTED)|FAILURE_(?:DYNAMIC_PATHFINDING_DISABLED|INVALID_(?:GOAL|START)|NO_(?:NAVMESH|VALID_DESTINATION)|OTHER|TARGET_GONE|(?:PARCEL_)?UNREACHABLE)|(?:GOAL|SLOWDOWN_DISTANCE)_REACHED)|TRAVERSAL_TYPE(?:_(?:FAST|NONE|SLOW))?|CONTENT_TYPE_(?:ATOM|FORM|HTML|JSON|LLSD|RSS|TEXT|XHTML|XML)|GCNP_(?:RADIUS|STATIC)|(?:PATROL|WANDER)_PAUSE_AT_WAYPOINTS|OPT_(?:AVATAR|CHARACTER|EXCLUSION_VOLUME|LEGACY_LINKSET|MATERIAL_VOLUME|OTHER|STATIC_OBSTACLE|WALKABLE)|SIM_STAT_PCT_CHARS_STEPPED)\\b'
+                begin: '\\b(?:XP_ERROR_(?:EXPERIENCES_DISABLED|EXPERIENCE_(?:DISABLED|SUSPENDED)|INVALID_(?:EXPERIENCE|PARAMETERS)|KEY_NOT_FOUND|MATURITY_EXCEEDED|NONE|NOT_(?:FOUND|PERMITTED(?:_LAND)?)|NO_EXPERIENCE|QUOTA_EXCEEDED|RETRY_UPDATE|STORAGE_EXCEPTION|STORE_DISABLED|THROTTLED|UNKNOWN_ERROR)|JSON_APPEND|STATUS_(?:PHYSICS|ROTATE_[XYZ]|PHANTOM|SANDBOX|BLOCK_GRAB(?:_OBJECT)?|(?:DIE|RETURN)_AT_EDGE|CAST_SHADOWS|OK|MALFORMED_PARAMS|TYPE_MISMATCH|BOUNDS_ERROR|NOT_(?:FOUND|SUPPORTED)|INTERNAL_ERROR|WHITELIST_FAILED)|AGENT(?:_(?:BY_(?:LEGACY_|USER)NAME|FLYING|ATTACHMENTS|SCRIPTED|MOUSELOOK|SITTING|ON_OBJECT|AWAY|WALKING|IN_AIR|TYPING|CROUCHING|BUSY|ALWAYS_RUN|AUTOPILOT|LIST_(?:PARCEL(?:_OWNER)?|REGION)))?|CAMERA_(?:PITCH|DISTANCE|BEHINDNESS_(?:ANGLE|LAG)|(?:FOCUS|POSITION)(?:_(?:THRESHOLD|LOCKED|LAG))?|FOCUS_OFFSET|ACTIVE)|ANIM_ON|LOOP|REVERSE|PING_PONG|SMOOTH|ROTATE|SCALE|ALL_SIDES|LINK_(?:ROOT|SET|ALL_(?:OTHERS|CHILDREN)|THIS)|ACTIVE|PASS(?:IVE|_(?:ALWAYS|IF_NOT_HANDLED|NEVER))|SCRIPTED|CONTROL_(?:FWD|BACK|(?:ROT_)?(?:LEFT|RIGHT)|UP|DOWN|(?:ML_)?LBUTTON)|PERMISSION_(?:RETURN_OBJECTS|DEBIT|OVERRIDE_ANIMATIONS|SILENT_ESTATE_MANAGEMENT|TAKE_CONTROLS|TRIGGER_ANIMATION|ATTACH|CHANGE_LINKS|(?:CONTROL|TRACK)_CAMERA|TELEPORT)|INVENTORY_(?:TEXTURE|SOUND|OBJECT|SCRIPT|LANDMARK|CLOTHING|NOTECARD|BODYPART|ANIMATION|GESTURE|ALL|NONE)|CHANGED_(?:INVENTORY|COLOR|SHAPE|SCALE|TEXTURE|LINK|ALLOWED_DROP|OWNER|REGION(?:_START)?|TELEPORT|MEDIA)|OBJECT_(?:CLICK_ACTION|HOVER_HEIGHT|LAST_OWNER_ID|(?:PHYSICS|SERVER|STREAMING)_COST|UNKNOWN_DETAIL|CHARACTER_TIME|PHANTOM|PHYSICS|TEMP_(?:ATTACHED|ON_REZ)|NAME|DESC|POS|PRIM_(?:COUNT|EQUIVALENCE)|RETURN_(?:PARCEL(?:_OWNER)?|REGION)|REZZER_KEY|ROO?T|VELOCITY|OMEGA|OWNER|GROUP(?:_TAG)?|CREATOR|ATTACHED_(?:POINT|SLOTS_AVAILABLE)|RENDER_WEIGHT|(?:BODY_SHAPE|PATHFINDING)_TYPE|(?:RUNNING|TOTAL)_SCRIPT_COUNT|TOTAL_INVENTORY_COUNT|SCRIPT_(?:MEMORY|TIME))|TYPE_(?:INTEGER|FLOAT|STRING|KEY|VECTOR|ROTATION|INVALID)|(?:DEBUG|PUBLIC)_CHANNEL|ATTACH_(?:AVATAR_CENTER|CHEST|HEAD|BACK|PELVIS|MOUTH|CHIN|NECK|NOSE|BELLY|[LR](?:SHOULDER|HAND|FOOT|EAR|EYE|[UL](?:ARM|LEG)|HIP)|(?:LEFT|RIGHT)_PEC|HUD_(?:CENTER_[12]|TOP_(?:RIGHT|CENTER|LEFT)|BOTTOM(?:_(?:RIGHT|LEFT))?)|[LR]HAND_RING1|TAIL_(?:BASE|TIP)|[LR]WING|FACE_(?:JAW|[LR]EAR|[LR]EYE|TOUNGE)|GROIN|HIND_[LR]FOOT)|LAND_(?:LEVEL|RAISE|LOWER|SMOOTH|NOISE|REVERT)|DATA_(?:ONLINE|NAME|BORN|SIM_(?:POS|STATUS|RATING)|PAYINFO)|PAYMENT_INFO_(?:ON_FILE|USED)|REMOTE_DATA_(?:CHANNEL|REQUEST|REPLY)|PSYS_(?:PART_(?:BF_(?:ZERO|ONE(?:_MINUS_(?:DEST_COLOR|SOURCE_(ALPHA|COLOR)))?|DEST_COLOR|SOURCE_(ALPHA|COLOR))|BLEND_FUNC_(DEST|SOURCE)|FLAGS|(?:START|END)_(?:COLOR|ALPHA|SCALE|GLOW)|MAX_AGE|(?:RIBBON|WIND|INTERP_(?:COLOR|SCALE)|BOUNCE|FOLLOW_(?:SRC|VELOCITY)|TARGET_(?:POS|LINEAR)|EMISSIVE)_MASK)|SRC_(?:MAX_AGE|PATTERN|ANGLE_(?:BEGIN|END)|BURST_(?:RATE|PART_COUNT|RADIUS|SPEED_(?:MIN|MAX))|ACCEL|TEXTURE|TARGET_KEY|OMEGA|PATTERN_(?:DROP|EXPLODE|ANGLE(?:_CONE(?:_EMPTY)?)?)))|VEHICLE_(?:REFERENCE_FRAME|TYPE_(?:NONE|SLED|CAR|BOAT|AIRPLANE|BALLOON)|(?:LINEAR|ANGULAR)_(?:FRICTION_TIMESCALE|MOTOR_DIRECTION)|LINEAR_MOTOR_OFFSET|HOVER_(?:HEIGHT|EFFICIENCY|TIMESCALE)|BUOYANCY|(?:LINEAR|ANGULAR)_(?:DEFLECTION_(?:EFFICIENCY|TIMESCALE)|MOTOR_(?:DECAY_)?TIMESCALE)|VERTICAL_ATTRACTION_(?:EFFICIENCY|TIMESCALE)|BANKING_(?:EFFICIENCY|MIX|TIMESCALE)|FLAG_(?:NO_DEFLECTION_UP|LIMIT_(?:ROLL_ONLY|MOTOR_UP)|HOVER_(?:(?:WATER|TERRAIN|UP)_ONLY|GLOBAL_HEIGHT)|MOUSELOOK_(?:STEER|BANK)|CAMERA_DECOUPLED))|PRIM_(?:ALLOW_UNSIT|ALPHA_MODE(?:_(?:BLEND|EMISSIVE|MASK|NONE))?|NORMAL|SPECULAR|TYPE(?:_(?:BOX|CYLINDER|PRISM|SPHERE|TORUS|TUBE|RING|SCULPT))?|HOLE_(?:DEFAULT|CIRCLE|SQUARE|TRIANGLE)|MATERIAL(?:_(?:STONE|METAL|GLASS|WOOD|FLESH|PLASTIC|RUBBER))?|SHINY_(?:NONE|LOW|MEDIUM|HIGH)|BUMP_(?:NONE|BRIGHT|DARK|WOOD|BARK|BRICKS|CHECKER|CONCRETE|TILE|STONE|DISKS|GRAVEL|BLOBS|SIDING|LARGETILE|STUCCO|SUCTION|WEAVE)|TEXGEN_(?:DEFAULT|PLANAR)|SCRIPTED_SIT_ONLY|SCULPT_(?:TYPE_(?:SPHERE|TORUS|PLANE|CYLINDER|MASK)|FLAG_(?:MIRROR|INVERT))|PHYSICS(?:_(?:SHAPE_(?:CONVEX|NONE|PRIM|TYPE)))?|(?:POS|ROT)_LOCAL|SLICE|TEXT|FLEXIBLE|POINT_LIGHT|TEMP_ON_REZ|PHANTOM|POSITION|SIT_TARGET|SIZE|ROTATION|TEXTURE|NAME|OMEGA|DESC|LINK_TARGET|COLOR|BUMP_SHINY|FULLBRIGHT|TEXGEN|GLOW|MEDIA_(?:ALT_IMAGE_ENABLE|CONTROLS|(?:CURRENT|HOME)_URL|AUTO_(?:LOOP|PLAY|SCALE|ZOOM)|FIRST_CLICK_INTERACT|(?:WIDTH|HEIGHT)_PIXELS|WHITELIST(?:_ENABLE)?|PERMS_(?:INTERACT|CONTROL)|PARAM_MAX|CONTROLS_(?:STANDARD|MINI)|PERM_(?:NONE|OWNER|GROUP|ANYONE)|MAX_(?:URL_LENGTH|WHITELIST_(?:SIZE|COUNT)|(?:WIDTH|HEIGHT)_PIXELS)))|MASK_(?:BASE|OWNER|GROUP|EVERYONE|NEXT)|PERM_(?:TRANSFER|MODIFY|COPY|MOVE|ALL)|PARCEL_(?:MEDIA_COMMAND_(?:STOP|PAUSE|PLAY|LOOP|TEXTURE|URL|TIME|AGENT|UNLOAD|AUTO_ALIGN|TYPE|SIZE|DESC|LOOP_SET)|FLAG_(?:ALLOW_(?:FLY|(?:GROUP_)?SCRIPTS|LANDMARK|TERRAFORM|DAMAGE|CREATE_(?:GROUP_)?OBJECTS)|USE_(?:ACCESS_(?:GROUP|LIST)|BAN_LIST|LAND_PASS_LIST)|LOCAL_SOUND_ONLY|RESTRICT_PUSHOBJECT|ALLOW_(?:GROUP|ALL)_OBJECT_ENTRY)|COUNT_(?:TOTAL|OWNER|GROUP|OTHER|SELECTED|TEMP)|DETAILS_(?:NAME|DESC|OWNER|GROUP|AREA|ID|SEE_AVATARS))|LIST_STAT_(?:MAX|MIN|MEAN|MEDIAN|STD_DEV|SUM(?:_SQUARES)?|NUM_COUNT|GEOMETRIC_MEAN|RANGE)|PAY_(?:HIDE|DEFAULT)|REGION_FLAG_(?:ALLOW_DAMAGE|FIXED_SUN|BLOCK_TERRAFORM|SANDBOX|DISABLE_(?:COLLISIONS|PHYSICS)|BLOCK_FLY|ALLOW_DIRECT_TELEPORT|RESTRICT_PUSHOBJECT)|HTTP_(?:METHOD|MIMETYPE|BODY_(?:MAXLENGTH|TRUNCATED)|CUSTOM_HEADER|PRAGMA_NO_CACHE|VERBOSE_THROTTLE|VERIFY_CERT)|SIT_(?:INVALID_(?:AGENT|LINK_OBJECT)|NO(?:T_EXPERIENCE|_(?:ACCESS|EXPERIENCE_PERMISSION|SIT_TARGET)))|STRING_(?:TRIM(?:_(?:HEAD|TAIL))?)|CLICK_ACTION_(?:NONE|TOUCH|SIT|BUY|PAY|OPEN(?:_MEDIA)?|PLAY|ZOOM)|TOUCH_INVALID_FACE|PROFILE_(?:NONE|SCRIPT_MEMORY)|RC_(?:DATA_FLAGS|DETECT_PHANTOM|GET_(?:LINK_NUM|NORMAL|ROOT_KEY)|MAX_HITS|REJECT_(?:TYPES|AGENTS|(?:NON)?PHYSICAL|LAND))|RCERR_(?:CAST_TIME_EXCEEDED|SIM_PERF_LOW|UNKNOWN)|ESTATE_ACCESS_(?:ALLOWED_(?:AGENT|GROUP)_(?:ADD|REMOVE)|BANNED_AGENT_(?:ADD|REMOVE))|DENSITY|FRICTION|RESTITUTION|GRAVITY_MULTIPLIER|KFM_(?:COMMAND|CMD_(?:PLAY|STOP|PAUSE)|MODE|FORWARD|LOOP|PING_PONG|REVERSE|DATA|ROTATION|TRANSLATION)|ERR_(?:GENERIC|PARCEL_PERMISSIONS|MALFORMED_PARAMS|RUNTIME_PERMISSIONS|THROTTLED)|CHARACTER_(?:CMD_(?:(?:SMOOTH_)?STOP|JUMP)|DESIRED_(?:TURN_)?SPEED|RADIUS|STAY_WITHIN_PARCEL|LENGTH|ORIENTATION|ACCOUNT_FOR_SKIPPED_FRAMES|AVOIDANCE_MODE|TYPE(?:_(?:[ABCD]|NONE))?|MAX_(?:DECEL|TURN_RADIUS|(?:ACCEL|SPEED)))|PURSUIT_(?:OFFSET|FUZZ_FACTOR|GOAL_TOLERANCE|INTERCEPT)|REQUIRE_LINE_OF_SIGHT|FORCE_DIRECT_PATH|VERTICAL|HORIZONTAL|AVOID_(?:CHARACTERS|DYNAMIC_OBSTACLES|NONE)|PU_(?:EVADE_(?:HIDDEN|SPOTTED)|FAILURE_(?:DYNAMIC_PATHFINDING_DISABLED|INVALID_(?:GOAL|START)|NO_(?:NAVMESH|VALID_DESTINATION)|OTHER|TARGET_GONE|(?:PARCEL_)?UNREACHABLE)|(?:GOAL|SLOWDOWN_DISTANCE)_REACHED)|TRAVERSAL_TYPE(?:_(?:FAST|NONE|SLOW))?|CONTENT_TYPE_(?:ATOM|FORM|HTML|JSON|LLSD|RSS|TEXT|XHTML|XML)|GCNP_(?:RADIUS|STATIC)|(?:PATROL|WANDER)_PAUSE_AT_WAYPOINTS|OPT_(?:AVATAR|CHARACTER|EXCLUSION_VOLUME|LEGACY_LINKSET|MATERIAL_VOLUME|OTHER|STATIC_OBSTACLE|WALKABLE)|SIM_STAT_PCT_CHARS_STEPPED)\\b'
             },
             {
                 begin: '\\b(?:FALSE|TRUE)\\b'
@@ -16636,7 +17215,7 @@ module.exports = function(hljs) {
 
     var LSL_FUNCTIONS = {
         className: 'built_in',
-        begin: '\\b(?:ll(?:AgentInExperience|(?:Create|DataSize|Delete|KeyCount|Keys|Read|Update)KeyValue|GetExperience(?:Details|ErrorMessage)|ReturnObjectsBy(?:ID|Owner)|Json(?:2List|[GS]etValue|ValueType)|Sin|Cos|Tan|Atan2|Sqrt|Pow|Abs|Fabs|Frand|Floor|Ceil|Round|Vec(?:Mag|Norm|Dist)|Rot(?:Between|2(?:Euler|Fwd|Left|Up))|(?:Euler|Axes)2Rot|Whisper|(?:Region|Owner)?Say|Shout|Listen(?:Control|Remove)?|Sensor(?:Repeat|Remove)?|Detected(?:Name|Key|Owner|Type|Pos|Vel|Grab|Rot|Group|LinkNumber)|Die|Ground|Wind|(?:[GS]et)(?:AnimationOverride|MemoryLimit|PrimMediaParams|ParcelMusicURL|Object(?:Desc|Name)|PhysicsMaterial|Status|Scale|Color|Alpha|Texture|Pos|Rot|Force|Torque)|ResetAnimationOverride|(?:Scale|Offset|Rotate)Texture|(?:Rot)?Target(?:Remove)?|(?:Stop)?MoveToTarget|Apply(?:Rotational)?Impulse|Set(?:KeyframedMotion|ContentType|RegionPos|(?:Angular)?Velocity|Buoyancy|HoverHeight|ForceAndTorque|TimerEvent|ScriptState|Damage|TextureAnim|Sound(?:Queueing|Radius)|Vehicle(?:Type|(?:Float|Vector|Rotation)Param)|(?:Touch|Sit)?Text|Camera(?:Eye|At)Offset|PrimitiveParams|ClickAction|Link(?:Alpha|Color|PrimitiveParams(?:Fast)?|Texture(?:Anim)?|Camera|Media)|RemoteScriptAccessPin|PayPrice|LocalRot)|ScaleByFactor|Get(?:(?:Max|Min)ScaleFactor|ClosestNavPoint|StaticPath|SimStats|Env|PrimitiveParams|Link(?:PrimitiveParams|Number(?:OfSides)?|Key|Name|Media)|HTTPHeader|FreeURLs|Object(?:Details|PermMask|PrimCount)|Parcel(?:MaxPrims|Details|Prim(?:Count|Owners))|Attached(?:List)?|(?:SPMax|Free|Used)Memory|Region(?:Name|TimeDilation|FPS|Corner|AgentCount)|Root(?:Position|Rotation)|UnixTime|(?:Parcel|Region)Flags|(?:Wall|GMT)clock|SimulatorHostname|BoundingBox|GeometricCenter|Creator|NumberOf(?:Prims|NotecardLines|Sides)|Animation(?:List)?|(?:Camera|Local)(?:Pos|Rot)|Vel|Accel|Omega|Time(?:stamp|OfDay)|(?:Object|CenterOf)?Mass|MassMKS|Energy|Owner|(?:Owner)?Key|SunDirection|Texture(?:Offset|Scale|Rot)|Inventory(?:Number|Name|Key|Type|Creator|PermMask)|Permissions(?:Key)?|StartParameter|List(?:Length|EntryType)|Date|Agent(?:Size|Info|Language|List)|LandOwnerAt|NotecardLine|Script(?:Name|State))|(?:Get|Reset|GetAndReset)Time|PlaySound(?:Slave)?|LoopSound(?:Master|Slave)?|(?:Trigger|Stop|Preload)Sound|(?:(?:Get|Delete)Sub|Insert)String|To(?:Upper|Lower)|Give(?:InventoryList|Money)|RezObject|(?:Stop)?LookAt|Sleep|CollisionFilter|(?:Take|Release)Controls|DetachFromAvatar|AttachToAvatar(?:Temp)?|InstantMessage|(?:GetNext)?Email|StopHover|MinEventDelay|RotLookAt|String(?:Length|Trim)|(?:Start|Stop)Animation|TargetOmega|Request(?:Experience)?Permissions|(?:Create|Break)Link|BreakAllLinks|(?:Give|Remove)Inventory|Water|PassTouches|Request(?:Agent|Inventory)Data|TeleportAgent(?:Home|GlobalCoords)?|ModifyLand|CollisionSound|ResetScript|MessageLinked|PushObject|PassCollisions|AxisAngle2Rot|Rot2(?:Axis|Angle)|A(?:cos|sin)|AngleBetween|AllowInventoryDrop|SubStringIndex|List2(?:CSV|Integer|Json|Float|String|Key|Vector|Rot|List(?:Strided)?)|DeleteSubList|List(?:Statistics|Sort|Randomize|(?:Insert|Find|Replace)List)|EdgeOfWorld|AdjustSoundVolume|Key2Name|TriggerSoundLimited|EjectFromLand|(?:CSV|ParseString)2List|OverMyLand|SameGroup|UnSit|Ground(?:Slope|Normal|Contour)|GroundRepel|(?:Set|Remove)VehicleFlags|(?:AvatarOn)?(?:Link)?SitTarget|Script(?:Danger|Profiler)|Dialog|VolumeDetect|ResetOtherScript|RemoteLoadScriptPin|(?:Open|Close)RemoteDataChannel|SendRemoteData|RemoteDataReply|(?:Integer|String)ToBase64|XorBase64|Log(?:10)?|Base64To(?:String|Integer)|ParseStringKeepNulls|RezAtRoot|RequestSimulatorData|ForceMouselook|(?:Load|Release|(?:E|Une)scape)URL|ParcelMedia(?:CommandList|Query)|ModPow|MapDestination|(?:RemoveFrom|AddTo|Reset)Land(?:Pass|Ban)List|(?:Set|Clear)CameraParams|HTTP(?:Request|Response)|TextBox|DetectedTouch(?:UV|Face|Pos|(?:N|Bin)ormal|ST)|(?:MD5|SHA1|DumpList2)String|Request(?:Secure)?URL|Clear(?:Prim|Link)Media|(?:Link)?ParticleSystem|(?:Get|Request)(?:Username|DisplayName)|RegionSayTo|CastRay|GenerateKey|TransferLindenDollars|ManageEstateAccess|(?:Create|Delete)Character|ExecCharacterCmd|Evade|FleeFrom|NavigateTo|PatrolPoints|Pursue|UpdateCharacter|WanderWithin))\\b'
+        begin: '\\b(?:ll(?:AgentInExperience|(?:Create|DataSize|Delete|KeyCount|Keys|Read|Update)KeyValue|GetExperience(?:Details|ErrorMessage)|ReturnObjectsBy(?:ID|Owner)|Json(?:2List|[GS]etValue|ValueType)|Sin|Cos|Tan|Atan2|Sqrt|Pow|Abs|Fabs|Frand|Floor|Ceil|Round|Vec(?:Mag|Norm|Dist)|Rot(?:Between|2(?:Euler|Fwd|Left|Up))|(?:Euler|Axes)2Rot|Whisper|(?:Region|Owner)?Say|Shout|Listen(?:Control|Remove)?|Sensor(?:Repeat|Remove)?|Detected(?:Name|Key|Owner|Type|Pos|Vel|Grab|Rot|Group|LinkNumber)|Die|Ground|Wind|(?:[GS]et)(?:AnimationOverride|MemoryLimit|PrimMediaParams|ParcelMusicURL|Object(?:Desc|Name)|PhysicsMaterial|Status|Scale|Color|Alpha|Texture|Pos|Rot|Force|Torque)|ResetAnimationOverride|(?:Scale|Offset|Rotate)Texture|(?:Rot)?Target(?:Remove)?|(?:Stop)?MoveToTarget|Apply(?:Rotational)?Impulse|Set(?:KeyframedMotion|ContentType|RegionPos|(?:Angular)?Velocity|Buoyancy|HoverHeight|ForceAndTorque|TimerEvent|ScriptState|Damage|TextureAnim|Sound(?:Queueing|Radius)|Vehicle(?:Type|(?:Float|Vector|Rotation)Param)|(?:Touch|Sit)?Text|Camera(?:Eye|At)Offset|PrimitiveParams|ClickAction|Link(?:Alpha|Color|PrimitiveParams(?:Fast)?|Texture(?:Anim)?|Camera|Media)|RemoteScriptAccessPin|PayPrice|LocalRot)|ScaleByFactor|Get(?:(?:Max|Min)ScaleFactor|ClosestNavPoint|StaticPath|SimStats|Env|PrimitiveParams|Link(?:PrimitiveParams|Number(?:OfSides)?|Key|Name|Media)|HTTPHeader|FreeURLs|Object(?:Details|PermMask|PrimCount)|Parcel(?:MaxPrims|Details|Prim(?:Count|Owners))|Attached(?:List)?|(?:SPMax|Free|Used)Memory|Region(?:Name|TimeDilation|FPS|Corner|AgentCount)|Root(?:Position|Rotation)|UnixTime|(?:Parcel|Region)Flags|(?:Wall|GMT)clock|SimulatorHostname|BoundingBox|GeometricCenter|Creator|NumberOf(?:Prims|NotecardLines|Sides)|Animation(?:List)?|(?:Camera|Local)(?:Pos|Rot)|Vel|Accel|Omega|Time(?:stamp|OfDay)|(?:Object|CenterOf)?Mass|MassMKS|Energy|Owner|(?:Owner)?Key|SunDirection|Texture(?:Offset|Scale|Rot)|Inventory(?:Number|Name|Key|Type|Creator|PermMask)|Permissions(?:Key)?|StartParameter|List(?:Length|EntryType)|Date|Agent(?:Size|Info|Language|List)|LandOwnerAt|NotecardLine|Script(?:Name|State))|(?:Get|Reset|GetAndReset)Time|PlaySound(?:Slave)?|LoopSound(?:Master|Slave)?|(?:Trigger|Stop|Preload)Sound|(?:(?:Get|Delete)Sub|Insert)String|To(?:Upper|Lower)|Give(?:InventoryList|Money)|RezObject|(?:Stop)?LookAt|Sleep|CollisionFilter|(?:Take|Release)Controls|DetachFromAvatar|AttachToAvatar(?:Temp)?|InstantMessage|(?:GetNext)?Email|StopHover|MinEventDelay|RotLookAt|String(?:Length|Trim)|(?:Start|Stop)Animation|TargetOmega|Request(?:Experience)?Permissions|(?:Create|Break)Link|BreakAllLinks|(?:Give|Remove)Inventory|Water|PassTouches|Request(?:Agent|Inventory)Data|TeleportAgent(?:Home|GlobalCoords)?|ModifyLand|CollisionSound|ResetScript|MessageLinked|PushObject|PassCollisions|AxisAngle2Rot|Rot2(?:Axis|Angle)|A(?:cos|sin)|AngleBetween|AllowInventoryDrop|SubStringIndex|List2(?:CSV|Integer|Json|Float|String|Key|Vector|Rot|List(?:Strided)?)|DeleteSubList|List(?:Statistics|Sort|Randomize|(?:Insert|Find|Replace)List)|EdgeOfWorld|AdjustSoundVolume|Key2Name|TriggerSoundLimited|EjectFromLand|(?:CSV|ParseString)2List|OverMyLand|SameGroup|UnSit|Ground(?:Slope|Normal|Contour)|GroundRepel|(?:Set|Remove)VehicleFlags|SitOnLink|(?:AvatarOn)?(?:Link)?SitTarget|Script(?:Danger|Profiler)|Dialog|VolumeDetect|ResetOtherScript|RemoteLoadScriptPin|(?:Open|Close)RemoteDataChannel|SendRemoteData|RemoteDataReply|(?:Integer|String)ToBase64|XorBase64|Log(?:10)?|Base64To(?:String|Integer)|ParseStringKeepNulls|RezAtRoot|RequestSimulatorData|ForceMouselook|(?:Load|Release|(?:E|Une)scape)URL|ParcelMedia(?:CommandList|Query)|ModPow|MapDestination|(?:RemoveFrom|AddTo|Reset)Land(?:Pass|Ban)List|(?:Set|Clear)CameraParams|HTTP(?:Request|Response)|TextBox|DetectedTouch(?:UV|Face|Pos|(?:N|Bin)ormal|ST)|(?:MD5|SHA1|DumpList2)String|Request(?:Secure)?URL|Clear(?:Prim|Link)Media|(?:Link)?ParticleSystem|(?:Get|Request)(?:Username|DisplayName)|RegionSayTo|CastRay|GenerateKey|TransferLindenDollars|ManageEstateAccess|(?:Create|Delete)Character|ExecCharacterCmd|Evade|FleeFrom|NavigateTo|PatrolPoints|Pursue|UpdateCharacter|WanderWithin))\\b'
     };
 
     return {
@@ -16648,7 +17227,8 @@ module.exports = function(hljs) {
                 variants: [
                     hljs.COMMENT('//', '$'),
                     hljs.COMMENT('/\\*', '\\*/')
-                ]
+                ],
+                relevance: 0
             },
             LSL_NUMBERS,
             {
@@ -16673,7 +17253,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 210 */
+/* 215 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16743,7 +17323,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 211 */
+/* 216 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -16785,16 +17365,8 @@ module.exports = function(hljs) {
     ]
   };
   /* Variable assignment */
-  var VAR_ASSIG = {
-    begin: '^' + hljs.UNDERSCORE_IDENT_RE + '\\s*[:+?]?=',
-    illegal: '\\n',
-    returnBegin: true,
-    contains: [
-      {
-        begin: '^' + hljs.UNDERSCORE_IDENT_RE, end: '[:+?]?=',
-        excludeEnd: true,
-      }
-    ]
+  var ASSIGNMENT = {
+    begin: '^' + hljs.UNDERSCORE_IDENT_RE + '\\s*(?=[:+?]?=)'
   };
   /* Meta targets (.PHONY) */
   var META = {
@@ -16820,7 +17392,7 @@ module.exports = function(hljs) {
       VARIABLE,
       QUOTE_STRING,
       FUNC,
-      VAR_ASSIG,
+      ASSIGNMENT,
       META,
       TARGET,
     ]
@@ -16828,69 +17400,60 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 212 */
+/* 217 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   return {
-    aliases: ['mma'],
+    aliases: ['mma', 'wl'],
     lexemes: '(\\$|\\b)' + hljs.IDENT_RE + '\\b',
-    keywords: 'AbelianGroup Abort AbortKernels AbortProtect Above Abs Absolute AbsoluteCorrelation AbsoluteCorrelationFunction AbsoluteCurrentValue AbsoluteDashing AbsoluteFileName AbsoluteOptions AbsolutePointSize AbsoluteThickness AbsoluteTime AbsoluteTiming AccountingForm Accumulate Accuracy AccuracyGoal ActionDelay ActionMenu ActionMenuBox ActionMenuBoxOptions Active ActiveItem ActiveStyle AcyclicGraphQ AddOnHelpPath AddTo AdjacencyGraph AdjacencyList AdjacencyMatrix AdjustmentBox AdjustmentBoxOptions AdjustTimeSeriesForecast AffineTransform After AiryAi AiryAiPrime AiryAiZero AiryBi AiryBiPrime AiryBiZero AlgebraicIntegerQ AlgebraicNumber AlgebraicNumberDenominator AlgebraicNumberNorm AlgebraicNumberPolynomial AlgebraicNumberTrace AlgebraicRules AlgebraicRulesData Algebraics AlgebraicUnitQ Alignment AlignmentMarker AlignmentPoint All AllowedDimensions AllowGroupClose AllowInlineCells AllowKernelInitialization AllowReverseGroupClose AllowScriptLevelChange AlphaChannel AlternatingGroup AlternativeHypothesis Alternatives AmbientLight Analytic AnchoredSearch And AndersonDarlingTest AngerJ AngleBracket AngularGauge Animate AnimationCycleOffset AnimationCycleRepetitions AnimationDirection AnimationDisplayTime AnimationRate AnimationRepetitions AnimationRunning Animator AnimatorBox AnimatorBoxOptions AnimatorElements Annotation Annuity AnnuityDue Antialiasing Antisymmetric Apart ApartSquareFree Appearance AppearanceElements AppellF1 Append AppendTo Apply ArcCos ArcCosh ArcCot ArcCoth ArcCsc ArcCsch ArcSec ArcSech ArcSin ArcSinDistribution ArcSinh ArcTan ArcTanh Arg ArgMax ArgMin ArgumentCountQ ARIMAProcess ArithmeticGeometricMean ARMAProcess ARProcess Array ArrayComponents ArrayDepth ArrayFlatten ArrayPad ArrayPlot ArrayQ ArrayReshape ArrayRules Arrays Arrow Arrow3DBox ArrowBox Arrowheads AspectRatio AspectRatioFixed Assert Assuming Assumptions AstronomicalData Asynchronous AsynchronousTaskObject AsynchronousTasks AtomQ Attributes AugmentedSymmetricPolynomial AutoAction AutoDelete AutoEvaluateEvents AutoGeneratedPackage AutoIndent AutoIndentSpacings AutoItalicWords AutoloadPath AutoMatch Automatic AutomaticImageSize AutoMultiplicationSymbol AutoNumberFormatting AutoOpenNotebooks AutoOpenPalettes AutorunSequencing AutoScaling AutoScroll AutoSpacing AutoStyleOptions AutoStyleWords Axes AxesEdge AxesLabel AxesOrigin AxesStyle Axis ' +
-      'BabyMonsterGroupB Back Background BackgroundTasksSettings Backslash Backsubstitution Backward Band BandpassFilter BandstopFilter BarabasiAlbertGraphDistribution BarChart BarChart3D BarLegend BarlowProschanImportance BarnesG BarOrigin BarSpacing BartlettHannWindow BartlettWindow BaseForm Baseline BaselinePosition BaseStyle BatesDistribution BattleLemarieWavelet Because BeckmannDistribution Beep Before Begin BeginDialogPacket BeginFrontEndInteractionPacket BeginPackage BellB BellY Below BenfordDistribution BeniniDistribution BenktanderGibratDistribution BenktanderWeibullDistribution BernoulliB BernoulliDistribution BernoulliGraphDistribution BernoulliProcess BernsteinBasis BesselFilterModel BesselI BesselJ BesselJZero BesselK BesselY BesselYZero Beta BetaBinomialDistribution BetaDistribution BetaNegativeBinomialDistribution BetaPrimeDistribution BetaRegularized BetweennessCentrality BezierCurve BezierCurve3DBox BezierCurve3DBoxOptions BezierCurveBox BezierCurveBoxOptions BezierFunction BilateralFilter Binarize BinaryFormat BinaryImageQ BinaryRead BinaryReadList BinaryWrite BinCounts BinLists Binomial BinomialDistribution BinomialProcess BinormalDistribution BiorthogonalSplineWavelet BipartiteGraphQ BirnbaumImportance BirnbaumSaundersDistribution BitAnd BitClear BitGet BitLength BitNot BitOr BitSet BitShiftLeft BitShiftRight BitXor Black BlackmanHarrisWindow BlackmanNuttallWindow BlackmanWindow Blank BlankForm BlankNullSequence BlankSequence Blend Block BlockRandom BlomqvistBeta BlomqvistBetaTest Blue Blur BodePlot BohmanWindow Bold Bookmarks Boole BooleanConsecutiveFunction BooleanConvert BooleanCountingFunction BooleanFunction BooleanGraph BooleanMaxterms BooleanMinimize BooleanMinterms Booleans BooleanTable BooleanVariables BorderDimensions BorelTannerDistribution Bottom BottomHatTransform BoundaryStyle Bounds Box BoxBaselineShift BoxData BoxDimensions Boxed Boxes BoxForm BoxFormFormatTypes BoxFrame BoxID BoxMargins BoxMatrix BoxRatios BoxRotation BoxRotationPoint BoxStyle BoxWhiskerChart Bra BracketingBar BraKet BrayCurtisDistance BreadthFirstScan Break Brown BrownForsytheTest BrownianBridgeProcess BrowserCategory BSplineBasis BSplineCurve BSplineCurve3DBox BSplineCurveBox BSplineCurveBoxOptions BSplineFunction BSplineSurface BSplineSurface3DBox BubbleChart BubbleChart3D BubbleScale BubbleSizes BulletGauge BusinessDayQ ButterflyGraph ButterworthFilterModel Button ButtonBar ButtonBox ButtonBoxOptions ButtonCell ButtonContents ButtonData ButtonEvaluator ButtonExpandable ButtonFrame ButtonFunction ButtonMargins ButtonMinHeight ButtonNote ButtonNotebook ButtonSource ButtonStyle ButtonStyleMenuListing Byte ByteCount ByteOrdering ' +
-      'C CachedValue CacheGraphics CalendarData CalendarType CallPacket CanberraDistance Cancel CancelButton CandlestickChart Cap CapForm CapitalDifferentialD CardinalBSplineBasis CarmichaelLambda Cases Cashflow Casoratian Catalan CatalanNumber Catch CauchyDistribution CauchyWindow CayleyGraph CDF CDFDeploy CDFInformation CDFWavelet Ceiling Cell CellAutoOverwrite CellBaseline CellBoundingBox CellBracketOptions CellChangeTimes CellContents CellContext CellDingbat CellDynamicExpression CellEditDuplicate CellElementsBoundingBox CellElementSpacings CellEpilog CellEvaluationDuplicate CellEvaluationFunction CellEventActions CellFrame CellFrameColor CellFrameLabelMargins CellFrameLabels CellFrameMargins CellGroup CellGroupData CellGrouping CellGroupingRules CellHorizontalScrolling CellID CellLabel CellLabelAutoDelete CellLabelMargins CellLabelPositioning CellMargins CellObject CellOpen CellPrint CellProlog Cells CellSize CellStyle CellTags CellularAutomaton CensoredDistribution Censoring Center CenterDot CentralMoment CentralMomentGeneratingFunction CForm ChampernowneNumber ChanVeseBinarize Character CharacterEncoding CharacterEncodingsPath CharacteristicFunction CharacteristicPolynomial CharacterRange Characters ChartBaseStyle ChartElementData ChartElementDataFunction ChartElementFunction ChartElements ChartLabels ChartLayout ChartLegends ChartStyle Chebyshev1FilterModel Chebyshev2FilterModel ChebyshevDistance ChebyshevT ChebyshevU Check CheckAbort CheckAll Checkbox CheckboxBar CheckboxBox CheckboxBoxOptions ChemicalData ChessboardDistance ChiDistribution ChineseRemainder ChiSquareDistribution ChoiceButtons ChoiceDialog CholeskyDecomposition Chop Circle CircleBox CircleDot CircleMinus CirclePlus CircleTimes CirculantGraph CityData Clear ClearAll ClearAttributes ClearSystemCache ClebschGordan ClickPane Clip ClipboardNotebook ClipFill ClippingStyle ClipPlanes ClipRange Clock ClockGauge ClockwiseContourIntegral Close Closed CloseKernels ClosenessCentrality Closing ClosingAutoSave ClosingEvent ClusteringComponents CMYKColor Coarse Coefficient CoefficientArrays CoefficientDomain CoefficientList CoefficientRules CoifletWavelet Collect Colon ColonForm ColorCombine ColorConvert ColorData ColorDataFunction ColorFunction ColorFunctionScaling Colorize ColorNegate ColorOutput ColorProfileData ColorQuantize ColorReplace ColorRules ColorSelectorSettings ColorSeparate ColorSetter ColorSetterBox ColorSetterBoxOptions ColorSlider ColorSpace Column ColumnAlignments ColumnBackgrounds ColumnForm ColumnLines ColumnsEqual ColumnSpacings ColumnWidths CommonDefaultFormatTypes Commonest CommonestFilter CommonUnits CommunityBoundaryStyle CommunityGraphPlot CommunityLabels CommunityRegionStyle CompatibleUnitQ CompilationOptions CompilationTarget Compile Compiled CompiledFunction Complement CompleteGraph CompleteGraphQ CompleteKaryTree CompletionsListPacket Complex Complexes ComplexExpand ComplexInfinity ComplexityFunction ComponentMeasurements ' +
-      'ComponentwiseContextMenu Compose ComposeList ComposeSeries Composition CompoundExpression CompoundPoissonDistribution CompoundPoissonProcess CompoundRenewalProcess Compress CompressedData Condition ConditionalExpression Conditioned Cone ConeBox ConfidenceLevel ConfidenceRange ConfidenceTransform ConfigurationPath Congruent Conjugate ConjugateTranspose Conjunction Connect ConnectedComponents ConnectedGraphQ ConnesWindow ConoverTest ConsoleMessage ConsoleMessagePacket ConsolePrint Constant ConstantArray Constants ConstrainedMax ConstrainedMin ContentPadding ContentsBoundingBox ContentSelectable ContentSize Context ContextMenu Contexts ContextToFilename ContextToFileName Continuation Continue ContinuedFraction ContinuedFractionK ContinuousAction ContinuousMarkovProcess ContinuousTimeModelQ ContinuousWaveletData ContinuousWaveletTransform ContourDetect ContourGraphics ContourIntegral ContourLabels ContourLines ContourPlot ContourPlot3D Contours ContourShading ContourSmoothing ContourStyle ContraharmonicMean Control ControlActive ControlAlignment ControllabilityGramian ControllabilityMatrix ControllableDecomposition ControllableModelQ ControllerDuration ControllerInformation ControllerInformationData ControllerLinking ControllerManipulate ControllerMethod ControllerPath ControllerState ControlPlacement ControlsRendering ControlType Convergents ConversionOptions ConversionRules ConvertToBitmapPacket ConvertToPostScript ConvertToPostScriptPacket Convolve ConwayGroupCo1 ConwayGroupCo2 ConwayGroupCo3 CoordinateChartData CoordinatesToolOptions CoordinateTransform CoordinateTransformData CoprimeQ Coproduct CopulaDistribution Copyable CopyDirectory CopyFile CopyTag CopyToClipboard CornerFilter CornerNeighbors Correlation CorrelationDistance CorrelationFunction CorrelationTest Cos Cosh CoshIntegral CosineDistance CosineWindow CosIntegral Cot Coth Count CounterAssignments CounterBox CounterBoxOptions CounterClockwiseContourIntegral CounterEvaluator CounterFunction CounterIncrements CounterStyle CounterStyleMenuListing CountRoots CountryData Covariance CovarianceEstimatorFunction CovarianceFunction CoxianDistribution CoxIngersollRossProcess CoxModel CoxModelFit CramerVonMisesTest CreateArchive CreateDialog CreateDirectory CreateDocument CreateIntermediateDirectories CreatePalette CreatePalettePacket CreateScheduledTask CreateTemporary CreateWindow CriticalityFailureImportance CriticalitySuccessImportance CriticalSection Cross CrossingDetect CrossMatrix Csc Csch CubeRoot Cubics Cuboid CuboidBox Cumulant CumulantGeneratingFunction Cup CupCap Curl CurlyDoubleQuote CurlyQuote CurrentImage CurrentlySpeakingPacket CurrentValue CurvatureFlowFilter CurveClosed Cyan CycleGraph CycleIndexPolynomial Cycles CyclicGroup Cyclotomic Cylinder CylinderBox CylindricalDecomposition ' +
-      'D DagumDistribution DamerauLevenshteinDistance DampingFactor Darker Dashed Dashing DataCompression DataDistribution DataRange DataReversed Date DateDelimiters DateDifference DateFunction DateList DateListLogPlot DateListPlot DatePattern DatePlus DateRange DateString DateTicksFormat DaubechiesWavelet DavisDistribution DawsonF DayCount DayCountConvention DayMatchQ DayName DayPlus DayRange DayRound DeBruijnGraph Debug DebugTag Decimal DeclareKnownSymbols DeclarePackage Decompose Decrement DedekindEta Default DefaultAxesStyle DefaultBaseStyle DefaultBoxStyle DefaultButton DefaultColor DefaultControlPlacement DefaultDuplicateCellStyle DefaultDuration DefaultElement DefaultFaceGridsStyle DefaultFieldHintStyle DefaultFont DefaultFontProperties DefaultFormatType DefaultFormatTypeForStyle DefaultFrameStyle DefaultFrameTicksStyle DefaultGridLinesStyle DefaultInlineFormatType DefaultInputFormatType DefaultLabelStyle DefaultMenuStyle DefaultNaturalLanguage DefaultNewCellStyle DefaultNewInlineCellStyle DefaultNotebook DefaultOptions DefaultOutputFormatType DefaultStyle DefaultStyleDefinitions DefaultTextFormatType DefaultTextInlineFormatType DefaultTicksStyle DefaultTooltipStyle DefaultValues Defer DefineExternal DefineInputStreamMethod DefineOutputStreamMethod Definition Degree DegreeCentrality DegreeGraphDistribution DegreeLexicographic DegreeReverseLexicographic Deinitialization Del Deletable Delete DeleteBorderComponents DeleteCases DeleteContents DeleteDirectory DeleteDuplicates DeleteFile DeleteSmallComponents DeleteWithContents DeletionWarning Delimiter DelimiterFlashTime DelimiterMatching Delimiters Denominator DensityGraphics DensityHistogram DensityPlot DependentVariables Deploy Deployed Depth DepthFirstScan Derivative DerivativeFilter DescriptorStateSpace DesignMatrix Det DGaussianWavelet DiacriticalPositioning Diagonal DiagonalMatrix Dialog DialogIndent DialogInput DialogLevel DialogNotebook DialogProlog DialogReturn DialogSymbols Diamond DiamondMatrix DiceDissimilarity DictionaryLookup DifferenceDelta DifferenceOrder DifferenceRoot DifferenceRootReduce Differences DifferentialD DifferentialRoot DifferentialRootReduce DifferentiatorFilter DigitBlock DigitBlockMinimum DigitCharacter DigitCount DigitQ DihedralGroup Dilation Dimensions DiracComb DiracDelta DirectedEdge DirectedEdges DirectedGraph DirectedGraphQ DirectedInfinity Direction Directive Directory DirectoryName DirectoryQ DirectoryStack DirichletCharacter DirichletConvolve DirichletDistribution DirichletL DirichletTransform DirichletWindow DisableConsolePrintPacket DiscreteChirpZTransform DiscreteConvolve DiscreteDelta DiscreteHadamardTransform DiscreteIndicator DiscreteLQEstimatorGains DiscreteLQRegulatorGains DiscreteLyapunovSolve DiscreteMarkovProcess DiscretePlot DiscretePlot3D DiscreteRatio DiscreteRiccatiSolve DiscreteShift DiscreteTimeModelQ DiscreteUniformDistribution DiscreteVariables DiscreteWaveletData DiscreteWaveletPacketTransform ' +
-      'DiscreteWaveletTransform Discriminant Disjunction Disk DiskBox DiskMatrix Dispatch DispersionEstimatorFunction Display DisplayAllSteps DisplayEndPacket DisplayFlushImagePacket DisplayForm DisplayFunction DisplayPacket DisplayRules DisplaySetSizePacket DisplayString DisplayTemporary DisplayWith DisplayWithRef DisplayWithVariable DistanceFunction DistanceTransform Distribute Distributed DistributedContexts DistributeDefinitions DistributionChart DistributionDomain DistributionFitTest DistributionParameterAssumptions DistributionParameterQ Dithering Div Divergence Divide DivideBy Dividers Divisible Divisors DivisorSigma DivisorSum DMSList DMSString Do DockedCells DocumentNotebook DominantColors DOSTextFormat Dot DotDashed DotEqual Dotted DoubleBracketingBar DoubleContourIntegral DoubleDownArrow DoubleLeftArrow DoubleLeftRightArrow DoubleLeftTee DoubleLongLeftArrow DoubleLongLeftRightArrow DoubleLongRightArrow DoubleRightArrow DoubleRightTee DoubleUpArrow DoubleUpDownArrow DoubleVerticalBar DoublyInfinite Down DownArrow DownArrowBar DownArrowUpArrow DownLeftRightVector DownLeftTeeVector DownLeftVector DownLeftVectorBar DownRightTeeVector DownRightVector DownRightVectorBar Downsample DownTee DownTeeArrow DownValues DragAndDrop DrawEdges DrawFrontFaces DrawHighlighted Drop DSolve Dt DualLinearProgramming DualSystemsModel DumpGet DumpSave DuplicateFreeQ Dynamic DynamicBox DynamicBoxOptions DynamicEvaluationTimeout DynamicLocation DynamicModule DynamicModuleBox DynamicModuleBoxOptions DynamicModuleParent DynamicModuleValues DynamicName DynamicNamespace DynamicReference DynamicSetting DynamicUpdating DynamicWrapper DynamicWrapperBox DynamicWrapperBoxOptions ' +
-      'E EccentricityCentrality EdgeAdd EdgeBetweennessCentrality EdgeCapacity EdgeCapForm EdgeColor EdgeConnectivity EdgeCost EdgeCount EdgeCoverQ EdgeDashing EdgeDelete EdgeDetect EdgeForm EdgeIndex EdgeJoinForm EdgeLabeling EdgeLabels EdgeLabelStyle EdgeList EdgeOpacity EdgeQ EdgeRenderingFunction EdgeRules EdgeShapeFunction EdgeStyle EdgeThickness EdgeWeight Editable EditButtonSettings EditCellTagsSettings EditDistance EffectiveInterest Eigensystem Eigenvalues EigenvectorCentrality Eigenvectors Element ElementData Eliminate EliminationOrder EllipticE EllipticExp EllipticExpPrime EllipticF EllipticFilterModel EllipticK EllipticLog EllipticNomeQ EllipticPi EllipticReducedHalfPeriods EllipticTheta EllipticThetaPrime EmitSound EmphasizeSyntaxErrors EmpiricalDistribution Empty EmptyGraphQ EnableConsolePrintPacket Enabled Encode End EndAdd EndDialogPacket EndFrontEndInteractionPacket EndOfFile EndOfLine EndOfString EndPackage EngineeringForm Enter EnterExpressionPacket EnterTextPacket Entropy EntropyFilter Environment Epilog Equal EqualColumns EqualRows EqualTilde EquatedTo Equilibrium EquirippleFilterKernel Equivalent Erf Erfc Erfi ErlangB ErlangC ErlangDistribution Erosion ErrorBox ErrorBoxOptions ErrorNorm ErrorPacket ErrorsDialogSettings EstimatedDistribution EstimatedProcess EstimatorGains EstimatorRegulator EuclideanDistance EulerE EulerGamma EulerianGraphQ EulerPhi Evaluatable Evaluate Evaluated EvaluatePacket EvaluationCell EvaluationCompletionAction EvaluationElements EvaluationMode EvaluationMonitor EvaluationNotebook EvaluationObject EvaluationOrder Evaluator EvaluatorNames EvenQ EventData EventEvaluator EventHandler EventHandlerTag EventLabels ExactBlackmanWindow ExactNumberQ ExactRootIsolation ExampleData Except ExcludedForms ExcludePods Exclusions ExclusionsStyle Exists Exit ExitDialog Exp Expand ExpandAll ExpandDenominator ExpandFileName ExpandNumerator Expectation ExpectationE ExpectedValue ExpGammaDistribution ExpIntegralE ExpIntegralEi Exponent ExponentFunction ExponentialDistribution ExponentialFamily ExponentialGeneratingFunction ExponentialMovingAverage ExponentialPowerDistribution ExponentPosition ExponentStep Export ExportAutoReplacements ExportPacket ExportString Expression ExpressionCell ExpressionPacket ExpToTrig ExtendedGCD Extension ExtentElementFunction ExtentMarkers ExtentSize ExternalCall ExternalDataCharacterEncoding Extract ExtractArchive ExtremeValueDistribution ' +
-      'FaceForm FaceGrids FaceGridsStyle Factor FactorComplete Factorial Factorial2 FactorialMoment FactorialMomentGeneratingFunction FactorialPower FactorInteger FactorList FactorSquareFree FactorSquareFreeList FactorTerms FactorTermsList Fail FailureDistribution False FARIMAProcess FEDisableConsolePrintPacket FeedbackSector FeedbackSectorStyle FeedbackType FEEnableConsolePrintPacket Fibonacci FieldHint FieldHintStyle FieldMasked FieldSize File FileBaseName FileByteCount FileDate FileExistsQ FileExtension FileFormat FileHash FileInformation FileName FileNameDepth FileNameDialogSettings FileNameDrop FileNameJoin FileNames FileNameSetter FileNameSplit FileNameTake FilePrint FileType FilledCurve FilledCurveBox Filling FillingStyle FillingTransform FilterRules FinancialBond FinancialData FinancialDerivative FinancialIndicator Find FindArgMax FindArgMin FindClique FindClusters FindCurvePath FindDistributionParameters FindDivisions FindEdgeCover FindEdgeCut FindEulerianCycle FindFaces FindFile FindFit FindGeneratingFunction FindGeoLocation FindGeometricTransform FindGraphCommunities FindGraphIsomorphism FindGraphPartition FindHamiltonianCycle FindIndependentEdgeSet FindIndependentVertexSet FindInstance FindIntegerNullVector FindKClan FindKClique FindKClub FindKPlex FindLibrary FindLinearRecurrence FindList FindMaximum FindMaximumFlow FindMaxValue FindMinimum FindMinimumCostFlow FindMinimumCut FindMinValue FindPermutation FindPostmanTour FindProcessParameters FindRoot FindSequenceFunction FindSettings FindShortestPath FindShortestTour FindThreshold FindVertexCover FindVertexCut Fine FinishDynamic FiniteAbelianGroupCount FiniteGroupCount FiniteGroupData First FirstPassageTimeDistribution FischerGroupFi22 FischerGroupFi23 FischerGroupFi24Prime FisherHypergeometricDistribution FisherRatioTest FisherZDistribution Fit FitAll FittedModel FixedPoint FixedPointList FlashSelection Flat Flatten FlattenAt FlatTopWindow FlipView Floor FlushPrintOutputPacket Fold FoldList Font FontColor FontFamily FontForm FontName FontOpacity FontPostScriptName FontProperties FontReencoding FontSize FontSlant FontSubstitutions FontTracking FontVariations FontWeight For ForAll Format FormatRules FormatType FormatTypeAutoConvert FormatValues FormBox FormBoxOptions FortranForm Forward ForwardBackward Fourier FourierCoefficient FourierCosCoefficient FourierCosSeries FourierCosTransform FourierDCT FourierDCTFilter FourierDCTMatrix FourierDST FourierDSTMatrix FourierMatrix FourierParameters FourierSequenceTransform FourierSeries FourierSinCoefficient FourierSinSeries FourierSinTransform FourierTransform FourierTrigSeries FractionalBrownianMotionProcess FractionalPart FractionBox FractionBoxOptions FractionLine Frame FrameBox FrameBoxOptions Framed FrameInset FrameLabel Frameless FrameMargins FrameStyle FrameTicks FrameTicksStyle FRatioDistribution FrechetDistribution FreeQ FrequencySamplingFilterKernel FresnelC FresnelS Friday FrobeniusNumber FrobeniusSolve ' +
-      'FromCharacterCode FromCoefficientRules FromContinuedFraction FromDate FromDigits FromDMS Front FrontEndDynamicExpression FrontEndEventActions FrontEndExecute FrontEndObject FrontEndResource FrontEndResourceString FrontEndStackSize FrontEndToken FrontEndTokenExecute FrontEndValueCache FrontEndVersion FrontFaceColor FrontFaceOpacity Full FullAxes FullDefinition FullForm FullGraphics FullOptions FullSimplify Function FunctionExpand FunctionInterpolation FunctionSpace FussellVeselyImportance ' +
-      'GaborFilter GaborMatrix GaborWavelet GainMargins GainPhaseMargins Gamma GammaDistribution GammaRegularized GapPenalty Gather GatherBy GaugeFaceElementFunction GaugeFaceStyle GaugeFrameElementFunction GaugeFrameSize GaugeFrameStyle GaugeLabels GaugeMarkers GaugeStyle GaussianFilter GaussianIntegers GaussianMatrix GaussianWindow GCD GegenbauerC General GeneralizedLinearModelFit GenerateConditions GeneratedCell GeneratedParameters GeneratingFunction Generic GenericCylindricalDecomposition GenomeData GenomeLookup GeodesicClosing GeodesicDilation GeodesicErosion GeodesicOpening GeoDestination GeodesyData GeoDirection GeoDistance GeoGridPosition GeometricBrownianMotionProcess GeometricDistribution GeometricMean GeometricMeanFilter GeometricTransformation GeometricTransformation3DBox GeometricTransformation3DBoxOptions GeometricTransformationBox GeometricTransformationBoxOptions GeoPosition GeoPositionENU GeoPositionXYZ GeoProjectionData GestureHandler GestureHandlerTag Get GetBoundingBoxSizePacket GetContext GetEnvironment GetFileName GetFrontEndOptionsDataPacket GetLinebreakInformationPacket GetMenusPacket GetPageBreakInformationPacket Glaisher GlobalClusteringCoefficient GlobalPreferences GlobalSession Glow GoldenRatio GompertzMakehamDistribution GoodmanKruskalGamma GoodmanKruskalGammaTest Goto Grad Gradient GradientFilter GradientOrientationFilter Graph GraphAssortativity GraphCenter GraphComplement GraphData GraphDensity GraphDiameter GraphDifference GraphDisjointUnion ' +
-      'GraphDistance GraphDistanceMatrix GraphElementData GraphEmbedding GraphHighlight GraphHighlightStyle GraphHub Graphics Graphics3D Graphics3DBox Graphics3DBoxOptions GraphicsArray GraphicsBaseline GraphicsBox GraphicsBoxOptions GraphicsColor GraphicsColumn GraphicsComplex GraphicsComplex3DBox GraphicsComplex3DBoxOptions GraphicsComplexBox GraphicsComplexBoxOptions GraphicsContents GraphicsData GraphicsGrid GraphicsGridBox GraphicsGroup GraphicsGroup3DBox GraphicsGroup3DBoxOptions GraphicsGroupBox GraphicsGroupBoxOptions GraphicsGrouping GraphicsHighlightColor GraphicsRow GraphicsSpacing GraphicsStyle GraphIntersection GraphLayout GraphLinkEfficiency GraphPeriphery GraphPlot GraphPlot3D GraphPower GraphPropertyDistribution GraphQ GraphRadius GraphReciprocity GraphRoot GraphStyle GraphUnion Gray GrayLevel GreatCircleDistance Greater GreaterEqual GreaterEqualLess GreaterFullEqual GreaterGreater GreaterLess GreaterSlantEqual GreaterTilde Green Grid GridBaseline GridBox GridBoxAlignment GridBoxBackground GridBoxDividers GridBoxFrame GridBoxItemSize GridBoxItemStyle GridBoxOptions GridBoxSpacings GridCreationSettings GridDefaultElement GridElementStyleOptions GridFrame GridFrameMargins GridGraph GridLines GridLinesStyle GroebnerBasis GroupActionBase GroupCentralizer GroupElementFromWord GroupElementPosition GroupElementQ GroupElements GroupElementToWord GroupGenerators GroupMultiplicationTable GroupOrbits GroupOrder GroupPageBreakWithin GroupSetwiseStabilizer GroupStabilizer GroupStabilizerChain Gudermannian GumbelDistribution ' +
-      'HaarWavelet HadamardMatrix HalfNormalDistribution HamiltonianGraphQ HammingDistance HammingWindow HankelH1 HankelH2 HankelMatrix HannPoissonWindow HannWindow HaradaNortonGroupHN HararyGraph HarmonicMean HarmonicMeanFilter HarmonicNumber Hash HashTable Haversine HazardFunction Head HeadCompose Heads HeavisideLambda HeavisidePi HeavisideTheta HeldGroupHe HeldPart HelpBrowserLookup HelpBrowserNotebook HelpBrowserSettings HermiteDecomposition HermiteH HermitianMatrixQ HessenbergDecomposition Hessian HexadecimalCharacter Hexahedron HexahedronBox HexahedronBoxOptions HiddenSurface HighlightGraph HighlightImage HighpassFilter HigmanSimsGroupHS HilbertFilter HilbertMatrix Histogram Histogram3D HistogramDistribution HistogramList HistogramTransform HistogramTransformInterpolation HitMissTransform HITSCentrality HodgeDual HoeffdingD HoeffdingDTest Hold HoldAll HoldAllComplete HoldComplete HoldFirst HoldForm HoldPattern HoldRest HolidayCalendar HomeDirectory HomePage Horizontal HorizontalForm HorizontalGauge HorizontalScrollPosition HornerForm HotellingTSquareDistribution HoytDistribution HTMLSave Hue HumpDownHump HumpEqual HurwitzLerchPhi HurwitzZeta HyperbolicDistribution HypercubeGraph HyperexponentialDistribution Hyperfactorial Hypergeometric0F1 Hypergeometric0F1Regularized Hypergeometric1F1 Hypergeometric1F1Regularized Hypergeometric2F1 Hypergeometric2F1Regularized HypergeometricDistribution HypergeometricPFQ HypergeometricPFQRegularized HypergeometricU Hyperlink HyperlinkCreationSettings Hyphenation HyphenationOptions HypoexponentialDistribution HypothesisTestData ' +
-      'I Identity IdentityMatrix If IgnoreCase Im Image Image3D Image3DSlices ImageAccumulate ImageAdd ImageAdjust ImageAlign ImageApply ImageAspectRatio ImageAssemble ImageCache ImageCacheValid ImageCapture ImageChannels ImageClip ImageColorSpace ImageCompose ImageConvolve ImageCooccurrence ImageCorners ImageCorrelate ImageCorrespondingPoints ImageCrop ImageData ImageDataPacket ImageDeconvolve ImageDemosaic ImageDifference ImageDimensions ImageDistance ImageEffect ImageFeatureTrack ImageFileApply ImageFileFilter ImageFileScan ImageFilter ImageForestingComponents ImageForwardTransformation ImageHistogram ImageKeypoints ImageLevels ImageLines ImageMargins ImageMarkers ImageMeasurements ImageMultiply ImageOffset ImagePad ImagePadding ImagePartition ImagePeriodogram ImagePerspectiveTransformation ImageQ ImageRangeCache ImageReflect ImageRegion ImageResize ImageResolution ImageRotate ImageRotated ImageScaled ImageScan ImageSize ImageSizeAction ImageSizeCache ImageSizeMultipliers ImageSizeRaw ImageSubtract ImageTake ImageTransformation ImageTrim ImageType ImageValue ImageValuePositions Implies Import ImportAutoReplacements ImportString ImprovementImportance In IncidenceGraph IncidenceList IncidenceMatrix IncludeConstantBasis IncludeFileExtension IncludePods IncludeSingularTerm Increment Indent IndentingNewlineSpacings IndentMaxFraction IndependenceTest IndependentEdgeSetQ IndependentUnit IndependentVertexSetQ Indeterminate IndexCreationOptions Indexed IndexGraph IndexTag Inequality InexactNumberQ InexactNumbers Infinity Infix Information Inherited InheritScope Initialization InitializationCell InitializationCellEvaluation InitializationCellWarning InlineCounterAssignments InlineCounterIncrements InlineRules Inner Inpaint Input InputAliases InputAssumptions InputAutoReplacements InputField InputFieldBox InputFieldBoxOptions InputForm InputGrouping InputNamePacket InputNotebook InputPacket InputSettings InputStream InputString InputStringPacket InputToBoxFormPacket Insert InsertionPointObject InsertResults Inset Inset3DBox Inset3DBoxOptions InsetBox InsetBoxOptions Install InstallService InString Integer IntegerDigits IntegerExponent IntegerLength IntegerPart IntegerPartitions IntegerQ Integers IntegerString Integral Integrate Interactive InteractiveTradingChart Interlaced Interleaving InternallyBalancedDecomposition InterpolatingFunction InterpolatingPolynomial Interpolation InterpolationOrder InterpolationPoints InterpolationPrecision Interpretation InterpretationBox InterpretationBoxOptions InterpretationFunction ' +
-      'InterpretTemplate InterquartileRange Interrupt InterruptSettings Intersection Interval IntervalIntersection IntervalMemberQ IntervalUnion Inverse InverseBetaRegularized InverseCDF InverseChiSquareDistribution InverseContinuousWaveletTransform InverseDistanceTransform InverseEllipticNomeQ InverseErf InverseErfc InverseFourier InverseFourierCosTransform InverseFourierSequenceTransform InverseFourierSinTransform InverseFourierTransform InverseFunction InverseFunctions InverseGammaDistribution InverseGammaRegularized InverseGaussianDistribution InverseGudermannian InverseHaversine InverseJacobiCD InverseJacobiCN InverseJacobiCS InverseJacobiDC InverseJacobiDN InverseJacobiDS InverseJacobiNC InverseJacobiND InverseJacobiNS InverseJacobiSC InverseJacobiSD InverseJacobiSN InverseLaplaceTransform InversePermutation InverseRadon InverseSeries InverseSurvivalFunction InverseWaveletTransform InverseWeierstrassP InverseZTransform Invisible InvisibleApplication InvisibleTimes IrreduciblePolynomialQ IsolatingInterval IsomorphicGraphQ IsotopeData Italic Item ItemBox ItemBoxOptions ItemSize ItemStyle ItoProcess ' +
-      'JaccardDissimilarity JacobiAmplitude Jacobian JacobiCD JacobiCN JacobiCS JacobiDC JacobiDN JacobiDS JacobiNC JacobiND JacobiNS JacobiP JacobiSC JacobiSD JacobiSN JacobiSymbol JacobiZeta JankoGroupJ1 JankoGroupJ2 JankoGroupJ3 JankoGroupJ4 JarqueBeraALMTest JohnsonDistribution Join Joined JoinedCurve JoinedCurveBox JoinForm JordanDecomposition JordanModelDecomposition ' +
-      'K KagiChart KaiserBesselWindow KaiserWindow KalmanEstimator KalmanFilter KarhunenLoeveDecomposition KaryTree KatzCentrality KCoreComponents KDistribution KelvinBei KelvinBer KelvinKei KelvinKer KendallTau KendallTauTest KernelExecute KernelMixtureDistribution KernelObject Kernels Ket Khinchin KirchhoffGraph KirchhoffMatrix KleinInvariantJ KnightTourGraph KnotData KnownUnitQ KolmogorovSmirnovTest KroneckerDelta KroneckerModelDecomposition KroneckerProduct KroneckerSymbol KuiperTest KumaraswamyDistribution Kurtosis KuwaharaFilter ' +
-      'Label Labeled LabeledSlider LabelingFunction LabelStyle LaguerreL LambdaComponents LambertW LanczosWindow LandauDistribution Language LanguageCategory LaplaceDistribution LaplaceTransform Laplacian LaplacianFilter LaplacianGaussianFilter Large Larger Last Latitude LatitudeLongitude LatticeData LatticeReduce Launch LaunchKernels LayeredGraphPlot LayerSizeFunction LayoutInformation LCM LeafCount LeapYearQ LeastSquares LeastSquaresFilterKernel Left LeftArrow LeftArrowBar LeftArrowRightArrow LeftDownTeeVector LeftDownVector LeftDownVectorBar LeftRightArrow LeftRightVector LeftTee LeftTeeArrow LeftTeeVector LeftTriangle LeftTriangleBar LeftTriangleEqual LeftUpDownVector LeftUpTeeVector LeftUpVector LeftUpVectorBar LeftVector LeftVectorBar LegendAppearance Legended LegendFunction LegendLabel LegendLayout LegendMargins LegendMarkers LegendMarkerSize LegendreP LegendreQ LegendreType Length LengthWhile LerchPhi Less LessEqual LessEqualGreater LessFullEqual LessGreater LessLess LessSlantEqual LessTilde LetterCharacter LetterQ Level LeveneTest LeviCivitaTensor LevyDistribution Lexicographic LibraryFunction LibraryFunctionError LibraryFunctionInformation LibraryFunctionLoad LibraryFunctionUnload LibraryLoad LibraryUnload LicenseID LiftingFilterData LiftingWaveletTransform LightBlue LightBrown LightCyan Lighter LightGray LightGreen Lighting LightingAngle LightMagenta LightOrange LightPink LightPurple LightRed LightSources LightYellow Likelihood Limit LimitsPositioning LimitsPositioningTokens LindleyDistribution Line Line3DBox LinearFilter LinearFractionalTransform LinearModelFit LinearOffsetFunction LinearProgramming LinearRecurrence LinearSolve LinearSolveFunction LineBox LineBreak LinebreakAdjustments LineBreakChart LineBreakWithin LineColor LineForm LineGraph LineIndent LineIndentMaxFraction LineIntegralConvolutionPlot LineIntegralConvolutionScale LineLegend LineOpacity LineSpacing LineWrapParts LinkActivate LinkClose LinkConnect LinkConnectedQ LinkCreate LinkError LinkFlush LinkFunction LinkHost LinkInterrupt LinkLaunch LinkMode LinkObject LinkOpen LinkOptions LinkPatterns LinkProtocol LinkRead LinkReadHeld LinkReadyQ Links LinkWrite LinkWriteHeld LiouvilleLambda List Listable ListAnimate ListContourPlot ListContourPlot3D ListConvolve ListCorrelate ListCurvePathPlot ListDeconvolve ListDensityPlot Listen ListFourierSequenceTransform ListInterpolation ListLineIntegralConvolutionPlot ListLinePlot ListLogLinearPlot ListLogLogPlot ListLogPlot ListPicker ListPickerBox ListPickerBoxBackground ListPickerBoxOptions ListPlay ListPlot ListPlot3D ListPointPlot3D ListPolarPlot ListQ ListStreamDensityPlot ListStreamPlot ListSurfacePlot3D ListVectorDensityPlot ListVectorPlot ListVectorPlot3D ListZTransform Literal LiteralSearch LocalClusteringCoefficient LocalizeVariables LocationEquivalenceTest LocationTest Locator LocatorAutoCreate LocatorBox LocatorBoxOptions LocatorCentering LocatorPane LocatorPaneBox LocatorPaneBoxOptions ' +
-      'LocatorRegion Locked Log Log10 Log2 LogBarnesG LogGamma LogGammaDistribution LogicalExpand LogIntegral LogisticDistribution LogitModelFit LogLikelihood LogLinearPlot LogLogisticDistribution LogLogPlot LogMultinormalDistribution LogNormalDistribution LogPlot LogRankTest LogSeriesDistribution LongEqual Longest LongestAscendingSequence LongestCommonSequence LongestCommonSequencePositions LongestCommonSubsequence LongestCommonSubsequencePositions LongestMatch LongForm Longitude LongLeftArrow LongLeftRightArrow LongRightArrow Loopback LoopFreeGraphQ LowerCaseQ LowerLeftArrow LowerRightArrow LowerTriangularize LowpassFilter LQEstimatorGains LQGRegulator LQOutputRegulatorGains LQRegulatorGains LUBackSubstitution LucasL LuccioSamiComponents LUDecomposition LyapunovSolve LyonsGroupLy ' +
-      'MachineID MachineName MachineNumberQ MachinePrecision MacintoshSystemPageSetup Magenta Magnification Magnify MainSolve MaintainDynamicCaches Majority MakeBoxes MakeExpression MakeRules MangoldtLambda ManhattanDistance Manipulate Manipulator MannWhitneyTest MantissaExponent Manual Map MapAll MapAt MapIndexed MAProcess MapThread MarcumQ MardiaCombinedTest MardiaKurtosisTest MardiaSkewnessTest MarginalDistribution MarkovProcessProperties Masking MatchingDissimilarity MatchLocalNameQ MatchLocalNames MatchQ Material MathematicaNotation MathieuC MathieuCharacteristicA MathieuCharacteristicB MathieuCharacteristicExponent MathieuCPrime MathieuGroupM11 MathieuGroupM12 MathieuGroupM22 MathieuGroupM23 MathieuGroupM24 MathieuS MathieuSPrime MathMLForm MathMLText Matrices MatrixExp MatrixForm MatrixFunction MatrixLog MatrixPlot MatrixPower MatrixQ MatrixRank Max MaxBend MaxDetect MaxExtraBandwidths MaxExtraConditions MaxFeatures MaxFilter Maximize MaxIterations MaxMemoryUsed MaxMixtureKernels MaxPlotPoints MaxPoints MaxRecursion MaxStableDistribution MaxStepFraction MaxSteps MaxStepSize MaxValue MaxwellDistribution McLaughlinGroupMcL Mean MeanClusteringCoefficient MeanDegreeConnectivity MeanDeviation MeanFilter MeanGraphDistance MeanNeighborDegree MeanShift MeanShiftFilter Median MedianDeviation MedianFilter Medium MeijerG MeixnerDistribution MemberQ MemoryConstrained MemoryInUse Menu MenuAppearance MenuCommandKey MenuEvaluator MenuItem MenuPacket MenuSortingValue MenuStyle MenuView MergeDifferences Mesh MeshFunctions MeshRange MeshShading MeshStyle Message MessageDialog MessageList MessageName MessageOptions MessagePacket Messages MessagesNotebook MetaCharacters MetaInformation Method MethodOptions MexicanHatWavelet MeyerWavelet Min MinDetect MinFilter MinimalPolynomial MinimalStateSpaceModel Minimize Minors MinRecursion MinSize MinStableDistribution Minus MinusPlus MinValue Missing MissingDataMethod MittagLefflerE MixedRadix MixedRadixQuantity MixtureDistribution Mod Modal Mode Modular ModularLambda Module Modulus MoebiusMu Moment Momentary MomentConvert MomentEvaluate MomentGeneratingFunction Monday Monitor MonomialList MonomialOrder MonsterGroupM MorletWavelet MorphologicalBinarize MorphologicalBranchPoints MorphologicalComponents MorphologicalEulerNumber MorphologicalGraph MorphologicalPerimeter MorphologicalTransform Most MouseAnnotation MouseAppearance MouseAppearanceTag MouseButtons Mouseover MousePointerNote MousePosition MovingAverage MovingMedian MoyalDistribution MultiedgeStyle MultilaunchWarning MultiLetterItalics MultiLetterStyle MultilineFunction Multinomial MultinomialDistribution MultinormalDistribution MultiplicativeOrder Multiplicity Multiselection MultivariateHypergeometricDistribution MultivariatePoissonDistribution MultivariateTDistribution ' +
-      'N NakagamiDistribution NameQ Names NamespaceBox Nand NArgMax NArgMin NBernoulliB NCache NDSolve NDSolveValue Nearest NearestFunction NeedCurrentFrontEndPackagePacket NeedCurrentFrontEndSymbolsPacket NeedlemanWunschSimilarity Needs Negative NegativeBinomialDistribution NegativeMultinomialDistribution NeighborhoodGraph Nest NestedGreaterGreater NestedLessLess NestedScriptRules NestList NestWhile NestWhileList NevilleThetaC NevilleThetaD NevilleThetaN NevilleThetaS NewPrimitiveStyle NExpectation Next NextPrime NHoldAll NHoldFirst NHoldRest NicholsGridLines NicholsPlot NIntegrate NMaximize NMaxValue NMinimize NMinValue NominalVariables NonAssociative NoncentralBetaDistribution NoncentralChiSquareDistribution NoncentralFRatioDistribution NoncentralStudentTDistribution NonCommutativeMultiply NonConstants None NonlinearModelFit NonlocalMeansFilter NonNegative NonPositive Nor NorlundB Norm Normal NormalDistribution NormalGrouping Normalize NormalizedSquaredEuclideanDistance NormalsFunction NormFunction Not NotCongruent NotCupCap NotDoubleVerticalBar Notebook NotebookApply NotebookAutoSave NotebookClose NotebookConvertSettings NotebookCreate NotebookCreateReturnObject NotebookDefault NotebookDelete NotebookDirectory NotebookDynamicExpression NotebookEvaluate NotebookEventActions NotebookFileName NotebookFind NotebookFindReturnObject NotebookGet NotebookGetLayoutInformationPacket NotebookGetMisspellingsPacket NotebookInformation NotebookInterfaceObject NotebookLocate NotebookObject NotebookOpen NotebookOpenReturnObject NotebookPath NotebookPrint NotebookPut NotebookPutReturnObject NotebookRead NotebookResetGeneratedCells Notebooks NotebookSave NotebookSaveAs NotebookSelection NotebookSetupLayoutInformationPacket NotebooksMenu NotebookWrite NotElement NotEqualTilde NotExists NotGreater NotGreaterEqual NotGreaterFullEqual NotGreaterGreater NotGreaterLess NotGreaterSlantEqual NotGreaterTilde NotHumpDownHump NotHumpEqual NotLeftTriangle NotLeftTriangleBar NotLeftTriangleEqual NotLess NotLessEqual NotLessFullEqual NotLessGreater NotLessLess NotLessSlantEqual NotLessTilde NotNestedGreaterGreater NotNestedLessLess NotPrecedes NotPrecedesEqual NotPrecedesSlantEqual NotPrecedesTilde NotReverseElement NotRightTriangle NotRightTriangleBar NotRightTriangleEqual NotSquareSubset NotSquareSubsetEqual NotSquareSuperset NotSquareSupersetEqual NotSubset NotSubsetEqual NotSucceeds NotSucceedsEqual NotSucceedsSlantEqual NotSucceedsTilde NotSuperset NotSupersetEqual NotTilde NotTildeEqual NotTildeFullEqual NotTildeTilde NotVerticalBar NProbability NProduct NProductFactors NRoots NSolve NSum NSumTerms Null NullRecords NullSpace NullWords Number NumberFieldClassNumber NumberFieldDiscriminant NumberFieldFundamentalUnits NumberFieldIntegralBasis NumberFieldNormRepresentatives NumberFieldRegulator NumberFieldRootsOfUnity NumberFieldSignature NumberForm NumberFormat NumberMarks NumberMultiplier NumberPadding NumberPoint NumberQ NumberSeparator ' +
-      'NumberSigns NumberString Numerator NumericFunction NumericQ NuttallWindow NValues NyquistGridLines NyquistPlot ' +
-      'O ObservabilityGramian ObservabilityMatrix ObservableDecomposition ObservableModelQ OddQ Off Offset OLEData On ONanGroupON OneIdentity Opacity Open OpenAppend Opener OpenerBox OpenerBoxOptions OpenerView OpenFunctionInspectorPacket Opening OpenRead OpenSpecialOptions OpenTemporary OpenWrite Operate OperatingSystem OptimumFlowData Optional OptionInspectorSettings OptionQ Options OptionsPacket OptionsPattern OptionValue OptionValueBox OptionValueBoxOptions Or Orange Order OrderDistribution OrderedQ Ordering Orderless OrnsteinUhlenbeckProcess Orthogonalize Out Outer OutputAutoOverwrite OutputControllabilityMatrix OutputControllableModelQ OutputForm OutputFormData OutputGrouping OutputMathEditExpression OutputNamePacket OutputResponse OutputSizeLimit OutputStream Over OverBar OverDot Overflow OverHat Overlaps Overlay OverlayBox OverlayBoxOptions Overscript OverscriptBox OverscriptBoxOptions OverTilde OverVector OwenT OwnValues ' +
-      'PackingMethod PaddedForm Padding PadeApproximant PadLeft PadRight PageBreakAbove PageBreakBelow PageBreakWithin PageFooterLines PageFooters PageHeaderLines PageHeaders PageHeight PageRankCentrality PageWidth PairedBarChart PairedHistogram PairedSmoothHistogram PairedTTest PairedZTest PaletteNotebook PalettePath Pane PaneBox PaneBoxOptions Panel PanelBox PanelBoxOptions Paneled PaneSelector PaneSelectorBox PaneSelectorBoxOptions PaperWidth ParabolicCylinderD ParagraphIndent ParagraphSpacing ParallelArray ParallelCombine ParallelDo ParallelEvaluate Parallelization Parallelize ParallelMap ParallelNeeds ParallelProduct ParallelSubmit ParallelSum ParallelTable ParallelTry Parameter ParameterEstimator ParameterMixtureDistribution ParameterVariables ParametricFunction ParametricNDSolve ParametricNDSolveValue ParametricPlot ParametricPlot3D ParentConnect ParentDirectory ParentForm Parenthesize ParentList ParetoDistribution Part PartialCorrelationFunction PartialD ParticleData Partition PartitionsP PartitionsQ ParzenWindow PascalDistribution PassEventsDown PassEventsUp Paste PasteBoxFormInlineCells PasteButton Path PathGraph PathGraphQ Pattern PatternSequence PatternTest PauliMatrix PaulWavelet Pause PausedTime PDF PearsonChiSquareTest PearsonCorrelationTest PearsonDistribution PerformanceGoal PeriodicInterpolation Periodogram PeriodogramArray PermutationCycles PermutationCyclesQ PermutationGroup PermutationLength PermutationList PermutationListQ PermutationMax PermutationMin PermutationOrder PermutationPower PermutationProduct PermutationReplace Permutations PermutationSupport Permute PeronaMalikFilter Perpendicular PERTDistribution PetersenGraph PhaseMargins Pi Pick PIDData PIDDerivativeFilter PIDFeedforward PIDTune Piecewise PiecewiseExpand PieChart PieChart3D PillaiTrace PillaiTraceTest Pink Pivoting PixelConstrained PixelValue PixelValuePositions Placed Placeholder PlaceholderReplace Plain PlanarGraphQ Play PlayRange Plot Plot3D Plot3Matrix PlotDivision PlotJoined PlotLabel PlotLayout PlotLegends PlotMarkers PlotPoints PlotRange PlotRangeClipping PlotRangePadding PlotRegion PlotStyle Plus PlusMinus Pochhammer PodStates PodWidth Point Point3DBox PointBox PointFigureChart PointForm PointLegend PointSize PoissonConsulDistribution PoissonDistribution PoissonProcess PoissonWindow PolarAxes PolarAxesOrigin PolarGridLines PolarPlot PolarTicks PoleZeroMarkers PolyaAeppliDistribution PolyGamma Polygon Polygon3DBox Polygon3DBoxOptions PolygonBox PolygonBoxOptions PolygonHoleScale PolygonIntersections PolygonScale PolyhedronData PolyLog PolynomialExtendedGCD PolynomialForm PolynomialGCD PolynomialLCM PolynomialMod PolynomialQ PolynomialQuotient PolynomialQuotientRemainder PolynomialReduce PolynomialRemainder Polynomials PopupMenu PopupMenuBox PopupMenuBoxOptions PopupView PopupWindow Position Positive PositiveDefiniteMatrixQ PossibleZeroQ Postfix PostScript Power PowerDistribution PowerExpand PowerMod PowerModList ' +
-      'PowerSpectralDensity PowersRepresentations PowerSymmetricPolynomial Precedence PrecedenceForm Precedes PrecedesEqual PrecedesSlantEqual PrecedesTilde Precision PrecisionGoal PreDecrement PredictionRoot PreemptProtect PreferencesPath Prefix PreIncrement Prepend PrependTo PreserveImageOptions Previous PriceGraphDistribution PrimaryPlaceholder Prime PrimeNu PrimeOmega PrimePi PrimePowerQ PrimeQ Primes PrimeZetaP PrimitiveRoot PrincipalComponents PrincipalValue Print PrintAction PrintForm PrintingCopies PrintingOptions PrintingPageRange PrintingStartingPageNumber PrintingStyleEnvironment PrintPrecision PrintTemporary Prism PrismBox PrismBoxOptions PrivateCellOptions PrivateEvaluationOptions PrivateFontOptions PrivateFrontEndOptions PrivateNotebookOptions PrivatePaths Probability ProbabilityDistribution ProbabilityPlot ProbabilityPr ProbabilityScalePlot ProbitModelFit ProcessEstimator ProcessParameterAssumptions ProcessParameterQ ProcessStateDomain ProcessTimeDomain Product ProductDistribution ProductLog ProgressIndicator ProgressIndicatorBox ProgressIndicatorBoxOptions Projection Prolog PromptForm Properties Property PropertyList PropertyValue Proportion Proportional Protect Protected ProteinData Pruning PseudoInverse Purple Put PutAppend Pyramid PyramidBox PyramidBoxOptions ' +
-      'QBinomial QFactorial QGamma QHypergeometricPFQ QPochhammer QPolyGamma QRDecomposition QuadraticIrrationalQ Quantile QuantilePlot Quantity QuantityForm QuantityMagnitude QuantityQ QuantityUnit Quartics QuartileDeviation Quartiles QuartileSkewness QueueingNetworkProcess QueueingProcess QueueProperties Quiet Quit Quotient QuotientRemainder ' +
-      'RadialityCentrality RadicalBox RadicalBoxOptions RadioButton RadioButtonBar RadioButtonBox RadioButtonBoxOptions Radon RamanujanTau RamanujanTauL RamanujanTauTheta RamanujanTauZ Random RandomChoice RandomComplex RandomFunction RandomGraph RandomImage RandomInteger RandomPermutation RandomPrime RandomReal RandomSample RandomSeed RandomVariate RandomWalkProcess Range RangeFilter RangeSpecification RankedMax RankedMin Raster Raster3D Raster3DBox Raster3DBoxOptions RasterArray RasterBox RasterBoxOptions Rasterize RasterSize Rational RationalFunctions Rationalize Rationals Ratios Raw RawArray RawBoxes RawData RawMedium RayleighDistribution Re Read ReadList ReadProtected Real RealBlockDiagonalForm RealDigits RealExponent Reals Reap Record RecordLists RecordSeparators Rectangle RectangleBox RectangleBoxOptions RectangleChart RectangleChart3D RecurrenceFilter RecurrenceTable RecurringDigitsForm Red Reduce RefBox ReferenceLineStyle ReferenceMarkers ReferenceMarkerStyle Refine ReflectionMatrix ReflectionTransform Refresh RefreshRate RegionBinarize RegionFunction RegionPlot RegionPlot3D RegularExpression Regularization Reinstall Release ReleaseHold ReliabilityDistribution ReliefImage ReliefPlot Remove RemoveAlphaChannel RemoveAsynchronousTask Removed RemoveInputStreamMethod RemoveOutputStreamMethod RemoveProperty RemoveScheduledTask RenameDirectory RenameFile RenderAll RenderingOptions RenewalProcess RenkoChart Repeated RepeatedNull RepeatedString Replace ReplaceAll ReplaceHeldPart ReplaceImageValue ReplaceList ReplacePart ReplacePixelValue ReplaceRepeated Resampling Rescale RescalingTransform ResetDirectory ResetMenusPacket ResetScheduledTask Residue Resolve Rest Resultant ResumePacket Return ReturnExpressionPacket ReturnInputFormPacket ReturnPacket ReturnTextPacket Reverse ReverseBiorthogonalSplineWavelet ReverseElement ReverseEquilibrium ReverseGraph ReverseUpEquilibrium RevolutionAxis RevolutionPlot3D RGBColor RiccatiSolve RiceDistribution RidgeFilter RiemannR RiemannSiegelTheta RiemannSiegelZ Riffle Right RightArrow RightArrowBar RightArrowLeftArrow RightCosetRepresentative RightDownTeeVector RightDownVector RightDownVectorBar RightTee RightTeeArrow RightTeeVector RightTriangle RightTriangleBar RightTriangleEqual RightUpDownVector RightUpTeeVector RightUpVector RightUpVectorBar RightVector RightVectorBar RiskAchievementImportance RiskReductionImportance RogersTanimotoDissimilarity Root RootApproximant RootIntervals RootLocusPlot RootMeanSquare RootOfUnityQ RootReduce Roots RootSum Rotate RotateLabel RotateLeft RotateRight RotationAction RotationBox RotationBoxOptions RotationMatrix RotationTransform Round RoundImplies RoundingRadius Row RowAlignments RowBackgrounds RowBox RowHeights RowLines RowMinHeight RowReduce RowsEqual RowSpacings RSolve RudvalisGroupRu Rule RuleCondition RuleDelayed RuleForm RulerUnits Run RunScheduledTask RunThrough RuntimeAttributes RuntimeOptions RussellRaoDissimilarity ' +
-      'SameQ SameTest SampleDepth SampledSoundFunction SampledSoundList SampleRate SamplingPeriod SARIMAProcess SARMAProcess SatisfiabilityCount SatisfiabilityInstances SatisfiableQ Saturday Save Saveable SaveAutoDelete SaveDefinitions SawtoothWave Scale Scaled ScaleDivisions ScaledMousePosition ScaleOrigin ScalePadding ScaleRanges ScaleRangeStyle ScalingFunctions ScalingMatrix ScalingTransform Scan ScheduledTaskActiveQ ScheduledTaskData ScheduledTaskObject ScheduledTasks SchurDecomposition ScientificForm ScreenRectangle ScreenStyleEnvironment ScriptBaselineShifts ScriptLevel ScriptMinSize ScriptRules ScriptSizeMultipliers Scrollbars ScrollingOptions ScrollPosition Sec Sech SechDistribution SectionGrouping SectorChart SectorChart3D SectorOrigin SectorSpacing SeedRandom Select Selectable SelectComponents SelectedCells SelectedNotebook Selection SelectionAnimate SelectionCell SelectionCellCreateCell SelectionCellDefaultStyle SelectionCellParentStyle SelectionCreateCell SelectionDebuggerTag SelectionDuplicateCell SelectionEvaluate SelectionEvaluateCreateCell SelectionMove SelectionPlaceholder SelectionSetStyle SelectWithContents SelfLoops SelfLoopStyle SemialgebraicComponentInstances SendMail Sequence SequenceAlignment SequenceForm SequenceHold SequenceLimit Series SeriesCoefficient SeriesData SessionTime Set SetAccuracy SetAlphaChannel SetAttributes Setbacks SetBoxFormNamesPacket SetDelayed SetDirectory SetEnvironment SetEvaluationNotebook SetFileDate SetFileLoadingContext SetNotebookStatusLine SetOptions SetOptionsPacket SetPrecision SetProperty SetSelectedNotebook SetSharedFunction SetSharedVariable SetSpeechParametersPacket SetStreamPosition SetSystemOptions Setter SetterBar SetterBox SetterBoxOptions Setting SetValue Shading Shallow ShannonWavelet ShapiroWilkTest Share Sharpen ShearingMatrix ShearingTransform ShenCastanMatrix Short ShortDownArrow Shortest ShortestMatch ShortestPathFunction ShortLeftArrow ShortRightArrow ShortUpArrow Show ShowAutoStyles ShowCellBracket ShowCellLabel ShowCellTags ShowClosedCellArea ShowContents ShowControls ShowCursorTracker ShowGroupOpenCloseIcon ShowGroupOpener ShowInvisibleCharacters ShowPageBreaks ShowPredictiveInterface ShowSelection ShowShortBoxForm ShowSpecialCharacters ShowStringCharacters ShowSyntaxStyles ShrinkingDelay ShrinkWrapBoundingBox SiegelTheta SiegelTukeyTest Sign Signature SignedRankTest SignificanceLevel SignPadding SignTest SimilarityRules SimpleGraph SimpleGraphQ Simplify Sin Sinc SinghMaddalaDistribution SingleEvaluation SingleLetterItalics SingleLetterStyle SingularValueDecomposition SingularValueList SingularValuePlot SingularValues Sinh SinhIntegral SinIntegral SixJSymbol Skeleton SkeletonTransform SkellamDistribution Skewness SkewNormalDistribution Skip SliceDistribution Slider Slider2D Slider2DBox Slider2DBoxOptions SliderBox SliderBoxOptions SlideView Slot SlotSequence Small SmallCircle Smaller SmithDelayCompensator SmithWatermanSimilarity ' +
-      'SmoothDensityHistogram SmoothHistogram SmoothHistogram3D SmoothKernelDistribution SocialMediaData Socket SokalSneathDissimilarity Solve SolveAlways SolveDelayed Sort SortBy Sound SoundAndGraphics SoundNote SoundVolume Sow Space SpaceForm Spacer Spacings Span SpanAdjustments SpanCharacterRounding SpanFromAbove SpanFromBoth SpanFromLeft SpanLineThickness SpanMaxSize SpanMinSize SpanningCharacters SpanSymmetric SparseArray SpatialGraphDistribution Speak SpeakTextPacket SpearmanRankTest SpearmanRho Spectrogram SpectrogramArray Specularity SpellingCorrection SpellingDictionaries SpellingDictionariesPath SpellingOptions SpellingSuggestionsPacket Sphere SphereBox SphericalBesselJ SphericalBesselY SphericalHankelH1 SphericalHankelH2 SphericalHarmonicY SphericalPlot3D SphericalRegion SpheroidalEigenvalue SpheroidalJoiningFactor SpheroidalPS SpheroidalPSPrime SpheroidalQS SpheroidalQSPrime SpheroidalRadialFactor SpheroidalS1 SpheroidalS1Prime SpheroidalS2 SpheroidalS2Prime Splice SplicedDistribution SplineClosed SplineDegree SplineKnots SplineWeights Split SplitBy SpokenString Sqrt SqrtBox SqrtBoxOptions Square SquaredEuclideanDistance SquareFreeQ SquareIntersection SquaresR SquareSubset SquareSubsetEqual SquareSuperset SquareSupersetEqual SquareUnion SquareWave StabilityMargins StabilityMarginsStyle StableDistribution Stack StackBegin StackComplete StackInhibit StandardDeviation StandardDeviationFilter StandardForm Standardize StandbyDistribution Star StarGraph StartAsynchronousTask StartingStepSize StartOfLine StartOfString StartScheduledTask StartupSound StateDimensions StateFeedbackGains StateOutputEstimator StateResponse StateSpaceModel StateSpaceRealization StateSpaceTransform StationaryDistribution StationaryWaveletPacketTransform StationaryWaveletTransform StatusArea StatusCentrality StepMonitor StieltjesGamma StirlingS1 StirlingS2 StopAsynchronousTask StopScheduledTask StrataVariables StratonovichProcess StreamColorFunction StreamColorFunctionScaling StreamDensityPlot StreamPlot StreamPoints StreamPosition Streams StreamScale StreamStyle String StringBreak StringByteCount StringCases StringCount StringDrop StringExpression StringForm StringFormat StringFreeQ StringInsert StringJoin StringLength StringMatchQ StringPosition StringQ StringReplace StringReplaceList StringReplacePart StringReverse StringRotateLeft StringRotateRight StringSkeleton StringSplit StringTake StringToStream StringTrim StripBoxes StripOnInput StripWrapperBoxes StrokeForm StructuralImportance StructuredArray StructuredSelection StruveH StruveL Stub StudentTDistribution Style StyleBox StyleBoxAutoDelete StyleBoxOptions StyleData StyleDefinitions StyleForm StyleKeyMapping StyleMenuListing StyleNameDialogSettings StyleNames StylePrint StyleSheetPath Subfactorial Subgraph SubMinus SubPlus SubresultantPolynomialRemainders ' +
-      'SubresultantPolynomials Subresultants Subscript SubscriptBox SubscriptBoxOptions Subscripted Subset SubsetEqual Subsets SubStar Subsuperscript SubsuperscriptBox SubsuperscriptBoxOptions Subtract SubtractFrom SubValues Succeeds SucceedsEqual SucceedsSlantEqual SucceedsTilde SuchThat Sum SumConvergence Sunday SuperDagger SuperMinus SuperPlus Superscript SuperscriptBox SuperscriptBoxOptions Superset SupersetEqual SuperStar Surd SurdForm SurfaceColor SurfaceGraphics SurvivalDistribution SurvivalFunction SurvivalModel SurvivalModelFit SuspendPacket SuzukiDistribution SuzukiGroupSuz SwatchLegend Switch Symbol SymbolName SymletWavelet Symmetric SymmetricGroup SymmetricMatrixQ SymmetricPolynomial SymmetricReduction Symmetrize SymmetrizedArray SymmetrizedArrayRules SymmetrizedDependentComponents SymmetrizedIndependentComponents SymmetrizedReplacePart SynchronousInitialization SynchronousUpdating Syntax SyntaxForm SyntaxInformation SyntaxLength SyntaxPacket SyntaxQ SystemDialogInput SystemException SystemHelpPath SystemInformation SystemInformationData SystemOpen SystemOptions SystemsModelDelay SystemsModelDelayApproximate SystemsModelDelete SystemsModelDimensions SystemsModelExtract SystemsModelFeedbackConnect SystemsModelLabels SystemsModelOrder SystemsModelParallelConnect SystemsModelSeriesConnect SystemsModelStateFeedbackConnect SystemStub ' +
-      'Tab TabFilling Table TableAlignments TableDepth TableDirections TableForm TableHeadings TableSpacing TableView TableViewBox TabSpacings TabView TabViewBox TabViewBoxOptions TagBox TagBoxNote TagBoxOptions TaggingRules TagSet TagSetDelayed TagStyle TagUnset Take TakeWhile Tally Tan Tanh TargetFunctions TargetUnits TautologyQ TelegraphProcess TemplateBox TemplateBoxOptions TemplateSlotSequence TemporalData Temporary TemporaryVariable TensorContract TensorDimensions TensorExpand TensorProduct TensorQ TensorRank TensorReduce TensorSymmetry TensorTranspose TensorWedge Tetrahedron TetrahedronBox TetrahedronBoxOptions TeXForm TeXSave Text Text3DBox Text3DBoxOptions TextAlignment TextBand TextBoundingBox TextBox TextCell TextClipboardType TextData TextForm TextJustification TextLine TextPacket TextParagraph TextRecognize TextRendering TextStyle Texture TextureCoordinateFunction TextureCoordinateScaling Therefore ThermometerGauge Thick Thickness Thin Thinning ThisLink ThompsonGroupTh Thread ThreeJSymbol Threshold Through Throw Thumbnail Thursday Ticks TicksStyle Tilde TildeEqual TildeFullEqual TildeTilde TimeConstrained TimeConstraint Times TimesBy TimeSeriesForecast TimeSeriesInvertibility TimeUsed TimeValue TimeZone Timing Tiny TitleGrouping TitsGroupT ToBoxes ToCharacterCode ToColor ToContinuousTimeModel ToDate ToDiscreteTimeModel ToeplitzMatrix ToExpression ToFileName Together Toggle ToggleFalse Toggler TogglerBar TogglerBox TogglerBoxOptions ToHeldExpression ToInvertibleTimeSeries TokenWords Tolerance ToLowerCase ToNumberField TooBig Tooltip TooltipBox TooltipBoxOptions TooltipDelay TooltipStyle Top TopHatTransform TopologicalSort ToRadicals ToRules ToString Total TotalHeight TotalVariationFilter TotalWidth TouchscreenAutoZoom TouchscreenControlPlacement ToUpperCase Tr Trace TraceAbove TraceAction TraceBackward TraceDepth TraceDialog TraceForward TraceInternal TraceLevel TraceOff TraceOn TraceOriginal TracePrint TraceScan TrackedSymbols TradingChart TraditionalForm TraditionalFunctionNotation TraditionalNotation TraditionalOrder TransferFunctionCancel TransferFunctionExpand TransferFunctionFactor TransferFunctionModel TransferFunctionPoles TransferFunctionTransform TransferFunctionZeros TransformationFunction TransformationFunctions TransformationMatrix TransformedDistribution TransformedField Translate TranslationTransform TransparentColor Transpose TreeForm TreeGraph TreeGraphQ TreePlot TrendStyle TriangleWave TriangularDistribution Trig TrigExpand TrigFactor TrigFactorList Trigger TrigReduce TrigToExp TrimmedMean True TrueQ TruncatedDistribution TsallisQExponentialDistribution TsallisQGaussianDistribution TTest Tube TubeBezierCurveBox TubeBezierCurveBoxOptions TubeBox TubeBSplineCurveBox TubeBSplineCurveBoxOptions Tuesday TukeyLambdaDistribution TukeyWindow Tuples TuranGraph TuringMachine ' +
-      'Transparent ' +
-      'UnateQ Uncompress Undefined UnderBar Underflow Underlined Underoverscript UnderoverscriptBox UnderoverscriptBoxOptions Underscript UnderscriptBox UnderscriptBoxOptions UndirectedEdge UndirectedGraph UndirectedGraphQ UndocumentedTestFEParserPacket UndocumentedTestGetSelectionPacket Unequal Unevaluated UniformDistribution UniformGraphDistribution UniformSumDistribution Uninstall Union UnionPlus Unique UnitBox UnitConvert UnitDimensions Unitize UnitRootTest UnitSimplify UnitStep UnitTriangle UnitVector Unprotect UnsameQ UnsavedVariables Unset UnsetShared UntrackedVariables Up UpArrow UpArrowBar UpArrowDownArrow Update UpdateDynamicObjects UpdateDynamicObjectsSynchronous UpdateInterval UpDownArrow UpEquilibrium UpperCaseQ UpperLeftArrow UpperRightArrow UpperTriangularize Upsample UpSet UpSetDelayed UpTee UpTeeArrow UpValues URL URLFetch URLFetchAsynchronous URLSave URLSaveAsynchronous UseGraphicsRange Using UsingFrontEnd ' +
-      'V2Get ValidationLength Value ValueBox ValueBoxOptions ValueForm ValueQ ValuesData Variables Variance VarianceEquivalenceTest VarianceEstimatorFunction VarianceGammaDistribution VarianceTest VectorAngle VectorColorFunction VectorColorFunctionScaling VectorDensityPlot VectorGlyphData VectorPlot VectorPlot3D VectorPoints VectorQ Vectors VectorScale VectorStyle Vee Verbatim Verbose VerboseConvertToPostScriptPacket VerifyConvergence VerifySolutions VerifyTestAssumptions Version VersionNumber VertexAdd VertexCapacity VertexColors VertexComponent VertexConnectivity VertexCoordinateRules VertexCoordinates VertexCorrelationSimilarity VertexCosineSimilarity VertexCount VertexCoverQ VertexDataCoordinates VertexDegree VertexDelete VertexDiceSimilarity VertexEccentricity VertexInComponent VertexInDegree VertexIndex VertexJaccardSimilarity VertexLabeling VertexLabels VertexLabelStyle VertexList VertexNormals VertexOutComponent VertexOutDegree VertexQ VertexRenderingFunction VertexReplace VertexShape VertexShapeFunction VertexSize VertexStyle VertexTextureCoordinates VertexWeight Vertical VerticalBar VerticalForm VerticalGauge VerticalSeparator VerticalSlider VerticalTilde ViewAngle ViewCenter ViewMatrix ViewPoint ViewPointSelectorSettings ViewPort ViewRange ViewVector ViewVertical VirtualGroupData Visible VisibleCell VoigtDistribution VonMisesDistribution ' +
-      'WaitAll WaitAsynchronousTask WaitNext WaitUntil WakebyDistribution WalleniusHypergeometricDistribution WaringYuleDistribution WatershedComponents WatsonUSquareTest WattsStrogatzGraphDistribution WaveletBestBasis WaveletFilterCoefficients WaveletImagePlot WaveletListPlot WaveletMapIndexed WaveletMatrixPlot WaveletPhi WaveletPsi WaveletScale WaveletScalogram WaveletThreshold WeaklyConnectedComponents WeaklyConnectedGraphQ WeakStationarity WeatherData WeberE Wedge Wednesday WeibullDistribution WeierstrassHalfPeriods WeierstrassInvariants WeierstrassP WeierstrassPPrime WeierstrassSigma WeierstrassZeta WeightedAdjacencyGraph WeightedAdjacencyMatrix WeightedData WeightedGraphQ Weights WelchWindow WheelGraph WhenEvent Which While White Whitespace WhitespaceCharacter WhittakerM WhittakerW WienerFilter WienerProcess WignerD WignerSemicircleDistribution WilksW WilksWTest WindowClickSelect WindowElements WindowFloating WindowFrame WindowFrameElements WindowMargins WindowMovable WindowOpacity WindowSelected WindowSize WindowStatusArea WindowTitle WindowToolbars WindowWidth With WolframAlpha WolframAlphaDate WolframAlphaQuantity WolframAlphaResult Word WordBoundary WordCharacter WordData WordSearch WordSeparators WorkingPrecision Write WriteString Wronskian ' +
-      'XMLElement XMLObject Xnor Xor ' +
-      'Yellow YuleDissimilarity ' +
-      'ZernikeR ZeroSymmetric ZeroTest ZeroWidthTimes Zeta ZetaZero ZipfDistribution ZTest ZTransform ' +
-      '$Aborted $ActivationGroupID $ActivationKey $ActivationUserRegistered $AddOnsDirectory $AssertFunction $Assumptions $AsynchronousTask $BaseDirectory $BatchInput $BatchOutput $BoxForms $ByteOrdering $Canceled $CharacterEncoding $CharacterEncodings $CommandLine $CompilationTarget $ConditionHold $ConfiguredKernels $Context $ContextPath $ControlActiveSetting $CreationDate $CurrentLink $DateStringFormat $DefaultFont $DefaultFrontEnd $DefaultImagingDevice $DefaultPath $Display $DisplayFunction $DistributedContexts $DynamicEvaluation $Echo $Epilog $ExportFormats $Failed $FinancialDataSource $FormatType $FrontEnd $FrontEndSession $GeoLocation $HistoryLength $HomeDirectory $HTTPCookies $IgnoreEOF $ImagingDevices $ImportFormats $InitialDirectory $Input $InputFileName $InputStreamMethods $Inspector $InstallationDate $InstallationDirectory $InterfaceEnvironment $IterationLimit $KernelCount $KernelID $Language $LaunchDirectory $LibraryPath $LicenseExpirationDate $LicenseID $LicenseProcesses $LicenseServer $LicenseSubprocesses $LicenseType $Line $Linked $LinkSupported $LoadedFiles $MachineAddresses $MachineDomain $MachineDomains $MachineEpsilon $MachineID $MachineName $MachinePrecision $MachineType $MaxExtraPrecision $MaxLicenseProcesses $MaxLicenseSubprocesses $MaxMachineNumber $MaxNumber $MaxPiecewiseCases $MaxPrecision $MaxRootDegree $MessageGroups $MessageList $MessagePrePrint $Messages $MinMachineNumber $MinNumber $MinorReleaseNumber $MinPrecision $ModuleNumber $NetworkLicense $NewMessage $NewSymbol $Notebooks $NumberMarks $Off $OperatingSystem $Output $OutputForms $OutputSizeLimit $OutputStreamMethods $Packages $ParentLink $ParentProcessID $PasswordFile $PatchLevelID $Path $PathnameSeparator $PerformanceGoal $PipeSupported $Post $Pre $PreferencesDirectory $PrePrint $PreRead $PrintForms $PrintLiteral $ProcessID $ProcessorCount $ProcessorType $ProductInformation $ProgramName $RandomState $RecursionLimit $ReleaseNumber $RootDirectory $ScheduledTask $ScriptCommandLine $SessionID $SetParentLink $SharedFunctions $SharedVariables $SoundDisplay $SoundDisplayFunction $SuppressInputFormHeads $SynchronousEvaluation $SyntaxHandler $System $SystemCharacterEncoding $SystemID $SystemWordLength $TemporaryDirectory $TemporaryPrefix $TextStyle $TimedOut $TimeUnit $TimeZone $TopDirectory $TraceOff $TraceOn $TracePattern $TracePostAction $TracePreAction $Urgent $UserAddOnsDirectory $UserBaseDirectory $UserDocumentsDirectory $UserName $Version $VersionNumber',
+    //
+    // The list of "keywords" (System` symbols) was determined by evaluating the following Wolfram Language code in Mathematica 12.0:
+    //
+    // StringRiffle[
+    //   "'" <> StringRiffle[#, " "] <> "'" & /@
+    //     Values[GroupBy[
+    //       Select[Names["System`*"],
+    //       StringStartsQ[#, CharacterRange["A", "Z"] | "$"] &],
+    //       First[Characters[#]] &]], " +\n"]
+    //
+    keywords: 'AASTriangle AbelianGroup Abort AbortKernels AbortProtect AbortScheduledTask Above Abs AbsArg AbsArgPlot Absolute AbsoluteCorrelation AbsoluteCorrelationFunction AbsoluteCurrentValue AbsoluteDashing AbsoluteFileName AbsoluteOptions AbsolutePointSize AbsoluteThickness AbsoluteTime AbsoluteTiming AcceptanceThreshold AccountingForm Accumulate Accuracy AccuracyGoal ActionDelay ActionMenu ActionMenuBox ActionMenuBoxOptions Activate Active ActiveClassification ActiveClassificationObject ActiveItem ActivePrediction ActivePredictionObject ActiveStyle AcyclicGraphQ AddOnHelpPath AddSides AddTo AddToSearchIndex AddUsers AdjacencyGraph AdjacencyList AdjacencyMatrix AdjustmentBox AdjustmentBoxOptions AdjustTimeSeriesForecast AdministrativeDivisionData AffineHalfSpace AffineSpace AffineStateSpaceModel AffineTransform After AggregatedEntityClass AggregationLayer AircraftData AirportData AirPressureData AirTemperatureData AiryAi AiryAiPrime AiryAiZero AiryBi AiryBiPrime AiryBiZero AlgebraicIntegerQ AlgebraicNumber AlgebraicNumberDenominator AlgebraicNumberNorm AlgebraicNumberPolynomial AlgebraicNumberTrace AlgebraicRules AlgebraicRulesData Algebraics AlgebraicUnitQ Alignment AlignmentMarker AlignmentPoint All AllowAdultContent AllowedCloudExtraParameters AllowedCloudParameterExtensions AllowedDimensions AllowedFrequencyRange AllowedHeads AllowGroupClose AllowIncomplete AllowInlineCells AllowKernelInitialization AllowLooseGrammar AllowReverseGroupClose AllowScriptLevelChange AllTrue Alphabet AlphabeticOrder AlphabeticSort AlphaChannel AlternateImage AlternatingFactorial AlternatingGroup AlternativeHypothesis Alternatives AltitudeMethod AmbientLight AmbiguityFunction AmbiguityList Analytic AnatomyData AnatomyForm AnatomyPlot3D AnatomySkinStyle AnatomyStyling AnchoredSearch And AndersonDarlingTest AngerJ AngleBisector AngleBracket AnglePath AnglePath3D AngleVector AngularGauge Animate AnimationCycleOffset AnimationCycleRepetitions AnimationDirection AnimationDisplayTime AnimationRate AnimationRepetitions AnimationRunning AnimationRunTime AnimationTimeIndex Animator AnimatorBox AnimatorBoxOptions AnimatorElements Annotate Annotation AnnotationDelete AnnotationNames AnnotationRules AnnotationValue Annuity AnnuityDue Annulus AnomalyDetection AnomalyDetectorFunction Anonymous Antialiasing AntihermitianMatrixQ Antisymmetric AntisymmetricMatrixQ Antonyms AnyOrder AnySubset AnyTrue Apart ApartSquareFree APIFunction Appearance AppearanceElements AppearanceRules AppellF1 Append AppendCheck AppendLayer AppendTo ApplicationIdentificationKey Apply ApplySides ArcCos ArcCosh ArcCot ArcCoth ArcCsc ArcCsch ArcCurvature ARCHProcess ArcLength ArcSec ArcSech ArcSin ArcSinDistribution ArcSinh ArcTan ArcTanh Area Arg ArgMax ArgMin ArgumentCountQ ARIMAProcess ArithmeticGeometricMean ARMAProcess Around AroundReplace ARProcess Array ArrayComponents ArrayDepth ArrayFilter ArrayFlatten ArrayMesh ArrayPad ArrayPlot ArrayQ ArrayResample ArrayReshape ArrayRules Arrays Arrow Arrow3DBox ArrowBox Arrowheads ASATriangle Ask AskAppend AskConfirm AskDisplay AskedQ AskedValue AskFunction AskState AskTemplateDisplay AspectRatio AspectRatioFixed Assert AssociateTo Association AssociationFormat AssociationMap AssociationQ AssociationThread AssumeDeterministic Assuming Assumptions AstronomicalData AsymptoticDSolveValue AsymptoticEqual AsymptoticEquivalent AsymptoticGreater AsymptoticGreaterEqual AsymptoticIntegrate AsymptoticLess AsymptoticLessEqual AsymptoticOutputTracker AsymptoticRSolveValue AsymptoticSolve AsymptoticSum Asynchronous AsynchronousTaskObject AsynchronousTasks Atom AtomCoordinates AtomCount AtomDiagramCoordinates AtomList AtomQ AttentionLayer Attributes Audio AudioAmplify AudioAnnotate AudioAnnotationLookup AudioBlockMap AudioCapture AudioChannelAssignment AudioChannelCombine AudioChannelMix AudioChannels AudioChannelSeparate AudioData AudioDelay AudioDelete AudioDevice AudioDistance AudioFade AudioFrequencyShift AudioGenerator AudioIdentify AudioInputDevice AudioInsert AudioIntervals AudioJoin AudioLabel AudioLength AudioLocalMeasurements AudioLooping AudioLoudness AudioMeasurements AudioNormalize AudioOutputDevice AudioOverlay AudioPad AudioPan AudioPartition AudioPause AudioPitchShift AudioPlay AudioPlot AudioQ AudioRecord AudioReplace AudioResample AudioReverb AudioSampleRate AudioSpectralMap AudioSpectralTransformation AudioSplit AudioStop AudioStream AudioStreams AudioTimeStretch AudioTrim AudioType AugmentedPolyhedron AugmentedSymmetricPolynomial Authenticate Authentication AuthenticationDialog AutoAction Autocomplete AutocompletionFunction AutoCopy AutocorrelationTest AutoDelete AutoEvaluateEvents AutoGeneratedPackage AutoIndent AutoIndentSpacings AutoItalicWords AutoloadPath AutoMatch Automatic AutomaticImageSize AutoMultiplicationSymbol AutoNumberFormatting AutoOpenNotebooks AutoOpenPalettes AutoQuoteCharacters AutoRefreshed AutoRemove AutorunSequencing AutoScaling AutoScroll AutoSpacing AutoStyleOptions AutoStyleWords AutoSubmitting Axes AxesEdge AxesLabel AxesOrigin AxesStyle AxiomaticTheory Axis' +
+      'BabyMonsterGroupB Back Background BackgroundAppearance BackgroundTasksSettings Backslash Backsubstitution Backward Ball Band BandpassFilter BandstopFilter BarabasiAlbertGraphDistribution BarChart BarChart3D BarcodeImage BarcodeRecognize BaringhausHenzeTest BarLegend BarlowProschanImportance BarnesG BarOrigin BarSpacing BartlettHannWindow BartlettWindow BaseDecode BaseEncode BaseForm Baseline BaselinePosition BaseStyle BasicRecurrentLayer BatchNormalizationLayer BatchSize BatesDistribution BattleLemarieWavelet BayesianMaximization BayesianMaximizationObject BayesianMinimization BayesianMinimizationObject Because BeckmannDistribution Beep Before Begin BeginDialogPacket BeginFrontEndInteractionPacket BeginPackage BellB BellY Below BenfordDistribution BeniniDistribution BenktanderGibratDistribution BenktanderWeibullDistribution BernoulliB BernoulliDistribution BernoulliGraphDistribution BernoulliProcess BernsteinBasis BesselFilterModel BesselI BesselJ BesselJZero BesselK BesselY BesselYZero Beta BetaBinomialDistribution BetaDistribution BetaNegativeBinomialDistribution BetaPrimeDistribution BetaRegularized Between BetweennessCentrality BeveledPolyhedron BezierCurve BezierCurve3DBox BezierCurve3DBoxOptions BezierCurveBox BezierCurveBoxOptions BezierFunction BilateralFilter Binarize BinaryDeserialize BinaryDistance BinaryFormat BinaryImageQ BinaryRead BinaryReadList BinarySerialize BinaryWrite BinCounts BinLists Binomial BinomialDistribution BinomialProcess BinormalDistribution BiorthogonalSplineWavelet BipartiteGraphQ BiquadraticFilterModel BirnbaumImportance BirnbaumSaundersDistribution BitAnd BitClear BitGet BitLength BitNot BitOr BitSet BitShiftLeft BitShiftRight BitXor BiweightLocation BiweightMidvariance Black BlackmanHarrisWindow BlackmanNuttallWindow BlackmanWindow Blank BlankForm BlankNullSequence BlankSequence Blend Block BlockchainAddressData BlockchainBase BlockchainBlockData BlockchainContractValue BlockchainData BlockchainGet BlockchainKeyEncode BlockchainPut BlockchainTokenData BlockchainTransaction BlockchainTransactionData BlockchainTransactionSign BlockchainTransactionSubmit BlockMap BlockRandom BlomqvistBeta BlomqvistBetaTest Blue Blur BodePlot BohmanWindow Bold Bond BondCount BondList BondQ Bookmarks Boole BooleanConsecutiveFunction BooleanConvert BooleanCountingFunction BooleanFunction BooleanGraph BooleanMaxterms BooleanMinimize BooleanMinterms BooleanQ BooleanRegion Booleans BooleanStrings BooleanTable BooleanVariables BorderDimensions BorelTannerDistribution Bottom BottomHatTransform BoundaryDiscretizeGraphics BoundaryDiscretizeRegion BoundaryMesh BoundaryMeshRegion BoundaryMeshRegionQ BoundaryStyle BoundedRegionQ BoundingRegion Bounds Box BoxBaselineShift BoxData BoxDimensions Boxed Boxes BoxForm BoxFormFormatTypes BoxFrame BoxID BoxMargins BoxMatrix BoxObject BoxRatios BoxRotation BoxRotationPoint BoxStyle BoxWhiskerChart Bra BracketingBar BraKet BrayCurtisDistance BreadthFirstScan Break BridgeData BrightnessEqualize BroadcastStationData Brown BrownForsytheTest BrownianBridgeProcess BrowserCategory BSplineBasis BSplineCurve BSplineCurve3DBox BSplineCurve3DBoxOptions BSplineCurveBox BSplineCurveBoxOptions BSplineFunction BSplineSurface BSplineSurface3DBox BSplineSurface3DBoxOptions BubbleChart BubbleChart3D BubbleScale BubbleSizes BuildingData BulletGauge BusinessDayQ ButterflyGraph ButterworthFilterModel Button ButtonBar ButtonBox ButtonBoxOptions ButtonCell ButtonContents ButtonData ButtonEvaluator ButtonExpandable ButtonFrame ButtonFunction ButtonMargins ButtonMinHeight ButtonNote ButtonNotebook ButtonSource ButtonStyle ButtonStyleMenuListing Byte ByteArray ByteArrayFormat ByteArrayQ ByteArrayToString ByteCount ByteOrdering' +
+      'C CachedValue CacheGraphics CachePersistence CalendarConvert CalendarData CalendarType Callout CalloutMarker CalloutStyle CallPacket CanberraDistance Cancel CancelButton CandlestickChart CanonicalGraph CanonicalizePolygon CanonicalizePolyhedron CanonicalName CanonicalWarpingCorrespondence CanonicalWarpingDistance CantorMesh CantorStaircase Cap CapForm CapitalDifferentialD Capitalize CapsuleShape CaptureRunning CardinalBSplineBasis CarlemanLinearize CarmichaelLambda CaseOrdering Cases CaseSensitive Cashflow Casoratian Catalan CatalanNumber Catch Catenate CatenateLayer CauchyDistribution CauchyWindow CayleyGraph CDF CDFDeploy CDFInformation CDFWavelet Ceiling CelestialSystem Cell CellAutoOverwrite CellBaseline CellBoundingBox CellBracketOptions CellChangeTimes CellContents CellContext CellDingbat CellDynamicExpression CellEditDuplicate CellElementsBoundingBox CellElementSpacings CellEpilog CellEvaluationDuplicate CellEvaluationFunction CellEvaluationLanguage CellEventActions CellFrame CellFrameColor CellFrameLabelMargins CellFrameLabels CellFrameMargins CellGroup CellGroupData CellGrouping CellGroupingRules CellHorizontalScrolling CellID CellLabel CellLabelAutoDelete CellLabelMargins CellLabelPositioning CellLabelStyle CellLabelTemplate CellMargins CellObject CellOpen CellPrint CellProlog Cells CellSize CellStyle CellTags CellularAutomaton CensoredDistribution Censoring Center CenterArray CenterDot CentralFeature CentralMoment CentralMomentGeneratingFunction Cepstrogram CepstrogramArray CepstrumArray CForm ChampernowneNumber ChangeOptions ChannelBase ChannelBrokerAction ChannelDatabin ChannelHistoryLength ChannelListen ChannelListener ChannelListeners ChannelListenerWait ChannelObject ChannelPreSendFunction ChannelReceiverFunction ChannelSend ChannelSubscribers ChanVeseBinarize Character CharacterCounts CharacterEncoding CharacterEncodingsPath CharacteristicFunction CharacteristicPolynomial CharacterName CharacterRange Characters ChartBaseStyle ChartElementData ChartElementDataFunction ChartElementFunction ChartElements ChartLabels ChartLayout ChartLegends ChartStyle Chebyshev1FilterModel Chebyshev2FilterModel ChebyshevDistance ChebyshevT ChebyshevU Check CheckAbort CheckAll Checkbox CheckboxBar CheckboxBox CheckboxBoxOptions ChemicalData ChessboardDistance ChiDistribution ChineseRemainder ChiSquareDistribution ChoiceButtons ChoiceDialog CholeskyDecomposition Chop ChromaticityPlot ChromaticityPlot3D ChromaticPolynomial Circle CircleBox CircleDot CircleMinus CirclePlus CirclePoints CircleThrough CircleTimes CirculantGraph CircularOrthogonalMatrixDistribution CircularQuaternionMatrixDistribution CircularRealMatrixDistribution CircularSymplecticMatrixDistribution CircularUnitaryMatrixDistribution Circumsphere CityData ClassifierFunction ClassifierInformation ClassifierMeasurements ClassifierMeasurementsObject Classify ClassPriors Clear ClearAll ClearAttributes ClearCookies ClearPermissions ClearSystemCache ClebschGordan ClickPane Clip ClipboardNotebook ClipFill ClippingStyle ClipPlanes ClipPlanesStyle ClipRange Clock ClockGauge ClockwiseContourIntegral Close Closed CloseKernels ClosenessCentrality Closing ClosingAutoSave ClosingEvent CloudAccountData CloudBase CloudConnect CloudDeploy CloudDirectory CloudDisconnect CloudEvaluate CloudExport CloudExpression CloudExpressions CloudFunction CloudGet CloudImport CloudLoggingData CloudObject CloudObjectInformation CloudObjectInformationData CloudObjectNameFormat CloudObjects CloudObjectURLType CloudPublish CloudPut CloudRenderingMethod CloudSave CloudShare CloudSubmit CloudSymbol CloudUnshare ClusterClassify ClusterDissimilarityFunction ClusteringComponents ClusteringTree CMYKColor Coarse CodeAssistOptions Coefficient CoefficientArrays CoefficientDomain CoefficientList CoefficientRules CoifletWavelet Collect Colon ColonForm ColorBalance ColorCombine ColorConvert ColorCoverage ColorData ColorDataFunction ColorDetect ColorDistance ColorFunction ColorFunctionScaling Colorize ColorNegate ColorOutput ColorProfileData ColorQ ColorQuantize ColorReplace ColorRules ColorSelectorSettings ColorSeparate ColorSetter ColorSetterBox ColorSetterBoxOptions ColorSlider ColorsNear ColorSpace ColorToneMapping Column ColumnAlignments ColumnBackgrounds ColumnForm ColumnLines ColumnsEqual ColumnSpacings ColumnWidths CombinedEntityClass CombinerFunction CometData CommonDefaultFormatTypes Commonest CommonestFilter CommonName CommonUnits CommunityBoundaryStyle CommunityGraphPlot CommunityLabels CommunityRegionStyle CompanyData CompatibleUnitQ CompilationOptions CompilationTarget Compile Compiled CompiledCodeFunction CompiledFunction CompilerOptions Complement CompleteGraph CompleteGraphQ CompleteKaryTree CompletionsListPacket Complex Complexes ComplexExpand ComplexInfinity ComplexityFunction ComplexListPlot ComplexPlot ComplexPlot3D ComponentMeasurements ComponentwiseContextMenu Compose ComposeList ComposeSeries CompositeQ Composition CompoundElement CompoundExpression CompoundPoissonDistribution CompoundPoissonProcess CompoundRenewalProcess Compress CompressedData ComputeUncertainty Condition ConditionalExpression Conditioned Cone ConeBox ConfidenceLevel ConfidenceRange ConfidenceTransform ConfigurationPath ConformAudio ConformImages Congruent ConicHullRegion ConicHullRegion3DBox ConicHullRegionBox ConicOptimization Conjugate ConjugateTranspose Conjunction Connect ConnectedComponents ConnectedGraphComponents ConnectedGraphQ ConnectedMeshComponents ConnectedMoleculeComponents ConnectedMoleculeQ ConnectionSettings ConnectLibraryCallbackFunction ConnectSystemModelComponents ConnesWindow ConoverTest ConsoleMessage ConsoleMessagePacket ConsolePrint Constant ConstantArray ConstantArrayLayer ConstantImage ConstantPlusLayer ConstantRegionQ Constants ConstantTimesLayer ConstellationData ConstrainedMax ConstrainedMin Construct Containing ContainsAll ContainsAny ContainsExactly ContainsNone ContainsOnly ContentFieldOptions ContentLocationFunction ContentObject ContentPadding ContentsBoundingBox ContentSelectable ContentSize Context ContextMenu Contexts ContextToFileName Continuation Continue ContinuedFraction ContinuedFractionK ContinuousAction ContinuousMarkovProcess ContinuousTask ContinuousTimeModelQ ContinuousWaveletData ContinuousWaveletTransform ContourDetect ContourGraphics ContourIntegral ContourLabels ContourLines ContourPlot ContourPlot3D Contours ContourShading ContourSmoothing ContourStyle ContraharmonicMean ContrastiveLossLayer Control ControlActive ControlAlignment ControlGroupContentsBox ControllabilityGramian ControllabilityMatrix ControllableDecomposition ControllableModelQ ControllerDuration ControllerInformation ControllerInformationData ControllerLinking ControllerManipulate ControllerMethod ControllerPath ControllerState ControlPlacement ControlsRendering ControlType Convergents ConversionOptions ConversionRules ConvertToBitmapPacket ConvertToPostScript ConvertToPostScriptPacket ConvexHullMesh ConvexPolygonQ ConvexPolyhedronQ ConvolutionLayer Convolve ConwayGroupCo1 ConwayGroupCo2 ConwayGroupCo3 CookieFunction Cookies CoordinateBoundingBox CoordinateBoundingBoxArray CoordinateBounds CoordinateBoundsArray CoordinateChartData CoordinatesToolOptions CoordinateTransform CoordinateTransformData CoprimeQ Coproduct CopulaDistribution Copyable CopyDatabin CopyDirectory CopyFile CopyTag CopyToClipboard CornerFilter CornerNeighbors Correlation CorrelationDistance CorrelationFunction CorrelationTest Cos Cosh CoshIntegral CosineDistance CosineWindow CosIntegral Cot Coth Count CountDistinct CountDistinctBy CounterAssignments CounterBox CounterBoxOptions CounterClockwiseContourIntegral CounterEvaluator CounterFunction CounterIncrements CounterStyle CounterStyleMenuListing CountRoots CountryData Counts CountsBy Covariance CovarianceEstimatorFunction CovarianceFunction CoxianDistribution CoxIngersollRossProcess CoxModel CoxModelFit CramerVonMisesTest CreateArchive CreateCellID CreateChannel CreateCloudExpression CreateDatabin CreateDataSystemModel CreateDialog CreateDirectory CreateDocument CreateFile CreateIntermediateDirectories CreateManagedLibraryExpression CreateNotebook CreatePalette CreatePalettePacket CreatePermissionsGroup CreateScheduledTask CreateSearchIndex CreateSystemModel CreateTemporary CreateUUID CreateWindow CriterionFunction CriticalityFailureImportance CriticalitySuccessImportance CriticalSection Cross CrossEntropyLossLayer CrossingCount CrossingDetect CrossingPolygon CrossMatrix Csc Csch CTCLossLayer Cube CubeRoot Cubics Cuboid CuboidBox Cumulant CumulantGeneratingFunction Cup CupCap Curl CurlyDoubleQuote CurlyQuote CurrencyConvert CurrentDate CurrentImage CurrentlySpeakingPacket CurrentNotebookImage CurrentScreenImage CurrentValue Curry CurvatureFlowFilter CurveClosed Cyan CycleGraph CycleIndexPolynomial Cycles CyclicGroup Cyclotomic Cylinder CylinderBox CylindricalDecomposition' +
+      'D DagumDistribution DamData DamerauLevenshteinDistance DampingFactor Darker Dashed Dashing DatabaseConnect DatabaseDisconnect DatabaseReference Databin DatabinAdd DatabinRemove Databins DatabinUpload DataCompression DataDistribution DataRange DataReversed Dataset Date DateBounds Dated DateDelimiters DateDifference DatedUnit DateFormat DateFunction DateHistogram DateList DateListLogPlot DateListPlot DateListStepPlot DateObject DateObjectQ DateOverlapsQ DatePattern DatePlus DateRange DateReduction DateString DateTicksFormat DateValue DateWithinQ DaubechiesWavelet DavisDistribution DawsonF DayCount DayCountConvention DayHemisphere DaylightQ DayMatchQ DayName DayNightTerminator DayPlus DayRange DayRound DeBruijnGraph DeBruijnSequence Debug DebugTag Decapitalize Decimal DecimalForm DeclareKnownSymbols DeclarePackage Decompose DeconvolutionLayer Decrement Decrypt DecryptFile DedekindEta DeepSpaceProbeData Default DefaultAxesStyle DefaultBaseStyle DefaultBoxStyle DefaultButton DefaultColor DefaultControlPlacement DefaultDuplicateCellStyle DefaultDuration DefaultElement DefaultFaceGridsStyle DefaultFieldHintStyle DefaultFont DefaultFontProperties DefaultFormatType DefaultFormatTypeForStyle DefaultFrameStyle DefaultFrameTicksStyle DefaultGridLinesStyle DefaultInlineFormatType DefaultInputFormatType DefaultLabelStyle DefaultMenuStyle DefaultNaturalLanguage DefaultNewCellStyle DefaultNewInlineCellStyle DefaultNotebook DefaultOptions DefaultOutputFormatType DefaultPrintPrecision DefaultStyle DefaultStyleDefinitions DefaultTextFormatType DefaultTextInlineFormatType DefaultTicksStyle DefaultTooltipStyle DefaultValue DefaultValues Defer DefineExternal DefineInputStreamMethod DefineOutputStreamMethod DefineResourceFunction Definition Degree DegreeCentrality DegreeGraphDistribution DegreeLexicographic DegreeReverseLexicographic DEigensystem DEigenvalues Deinitialization Del DelaunayMesh Delayed Deletable Delete DeleteAnomalies DeleteBorderComponents DeleteCases DeleteChannel DeleteCloudExpression DeleteContents DeleteDirectory DeleteDuplicates DeleteDuplicatesBy DeleteFile DeleteMissing DeleteObject DeletePermissionsKey DeleteSearchIndex DeleteSmallComponents DeleteStopwords DeleteWithContents DeletionWarning DelimitedArray DelimitedSequence Delimiter DelimiterFlashTime DelimiterMatching Delimiters DeliveryFunction Dendrogram Denominator DensityGraphics DensityHistogram DensityPlot DensityPlot3D DependentVariables Deploy Deployed Depth DepthFirstScan Derivative DerivativeFilter DerivedKey DescriptorStateSpace DesignMatrix DestroyAfterEvaluation Det DeviceClose DeviceConfigure DeviceExecute DeviceExecuteAsynchronous DeviceObject DeviceOpen DeviceOpenQ DeviceRead DeviceReadBuffer DeviceReadLatest DeviceReadList DeviceReadTimeSeries Devices DeviceStreams DeviceWrite DeviceWriteBuffer DGaussianWavelet DiacriticalPositioning Diagonal DiagonalizableMatrixQ DiagonalMatrix DiagonalMatrixQ Dialog DialogIndent DialogInput DialogLevel DialogNotebook DialogProlog DialogReturn DialogSymbols Diamond DiamondMatrix DiceDissimilarity DictionaryLookup DictionaryWordQ DifferenceDelta DifferenceOrder DifferenceQuotient DifferenceRoot DifferenceRootReduce Differences DifferentialD DifferentialRoot DifferentialRootReduce DifferentiatorFilter DigitalSignature DigitBlock DigitBlockMinimum DigitCharacter DigitCount DigitQ DihedralAngle DihedralGroup Dilation DimensionalCombinations DimensionalMeshComponents DimensionReduce DimensionReducerFunction DimensionReduction Dimensions DiracComb DiracDelta DirectedEdge DirectedEdges DirectedGraph DirectedGraphQ DirectedInfinity Direction Directive Directory DirectoryName DirectoryQ DirectoryStack DirichletBeta DirichletCharacter DirichletCondition DirichletConvolve DirichletDistribution DirichletEta DirichletL DirichletLambda DirichletTransform DirichletWindow DisableConsolePrintPacket DisableFormatting DiscreteChirpZTransform DiscreteConvolve DiscreteDelta DiscreteHadamardTransform DiscreteIndicator DiscreteLimit DiscreteLQEstimatorGains DiscreteLQRegulatorGains DiscreteLyapunovSolve DiscreteMarkovProcess DiscreteMaxLimit DiscreteMinLimit DiscretePlot DiscretePlot3D DiscreteRatio DiscreteRiccatiSolve DiscreteShift DiscreteTimeModelQ DiscreteUniformDistribution DiscreteVariables DiscreteWaveletData DiscreteWaveletPacketTransform DiscreteWaveletTransform DiscretizeGraphics DiscretizeRegion Discriminant DisjointQ Disjunction Disk DiskBox DiskMatrix DiskSegment Dispatch DispatchQ DispersionEstimatorFunction Display DisplayAllSteps DisplayEndPacket DisplayFlushImagePacket DisplayForm DisplayFunction DisplayPacket DisplayRules DisplaySetSizePacket DisplayString DisplayTemporary DisplayWith DisplayWithRef DisplayWithVariable DistanceFunction DistanceMatrix DistanceTransform Distribute Distributed DistributedContexts DistributeDefinitions DistributionChart DistributionDomain DistributionFitTest DistributionParameterAssumptions DistributionParameterQ Dithering Div Divergence Divide DivideBy Dividers DivideSides Divisible Divisors DivisorSigma DivisorSum DMSList DMSString Do DockedCells DocumentGenerator DocumentGeneratorInformation DocumentGeneratorInformationData DocumentGenerators DocumentNotebook DocumentWeightingRules Dodecahedron DomainRegistrationInformation DominantColors DOSTextFormat Dot DotDashed DotEqual DotLayer DotPlusLayer Dotted DoubleBracketingBar DoubleContourIntegral DoubleDownArrow DoubleLeftArrow DoubleLeftRightArrow DoubleLeftTee DoubleLongLeftArrow DoubleLongLeftRightArrow DoubleLongRightArrow DoubleRightArrow DoubleRightTee DoubleUpArrow DoubleUpDownArrow DoubleVerticalBar DoublyInfinite Down DownArrow DownArrowBar DownArrowUpArrow DownLeftRightVector DownLeftTeeVector DownLeftVector DownLeftVectorBar DownRightTeeVector DownRightVector DownRightVectorBar Downsample DownTee DownTeeArrow DownValues DragAndDrop DrawEdges DrawFrontFaces DrawHighlighted Drop DropoutLayer DSolve DSolveValue Dt DualLinearProgramming DualPolyhedron DualSystemsModel DumpGet DumpSave DuplicateFreeQ Duration Dynamic DynamicBox DynamicBoxOptions DynamicEvaluationTimeout DynamicGeoGraphics DynamicImage DynamicLocation DynamicModule DynamicModuleBox DynamicModuleBoxOptions DynamicModuleParent DynamicModuleValues DynamicName DynamicNamespace DynamicReference DynamicSetting DynamicUpdating DynamicWrapper DynamicWrapperBox DynamicWrapperBoxOptions' +
+      'E EarthImpactData EarthquakeData EccentricityCentrality Echo EchoFunction EclipseType EdgeAdd EdgeBetweennessCentrality EdgeCapacity EdgeCapForm EdgeColor EdgeConnectivity EdgeContract EdgeCost EdgeCount EdgeCoverQ EdgeCycleMatrix EdgeDashing EdgeDelete EdgeDetect EdgeForm EdgeIndex EdgeJoinForm EdgeLabeling EdgeLabels EdgeLabelStyle EdgeList EdgeOpacity EdgeQ EdgeRenderingFunction EdgeRules EdgeShapeFunction EdgeStyle EdgeThickness EdgeWeight EdgeWeightedGraphQ Editable EditButtonSettings EditCellTagsSettings EditDistance EffectiveInterest Eigensystem Eigenvalues EigenvectorCentrality Eigenvectors Element ElementData ElementwiseLayer ElidedForms Eliminate EliminationOrder Ellipsoid EllipticE EllipticExp EllipticExpPrime EllipticF EllipticFilterModel EllipticK EllipticLog EllipticNomeQ EllipticPi EllipticReducedHalfPeriods EllipticTheta EllipticThetaPrime EmbedCode EmbeddedHTML EmbeddedService EmbeddingLayer EmbeddingObject EmitSound EmphasizeSyntaxErrors EmpiricalDistribution Empty EmptyGraphQ EmptyRegion EnableConsolePrintPacket Enabled Encode Encrypt EncryptedObject EncryptFile End EndAdd EndDialogPacket EndFrontEndInteractionPacket EndOfBuffer EndOfFile EndOfLine EndOfString EndPackage EngineEnvironment EngineeringForm Enter EnterExpressionPacket EnterTextPacket Entity EntityClass EntityClassList EntityCopies EntityFunction EntityGroup EntityInstance EntityList EntityPrefetch EntityProperties EntityProperty EntityPropertyClass EntityRegister EntityStore EntityStores EntityTypeName EntityUnregister EntityValue Entropy EntropyFilter Environment Epilog EpilogFunction Equal EqualColumns EqualRows EqualTilde EqualTo EquatedTo Equilibrium EquirippleFilterKernel Equivalent Erf Erfc Erfi ErlangB ErlangC ErlangDistribution Erosion ErrorBox ErrorBoxOptions ErrorNorm ErrorPacket ErrorsDialogSettings EscapeRadius EstimatedBackground EstimatedDistribution EstimatedProcess EstimatorGains EstimatorRegulator EuclideanDistance EulerAngles EulerCharacteristic EulerE EulerGamma EulerianGraphQ EulerMatrix EulerPhi Evaluatable Evaluate Evaluated EvaluatePacket EvaluateScheduledTask EvaluationBox EvaluationCell EvaluationCompletionAction EvaluationData EvaluationElements EvaluationEnvironment EvaluationMode EvaluationMonitor EvaluationNotebook EvaluationObject EvaluationOrder Evaluator EvaluatorNames EvenQ EventData EventEvaluator EventHandler EventHandlerTag EventLabels EventSeries ExactBlackmanWindow ExactNumberQ ExactRootIsolation ExampleData Except ExcludedForms ExcludedLines ExcludedPhysicalQuantities ExcludePods Exclusions ExclusionsStyle Exists Exit ExitDialog ExoplanetData Exp Expand ExpandAll ExpandDenominator ExpandFileName ExpandNumerator Expectation ExpectationE ExpectedValue ExpGammaDistribution ExpIntegralE ExpIntegralEi ExpirationDate Exponent ExponentFunction ExponentialDistribution ExponentialFamily ExponentialGeneratingFunction ExponentialMovingAverage ExponentialPowerDistribution ExponentPosition ExponentStep Export ExportAutoReplacements ExportByteArray ExportForm ExportPacket ExportString Expression ExpressionCell ExpressionPacket ExpressionUUID ExpToTrig ExtendedEntityClass ExtendedGCD Extension ExtentElementFunction ExtentMarkers ExtentSize ExternalBundle ExternalCall ExternalDataCharacterEncoding ExternalEvaluate ExternalFunction ExternalFunctionName ExternalObject ExternalOptions ExternalSessionObject ExternalSessions ExternalTypeSignature ExternalValue Extract ExtractArchive ExtractLayer ExtremeValueDistribution' +
+      'FaceForm FaceGrids FaceGridsStyle FacialFeatures Factor FactorComplete Factorial Factorial2 FactorialMoment FactorialMomentGeneratingFunction FactorialPower FactorInteger FactorList FactorSquareFree FactorSquareFreeList FactorTerms FactorTermsList Fail Failure FailureAction FailureDistribution FailureQ False FareySequence FARIMAProcess FeatureDistance FeatureExtract FeatureExtraction FeatureExtractor FeatureExtractorFunction FeatureNames FeatureNearest FeatureSpacePlot FeatureSpacePlot3D FeatureTypes FEDisableConsolePrintPacket FeedbackLinearize FeedbackSector FeedbackSectorStyle FeedbackType FEEnableConsolePrintPacket FetalGrowthData Fibonacci Fibonorial FieldCompletionFunction FieldHint FieldHintStyle FieldMasked FieldSize File FileBaseName FileByteCount FileConvert FileDate FileExistsQ FileExtension FileFormat FileHandler FileHash FileInformation FileName FileNameDepth FileNameDialogSettings FileNameDrop FileNameForms FileNameJoin FileNames FileNameSetter FileNameSplit FileNameTake FilePrint FileSize FileSystemMap FileSystemScan FileTemplate FileTemplateApply FileType FilledCurve FilledCurveBox FilledCurveBoxOptions Filling FillingStyle FillingTransform FilteredEntityClass FilterRules FinancialBond FinancialData FinancialDerivative FinancialIndicator Find FindAnomalies FindArgMax FindArgMin FindChannels FindClique FindClusters FindCookies FindCurvePath FindCycle FindDevices FindDistribution FindDistributionParameters FindDivisions FindEdgeCover FindEdgeCut FindEdgeIndependentPaths FindEquationalProof FindEulerianCycle FindExternalEvaluators FindFaces FindFile FindFit FindFormula FindFundamentalCycles FindGeneratingFunction FindGeoLocation FindGeometricConjectures FindGeometricTransform FindGraphCommunities FindGraphIsomorphism FindGraphPartition FindHamiltonianCycle FindHamiltonianPath FindHiddenMarkovStates FindIndependentEdgeSet FindIndependentVertexSet FindInstance FindIntegerNullVector FindKClan FindKClique FindKClub FindKPlex FindLibrary FindLinearRecurrence FindList FindMatchingColor FindMaximum FindMaximumFlow FindMaxValue FindMeshDefects FindMinimum FindMinimumCostFlow FindMinimumCut FindMinValue FindMoleculeSubstructure FindPath FindPeaks FindPermutation FindPostmanTour FindProcessParameters FindRepeat FindRoot FindSequenceFunction FindSettings FindShortestPath FindShortestTour FindSpanningTree FindSystemModelEquilibrium FindTextualAnswer FindThreshold FindTransientRepeat FindVertexCover FindVertexCut FindVertexIndependentPaths Fine FinishDynamic FiniteAbelianGroupCount FiniteGroupCount FiniteGroupData First FirstCase FirstPassageTimeDistribution FirstPosition FischerGroupFi22 FischerGroupFi23 FischerGroupFi24Prime FisherHypergeometricDistribution FisherRatioTest FisherZDistribution Fit FitAll FitRegularization FittedModel FixedOrder FixedPoint FixedPointList FlashSelection Flat Flatten FlattenAt FlattenLayer FlatTopWindow FlipView Floor FlowPolynomial FlushPrintOutputPacket Fold FoldList FoldPair FoldPairList FollowRedirects Font FontColor FontFamily FontForm FontName FontOpacity FontPostScriptName FontProperties FontReencoding FontSize FontSlant FontSubstitutions FontTracking FontVariations FontWeight For ForAll Format FormatRules FormatType FormatTypeAutoConvert FormatValues FormBox FormBoxOptions FormControl FormFunction FormLayoutFunction FormObject FormPage FormTheme FormulaData FormulaLookup FortranForm Forward ForwardBackward Fourier FourierCoefficient FourierCosCoefficient FourierCosSeries FourierCosTransform FourierDCT FourierDCTFilter FourierDCTMatrix FourierDST FourierDSTMatrix FourierMatrix FourierParameters FourierSequenceTransform FourierSeries FourierSinCoefficient FourierSinSeries FourierSinTransform FourierTransform FourierTrigSeries FractionalBrownianMotionProcess FractionalGaussianNoiseProcess FractionalPart FractionBox FractionBoxOptions FractionLine Frame FrameBox FrameBoxOptions Framed FrameInset FrameLabel Frameless FrameMargins FrameRate FrameStyle FrameTicks FrameTicksStyle FRatioDistribution FrechetDistribution FreeQ FrenetSerretSystem FrequencySamplingFilterKernel FresnelC FresnelF FresnelG FresnelS Friday FrobeniusNumber FrobeniusSolve FromAbsoluteTime FromCharacterCode FromCoefficientRules FromContinuedFraction FromDate FromDigits FromDMS FromEntity FromJulianDate FromLetterNumber FromPolarCoordinates FromRomanNumeral FromSphericalCoordinates FromUnixTime Front FrontEndDynamicExpression FrontEndEventActions FrontEndExecute FrontEndObject FrontEndResource FrontEndResourceString FrontEndStackSize FrontEndToken FrontEndTokenExecute FrontEndValueCache FrontEndVersion FrontFaceColor FrontFaceOpacity Full FullAxes FullDefinition FullForm FullGraphics FullInformationOutputRegulator FullOptions FullRegion FullSimplify Function FunctionCompile FunctionCompileExport FunctionCompileExportByteArray FunctionCompileExportLibrary FunctionCompileExportString FunctionDomain FunctionExpand FunctionInterpolation FunctionPeriod FunctionRange FunctionSpace FussellVeselyImportance' +
+      'GaborFilter GaborMatrix GaborWavelet GainMargins GainPhaseMargins GalaxyData GalleryView Gamma GammaDistribution GammaRegularized GapPenalty GARCHProcess GatedRecurrentLayer Gather GatherBy GaugeFaceElementFunction GaugeFaceStyle GaugeFrameElementFunction GaugeFrameSize GaugeFrameStyle GaugeLabels GaugeMarkers GaugeStyle GaussianFilter GaussianIntegers GaussianMatrix GaussianOrthogonalMatrixDistribution GaussianSymplecticMatrixDistribution GaussianUnitaryMatrixDistribution GaussianWindow GCD GegenbauerC General GeneralizedLinearModelFit GenerateAsymmetricKeyPair GenerateConditions GeneratedCell GeneratedDocumentBinding GenerateDerivedKey GenerateDigitalSignature GenerateDocument GeneratedParameters GeneratedQuantityMagnitudes GenerateHTTPResponse GenerateSecuredAuthenticationKey GenerateSymmetricKey GeneratingFunction GeneratorDescription GeneratorHistoryLength GeneratorOutputType Generic GenericCylindricalDecomposition GenomeData GenomeLookup GeoAntipode GeoArea GeoArraySize GeoBackground GeoBoundingBox GeoBounds GeoBoundsRegion GeoBubbleChart GeoCenter GeoCircle GeodesicClosing GeodesicDilation GeodesicErosion GeodesicOpening GeoDestination GeodesyData GeoDirection GeoDisk GeoDisplacement GeoDistance GeoDistanceList GeoElevationData GeoEntities GeoGraphics GeogravityModelData GeoGridDirectionDifference GeoGridLines GeoGridLinesStyle GeoGridPosition GeoGridRange GeoGridRangePadding GeoGridUnitArea GeoGridUnitDistance GeoGridVector GeoGroup GeoHemisphere GeoHemisphereBoundary GeoHistogram GeoIdentify GeoImage GeoLabels GeoLength GeoListPlot GeoLocation GeologicalPeriodData GeomagneticModelData GeoMarker GeometricAssertion GeometricBrownianMotionProcess GeometricDistribution GeometricMean GeometricMeanFilter GeometricScene GeometricTransformation GeometricTransformation3DBox GeometricTransformation3DBoxOptions GeometricTransformationBox GeometricTransformationBoxOptions GeoModel GeoNearest GeoPath GeoPosition GeoPositionENU GeoPositionXYZ GeoProjection GeoProjectionData GeoRange GeoRangePadding GeoRegionValuePlot GeoResolution GeoScaleBar GeoServer GeoSmoothHistogram GeoStreamPlot GeoStyling GeoStylingImageFunction GeoVariant GeoVector GeoVectorENU GeoVectorPlot GeoVectorXYZ GeoVisibleRegion GeoVisibleRegionBoundary GeoWithinQ GeoZoomLevel GestureHandler GestureHandlerTag Get GetBoundingBoxSizePacket GetContext GetEnvironment GetFileName GetFrontEndOptionsDataPacket GetLinebreakInformationPacket GetMenusPacket GetPageBreakInformationPacket Glaisher GlobalClusteringCoefficient GlobalPreferences GlobalSession Glow GoldenAngle GoldenRatio GompertzMakehamDistribution GoodmanKruskalGamma GoodmanKruskalGammaTest Goto Grad Gradient GradientFilter GradientOrientationFilter GrammarApply GrammarRules GrammarToken Graph Graph3D GraphAssortativity GraphAutomorphismGroup GraphCenter GraphComplement GraphData GraphDensity GraphDiameter GraphDifference GraphDisjointUnion GraphDistance GraphDistanceMatrix GraphElementData GraphEmbedding GraphHighlight GraphHighlightStyle GraphHub Graphics Graphics3D Graphics3DBox Graphics3DBoxOptions GraphicsArray GraphicsBaseline GraphicsBox GraphicsBoxOptions GraphicsColor GraphicsColumn GraphicsComplex GraphicsComplex3DBox GraphicsComplex3DBoxOptions GraphicsComplexBox GraphicsComplexBoxOptions GraphicsContents GraphicsData GraphicsGrid GraphicsGridBox GraphicsGroup GraphicsGroup3DBox GraphicsGroup3DBoxOptions GraphicsGroupBox GraphicsGroupBoxOptions GraphicsGrouping GraphicsHighlightColor GraphicsRow GraphicsSpacing GraphicsStyle GraphIntersection GraphLayout GraphLinkEfficiency GraphPeriphery GraphPlot GraphPlot3D GraphPower GraphPropertyDistribution GraphQ GraphRadius GraphReciprocity GraphRoot GraphStyle GraphUnion Gray GrayLevel Greater GreaterEqual GreaterEqualLess GreaterEqualThan GreaterFullEqual GreaterGreater GreaterLess GreaterSlantEqual GreaterThan GreaterTilde Green GreenFunction Grid GridBaseline GridBox GridBoxAlignment GridBoxBackground GridBoxDividers GridBoxFrame GridBoxItemSize GridBoxItemStyle GridBoxOptions GridBoxSpacings GridCreationSettings GridDefaultElement GridElementStyleOptions GridFrame GridFrameMargins GridGraph GridLines GridLinesStyle GroebnerBasis GroupActionBase GroupBy GroupCentralizer GroupElementFromWord GroupElementPosition GroupElementQ GroupElements GroupElementToWord GroupGenerators Groupings GroupMultiplicationTable GroupOrbits GroupOrder GroupPageBreakWithin GroupSetwiseStabilizer GroupStabilizer GroupStabilizerChain GroupTogetherGrouping GroupTogetherNestedGrouping GrowCutComponents Gudermannian GuidedFilter GumbelDistribution' +
+      'HaarWavelet HadamardMatrix HalfLine HalfNormalDistribution HalfPlane HalfSpace HamiltonianGraphQ HammingDistance HammingWindow HandlerFunctions HandlerFunctionsKeys HankelH1 HankelH2 HankelMatrix HankelTransform HannPoissonWindow HannWindow HaradaNortonGroupHN HararyGraph HarmonicMean HarmonicMeanFilter HarmonicNumber Hash Haversine HazardFunction Head HeadCompose HeaderLines Heads HeavisideLambda HeavisidePi HeavisideTheta HeldGroupHe HeldPart HelpBrowserLookup HelpBrowserNotebook HelpBrowserSettings Here HermiteDecomposition HermiteH HermitianMatrixQ HessenbergDecomposition Hessian HexadecimalCharacter Hexahedron HexahedronBox HexahedronBoxOptions HiddenMarkovProcess HiddenSurface Highlighted HighlightGraph HighlightImage HighlightMesh HighpassFilter HigmanSimsGroupHS HilbertCurve HilbertFilter HilbertMatrix Histogram Histogram3D HistogramDistribution HistogramList HistogramTransform HistogramTransformInterpolation HistoricalPeriodData HitMissTransform HITSCentrality HjorthDistribution HodgeDual HoeffdingD HoeffdingDTest Hold HoldAll HoldAllComplete HoldComplete HoldFirst HoldForm HoldPattern HoldRest HolidayCalendar HomeDirectory HomePage Horizontal HorizontalForm HorizontalGauge HorizontalScrollPosition HornerForm HostLookup HotellingTSquareDistribution HoytDistribution HTMLSave HTTPErrorResponse HTTPRedirect HTTPRequest HTTPRequestData HTTPResponse Hue HumanGrowthData HumpDownHump HumpEqual HurwitzLerchPhi HurwitzZeta HyperbolicDistribution HypercubeGraph HyperexponentialDistribution Hyperfactorial Hypergeometric0F1 Hypergeometric0F1Regularized Hypergeometric1F1 Hypergeometric1F1Regularized Hypergeometric2F1 Hypergeometric2F1Regularized HypergeometricDistribution HypergeometricPFQ HypergeometricPFQRegularized HypergeometricU Hyperlink HyperlinkCreationSettings Hyperplane Hyphenation HyphenationOptions HypoexponentialDistribution HypothesisTestData' +
+      'I IconData Iconize IconizedObject IconRules Icosahedron Identity IdentityMatrix If IgnoreCase IgnoreDiacritics IgnorePunctuation IgnoreSpellCheck IgnoringInactive Im Image Image3D Image3DProjection Image3DSlices ImageAccumulate ImageAdd ImageAdjust ImageAlign ImageApply ImageApplyIndexed ImageAspectRatio ImageAssemble ImageAugmentationLayer ImageBoundingBoxes ImageCache ImageCacheValid ImageCapture ImageCaptureFunction ImageCases ImageChannels ImageClip ImageCollage ImageColorSpace ImageCompose ImageContainsQ ImageContents ImageConvolve ImageCooccurrence ImageCorners ImageCorrelate ImageCorrespondingPoints ImageCrop ImageData ImageDeconvolve ImageDemosaic ImageDifference ImageDimensions ImageDisplacements ImageDistance ImageEffect ImageExposureCombine ImageFeatureTrack ImageFileApply ImageFileFilter ImageFileScan ImageFilter ImageFocusCombine ImageForestingComponents ImageFormattingWidth ImageForwardTransformation ImageGraphics ImageHistogram ImageIdentify ImageInstanceQ ImageKeypoints ImageLevels ImageLines ImageMargins ImageMarker ImageMarkers ImageMeasurements ImageMesh ImageMultiply ImageOffset ImagePad ImagePadding ImagePartition ImagePeriodogram ImagePerspectiveTransformation ImagePosition ImagePreviewFunction ImagePyramid ImagePyramidApply ImageQ ImageRangeCache ImageRecolor ImageReflect ImageRegion ImageResize ImageResolution ImageRestyle ImageRotate ImageRotated ImageSaliencyFilter ImageScaled ImageScan ImageSize ImageSizeAction ImageSizeCache ImageSizeMultipliers ImageSizeRaw ImageSubtract ImageTake ImageTransformation ImageTrim ImageType ImageValue ImageValuePositions ImagingDevice ImplicitRegion Implies Import ImportAutoReplacements ImportByteArray ImportOptions ImportString ImprovementImportance In Inactivate Inactive IncidenceGraph IncidenceList IncidenceMatrix IncludeAromaticBonds IncludeConstantBasis IncludeDefinitions IncludeDirectories IncludeFileExtension IncludeGeneratorTasks IncludeHydrogens IncludeInflections IncludeMetaInformation IncludePods IncludeQuantities IncludeRelatedTables IncludeSingularTerm IncludeWindowTimes Increment IndefiniteMatrixQ Indent IndentingNewlineSpacings IndentMaxFraction IndependenceTest IndependentEdgeSetQ IndependentPhysicalQuantity IndependentUnit IndependentUnitDimension IndependentVertexSetQ Indeterminate IndeterminateThreshold IndexCreationOptions Indexed IndexGraph IndexTag Inequality InexactNumberQ InexactNumbers InfiniteLine InfinitePlane Infinity Infix InflationAdjust InflationMethod Information InformationData InformationDataGrid Inherited InheritScope InhomogeneousPoissonProcess InitialEvaluationHistory Initialization InitializationCell InitializationCellEvaluation InitializationCellWarning InitializationObjects InitializationValue Initialize InitialSeeding InlineCounterAssignments InlineCounterIncrements InlineRules Inner InnerPolygon InnerPolyhedron Inpaint Input InputAliases InputAssumptions InputAutoReplacements InputField InputFieldBox InputFieldBoxOptions InputForm InputGrouping InputNamePacket InputNotebook InputPacket InputSettings InputStream InputString InputStringPacket InputToBoxFormPacket Insert InsertionFunction InsertionPointObject InsertLinebreaks InsertResults Inset Inset3DBox Inset3DBoxOptions InsetBox InsetBoxOptions Insphere Install InstallService InstanceNormalizationLayer InString Integer IntegerDigits IntegerExponent IntegerLength IntegerName IntegerPart IntegerPartitions IntegerQ IntegerReverse Integers IntegerString Integral Integrate Interactive InteractiveTradingChart Interlaced Interleaving InternallyBalancedDecomposition InterpolatingFunction InterpolatingPolynomial Interpolation InterpolationOrder InterpolationPoints InterpolationPrecision Interpretation InterpretationBox InterpretationBoxOptions InterpretationFunction Interpreter InterpretTemplate InterquartileRange Interrupt InterruptSettings IntersectingQ Intersection Interval IntervalIntersection IntervalMarkers IntervalMarkersStyle IntervalMemberQ IntervalSlider IntervalUnion Into Inverse InverseBetaRegularized InverseCDF InverseChiSquareDistribution InverseContinuousWaveletTransform InverseDistanceTransform InverseEllipticNomeQ InverseErf InverseErfc InverseFourier InverseFourierCosTransform InverseFourierSequenceTransform InverseFourierSinTransform InverseFourierTransform InverseFunction InverseFunctions InverseGammaDistribution InverseGammaRegularized InverseGaussianDistribution InverseGudermannian InverseHankelTransform InverseHaversine InverseImagePyramid InverseJacobiCD InverseJacobiCN InverseJacobiCS InverseJacobiDC InverseJacobiDN InverseJacobiDS InverseJacobiNC InverseJacobiND InverseJacobiNS InverseJacobiSC InverseJacobiSD InverseJacobiSN InverseLaplaceTransform InverseMellinTransform InversePermutation InverseRadon InverseRadonTransform InverseSeries InverseShortTimeFourier InverseSpectrogram InverseSurvivalFunction InverseTransformedRegion InverseWaveletTransform InverseWeierstrassP InverseWishartMatrixDistribution InverseZTransform Invisible InvisibleApplication InvisibleTimes IPAddress IrreduciblePolynomialQ IslandData IsolatingInterval IsomorphicGraphQ IsotopeData Italic Item ItemAspectRatio ItemBox ItemBoxOptions ItemSize ItemStyle ItoProcess' +
+      'JaccardDissimilarity JacobiAmplitude Jacobian JacobiCD JacobiCN JacobiCS JacobiDC JacobiDN JacobiDS JacobiNC JacobiND JacobiNS JacobiP JacobiSC JacobiSD JacobiSN JacobiSymbol JacobiZeta JankoGroupJ1 JankoGroupJ2 JankoGroupJ3 JankoGroupJ4 JarqueBeraALMTest JohnsonDistribution Join JoinAcross Joined JoinedCurve JoinedCurveBox JoinedCurveBoxOptions JoinForm JordanDecomposition JordanModelDecomposition JulianDate JuliaSetBoettcher JuliaSetIterationCount JuliaSetPlot JuliaSetPoints' +
+      'K KagiChart KaiserBesselWindow KaiserWindow KalmanEstimator KalmanFilter KarhunenLoeveDecomposition KaryTree KatzCentrality KCoreComponents KDistribution KEdgeConnectedComponents KEdgeConnectedGraphQ KelvinBei KelvinBer KelvinKei KelvinKer KendallTau KendallTauTest KernelExecute KernelFunction KernelMixtureDistribution Kernels Ket Key KeyCollisionFunction KeyComplement KeyDrop KeyDropFrom KeyExistsQ KeyFreeQ KeyIntersection KeyMap KeyMemberQ KeypointStrength Keys KeySelect KeySort KeySortBy KeyTake KeyUnion KeyValueMap KeyValuePattern Khinchin KillProcess KirchhoffGraph KirchhoffMatrix KleinInvariantJ KnapsackSolve KnightTourGraph KnotData KnownUnitQ KochCurve KolmogorovSmirnovTest KroneckerDelta KroneckerModelDecomposition KroneckerProduct KroneckerSymbol KuiperTest KumaraswamyDistribution Kurtosis KuwaharaFilter KVertexConnectedComponents KVertexConnectedGraphQ' +
+      'LABColor Label Labeled LabeledSlider LabelingFunction LabelingSize LabelStyle LabelVisibility LaguerreL LakeData LambdaComponents LambertW LaminaData LanczosWindow LandauDistribution Language LanguageCategory LanguageData LanguageIdentify LanguageOptions LaplaceDistribution LaplaceTransform Laplacian LaplacianFilter LaplacianGaussianFilter Large Larger Last Latitude LatitudeLongitude LatticeData LatticeReduce Launch LaunchKernels LayeredGraphPlot LayerSizeFunction LayoutInformation LCHColor LCM LeaderSize LeafCount LeapYearQ LearnDistribution LearnedDistribution LearningRate LearningRateMultipliers LeastSquares LeastSquaresFilterKernel Left LeftArrow LeftArrowBar LeftArrowRightArrow LeftDownTeeVector LeftDownVector LeftDownVectorBar LeftRightArrow LeftRightVector LeftTee LeftTeeArrow LeftTeeVector LeftTriangle LeftTriangleBar LeftTriangleEqual LeftUpDownVector LeftUpTeeVector LeftUpVector LeftUpVectorBar LeftVector LeftVectorBar LegendAppearance Legended LegendFunction LegendLabel LegendLayout LegendMargins LegendMarkers LegendMarkerSize LegendreP LegendreQ LegendreType Length LengthWhile LerchPhi Less LessEqual LessEqualGreater LessEqualThan LessFullEqual LessGreater LessLess LessSlantEqual LessThan LessTilde LetterCharacter LetterCounts LetterNumber LetterQ Level LeveneTest LeviCivitaTensor LevyDistribution Lexicographic LibraryDataType LibraryFunction LibraryFunctionError LibraryFunctionInformation LibraryFunctionLoad LibraryFunctionUnload LibraryLoad LibraryUnload LicenseID LiftingFilterData LiftingWaveletTransform LightBlue LightBrown LightCyan Lighter LightGray LightGreen Lighting LightingAngle LightMagenta LightOrange LightPink LightPurple LightRed LightSources LightYellow Likelihood Limit LimitsPositioning LimitsPositioningTokens LindleyDistribution Line Line3DBox Line3DBoxOptions LinearFilter LinearFractionalOptimization LinearFractionalTransform LinearGradientImage LinearizingTransformationData LinearLayer LinearModelFit LinearOffsetFunction LinearOptimization LinearProgramming LinearRecurrence LinearSolve LinearSolveFunction LineBox LineBoxOptions LineBreak LinebreakAdjustments LineBreakChart LinebreakSemicolonWeighting LineBreakWithin LineColor LineGraph LineIndent LineIndentMaxFraction LineIntegralConvolutionPlot LineIntegralConvolutionScale LineLegend LineOpacity LineSpacing LineWrapParts LinkActivate LinkClose LinkConnect LinkConnectedQ LinkCreate LinkError LinkFlush LinkFunction LinkHost LinkInterrupt LinkLaunch LinkMode LinkObject LinkOpen LinkOptions LinkPatterns LinkProtocol LinkRankCentrality LinkRead LinkReadHeld LinkReadyQ Links LinkService LinkWrite LinkWriteHeld LiouvilleLambda List Listable ListAnimate ListContourPlot ListContourPlot3D ListConvolve ListCorrelate ListCurvePathPlot ListDeconvolve ListDensityPlot ListDensityPlot3D Listen ListFormat ListFourierSequenceTransform ListInterpolation ListLineIntegralConvolutionPlot ListLinePlot ListLogLinearPlot ListLogLogPlot ListLogPlot ListPicker ListPickerBox ListPickerBoxBackground ListPickerBoxOptions ListPlay ListPlot ListPlot3D ListPointPlot3D ListPolarPlot ListQ ListSliceContourPlot3D ListSliceDensityPlot3D ListSliceVectorPlot3D ListStepPlot ListStreamDensityPlot ListStreamPlot ListSurfacePlot3D ListVectorDensityPlot ListVectorPlot ListVectorPlot3D ListZTransform Literal LiteralSearch LocalAdaptiveBinarize LocalCache LocalClusteringCoefficient LocalizeDefinitions LocalizeVariables LocalObject LocalObjects LocalResponseNormalizationLayer LocalSubmit LocalSymbol LocalTime LocalTimeZone LocationEquivalenceTest LocationTest Locator LocatorAutoCreate LocatorBox LocatorBoxOptions LocatorCentering LocatorPane LocatorPaneBox LocatorPaneBoxOptions LocatorRegion Locked Log Log10 Log2 LogBarnesG LogGamma LogGammaDistribution LogicalExpand LogIntegral LogisticDistribution LogisticSigmoid LogitModelFit LogLikelihood LogLinearPlot LogLogisticDistribution LogLogPlot LogMultinormalDistribution LogNormalDistribution LogPlot LogRankTest LogSeriesDistribution LongEqual Longest LongestCommonSequence LongestCommonSequencePositions LongestCommonSubsequence LongestCommonSubsequencePositions LongestMatch LongestOrderedSequence LongForm Longitude LongLeftArrow LongLeftRightArrow LongRightArrow LongShortTermMemoryLayer Lookup Loopback LoopFreeGraphQ LossFunction LowerCaseQ LowerLeftArrow LowerRightArrow LowerTriangularize LowerTriangularMatrixQ LowpassFilter LQEstimatorGains LQGRegulator LQOutputRegulatorGains LQRegulatorGains LUBackSubstitution LucasL LuccioSamiComponents LUDecomposition LunarEclipse LUVColor LyapunovSolve LyonsGroupLy' +
+      'MachineID MachineName MachineNumberQ MachinePrecision MacintoshSystemPageSetup Magenta Magnification Magnify MailAddressValidation MailExecute MailFolder MailItem MailReceiverFunction MailResponseFunction MailSearch MailServerConnect MailServerConnection MailSettings MainSolve MaintainDynamicCaches Majority MakeBoxes MakeExpression MakeRules ManagedLibraryExpressionID ManagedLibraryExpressionQ MandelbrotSetBoettcher MandelbrotSetDistance MandelbrotSetIterationCount MandelbrotSetMemberQ MandelbrotSetPlot MangoldtLambda ManhattanDistance Manipulate Manipulator MannedSpaceMissionData MannWhitneyTest MantissaExponent Manual Map MapAll MapAt MapIndexed MAProcess MapThread MarchenkoPasturDistribution MarcumQ MardiaCombinedTest MardiaKurtosisTest MardiaSkewnessTest MarginalDistribution MarkovProcessProperties Masking MatchingDissimilarity MatchLocalNameQ MatchLocalNames MatchQ Material MathematicalFunctionData MathematicaNotation MathieuC MathieuCharacteristicA MathieuCharacteristicB MathieuCharacteristicExponent MathieuCPrime MathieuGroupM11 MathieuGroupM12 MathieuGroupM22 MathieuGroupM23 MathieuGroupM24 MathieuS MathieuSPrime MathMLForm MathMLText Matrices MatrixExp MatrixForm MatrixFunction MatrixLog MatrixNormalDistribution MatrixPlot MatrixPower MatrixPropertyDistribution MatrixQ MatrixRank MatrixTDistribution Max MaxBend MaxCellMeasure MaxColorDistance MaxDetect MaxDuration MaxExtraBandwidths MaxExtraConditions MaxFeatureDisplacement MaxFeatures MaxFilter MaximalBy Maximize MaxItems MaxIterations MaxLimit MaxMemoryUsed MaxMixtureKernels MaxOverlapFraction MaxPlotPoints MaxPoints MaxRecursion MaxStableDistribution MaxStepFraction MaxSteps MaxStepSize MaxTrainingRounds MaxValue MaxwellDistribution MaxWordGap McLaughlinGroupMcL Mean MeanAbsoluteLossLayer MeanAround MeanClusteringCoefficient MeanDegreeConnectivity MeanDeviation MeanFilter MeanGraphDistance MeanNeighborDegree MeanShift MeanShiftFilter MeanSquaredLossLayer Median MedianDeviation MedianFilter MedicalTestData Medium MeijerG MeijerGReduce MeixnerDistribution MellinConvolve MellinTransform MemberQ MemoryAvailable MemoryConstrained MemoryConstraint MemoryInUse MengerMesh Menu MenuAppearance MenuCommandKey MenuEvaluator MenuItem MenuList MenuPacket MenuSortingValue MenuStyle MenuView Merge MergeDifferences MergingFunction MersennePrimeExponent MersennePrimeExponentQ Mesh MeshCellCentroid MeshCellCount MeshCellHighlight MeshCellIndex MeshCellLabel MeshCellMarker MeshCellMeasure MeshCellQuality MeshCells MeshCellShapeFunction MeshCellStyle MeshCoordinates MeshFunctions MeshPrimitives MeshQualityGoal MeshRange MeshRefinementFunction MeshRegion MeshRegionQ MeshShading MeshStyle Message MessageDialog MessageList MessageName MessageObject MessageOptions MessagePacket Messages MessagesNotebook MetaCharacters MetaInformation MeteorShowerData Method MethodOptions MexicanHatWavelet MeyerWavelet Midpoint Min MinColorDistance MinDetect MineralData MinFilter MinimalBy MinimalPolynomial MinimalStateSpaceModel Minimize MinimumTimeIncrement MinIntervalSize MinkowskiQuestionMark MinLimit MinMax MinorPlanetData Minors MinRecursion MinSize MinStableDistribution Minus MinusPlus MinValue Missing MissingBehavior MissingDataMethod MissingDataRules MissingQ MissingString MissingStyle MissingValuePattern MittagLefflerE MixedFractionParts MixedGraphQ MixedMagnitude MixedRadix MixedRadixQuantity MixedUnit MixtureDistribution Mod Modal Mode Modular ModularInverse ModularLambda Module Modulus MoebiusMu Molecule MoleculeContainsQ MoleculeEquivalentQ MoleculeGraph MoleculeModify MoleculePattern MoleculePlot MoleculePlot3D MoleculeProperty MoleculeQ MoleculeValue Moment Momentary MomentConvert MomentEvaluate MomentGeneratingFunction MomentOfInertia Monday Monitor MonomialList MonomialOrder MonsterGroupM MoonPhase MoonPosition MorletWavelet MorphologicalBinarize MorphologicalBranchPoints MorphologicalComponents MorphologicalEulerNumber MorphologicalGraph MorphologicalPerimeter MorphologicalTransform MortalityData Most MountainData MouseAnnotation MouseAppearance MouseAppearanceTag MouseButtons Mouseover MousePointerNote MousePosition MovieData MovingAverage MovingMap MovingMedian MoyalDistribution Multicolumn MultiedgeStyle MultigraphQ MultilaunchWarning MultiLetterItalics MultiLetterStyle MultilineFunction Multinomial MultinomialDistribution MultinormalDistribution MultiplicativeOrder Multiplicity MultiplySides Multiselection MultivariateHypergeometricDistribution MultivariatePoissonDistribution MultivariateTDistribution' +
+      'N NakagamiDistribution NameQ Names NamespaceBox NamespaceBoxOptions Nand NArgMax NArgMin NBernoulliB NBodySimulation NBodySimulationData NCache NDEigensystem NDEigenvalues NDSolve NDSolveValue Nearest NearestFunction NearestNeighborGraph NearestTo NebulaData NeedCurrentFrontEndPackagePacket NeedCurrentFrontEndSymbolsPacket NeedlemanWunschSimilarity Needs Negative NegativeBinomialDistribution NegativeDefiniteMatrixQ NegativeIntegers NegativeMultinomialDistribution NegativeRationals NegativeReals NegativeSemidefiniteMatrixQ NeighborhoodData NeighborhoodGraph Nest NestedGreaterGreater NestedLessLess NestedScriptRules NestGraph NestList NestWhile NestWhileList NetAppend NetBidirectionalOperator NetChain NetDecoder NetDelete NetDrop NetEncoder NetEvaluationMode NetExtract NetFlatten NetFoldOperator NetGraph NetInformation NetInitialize NetInsert NetInsertSharedArrays NetJoin NetMapOperator NetMapThreadOperator NetMeasurements NetModel NetNestOperator NetPairEmbeddingOperator NetPort NetPortGradient NetPrepend NetRename NetReplace NetReplacePart NetSharedArray NetStateObject NetTake NetTrain NetTrainResultsObject NetworkPacketCapture NetworkPacketRecording NetworkPacketRecordingDuring NetworkPacketTrace NeumannValue NevilleThetaC NevilleThetaD NevilleThetaN NevilleThetaS NewPrimitiveStyle NExpectation Next NextCell NextDate NextPrime NextScheduledTaskTime NHoldAll NHoldFirst NHoldRest NicholsGridLines NicholsPlot NightHemisphere NIntegrate NMaximize NMaxValue NMinimize NMinValue NominalVariables NonAssociative NoncentralBetaDistribution NoncentralChiSquareDistribution NoncentralFRatioDistribution NoncentralStudentTDistribution NonCommutativeMultiply NonConstants NondimensionalizationTransform None NoneTrue NonlinearModelFit NonlinearStateSpaceModel NonlocalMeansFilter NonNegative NonNegativeIntegers NonNegativeRationals NonNegativeReals NonPositive NonPositiveIntegers NonPositiveRationals NonPositiveReals Nor NorlundB Norm Normal NormalDistribution NormalGrouping NormalizationLayer Normalize Normalized NormalizedSquaredEuclideanDistance NormalMatrixQ NormalsFunction NormFunction Not NotCongruent NotCupCap NotDoubleVerticalBar Notebook NotebookApply NotebookAutoSave NotebookClose NotebookConvertSettings NotebookCreate NotebookCreateReturnObject NotebookDefault NotebookDelete NotebookDirectory NotebookDynamicExpression NotebookEvaluate NotebookEventActions NotebookFileName NotebookFind NotebookFindReturnObject NotebookGet NotebookGetLayoutInformationPacket NotebookGetMisspellingsPacket NotebookImport NotebookInformation NotebookInterfaceObject NotebookLocate NotebookObject NotebookOpen NotebookOpenReturnObject NotebookPath NotebookPrint NotebookPut NotebookPutReturnObject NotebookRead NotebookResetGeneratedCells Notebooks NotebookSave NotebookSaveAs NotebookSelection NotebookSetupLayoutInformationPacket NotebooksMenu NotebookTemplate NotebookWrite NotElement NotEqualTilde NotExists NotGreater NotGreaterEqual NotGreaterFullEqual NotGreaterGreater NotGreaterLess NotGreaterSlantEqual NotGreaterTilde Nothing NotHumpDownHump NotHumpEqual NotificationFunction NotLeftTriangle NotLeftTriangleBar NotLeftTriangleEqual NotLess NotLessEqual NotLessFullEqual NotLessGreater NotLessLess NotLessSlantEqual NotLessTilde NotNestedGreaterGreater NotNestedLessLess NotPrecedes NotPrecedesEqual NotPrecedesSlantEqual NotPrecedesTilde NotReverseElement NotRightTriangle NotRightTriangleBar NotRightTriangleEqual NotSquareSubset NotSquareSubsetEqual NotSquareSuperset NotSquareSupersetEqual NotSubset NotSubsetEqual NotSucceeds NotSucceedsEqual NotSucceedsSlantEqual NotSucceedsTilde NotSuperset NotSupersetEqual NotTilde NotTildeEqual NotTildeFullEqual NotTildeTilde NotVerticalBar Now NoWhitespace NProbability NProduct NProductFactors NRoots NSolve NSum NSumTerms NuclearExplosionData NuclearReactorData Null NullRecords NullSpace NullWords Number NumberCompose NumberDecompose NumberExpand NumberFieldClassNumber NumberFieldDiscriminant NumberFieldFundamentalUnits NumberFieldIntegralBasis NumberFieldNormRepresentatives NumberFieldRegulator NumberFieldRootsOfUnity NumberFieldSignature NumberForm NumberFormat NumberLinePlot NumberMarks NumberMultiplier NumberPadding NumberPoint NumberQ NumberSeparator NumberSigns NumberString Numerator NumeratorDenominator NumericalOrder NumericalSort NumericArray NumericArrayQ NumericArrayType NumericFunction NumericQ NuttallWindow NValues NyquistGridLines NyquistPlot' +
+      'O ObservabilityGramian ObservabilityMatrix ObservableDecomposition ObservableModelQ OceanData Octahedron OddQ Off Offset OLEData On ONanGroupON Once OneIdentity Opacity OpacityFunction OpacityFunctionScaling Open OpenAppend Opener OpenerBox OpenerBoxOptions OpenerView OpenFunctionInspectorPacket Opening OpenRead OpenSpecialOptions OpenTemporary OpenWrite Operate OperatingSystem OptimumFlowData Optional OptionalElement OptionInspectorSettings OptionQ Options OptionsPacket OptionsPattern OptionValue OptionValueBox OptionValueBoxOptions Or Orange Order OrderDistribution OrderedQ Ordering OrderingBy OrderingLayer Orderless OrderlessPatternSequence OrnsteinUhlenbeckProcess Orthogonalize OrthogonalMatrixQ Out Outer OuterPolygon OuterPolyhedron OutputAutoOverwrite OutputControllabilityMatrix OutputControllableModelQ OutputForm OutputFormData OutputGrouping OutputMathEditExpression OutputNamePacket OutputResponse OutputSizeLimit OutputStream Over OverBar OverDot Overflow OverHat Overlaps Overlay OverlayBox OverlayBoxOptions Overscript OverscriptBox OverscriptBoxOptions OverTilde OverVector OverwriteTarget OwenT OwnValues' +
+      'Package PackingMethod PaddedForm Padding PaddingLayer PaddingSize PadeApproximant PadLeft PadRight PageBreakAbove PageBreakBelow PageBreakWithin PageFooterLines PageFooters PageHeaderLines PageHeaders PageHeight PageRankCentrality PageTheme PageWidth Pagination PairedBarChart PairedHistogram PairedSmoothHistogram PairedTTest PairedZTest PaletteNotebook PalettePath PalindromeQ Pane PaneBox PaneBoxOptions Panel PanelBox PanelBoxOptions Paneled PaneSelector PaneSelectorBox PaneSelectorBoxOptions PaperWidth ParabolicCylinderD ParagraphIndent ParagraphSpacing ParallelArray ParallelCombine ParallelDo Parallelepiped ParallelEvaluate Parallelization Parallelize ParallelMap ParallelNeeds Parallelogram ParallelProduct ParallelSubmit ParallelSum ParallelTable ParallelTry Parameter ParameterEstimator ParameterMixtureDistribution ParameterVariables ParametricFunction ParametricNDSolve ParametricNDSolveValue ParametricPlot ParametricPlot3D ParametricRegion ParentBox ParentCell ParentConnect ParentDirectory ParentForm Parenthesize ParentList ParentNotebook ParetoDistribution ParetoPickandsDistribution ParkData Part PartBehavior PartialCorrelationFunction PartialD ParticleAcceleratorData ParticleData Partition PartitionGranularity PartitionsP PartitionsQ PartLayer PartOfSpeech PartProtection ParzenWindow PascalDistribution PassEventsDown PassEventsUp Paste PasteAutoQuoteCharacters PasteBoxFormInlineCells PasteButton Path PathGraph PathGraphQ Pattern PatternSequence PatternTest PauliMatrix PaulWavelet Pause PausedTime PDF PeakDetect PeanoCurve PearsonChiSquareTest PearsonCorrelationTest PearsonDistribution PercentForm PerfectNumber PerfectNumberQ PerformanceGoal Perimeter PeriodicBoundaryCondition PeriodicInterpolation Periodogram PeriodogramArray Permanent Permissions PermissionsGroup PermissionsGroupMemberQ PermissionsGroups PermissionsKey PermissionsKeys PermutationCycles PermutationCyclesQ PermutationGroup PermutationLength PermutationList PermutationListQ PermutationMax PermutationMin PermutationOrder PermutationPower PermutationProduct PermutationReplace Permutations PermutationSupport Permute PeronaMalikFilter Perpendicular PerpendicularBisector PersistenceLocation PersistenceTime PersistentObject PersistentObjects PersistentValue PersonData PERTDistribution PetersenGraph PhaseMargins PhaseRange PhysicalSystemData Pi Pick PIDData PIDDerivativeFilter PIDFeedforward PIDTune Piecewise PiecewiseExpand PieChart PieChart3D PillaiTrace PillaiTraceTest PingTime Pink PitchRecognize Pivoting PixelConstrained PixelValue PixelValuePositions Placed Placeholder PlaceholderReplace Plain PlanarAngle PlanarGraph PlanarGraphQ PlanckRadiationLaw PlaneCurveData PlanetaryMoonData PlanetData PlantData Play PlayRange Plot Plot3D Plot3Matrix PlotDivision PlotJoined PlotLabel PlotLabels PlotLayout PlotLegends PlotMarkers PlotPoints PlotRange PlotRangeClipping PlotRangeClipPlanesStyle PlotRangePadding PlotRegion PlotStyle PlotTheme Pluralize Plus PlusMinus Pochhammer PodStates PodWidth Point Point3DBox Point3DBoxOptions PointBox PointBoxOptions PointFigureChart PointLegend PointSize PoissonConsulDistribution PoissonDistribution PoissonProcess PoissonWindow PolarAxes PolarAxesOrigin PolarGridLines PolarPlot PolarTicks PoleZeroMarkers PolyaAeppliDistribution PolyGamma Polygon Polygon3DBox Polygon3DBoxOptions PolygonalNumber PolygonAngle PolygonBox PolygonBoxOptions PolygonCoordinates PolygonDecomposition PolygonHoleScale PolygonIntersections PolygonScale Polyhedron PolyhedronAngle PolyhedronCoordinates PolyhedronData PolyhedronDecomposition PolyhedronGenus PolyLog PolynomialExtendedGCD PolynomialForm PolynomialGCD PolynomialLCM PolynomialMod PolynomialQ PolynomialQuotient PolynomialQuotientRemainder PolynomialReduce PolynomialRemainder Polynomials PoolingLayer PopupMenu PopupMenuBox PopupMenuBoxOptions PopupView PopupWindow Position PositionIndex Positive PositiveDefiniteMatrixQ PositiveIntegers PositiveRationals PositiveReals PositiveSemidefiniteMatrixQ PossibleZeroQ Postfix PostScript Power PowerDistribution PowerExpand PowerMod PowerModList PowerRange PowerSpectralDensity PowersRepresentations PowerSymmetricPolynomial Precedence PrecedenceForm Precedes PrecedesEqual PrecedesSlantEqual PrecedesTilde Precision PrecisionGoal PreDecrement Predict PredictionRoot PredictorFunction PredictorInformation PredictorMeasurements PredictorMeasurementsObject PreemptProtect PreferencesPath Prefix PreIncrement Prepend PrependLayer PrependTo PreprocessingRules PreserveColor PreserveImageOptions Previous PreviousCell PreviousDate PriceGraphDistribution PrimaryPlaceholder Prime PrimeNu PrimeOmega PrimePi PrimePowerQ PrimeQ Primes PrimeZetaP PrimitivePolynomialQ PrimitiveRoot PrimitiveRootList PrincipalComponents PrincipalValue Print PrintableASCIIQ PrintAction PrintForm PrintingCopies PrintingOptions PrintingPageRange PrintingStartingPageNumber PrintingStyleEnvironment Printout3D Printout3DPreviewer PrintPrecision PrintTemporary Prism PrismBox PrismBoxOptions PrivateCellOptions PrivateEvaluationOptions PrivateFontOptions PrivateFrontEndOptions PrivateKey PrivateNotebookOptions PrivatePaths Probability ProbabilityDistribution ProbabilityPlot ProbabilityPr ProbabilityScalePlot ProbitModelFit ProcessConnection ProcessDirectory ProcessEnvironment Processes ProcessEstimator ProcessInformation ProcessObject ProcessParameterAssumptions ProcessParameterQ ProcessStateDomain ProcessStatus ProcessTimeDomain Product ProductDistribution ProductLog ProgressIndicator ProgressIndicatorBox ProgressIndicatorBoxOptions Projection Prolog PromptForm ProofObject Properties Property PropertyList PropertyValue Proportion Proportional Protect Protected ProteinData Pruning PseudoInverse PsychrometricPropertyData PublicKey PublisherID PulsarData PunctuationCharacter Purple Put PutAppend Pyramid PyramidBox PyramidBoxOptions' +
+      'QBinomial QFactorial QGamma QHypergeometricPFQ QnDispersion QPochhammer QPolyGamma QRDecomposition QuadraticIrrationalQ QuadraticOptimization Quantile QuantilePlot Quantity QuantityArray QuantityDistribution QuantityForm QuantityMagnitude QuantityQ QuantityUnit QuantityVariable QuantityVariableCanonicalUnit QuantityVariableDimensions QuantityVariableIdentifier QuantityVariablePhysicalQuantity Quartics QuartileDeviation Quartiles QuartileSkewness Query QueueingNetworkProcess QueueingProcess QueueProperties Quiet Quit Quotient QuotientRemainder' +
+      'RadialGradientImage RadialityCentrality RadicalBox RadicalBoxOptions RadioButton RadioButtonBar RadioButtonBox RadioButtonBoxOptions Radon RadonTransform RamanujanTau RamanujanTauL RamanujanTauTheta RamanujanTauZ Ramp Random RandomChoice RandomColor RandomComplex RandomEntity RandomFunction RandomGeoPosition RandomGraph RandomImage RandomInstance RandomInteger RandomPermutation RandomPoint RandomPolygon RandomPolyhedron RandomPrime RandomReal RandomSample RandomSeed RandomSeeding RandomVariate RandomWalkProcess RandomWord Range RangeFilter RangeSpecification RankedMax RankedMin RarerProbability Raster Raster3D Raster3DBox Raster3DBoxOptions RasterArray RasterBox RasterBoxOptions Rasterize RasterSize Rational RationalFunctions Rationalize Rationals Ratios RawArray RawBoxes RawData RawMedium RayleighDistribution Re Read ReadByteArray ReadLine ReadList ReadProtected ReadString Real RealAbs RealBlockDiagonalForm RealDigits RealExponent Reals RealSign Reap RecognitionPrior RecognitionThreshold Record RecordLists RecordSeparators Rectangle RectangleBox RectangleBoxOptions RectangleChart RectangleChart3D RectangularRepeatingElement RecurrenceFilter RecurrenceTable RecurringDigitsForm Red Reduce RefBox ReferenceLineStyle ReferenceMarkers ReferenceMarkerStyle Refine ReflectionMatrix ReflectionTransform Refresh RefreshRate Region RegionBinarize RegionBoundary RegionBounds RegionCentroid RegionDifference RegionDimension RegionDisjoint RegionDistance RegionDistanceFunction RegionEmbeddingDimension RegionEqual RegionFunction RegionImage RegionIntersection RegionMeasure RegionMember RegionMemberFunction RegionMoment RegionNearest RegionNearestFunction RegionPlot RegionPlot3D RegionProduct RegionQ RegionResize RegionSize RegionSymmetricDifference RegionUnion RegionWithin RegisterExternalEvaluator RegularExpression Regularization RegularlySampledQ RegularPolygon ReIm ReImLabels ReImPlot ReImStyle Reinstall RelationalDatabase RelationGraph Release ReleaseHold ReliabilityDistribution ReliefImage ReliefPlot RemoteAuthorizationCaching RemoteConnect RemoteConnectionObject RemoteFile RemoteRun RemoteRunProcess Remove RemoveAlphaChannel RemoveAsynchronousTask RemoveAudioStream RemoveBackground RemoveChannelListener RemoveChannelSubscribers Removed RemoveDiacritics RemoveInputStreamMethod RemoveOutputStreamMethod RemoveProperty RemoveScheduledTask RemoveUsers RenameDirectory RenameFile RenderAll RenderingOptions RenewalProcess RenkoChart RepairMesh Repeated RepeatedNull RepeatedString RepeatedTiming RepeatingElement Replace ReplaceAll ReplaceHeldPart ReplaceImageValue ReplaceList ReplacePart ReplacePixelValue ReplaceRepeated ReplicateLayer RequiredPhysicalQuantities Resampling ResamplingAlgorithmData ResamplingMethod Rescale RescalingTransform ResetDirectory ResetMenusPacket ResetScheduledTask ReshapeLayer Residue ResizeLayer Resolve ResourceAcquire ResourceData ResourceFunction ResourceObject ResourceRegister ResourceRemove ResourceSearch ResourceSubmissionObject ResourceSubmit ResourceSystemBase ResourceUpdate ResponseForm Rest RestartInterval Restricted Resultant ResumePacket Return ReturnEntersInput ReturnExpressionPacket ReturnInputFormPacket ReturnPacket ReturnReceiptFunction ReturnTextPacket Reverse ReverseBiorthogonalSplineWavelet ReverseElement ReverseEquilibrium ReverseGraph ReverseSort ReverseSortBy ReverseUpEquilibrium RevolutionAxis RevolutionPlot3D RGBColor RiccatiSolve RiceDistribution RidgeFilter RiemannR RiemannSiegelTheta RiemannSiegelZ RiemannXi Riffle Right RightArrow RightArrowBar RightArrowLeftArrow RightComposition RightCosetRepresentative RightDownTeeVector RightDownVector RightDownVectorBar RightTee RightTeeArrow RightTeeVector RightTriangle RightTriangleBar RightTriangleEqual RightUpDownVector RightUpTeeVector RightUpVector RightUpVectorBar RightVector RightVectorBar RiskAchievementImportance RiskReductionImportance RogersTanimotoDissimilarity RollPitchYawAngles RollPitchYawMatrix RomanNumeral Root RootApproximant RootIntervals RootLocusPlot RootMeanSquare RootOfUnityQ RootReduce Roots RootSum Rotate RotateLabel RotateLeft RotateRight RotationAction RotationBox RotationBoxOptions RotationMatrix RotationTransform Round RoundImplies RoundingRadius Row RowAlignments RowBackgrounds RowBox RowHeights RowLines RowMinHeight RowReduce RowsEqual RowSpacings RSolve RSolveValue RudinShapiro RudvalisGroupRu Rule RuleCondition RuleDelayed RuleForm RulePlot RulerUnits Run RunProcess RunScheduledTask RunThrough RuntimeAttributes RuntimeOptions RussellRaoDissimilarity' +
+      'SameQ SameTest SampledEntityClass SampleDepth SampledSoundFunction SampledSoundList SampleRate SamplingPeriod SARIMAProcess SARMAProcess SASTriangle SatelliteData SatisfiabilityCount SatisfiabilityInstances SatisfiableQ Saturday Save Saveable SaveAutoDelete SaveConnection SaveDefinitions SavitzkyGolayMatrix SawtoothWave Scale Scaled ScaleDivisions ScaledMousePosition ScaleOrigin ScalePadding ScaleRanges ScaleRangeStyle ScalingFunctions ScalingMatrix ScalingTransform Scan ScheduledTask ScheduledTaskActiveQ ScheduledTaskInformation ScheduledTaskInformationData ScheduledTaskObject ScheduledTasks SchurDecomposition ScientificForm ScientificNotationThreshold ScorerGi ScorerGiPrime ScorerHi ScorerHiPrime ScreenRectangle ScreenStyleEnvironment ScriptBaselineShifts ScriptForm ScriptLevel ScriptMinSize ScriptRules ScriptSizeMultipliers Scrollbars ScrollingOptions ScrollPosition SearchAdjustment SearchIndexObject SearchIndices SearchQueryString SearchResultObject Sec Sech SechDistribution SecondOrderConeOptimization SectionGrouping SectorChart SectorChart3D SectorOrigin SectorSpacing SecuredAuthenticationKey SecuredAuthenticationKeys SeedRandom Select Selectable SelectComponents SelectedCells SelectedNotebook SelectFirst Selection SelectionAnimate SelectionCell SelectionCellCreateCell SelectionCellDefaultStyle SelectionCellParentStyle SelectionCreateCell SelectionDebuggerTag SelectionDuplicateCell SelectionEvaluate SelectionEvaluateCreateCell SelectionMove SelectionPlaceholder SelectionSetStyle SelectWithContents SelfLoops SelfLoopStyle SemanticImport SemanticImportString SemanticInterpretation SemialgebraicComponentInstances SemidefiniteOptimization SendMail SendMessage Sequence SequenceAlignment SequenceAttentionLayer SequenceCases SequenceCount SequenceFold SequenceFoldList SequenceForm SequenceHold SequenceLastLayer SequenceMostLayer SequencePosition SequencePredict SequencePredictorFunction SequenceReplace SequenceRestLayer SequenceReverseLayer SequenceSplit Series SeriesCoefficient SeriesData ServiceConnect ServiceDisconnect ServiceExecute ServiceObject ServiceRequest ServiceResponse ServiceSubmit SessionSubmit SessionTime Set SetAccuracy SetAlphaChannel SetAttributes Setbacks SetBoxFormNamesPacket SetCloudDirectory SetCookies SetDelayed SetDirectory SetEnvironment SetEvaluationNotebook SetFileDate SetFileLoadingContext SetNotebookStatusLine SetOptions SetOptionsPacket SetPermissions SetPrecision SetProperty SetSecuredAuthenticationKey SetSelectedNotebook SetSharedFunction SetSharedVariable SetSpeechParametersPacket SetStreamPosition SetSystemModel SetSystemOptions Setter SetterBar SetterBox SetterBoxOptions Setting SetUsers SetValue Shading Shallow ShannonWavelet ShapiroWilkTest Share SharingList Sharpen ShearingMatrix ShearingTransform ShellRegion ShenCastanMatrix ShiftedGompertzDistribution ShiftRegisterSequence Short ShortDownArrow Shortest ShortestMatch ShortestPathFunction ShortLeftArrow ShortRightArrow ShortTimeFourier ShortTimeFourierData ShortUpArrow Show ShowAutoConvert ShowAutoSpellCheck ShowAutoStyles ShowCellBracket ShowCellLabel ShowCellTags ShowClosedCellArea ShowCodeAssist ShowContents ShowControls ShowCursorTracker ShowGroupOpenCloseIcon ShowGroupOpener ShowInvisibleCharacters ShowPageBreaks ShowPredictiveInterface ShowSelection ShowShortBoxForm ShowSpecialCharacters ShowStringCharacters ShowSyntaxStyles ShrinkingDelay ShrinkWrapBoundingBox SiderealTime SiegelTheta SiegelTukeyTest SierpinskiCurve SierpinskiMesh Sign Signature SignedRankTest SignedRegionDistance SignificanceLevel SignPadding SignTest SimilarityRules SimpleGraph SimpleGraphQ SimplePolygonQ SimplePolyhedronQ Simplex Simplify Sin Sinc SinghMaddalaDistribution SingleEvaluation SingleLetterItalics SingleLetterStyle SingularValueDecomposition SingularValueList SingularValuePlot SingularValues Sinh SinhIntegral SinIntegral SixJSymbol Skeleton SkeletonTransform SkellamDistribution Skewness SkewNormalDistribution SkinStyle Skip SliceContourPlot3D SliceDensityPlot3D SliceDistribution SliceVectorPlot3D Slider Slider2D Slider2DBox Slider2DBoxOptions SliderBox SliderBoxOptions SlideView Slot SlotSequence Small SmallCircle Smaller SmithDecomposition SmithDelayCompensator SmithWatermanSimilarity SmoothDensityHistogram SmoothHistogram SmoothHistogram3D SmoothKernelDistribution SnDispersion Snippet SnubPolyhedron SocialMediaData Socket SocketConnect SocketListen SocketListener SocketObject SocketOpen SocketReadMessage SocketReadyQ Sockets SocketWaitAll SocketWaitNext SoftmaxLayer SokalSneathDissimilarity SolarEclipse SolarSystemFeatureData SolidAngle SolidData SolidRegionQ Solve SolveAlways SolveDelayed Sort SortBy SortedBy SortedEntityClass Sound SoundAndGraphics SoundNote SoundVolume SourceLink Sow Space SpaceCurveData SpaceForm Spacer Spacings Span SpanAdjustments SpanCharacterRounding SpanFromAbove SpanFromBoth SpanFromLeft SpanLineThickness SpanMaxSize SpanMinSize SpanningCharacters SpanSymmetric SparseArray SpatialGraphDistribution SpatialMedian SpatialTransformationLayer Speak SpeakTextPacket SpearmanRankTest SpearmanRho SpeciesData SpecificityGoal SpectralLineData Spectrogram SpectrogramArray Specularity SpeechRecognize SpeechSynthesize SpellingCorrection SpellingCorrectionList SpellingDictionaries SpellingDictionariesPath SpellingOptions SpellingSuggestionsPacket Sphere SphereBox SpherePoints SphericalBesselJ SphericalBesselY SphericalHankelH1 SphericalHankelH2 SphericalHarmonicY SphericalPlot3D SphericalRegion SphericalShell SpheroidalEigenvalue SpheroidalJoiningFactor SpheroidalPS SpheroidalPSPrime SpheroidalQS SpheroidalQSPrime SpheroidalRadialFactor SpheroidalS1 SpheroidalS1Prime SpheroidalS2 SpheroidalS2Prime Splice SplicedDistribution SplineClosed SplineDegree SplineKnots SplineWeights Split SplitBy SpokenString Sqrt SqrtBox SqrtBoxOptions Square SquaredEuclideanDistance SquareFreeQ SquareIntersection SquareMatrixQ SquareRepeatingElement SquaresR SquareSubset SquareSubsetEqual SquareSuperset SquareSupersetEqual SquareUnion SquareWave SSSTriangle StabilityMargins StabilityMarginsStyle StableDistribution Stack StackBegin StackComplete StackedDateListPlot StackedListPlot StackInhibit StadiumShape StandardAtmosphereData StandardDeviation StandardDeviationFilter StandardForm Standardize Standardized StandardOceanData StandbyDistribution Star StarClusterData StarData StarGraph StartAsynchronousTask StartExternalSession StartingStepSize StartOfLine StartOfString StartProcess StartScheduledTask StartupSound StartWebSession StateDimensions StateFeedbackGains StateOutputEstimator StateResponse StateSpaceModel StateSpaceRealization StateSpaceTransform StateTransformationLinearize StationaryDistribution StationaryWaveletPacketTransform StationaryWaveletTransform StatusArea StatusCentrality StepMonitor StereochemistryElements StieltjesGamma StirlingS1 StirlingS2 StopAsynchronousTask StoppingPowerData StopScheduledTask StrataVariables StratonovichProcess StreamColorFunction StreamColorFunctionScaling StreamDensityPlot StreamMarkers StreamPlot StreamPoints StreamPosition Streams StreamScale StreamStyle String StringBreak StringByteCount StringCases StringContainsQ StringCount StringDelete StringDrop StringEndsQ StringExpression StringExtract StringForm StringFormat StringFreeQ StringInsert StringJoin StringLength StringMatchQ StringPadLeft StringPadRight StringPart StringPartition StringPosition StringQ StringRepeat StringReplace StringReplaceList StringReplacePart StringReverse StringRiffle StringRotateLeft StringRotateRight StringSkeleton StringSplit StringStartsQ StringTake StringTemplate StringToByteArray StringToStream StringTrim StripBoxes StripOnInput StripWrapperBoxes StrokeForm StructuralImportance StructuredArray StructuredSelection StruveH StruveL Stub StudentTDistribution Style StyleBox StyleBoxAutoDelete StyleData StyleDefinitions StyleForm StyleHints StyleKeyMapping StyleMenuListing StyleNameDialogSettings StyleNames StylePrint StyleSheetPath Subdivide Subfactorial Subgraph SubMinus SubPlus SubresultantPolynomialRemainders SubresultantPolynomials Subresultants Subscript SubscriptBox SubscriptBoxOptions Subscripted Subsequences Subset SubsetEqual SubsetMap SubsetQ Subsets SubStar SubstitutionSystem Subsuperscript SubsuperscriptBox SubsuperscriptBoxOptions Subtract SubtractFrom SubtractSides SubValues Succeeds SucceedsEqual SucceedsSlantEqual SucceedsTilde Success SuchThat Sum SumConvergence SummationLayer Sunday SunPosition Sunrise Sunset SuperDagger SuperMinus SupernovaData SuperPlus Superscript SuperscriptBox SuperscriptBoxOptions Superset SupersetEqual SuperStar Surd SurdForm SurfaceArea SurfaceColor SurfaceData SurfaceGraphics SurvivalDistribution SurvivalFunction SurvivalModel SurvivalModelFit SuspendPacket SuzukiDistribution SuzukiGroupSuz SwatchLegend Switch Symbol SymbolName SymletWavelet Symmetric SymmetricGroup SymmetricKey SymmetricMatrixQ SymmetricPolynomial SymmetricReduction Symmetrize SymmetrizedArray SymmetrizedArrayRules SymmetrizedDependentComponents SymmetrizedIndependentComponents SymmetrizedReplacePart SynchronousInitialization SynchronousUpdating Synonyms Syntax SyntaxForm SyntaxInformation SyntaxLength SyntaxPacket SyntaxQ SynthesizeMissingValues SystemDialogInput SystemException SystemGet SystemHelpPath SystemInformation SystemInformationData SystemInstall SystemModel SystemModeler SystemModelExamples SystemModelLinearize SystemModelParametricSimulate SystemModelPlot SystemModelProgressReporting SystemModelReliability SystemModels SystemModelSimulate SystemModelSimulateSensitivity SystemModelSimulationData SystemOpen SystemOptions SystemProcessData SystemProcesses SystemsConnectionsModel SystemsModelDelay SystemsModelDelayApproximate SystemsModelDelete SystemsModelDimensions SystemsModelExtract SystemsModelFeedbackConnect SystemsModelLabels SystemsModelLinearity SystemsModelMerge SystemsModelOrder SystemsModelParallelConnect SystemsModelSeriesConnect SystemsModelStateFeedbackConnect SystemsModelVectorRelativeOrders SystemStub SystemTest' +
+      'Tab TabFilling Table TableAlignments TableDepth TableDirections TableForm TableHeadings TableSpacing TableView TableViewBox TableViewBoxBackground TableViewBoxOptions TabSpacings TabView TabViewBox TabViewBoxOptions TagBox TagBoxNote TagBoxOptions TaggingRules TagSet TagSetDelayed TagStyle TagUnset Take TakeDrop TakeLargest TakeLargestBy TakeList TakeSmallest TakeSmallestBy TakeWhile Tally Tan Tanh TargetDevice TargetFunctions TargetSystem TargetUnits TaskAbort TaskExecute TaskObject TaskRemove TaskResume Tasks TaskSuspend TaskWait TautologyQ TelegraphProcess TemplateApply TemplateArgBox TemplateBox TemplateBoxOptions TemplateEvaluate TemplateExpression TemplateIf TemplateObject TemplateSequence TemplateSlot TemplateSlotSequence TemplateUnevaluated TemplateVerbatim TemplateWith TemporalData TemporalRegularity Temporary TemporaryVariable TensorContract TensorDimensions TensorExpand TensorProduct TensorQ TensorRank TensorReduce TensorSymmetry TensorTranspose TensorWedge TestID TestReport TestReportObject TestResultObject Tetrahedron TetrahedronBox TetrahedronBoxOptions TeXForm TeXSave Text Text3DBox Text3DBoxOptions TextAlignment TextBand TextBoundingBox TextBox TextCases TextCell TextClipboardType TextContents TextData TextElement TextForm TextGrid TextJustification TextLine TextPacket TextParagraph TextPosition TextRecognize TextSearch TextSearchReport TextSentences TextString TextStructure TextStyle TextTranslation Texture TextureCoordinateFunction TextureCoordinateScaling TextWords Therefore ThermodynamicData ThermometerGauge Thick Thickness Thin Thinning ThisLink ThompsonGroupTh Thread ThreadingLayer ThreeJSymbol Threshold Through Throw ThueMorse Thumbnail Thursday Ticks TicksStyle TideData Tilde TildeEqual TildeFullEqual TildeTilde TimeConstrained TimeConstraint TimeDirection TimeFormat TimeGoal TimelinePlot TimeObject TimeObjectQ Times TimesBy TimeSeries TimeSeriesAggregate TimeSeriesForecast TimeSeriesInsert TimeSeriesInvertibility TimeSeriesMap TimeSeriesMapThread TimeSeriesModel TimeSeriesModelFit TimeSeriesResample TimeSeriesRescale TimeSeriesShift TimeSeriesThread TimeSeriesWindow TimeUsed TimeValue TimeWarpingCorrespondence TimeWarpingDistance TimeZone TimeZoneConvert TimeZoneOffset Timing Tiny TitleGrouping TitsGroupT ToBoxes ToCharacterCode ToColor ToContinuousTimeModel ToDate Today ToDiscreteTimeModel ToEntity ToeplitzMatrix ToExpression ToFileName Together Toggle ToggleFalse Toggler TogglerBar TogglerBox TogglerBoxOptions ToHeldExpression ToInvertibleTimeSeries TokenWords Tolerance ToLowerCase Tomorrow ToNumberField TooBig Tooltip TooltipBox TooltipBoxOptions TooltipDelay TooltipStyle Top TopHatTransform ToPolarCoordinates TopologicalSort ToRadicals ToRules ToSphericalCoordinates ToString Total TotalHeight TotalLayer TotalVariationFilter TotalWidth TouchPosition TouchscreenAutoZoom TouchscreenControlPlacement ToUpperCase Tr Trace TraceAbove TraceAction TraceBackward TraceDepth TraceDialog TraceForward TraceInternal TraceLevel TraceOff TraceOn TraceOriginal TracePrint TraceScan TrackedSymbols TrackingFunction TracyWidomDistribution TradingChart TraditionalForm TraditionalFunctionNotation TraditionalNotation TraditionalOrder TrainingProgressCheckpointing TrainingProgressFunction TrainingProgressMeasurements TrainingProgressReporting TrainingStoppingCriterion TransferFunctionCancel TransferFunctionExpand TransferFunctionFactor TransferFunctionModel TransferFunctionPoles TransferFunctionTransform TransferFunctionZeros TransformationClass TransformationFunction TransformationFunctions TransformationMatrix TransformedDistribution TransformedField TransformedProcess TransformedRegion TransitionDirection TransitionDuration TransitionEffect TransitiveClosureGraph TransitiveReductionGraph Translate TranslationOptions TranslationTransform Transliterate Transparent TransparentColor Transpose TransposeLayer TrapSelection TravelDirections TravelDirectionsData TravelDistance TravelDistanceList TravelMethod TravelTime TreeForm TreeGraph TreeGraphQ TreePlot TrendStyle Triangle TriangleCenter TriangleConstruct TriangleMeasurement TriangleWave TriangularDistribution TriangulateMesh Trig TrigExpand TrigFactor TrigFactorList Trigger TrigReduce TrigToExp TrimmedMean TrimmedVariance TropicalStormData True TrueQ TruncatedDistribution TruncatedPolyhedron TsallisQExponentialDistribution TsallisQGaussianDistribution TTest Tube TubeBezierCurveBox TubeBezierCurveBoxOptions TubeBox TubeBoxOptions TubeBSplineCurveBox TubeBSplineCurveBoxOptions Tuesday TukeyLambdaDistribution TukeyWindow TunnelData Tuples TuranGraph TuringMachine TuttePolynomial TwoWayRule Typed TypeSpecifier' +
+      'UnateQ Uncompress UnconstrainedParameters Undefined UnderBar Underflow Underlined Underoverscript UnderoverscriptBox UnderoverscriptBoxOptions Underscript UnderscriptBox UnderscriptBoxOptions UnderseaFeatureData UndirectedEdge UndirectedGraph UndirectedGraphQ UndoOptions UndoTrackedVariables Unequal UnequalTo Unevaluated UniformDistribution UniformGraphDistribution UniformPolyhedron UniformSumDistribution Uninstall Union UnionPlus Unique UnitaryMatrixQ UnitBox UnitConvert UnitDimensions Unitize UnitRootTest UnitSimplify UnitStep UnitSystem UnitTriangle UnitVector UnitVectorLayer UnityDimensions UniverseModelData UniversityData UnixTime Unprotect UnregisterExternalEvaluator UnsameQ UnsavedVariables Unset UnsetShared UntrackedVariables Up UpArrow UpArrowBar UpArrowDownArrow Update UpdateDynamicObjects UpdateDynamicObjectsSynchronous UpdateInterval UpdateSearchIndex UpDownArrow UpEquilibrium UpperCaseQ UpperLeftArrow UpperRightArrow UpperTriangularize UpperTriangularMatrixQ Upsample UpSet UpSetDelayed UpTee UpTeeArrow UpTo UpValues URL URLBuild URLDecode URLDispatcher URLDownload URLDownloadSubmit URLEncode URLExecute URLExpand URLFetch URLFetchAsynchronous URLParse URLQueryDecode URLQueryEncode URLRead URLResponseTime URLSave URLSaveAsynchronous URLShorten URLSubmit UseGraphicsRange UserDefinedWavelet Using UsingFrontEnd UtilityFunction' +
+      'V2Get ValenceErrorHandling ValidationLength ValidationSet Value ValueBox ValueBoxOptions ValueDimensions ValueForm ValuePreprocessingFunction ValueQ Values ValuesData Variables Variance VarianceEquivalenceTest VarianceEstimatorFunction VarianceGammaDistribution VarianceTest VectorAngle VectorAround VectorColorFunction VectorColorFunctionScaling VectorDensityPlot VectorGlyphData VectorGreater VectorGreaterEqual VectorLess VectorLessEqual VectorMarkers VectorPlot VectorPlot3D VectorPoints VectorQ Vectors VectorScale VectorStyle Vee Verbatim Verbose VerboseConvertToPostScriptPacket VerificationTest VerifyConvergence VerifyDerivedKey VerifyDigitalSignature VerifyInterpretation VerifySecurityCertificates VerifySolutions VerifyTestAssumptions Version VersionNumber VertexAdd VertexCapacity VertexColors VertexComponent VertexConnectivity VertexContract VertexCoordinateRules VertexCoordinates VertexCorrelationSimilarity VertexCosineSimilarity VertexCount VertexCoverQ VertexDataCoordinates VertexDegree VertexDelete VertexDiceSimilarity VertexEccentricity VertexInComponent VertexInDegree VertexIndex VertexJaccardSimilarity VertexLabeling VertexLabels VertexLabelStyle VertexList VertexNormals VertexOutComponent VertexOutDegree VertexQ VertexRenderingFunction VertexReplace VertexShape VertexShapeFunction VertexSize VertexStyle VertexTextureCoordinates VertexWeight VertexWeightedGraphQ Vertical VerticalBar VerticalForm VerticalGauge VerticalSeparator VerticalSlider VerticalTilde ViewAngle ViewCenter ViewMatrix ViewPoint ViewPointSelectorSettings ViewPort ViewProjection ViewRange ViewVector ViewVertical VirtualGroupData Visible VisibleCell VoiceStyleData VoigtDistribution VolcanoData Volume VonMisesDistribution VoronoiMesh' +
+      'WaitAll WaitAsynchronousTask WaitNext WaitUntil WakebyDistribution WalleniusHypergeometricDistribution WaringYuleDistribution WarpingCorrespondence WarpingDistance WatershedComponents WatsonUSquareTest WattsStrogatzGraphDistribution WaveletBestBasis WaveletFilterCoefficients WaveletImagePlot WaveletListPlot WaveletMapIndexed WaveletMatrixPlot WaveletPhi WaveletPsi WaveletScale WaveletScalogram WaveletThreshold WeaklyConnectedComponents WeaklyConnectedGraphComponents WeaklyConnectedGraphQ WeakStationarity WeatherData WeatherForecastData WebAudioSearch WebElementObject WeberE WebExecute WebImage WebImageSearch WebSearch WebSessionObject WebSessions WebWindowObject Wedge Wednesday WeibullDistribution WeierstrassE1 WeierstrassE2 WeierstrassE3 WeierstrassEta1 WeierstrassEta2 WeierstrassEta3 WeierstrassHalfPeriods WeierstrassHalfPeriodW1 WeierstrassHalfPeriodW2 WeierstrassHalfPeriodW3 WeierstrassInvariantG2 WeierstrassInvariantG3 WeierstrassInvariants WeierstrassP WeierstrassPPrime WeierstrassSigma WeierstrassZeta WeightedAdjacencyGraph WeightedAdjacencyMatrix WeightedData WeightedGraphQ Weights WelchWindow WheelGraph WhenEvent Which While White WhiteNoiseProcess WhitePoint Whitespace WhitespaceCharacter WhittakerM WhittakerW WienerFilter WienerProcess WignerD WignerSemicircleDistribution WikipediaData WikipediaSearch WilksW WilksWTest WindDirectionData WindingCount WindingPolygon WindowClickSelect WindowElements WindowFloating WindowFrame WindowFrameElements WindowMargins WindowMovable WindowOpacity WindowPersistentStyles WindowSelected WindowSize WindowStatusArea WindowTitle WindowToolbars WindowWidth WindSpeedData WindVectorData WinsorizedMean WinsorizedVariance WishartMatrixDistribution With WolframAlpha WolframAlphaDate WolframAlphaQuantity WolframAlphaResult WolframLanguageData Word WordBoundary WordCharacter WordCloud WordCount WordCounts WordData WordDefinition WordFrequency WordFrequencyData WordList WordOrientation WordSearch WordSelectionFunction WordSeparators WordSpacings WordStem WordTranslation WorkingPrecision WrapAround Write WriteLine WriteString Wronskian' +
+      'XMLElement XMLObject XMLTemplate Xnor Xor XYZColor' +
+      'Yellow Yesterday YuleDissimilarity' +
+      'ZernikeR ZeroSymmetric ZeroTest ZeroWidthTimes Zeta ZetaZero ZIPCodeData ZipfDistribution ZoomCenter ZoomFactor ZTest ZTransform' +
+      '$Aborted $ActivationGroupID $ActivationKey $ActivationUserRegistered $AddOnsDirectory $AllowExternalChannelFunctions $AssertFunction $Assumptions $AsynchronousTask $AudioInputDevices $AudioOutputDevices $BaseDirectory $BatchInput $BatchOutput $BlockchainBase $BoxForms $ByteOrdering $CacheBaseDirectory $Canceled $ChannelBase $CharacterEncoding $CharacterEncodings $CloudBase $CloudConnected $CloudCreditsAvailable $CloudEvaluation $CloudExpressionBase $CloudObjectNameFormat $CloudObjectURLType $CloudRootDirectory $CloudSymbolBase $CloudUserID $CloudUserUUID $CloudVersion $CloudVersionNumber $CloudWolframEngineVersionNumber $CommandLine $CompilationTarget $ConditionHold $ConfiguredKernels $Context $ContextPath $ControlActiveSetting $Cookies $CookieStore $CreationDate $CurrentLink $CurrentTask $CurrentWebSession $DateStringFormat $DefaultAudioInputDevice $DefaultAudioOutputDevice $DefaultFont $DefaultFrontEnd $DefaultImagingDevice $DefaultLocalBase $DefaultMailbox $DefaultNetworkInterface $DefaultPath $Display $DisplayFunction $DistributedContexts $DynamicEvaluation $Echo $EmbedCodeEnvironments $EmbeddableServices $EntityStores $Epilog $EvaluationCloudBase $EvaluationCloudObject $EvaluationEnvironment $ExportFormats $Failed $FinancialDataSource $FontFamilies $FormatType $FrontEnd $FrontEndSession $GeoEntityTypes $GeoLocation $GeoLocationCity $GeoLocationCountry $GeoLocationPrecision $GeoLocationSource $HistoryLength $HomeDirectory $HTMLExportRules $HTTPCookies $HTTPRequest $IgnoreEOF $ImageFormattingWidth $ImagingDevice $ImagingDevices $ImportFormats $IncomingMailSettings $InitialDirectory $Initialization $InitializationContexts $Input $InputFileName $InputStreamMethods $Inspector $InstallationDate $InstallationDirectory $InterfaceEnvironment $InterpreterTypes $IterationLimit $KernelCount $KernelID $Language $LaunchDirectory $LibraryPath $LicenseExpirationDate $LicenseID $LicenseProcesses $LicenseServer $LicenseSubprocesses $LicenseType $Line $Linked $LinkSupported $LoadedFiles $LocalBase $LocalSymbolBase $MachineAddresses $MachineDomain $MachineDomains $MachineEpsilon $MachineID $MachineName $MachinePrecision $MachineType $MaxExtraPrecision $MaxLicenseProcesses $MaxLicenseSubprocesses $MaxMachineNumber $MaxNumber $MaxPiecewiseCases $MaxPrecision $MaxRootDegree $MessageGroups $MessageList $MessagePrePrint $Messages $MinMachineNumber $MinNumber $MinorReleaseNumber $MinPrecision $MobilePhone $ModuleNumber $NetworkConnected $NetworkInterfaces $NetworkLicense $NewMessage $NewSymbol $Notebooks $NoValue $NumberMarks $Off $OperatingSystem $Output $OutputForms $OutputSizeLimit $OutputStreamMethods $Packages $ParentLink $ParentProcessID $PasswordFile $PatchLevelID $Path $PathnameSeparator $PerformanceGoal $Permissions $PermissionsGroupBase $PersistenceBase $PersistencePath $PipeSupported $PlotTheme $Post $Pre $PreferencesDirectory $PreInitialization $PrePrint $PreRead $PrintForms $PrintLiteral $Printout3DPreviewer $ProcessID $ProcessorCount $ProcessorType $ProductInformation $ProgramName $PublisherID $RandomState $RecursionLimit $RegisteredDeviceClasses $RegisteredUserName $ReleaseNumber $RequesterAddress $RequesterWolframID $RequesterWolframUUID $ResourceSystemBase $RootDirectory $ScheduledTask $ScriptCommandLine $ScriptInputString $SecuredAuthenticationKeyTokens $ServiceCreditsAvailable $Services $SessionID $SetParentLink $SharedFunctions $SharedVariables $SoundDisplay $SoundDisplayFunction $SourceLink $SSHAuthentication $SummaryBoxDataSizeLimit $SuppressInputFormHeads $SynchronousEvaluation $SyntaxHandler $System $SystemCharacterEncoding $SystemID $SystemMemory $SystemShell $SystemTimeZone $SystemWordLength $TemplatePath $TemporaryDirectory $TemporaryPrefix $TestFileName $TextStyle $TimedOut $TimeUnit $TimeZone $TimeZoneEntity $TopDirectory $TraceOff $TraceOn $TracePattern $TracePostAction $TracePreAction $UnitSystem $Urgent $UserAddOnsDirectory $UserAgentLanguages $UserAgentMachine $UserAgentName $UserAgentOperatingSystem $UserAgentString $UserAgentVersion $UserBaseDirectory $UserDocumentsDirectory $Username $UserName $UserURLBase $Version $VersionNumber $VoiceStyles $WolframID $WolframUUID',
     contains: [
-      {
-        className: 'comment',
-        begin: /\(\*/, end: /\*\)/
-      },
-      hljs.APOS_STRING_MODE,
+      hljs.COMMENT('\\(\\*', '\\*\\)', {contains: ['self']}),
       hljs.QUOTE_STRING_MODE,
-      hljs.C_NUMBER_MODE,
-      {
-        begin: /\{/, end: /\}/,
-        illegal: /:/
-      }
+      hljs.C_NUMBER_MODE
     ]
   };
 };
 
 /***/ }),
-/* 213 */
+/* 218 */
 /***/ (function(module, exports) {
 
 module.exports = /*
@@ -16990,7 +17553,7 @@ function(hljs) {
 };
 
 /***/ }),
-/* 214 */
+/* 219 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17400,7 +17963,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 215 */
+/* 220 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17629,7 +18192,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 216 */
+/* 221 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17676,6 +18239,7 @@ module.exports = function(hljs) {
     begin: '\\\\[abfnrtv]\\|\\\\x[0-9a-fA-F]*\\\\\\|%[-+# *.0-9]*[dioxXucsfeEgGp]',
     relevance: 0
   };
+  STRING.contains = STRING.contains.slice() // we need our own copy of contains
   STRING.contains.push(STRING_FMT);
 
   var IMPLICATION = {
@@ -17709,13 +18273,14 @@ module.exports = function(hljs) {
       hljs.NUMBER_MODE,
       ATOM,
       STRING,
-      {begin: /:-/} // relevance booster
+      {begin: /:-/}, // relevance booster
+      {begin: /\.$/} // relevance booster
     ]
   };
 };
 
 /***/ }),
-/* 217 */
+/* 222 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17767,7 +18332,8 @@ module.exports = function(hljs) {
         ')',
         end: '\\s'
       },
-      hljs.COMMENT('[;#]', '$'),
+      // lines ending with ; or # aren't really comments, probably auto-detect fail
+      hljs.COMMENT('[;#](?!\s*$)', '$'),
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.QUOTE_STRING_MODE,
       {
@@ -17805,7 +18371,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 218 */
+/* 223 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17828,7 +18394,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 219 */
+/* 224 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -17989,7 +18555,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 220 */
+/* 225 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18018,7 +18584,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 221 */
+/* 226 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18097,7 +18663,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 222 */
+/* 227 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18213,7 +18779,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 223 */
+/* 228 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18286,7 +18852,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 224 */
+/* 229 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18383,7 +18949,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 225 */
+/* 230 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18442,7 +19008,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 226 */
+/* 231 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18495,7 +19061,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 227 */
+/* 232 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18605,7 +19171,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 228 */
+/* 233 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18655,6 +19221,7 @@ module.exports = function(hljs) {
       hljs.C_BLOCK_COMMENT_MODE,
       hljs.C_NUMBER_MODE,
       hljs.QUOTE_STRING_MODE,
+      hljs.APOS_STRING_MODE,
       {
         className: 'string',
         variants: [
@@ -18662,25 +19229,29 @@ module.exports = function(hljs) {
             begin: '@"', end: '"',
             illegal: '\\n',
             contains: [hljs.BACKSLASH_ESCAPE]
-          },
-          {
-            begin: '\'', end: '[^\\\\]\'',
-            illegal: '[^\\\\][^\']'
           }
         ]
       },
       {
         className: 'meta',
-        begin: '#',
-        end: '$',
+        begin: /#\s*[a-z]+\b/, end: /$/,
+        keywords: {
+          'meta-keyword':
+            'if else elif endif define undef warning error line ' +
+            'pragma ifdef ifndef include'
+        },
         contains: [
           {
+            begin: /\\\n/, relevance: 0
+          },
+          hljs.inherit(hljs.QUOTE_STRING_MODE, {className: 'meta-string'}),
+          {
             className: 'meta-string',
-            variants: [
-              { begin: '\"', end: '\"' },
-              { begin: '<', end: '>' }
-            ]
-          }
+            begin: /<.*?>/, end: /$/,
+            illegal: '\\n',
+          },
+          hljs.C_LINE_COMMENT_MODE,
+          hljs.C_BLOCK_COMMENT_MODE
         ]
       },
       {
@@ -18700,7 +19271,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 229 */
+/* 234 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18775,7 +19346,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 230 */
+/* 235 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18836,7 +19407,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 231 */
+/* 236 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18910,7 +19481,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 232 */
+/* 237 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -18962,7 +19533,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 233 */
+/* 238 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -19018,7 +19589,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 234 */
+/* 239 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -19027,7 +19598,7 @@ module.exports = function(hljs) {
   var DOLLAR_STRING = '\\$([a-zA-Z_]?|[a-zA-Z_][a-zA-Z_0-9]*)\\$';
   var LABEL = '<<\\s*' + UNQUOTED_IDENT + '\\s*>>';
 
-  var SQL_KW = 
+  var SQL_KW =
     // https://www.postgresql.org/docs/11/static/sql-keywords-appendix.html
     // https://www.postgresql.org/docs/11/static/sql-commands.html
     // SQL commands (starting words)
@@ -19077,7 +19648,7 @@ module.exports = function(hljs) {
     'SUPERUSER NOSUPERUSER CREATEDB NOCREATEDB CREATEROLE NOCREATEROLE INHERIT NOINHERIT ' +
     'LOGIN NOLOGIN REPLICATION NOREPLICATION BYPASSRLS NOBYPASSRLS ';
 
-  var PLPGSQL_KW = 
+  var PLPGSQL_KW =
     'ALIAS BEGIN CONSTANT DECLARE END EXCEPTION RETURN PERFORM|10 RAISE GET DIAGNOSTICS ' +
     'STACKED|10 FOREACH LOOP ELSIF EXIT WHILE REVERSE SLICE DEBUG LOG INFO NOTICE WARNING ASSERT ' +
     'OPEN ';
@@ -19100,8 +19671,8 @@ module.exports = function(hljs) {
     'REGNAMESPACE|10 REGCONFIG|10 REGDICTIONARY|10 ';// +
     // some types from standard extensions
     'HSTORE|10 LO LTREE|10 ';
-    
-  var TYPES_RE = 
+
+  var TYPES_RE =
     TYPES.trim()
          .split(' ')
          .map( function(val) { return val.split('|')[0]; } )
@@ -19288,7 +19859,7 @@ module.exports = function(hljs) {
     //
     'GROUPING CAST ';
 
-    var FUNCTIONS_RE = 
+    var FUNCTIONS_RE =
       FUNCTIONS.trim()
                .split(' ')
                .map( function(val) { return val.split('|')[0]; } )
@@ -19510,7 +20081,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 235 */
+/* 240 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -19641,7 +20212,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 236 */
+/* 241 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -19651,7 +20222,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 237 */
+/* 242 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -19697,6 +20268,12 @@ module.exports = function(hljs) {
     begin: hljs.IDENT_RE + '\'', relevance: 0
   };
 
+  var NUMBER_MODE = {
+    className: 'number',
+    begin: '(-?)(\\b0[xX][a-fA-F0-9]+|\\b0[bB][01]+|(\\b\\d+(_\\d+)?(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)',
+    relevance: 0
+  };
+
   /**
    * The `FUNCTION` and `CLASS` modes were intentionally removed to simplify
    * highlighting and fix cases like
@@ -19716,7 +20293,7 @@ module.exports = function(hljs) {
       QUOTE_STRING_MODE,
       SINGLE_QUOTE_CHAR_MODE,
       PRIMED_NAME,
-      hljs.C_NUMBER_MODE,
+      NUMBER_MODE,
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE
     ]
@@ -19724,22 +20301,66 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 238 */
+/* 243 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs){
+
+  var TYPES =
+    ["string", "char", "byte", "int", "long", "bool",  "decimal",  "single",
+     "double", "DateTime", "xml", "array", "hashtable", "void"];
+
+  // https://msdn.microsoft.com/en-us/library/ms714428(v=vs.85).aspx
+  var VALID_VERBS =
+    'Add|Clear|Close|Copy|Enter|Exit|Find|Format|Get|Hide|Join|Lock|' +
+    'Move|New|Open|Optimize|Pop|Push|Redo|Remove|Rename|Reset|Resize|' +
+    'Search|Select|Set|Show|Skip|Split|Step|Switch|Undo|Unlock|' +
+    'Watch|Backup|Checkpoint|Compare|Compress|Convert|ConvertFrom|' +
+    'ConvertTo|Dismount|Edit|Expand|Export|Group|Import|Initialize|' +
+    'Limit|Merge|New|Out|Publish|Restore|Save|Sync|Unpublish|Update|' +
+    'Approve|Assert|Complete|Confirm|Deny|Disable|Enable|Install|Invoke|Register|' +
+    'Request|Restart|Resume|Start|Stop|Submit|Suspend|Uninstall|' +
+    'Unregister|Wait|Debug|Measure|Ping|Repair|Resolve|Test|Trace|Connect|' +
+    'Disconnect|Read|Receive|Send|Write|Block|Grant|Protect|Revoke|Unblock|' +
+    'Unprotect|Use|ForEach|Sort|Tee|Where';
+
+  var COMPARISON_OPERATORS =
+    '-and|-as|-band|-bnot|-bor|-bxor|-casesensitive|-ccontains|-ceq|-cge|-cgt|' +
+    '-cle|-clike|-clt|-cmatch|-cne|-cnotcontains|-cnotlike|-cnotmatch|-contains|' +
+    '-creplace|-csplit|-eq|-exact|-f|-file|-ge|-gt|-icontains|-ieq|-ige|-igt|' +
+    '-ile|-ilike|-ilt|-imatch|-in|-ine|-inotcontains|-inotlike|-inotmatch|' +
+    '-ireplace|-is|-isnot|-isplit|-join|-le|-like|-lt|-match|-ne|-not|' +
+    '-notcontains|-notin|-notlike|-notmatch|-or|-regex|-replace|-shl|-shr|' +
+    '-split|-wildcard|-xor';
+
+  var KEYWORDS = {
+    keyword: 'if else foreach return do while until elseif begin for trap data dynamicparam ' +
+    'end break throw param continue finally in switch exit filter try process catch ' +
+    'hidden static parameter'
+    // TODO: 'validate[A-Z]+' can't work in keywords
+  };
+
+  var TITLE_NAME_RE = /\w[\w\d]*((-)[\w\d]+)*/;
+
   var BACKTICK_ESCAPE = {
-    begin: "`[\\s\\S]",
-    relevance: 0,
+    begin: '`[\\s\\S]',
+    relevance: 0
   };
+
   var VAR = {
-    className: "variable",
-    variants: [{ begin: /\$[\w\d][\w\d_:]*/ }],
+    className: 'variable',
+    variants: [
+      { begin: /\$\B/ },
+      { className: 'keyword', begin: /\$this/ },
+      { begin: /\$[\w\d][\w\d_:]*/ }
+    ]
   };
+
   var LITERAL = {
-    className: "literal",
-    begin: /\$(null|true|false)\b/,
+    className: 'literal',
+    begin: /\$(null|true|false)\b/
   };
+
   var QUOTE_STRING = {
     className: "string",
     variants: [{ begin: /"/, end: /"/ }, { begin: /@"/, end: /^"@/ }],
@@ -19747,260 +20368,187 @@ module.exports = function(hljs){
       BACKTICK_ESCAPE,
       VAR,
       {
-        className: "variable",
-        begin: /\$[A-z]/,
-        end: /[^A-z]/,
-      },
-    ],
+        className: 'variable',
+        begin: /\$[A-z]/, end: /[^A-z]/
+      }
+    ]
   };
+
   var APOS_STRING = {
-    className: "string",
-    variants: [{ begin: /'/, end: /'/ }, { begin: /@'/, end: /^'@/ }],
+    className: 'string',
+    variants: [
+      { begin: /'/, end: /'/ },
+      { begin: /@'/, end: /^'@/ }
+    ]
   };
 
   var PS_HELPTAGS = {
     className: "doctag",
     variants: [
       /* no paramater help tags */
-
       {
-        begin: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/,
+        begin: /\.(synopsis|description|example|inputs|outputs|notes|link|component|role|functionality)/
       },
       /* one parameter help tags */
-      {
-        begin: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/,
-      },
-    ],
+      { begin: /\.(parameter|forwardhelptargetname|forwardhelpcategory|remotehelprunspace|externalhelp)\s+\S+/ }
+    ]
   };
-  var PS_COMMENT = hljs.inherit(hljs.COMMENT(null, null), {
-    variants: [
-      /* single-line comment */
-      { begin: /#/, end: /$/ },
-      /* multi-line comment */
-      { begin: /<#/, end: /#>/ },
-    ],
-    contains: [PS_HELPTAGS],
-  });
 
-  return {
-    aliases: ["ps"],
-    lexemes: /-?[A-z\.\-]+/,
-    case_insensitive: true,
-    keywords: {
-      keyword:
-        "if else foreach return function do while until elseif begin for trap data dynamicparam end break throw param continue finally in switch exit filter try process catch" +
-        "ValidateNoCircleInNodeResources ValidateNodeExclusiveResources ValidateNodeManager ValidateNodeResources ValidateNodeResourceSource ValidateNoNameNodeResources ThrowError IsHiddenResource" +
-        "IsPatternMatched ",
-      built_in:
-        "Add-Computer Add-Content Add-History Add-JobTrigger Add-Member Add-PSSnapin Add-Type Checkpoint-Computer Clear-Content " +
-        "Clear-EventLog Clear-History Clear-Host Clear-Item Clear-ItemProperty Clear-Variable Compare-Object Complete-Transaction Connect-PSSession " +
-        "Connect-WSMan Convert-Path ConvertFrom-Csv ConvertFrom-Json ConvertFrom-SecureString ConvertFrom-StringData ConvertTo-Csv ConvertTo-Html " +
-        "ConvertTo-Json ConvertTo-SecureString ConvertTo-Xml Copy-Item Copy-ItemProperty Debug-Process Disable-ComputerRestore Disable-JobTrigger " +
-        "Disable-PSBreakpoint Disable-PSRemoting Disable-PSSessionConfiguration Disable-WSManCredSSP Disconnect-PSSession Disconnect-WSMan " +
-        "Disable-ScheduledJob Enable-ComputerRestore Enable-JobTrigger Enable-PSBreakpoint Enable-PSRemoting Enable-PSSessionConfiguration " +
-        "Enable-ScheduledJob Enable-WSManCredSSP Enter-PSSession Exit-PSSession Export-Alias Export-Clixml Export-Console Export-Counter Export-Csv " +
-        "Export-FormatData Export-ModuleMember Export-PSSession ForEach-Object Format-Custom Format-List Format-Table Format-Wide Get-Acl Get-Alias " +
-        "Get-AuthenticodeSignature Get-ChildItem Get-Command Get-ComputerRestorePoint Get-Content Get-ControlPanelItem Get-Counter Get-Credential " +
-        "Get-Culture Get-Date Get-Event Get-EventLog Get-EventSubscriber Get-ExecutionPolicy Get-FormatData Get-Host Get-HotFix Get-Help Get-History " +
-        "Get-IseSnippet Get-Item Get-ItemProperty Get-Job Get-JobTrigger Get-Location Get-Member Get-Module Get-PfxCertificate Get-Process " +
-        "Get-PSBreakpoint Get-PSCallStack Get-PSDrive Get-PSProvider Get-PSSession Get-PSSessionConfiguration Get-PSSnapin Get-Random Get-ScheduledJob " +
-        "Get-ScheduledJobOption Get-Service Get-TraceSource Get-Transaction Get-TypeData Get-UICulture Get-Unique Get-Variable Get-Verb Get-WinEvent " +
-        "Get-WmiObject Get-WSManCredSSP Get-WSManInstance Group-Object Import-Alias Import-Clixml Import-Counter Import-Csv Import-IseSnippet " +
-        "Import-LocalizedData Import-PSSession Import-Module Invoke-AsWorkflow Invoke-Command Invoke-Expression Invoke-History Invoke-Item " +
-        "Invoke-RestMethod Invoke-WebRequest Invoke-WmiMethod Invoke-WSManAction Join-Path Limit-EventLog Measure-Command Measure-Object Move-Item " +
-        "Move-ItemProperty New-Alias New-Event New-EventLog New-IseSnippet New-Item New-ItemProperty New-JobTrigger New-Object New-Module " +
-        "New-ModuleManifest New-PSDrive New-PSSession New-PSSessionConfigurationFile New-PSSessionOption New-PSTransportOption " +
-        "New-PSWorkflowExecutionOption New-PSWorkflowSession New-ScheduledJobOption New-Service New-TimeSpan New-Variable New-WebServiceProxy " +
-        "New-WinEvent New-WSManInstance New-WSManSessionOption Out-Default Out-File Out-GridView Out-Host Out-Null Out-Printer Out-String Pop-Location " +
-        "Push-Location Read-Host Receive-Job Register-EngineEvent Register-ObjectEvent Register-PSSessionConfiguration Register-ScheduledJob " +
-        "Register-WmiEvent Remove-Computer Remove-Event Remove-EventLog Remove-Item Remove-ItemProperty Remove-Job Remove-JobTrigger Remove-Module " +
-        "Remove-PSBreakpoint Remove-PSDrive Remove-PSSession Remove-PSSnapin Remove-TypeData Remove-Variable Remove-WmiObject Remove-WSManInstance " +
-        "Rename-Computer Rename-Item Rename-ItemProperty Reset-ComputerMachinePassword Resolve-Path Restart-Computer Restart-Service Restore-Computer " +
-        "Resume-Job Resume-Service Save-Help Select-Object Select-String Select-Xml Send-MailMessage Set-Acl Set-Alias Set-AuthenticodeSignature " +
-        "Set-Content Set-Date Set-ExecutionPolicy Set-Item Set-ItemProperty Set-JobTrigger Set-Location Set-PSBreakpoint Set-PSDebug " +
-        "Set-PSSessionConfiguration Set-ScheduledJob Set-ScheduledJobOption Set-Service Set-StrictMode Set-TraceSource Set-Variable Set-WmiInstance " +
-        "Set-WSManInstance Set-WSManQuickConfig Show-Command Show-ControlPanelItem Show-EventLog Sort-Object Split-Path Start-Job Start-Process " +
-        "Start-Service Start-Sleep Start-Transaction Start-Transcript Stop-Computer Stop-Job Stop-Process Stop-Service Stop-Transcript Suspend-Job " +
-        "Suspend-Service Tee-Object Test-ComputerSecureChannel Test-Connection Test-ModuleManifest Test-Path Test-PSSessionConfigurationFile " +
-        "Trace-Command Unblock-File Undo-Transaction Unregister-Event Unregister-PSSessionConfiguration Unregister-ScheduledJob Update-FormatData " +
-        "Update-Help Update-List Update-TypeData Use-Transaction Wait-Event Wait-Job Wait-Process Where-Object Write-Debug Write-Error Write-EventLog " +
-        "Write-Host Write-Output Write-Progress Write-Verbose Write-Warning Add-MDTPersistentDrive Disable-MDTMonitorService Enable-MDTMonitorService " +
-        "Get-MDTDeploymentShareStatistics Get-MDTMonitorData Get-MDTOperatingSystemCatalog Get-MDTPersistentDrive Import-MDTApplication " +
-        "Import-MDTDriver Import-MDTOperatingSystem Import-MDTPackage Import-MDTTaskSequence New-MDTDatabase Remove-MDTMonitorData " +
-        "Remove-MDTPersistentDrive Restore-MDTPersistentDrive Set-MDTMonitorData Test-MDTDeploymentShare Test-MDTMonitorData Update-MDTDatabaseSchema " +
-        "Update-MDTDeploymentShare Update-MDTLinkedDS Update-MDTMedia Add-VamtProductKey Export-VamtData Find-VamtManagedMachine " +
-        "Get-VamtConfirmationId Get-VamtProduct Get-VamtProductKey Import-VamtData Initialize-VamtData Install-VamtConfirmationId " +
-        "Install-VamtProductActivation Install-VamtProductKey Update-VamtProduct Add-CIDatastore Add-KeyManagementServer Add-NodeKeys " +
-        "Add-NsxDynamicCriteria Add-NsxDynamicMemberSet Add-NsxEdgeInterfaceAddress Add-NsxFirewallExclusionListMember Add-NsxFirewallRuleMember " +
-        "Add-NsxIpSetMember Add-NsxLicense Add-NsxLoadBalancerPoolMember Add-NsxLoadBalancerVip Add-NsxSecondaryManager Add-NsxSecurityGroupMember " +
-        "Add-NsxSecurityPolicyRule Add-NsxSecurityPolicyRuleGroup Add-NsxSecurityPolicyRuleService Add-NsxServiceGroupMember " +
-        "Add-NsxTransportZoneMember Add-PassthroughDevice Add-VDSwitchPhysicalNetworkAdapter Add-VDSwitchVMHost Add-VMHost Add-VMHostNtpServer " +
-        "Add-VirtualSwitchPhysicalNetworkAdapter Add-XmlElement Add-vRACustomForm Add-vRAPrincipalToTenantRole Add-vRAReservationNetwork " +
-        "Add-vRAReservationStorage Clear-NsxEdgeInterface Clear-NsxManagerTimeSettings Compress-Archive Connect-CIServer Connect-CisServer " +
-        "Connect-HCXServer Connect-NIServer Connect-NsxLogicalSwitch Connect-NsxServer Connect-NsxtServer Connect-SrmServer Connect-VIServer " +
-        "Connect-Vmc Connect-vRAServer Connect-vRNIServer ConvertFrom-Markdown ConvertTo-MOFInstance Copy-DatastoreItem Copy-HardDisk Copy-NsxEdge " +
-        "Copy-VDisk Copy-VMGuestFile Debug-Runspace Disable-NsxEdgeSsh Disable-RunspaceDebug Disable-vRNIDataSource Disconnect-CIServer " +
-        "Disconnect-CisServer Disconnect-HCXServer Disconnect-NsxLogicalSwitch Disconnect-NsxServer Disconnect-NsxtServer Disconnect-SrmServer " +
-        "Disconnect-VIServer Disconnect-Vmc Disconnect-vRAServer Disconnect-vRNIServer Dismount-Tools Enable-NsxEdgeSsh Enable-RunspaceDebug " +
-        "Enable-vRNIDataSource Expand-Archive Export-NsxObject Export-SpbmStoragePolicy Export-VApp Export-VDPortGroup Export-VDSwitch " +
-        "Export-VMHostProfile Export-vRAIcon Export-vRAPackage Find-Command Find-DscResource Find-Module Find-NsxWhereVMUsed Find-Package " +
-        "Find-PackageProvider Find-RoleCapability Find-Script Format-Hex Format-VMHostDiskPartition Format-XML Generate-VersionInfo " +
-        "Get-AdvancedSetting Get-AlarmAction Get-AlarmActionTrigger Get-AlarmDefinition Get-Annotation Get-CDDrive Get-CIAccessControlRule " +
-        "Get-CIDatastore Get-CINetworkAdapter Get-CIRole Get-CIUser Get-CIVApp Get-CIVAppNetwork Get-CIVAppStartRule Get-CIVAppTemplate Get-CIVM " +
-        "Get-CIVMTemplate Get-CIView Get-Catalog Get-CisCommand Get-CisService Get-CloudCommand Get-Cluster Get-CompatibleVersionAddtionaPropertiesStr " +
-        "Get-ComplexResourceQualifier Get-ConfigurationErrorCount Get-ContentLibraryItem Get-CustomAttribute Get-DSCResourceModules Get-Datacenter " +
-        "Get-Datastore Get-DatastoreCluster Get-DrsClusterGroup Get-DrsRecommendation Get-DrsRule Get-DrsVMHostRule Get-DscResource Get-EdgeGateway " +
-        "Get-EncryptedPassword Get-ErrorReport Get-EsxCli Get-EsxTop Get-ExternalNetwork Get-FileHash Get-FloppyDrive Get-Folder Get-HAPrimaryVMHost " +
-        "Get-HCXAppliance Get-HCXApplianceCompute Get-HCXApplianceDVS Get-HCXApplianceDatastore Get-HCXApplianceNetwork Get-HCXContainer " +
-        "Get-HCXDatastore Get-HCXGateway Get-HCXInterconnectStatus Get-HCXJob Get-HCXMigration Get-HCXNetwork Get-HCXNetworkExtension " +
-        "Get-HCXReplication Get-HCXReplicationSnapshot Get-HCXService Get-HCXSite Get-HCXSitePairing Get-HCXVM Get-HardDisk Get-IScsiHbaTarget " +
-        "Get-InnerMostErrorRecord Get-InstallPath Get-InstalledModule Get-InstalledScript Get-Inventory Get-ItemPropertyValue Get-KeyManagementServer " +
-        "Get-KmipClientCertificate Get-KmsCluster Get-Log Get-LogType Get-MarkdownOption Get-Media Get-MofInstanceName Get-MofInstanceText Get-NetworkAdapter Get-NetworkPool " +
-        "Get-NfsUser Get-NicTeamingPolicy Get-NsxApplicableMember Get-NsxApplicableSecurityAction Get-NsxBackingDVSwitch Get-NsxBackingPortGroup Get-NsxCliDfwAddrSet " +
-        "Get-NsxCliDfwFilter Get-NsxCliDfwRule Get-NsxClusterStatus Get-NsxController Get-NsxDynamicCriteria Get-NsxDynamicMemberSet Get-NsxEdge Get-NsxEdgeBgp " +
-        "Get-NsxEdgeBgpNeighbour Get-NsxEdgeCertificate Get-NsxEdgeCsr Get-NsxEdgeFirewall Get-NsxEdgeFirewallRule Get-NsxEdgeInterface Get-NsxEdgeInterfaceAddress " +
-        "Get-NsxEdgeNat Get-NsxEdgeNatRule Get-NsxEdgeOspf Get-NsxEdgeOspfArea Get-NsxEdgeOspfInterface Get-NsxEdgePrefix Get-NsxEdgeRedistributionRule Get-NsxEdgeRouting " +
-        "Get-NsxEdgeStaticRoute Get-NsxEdgeSubInterface Get-NsxFirewallExclusionListMember Get-NsxFirewallGlobalConfiguration Get-NsxFirewallPublishStatus Get-NsxFirewallRule " +
-        "Get-NsxFirewallRuleMember Get-NsxFirewallSavedConfiguration Get-NsxFirewallSection Get-NsxFirewallThreshold Get-NsxIpPool Get-NsxIpSet Get-NsxLicense Get-NsxLoadBalancer " +
-        "Get-NsxLoadBalancerApplicationProfile Get-NsxLoadBalancerApplicationRule Get-NsxLoadBalancerMonitor Get-NsxLoadBalancerPool Get-NsxLoadBalancerPoolMember Get-NsxLoadBalancerStats " +
-        "Get-NsxLoadBalancerVip Get-NsxLogicalRouter Get-NsxLogicalRouterBgp Get-NsxLogicalRouterBgpNeighbour Get-NsxLogicalRouterBridge Get-NsxLogicalRouterBridging " +
-        "Get-NsxLogicalRouterInterface Get-NsxLogicalRouterOspf Get-NsxLogicalRouterOspfArea Get-NsxLogicalRouterOspfInterface Get-NsxLogicalRouterPrefix " +
-        "Get-NsxLogicalRouterRedistributionRule Get-NsxLogicalRouterRouting Get-NsxLogicalRouterStaticRoute Get-NsxLogicalSwitch Get-NsxMacSet Get-NsxManagerBackup " +
-        "Get-NsxManagerCertificate Get-NsxManagerComponentSummary Get-NsxManagerNetwork Get-NsxManagerRole Get-NsxManagerSsoConfig Get-NsxManagerSyncStatus Get-NsxManagerSyslogServer " +
-        "Get-NsxManagerSystemSummary Get-NsxManagerTimeSettings Get-NsxManagerVcenterConfig Get-NsxSecondaryManager Get-NsxSecurityGroup Get-NsxSecurityGroupEffectiveIpAddress " +
-        "Get-NsxSecurityGroupEffectiveMacAddress Get-NsxSecurityGroupEffectiveMember Get-NsxSecurityGroupEffectiveVirtualMachine Get-NsxSecurityGroupEffectiveVnic " +
-        "Get-NsxSecurityGroupMemberTypes Get-NsxSecurityPolicy Get-NsxSecurityPolicyHighestUsedPrecedence Get-NsxSecurityPolicyRule Get-NsxSecurityTag Get-NsxSecurityTagAssignment " +
-        "Get-NsxSegmentIdRange Get-NsxService Get-NsxServiceDefinition Get-NsxServiceGroup Get-NsxServiceGroupMember Get-NsxServiceProfile Get-NsxSpoofguardNic Get-NsxSpoofguardPolicy " +
-        "Get-NsxSslVpn Get-NsxSslVpnAuthServer Get-NsxSslVpnClientInstallationPackage Get-NsxSslVpnIpPool Get-NsxSslVpnPrivateNetwork Get-NsxSslVpnUser Get-NsxTransportZone " +
-        "Get-NsxUserRole Get-NsxVdsContext Get-NsxtPolicyService Get-NsxtService Get-OSCustomizationNicMapping Get-OSCustomizationSpec Get-Org Get-OrgNetwork Get-OrgVdc " +
-        "Get-OrgVdcNetwork Get-OvfConfiguration Get-PSCurrentConfigurationNode Get-PSDefaultConfigurationDocument Get-PSMetaConfigDocumentInstVersionInfo Get-PSMetaConfigurationProcessed " +
-        "Get-PSReadLineKeyHandler Get-PSReadLineOption Get-PSRepository Get-PSTopConfigurationName Get-PSVersion Get-Package Get-PackageProvider Get-PackageSource Get-PassthroughDevice " +
-        "Get-PositionInfo Get-PowerCLICommunity Get-PowerCLIConfiguration Get-PowerCLIHelp Get-PowerCLIVersion Get-PowerNsxVersion Get-ProviderVdc Get-PublicKeyFromFile " +
-        "Get-PublicKeyFromStore Get-ResourcePool Get-Runspace Get-RunspaceDebug Get-ScsiController Get-ScsiLun Get-ScsiLunPath Get-SecurityInfo Get-SecurityPolicy Get-Snapshot " +
-        "Get-SpbmCapability Get-SpbmCompatibleStorage Get-SpbmEntityConfiguration Get-SpbmFaultDomain Get-SpbmPointInTimeReplica Get-SpbmReplicationGroup Get-SpbmReplicationPair " +
-        "Get-SpbmStoragePolicy Get-Stat Get-StatInterval Get-StatType Get-Tag Get-TagAssignment Get-TagCategory Get-Task Get-Template Get-TimeZone Get-Uptime Get-UsbDevice Get-VAIOFilter " +
-        "Get-VApp Get-VDBlockedPolicy Get-VDPort Get-VDPortgroup Get-VDPortgroupOverridePolicy Get-VDSecurityPolicy Get-VDSwitch Get-VDSwitchPrivateVlan Get-VDTrafficShapingPolicy " +
-        "Get-VDUplinkLacpPolicy Get-VDUplinkTeamingPolicy Get-VDisk Get-VIAccount Get-VICommand Get-VICredentialStoreItem Get-VIEvent Get-VIObjectByVIView Get-VIPermission Get-VIPrivilege " +
-        "Get-VIProperty Get-VIRole Get-VM Get-VMGuest Get-VMHost Get-VMHostAccount Get-VMHostAdvancedConfiguration Get-VMHostAuthentication Get-VMHostAvailableTimeZone " +
-        "Get-VMHostDiagnosticPartition Get-VMHostDisk Get-VMHostDiskPartition Get-VMHostFirewallDefaultPolicy Get-VMHostFirewallException Get-VMHostFirmware Get-VMHostHardware " +
-        "Get-VMHostHba Get-VMHostModule Get-VMHostNetwork Get-VMHostNetworkAdapter Get-VMHostNtpServer Get-VMHostPatch Get-VMHostPciDevice Get-VMHostProfile " +
-        "Get-VMHostProfileImageCacheConfiguration Get-VMHostProfileRequiredInput Get-VMHostProfileStorageDeviceConfiguration Get-VMHostProfileUserConfiguration " +
-        "Get-VMHostProfileVmPortGroupConfiguration Get-VMHostRoute Get-VMHostService Get-VMHostSnmp Get-VMHostStartPolicy Get-VMHostStorage Get-VMHostSysLogServer Get-VMQuestion " +
-        "Get-VMResourceConfiguration Get-VMStartPolicy Get-VTpm Get-VTpmCSR Get-VTpmCertificate Get-VasaProvider Get-VasaStorageArray Get-View Get-VirtualPortGroup Get-VirtualSwitch " +
-        "Get-VmcSddcNetworkService Get-VmcService Get-VsanClusterConfiguration Get-VsanComponent Get-VsanDisk Get-VsanDiskGroup Get-VsanEvacuationPlan Get-VsanFaultDomain " +
-        "Get-VsanIscsiInitiatorGroup Get-VsanIscsiInitiatorGroupTargetAssociation Get-VsanIscsiLun Get-VsanIscsiTarget Get-VsanObject Get-VsanResyncingComponent Get-VsanRuntimeInfo " +
-        "Get-VsanSpaceUsage Get-VsanStat Get-VsanView Get-vRAApplianceServiceStatus Get-vRAAuthorizationRole Get-vRABlueprint Get-vRABusinessGroup Get-vRACatalogItem " +
-        "Get-vRACatalogItemRequestTemplate Get-vRACatalogPrincipal Get-vRAComponentRegistryService Get-vRAComponentRegistryServiceEndpoint Get-vRAComponentRegistryServiceStatus " +
-        "Get-vRAContent Get-vRAContentData Get-vRAContentType Get-vRACustomForm Get-vRAEntitledCatalogItem Get-vRAEntitledService Get-vRAEntitlement Get-vRAExternalNetworkProfile " +
-        "Get-vRAGroupPrincipal Get-vRAIcon Get-vRANATNetworkProfile Get-vRANetworkProfileIPAddressList Get-vRANetworkProfileIPRangeSummary Get-vRAPackage Get-vRAPackageContent " +
-        "Get-vRAPropertyDefinition Get-vRAPropertyGroup Get-vRARequest Get-vRARequestDetail Get-vRAReservation Get-vRAReservationComputeResource Get-vRAReservationComputeResourceMemory " +
-        "Get-vRAReservationComputeResourceNetwork Get-vRAReservationComputeResourceResourcePool Get-vRAReservationComputeResourceStorage Get-vRAReservationPolicy " +
-        "Get-vRAReservationTemplate Get-vRAReservationType Get-vRAResource Get-vRAResourceAction Get-vRAResourceActionRequestTemplate Get-vRAResourceMetric Get-vRAResourceOperation " +
-        "Get-vRAResourceType Get-vRARoutedNetworkProfile Get-vRAService Get-vRAServiceBlueprint Get-vRASourceMachine Get-vRAStorageReservationPolicy Get-vRATenant Get-vRATenantDirectory " +
-        "Get-vRATenantDirectoryStatus Get-vRATenantRole Get-vRAUserPrincipal Get-vRAUserPrincipalGroupMembership Get-vRAVersion Get-vRNIAPIVersion Get-vRNIApplication " +
-        "Get-vRNIApplicationTier Get-vRNIDataSource Get-vRNIDataSourceSNMPConfig Get-vRNIDatastore Get-vRNIDistributedSwitch Get-vRNIDistributedSwitchPortGroup Get-vRNIEntity " +
-        "Get-vRNIEntityName Get-vRNIFirewallRule Get-vRNIFlow Get-vRNIHost Get-vRNIHostVMKNic Get-vRNIIPSet Get-vRNIL2Network Get-vRNINSXManager Get-vRNINodes Get-vRNIProblem " +
-        "Get-vRNIRecommendedRules Get-vRNIRecommendedRulesNsxBundle Get-vRNISecurityGroup Get-vRNISecurityTag Get-vRNIService Get-vRNIServiceGroup Get-vRNIVM Get-vRNIVMvNIC " +
-        "Get-vRNIvCenter Get-vRNIvCenterCluster Get-vRNIvCenterDatacenter Get-vRNIvCenterFolder Grant-NsxSpoofguardNicApproval Import-CIVApp Import-CIVAppTemplate Import-NsxObject " +
-        "Import-PackageProvider Import-PowerShellDataFile Import-SpbmStoragePolicy Import-VApp Import-VMHostProfile Import-vRAContentData Import-vRAIcon Import-vRAPackage " +
-        "Initialize-ConfigurationRuntimeState Install-Module Install-NsxCluster Install-Package Install-PackageProvider Install-Script Install-VMHostPatch Invoke-DrsRecommendation " +
-        "Invoke-NsxCli Invoke-NsxClusterResolveAll Invoke-NsxManagerSync Invoke-NsxRestMethod Invoke-NsxWebRequest Invoke-VMHostProfile Invoke-VMScript Invoke-XpathQuery " +
-        "Invoke-vRADataCollection Invoke-vRARestMethod Invoke-vRATenantDirectorySync Invoke-vRNIRestMethod Join-String Mount-Tools Move-Cluster Move-Datacenter Move-Datastore Move-Folder " +
-        "Move-HardDisk Move-Inventory Move-NsxSecurityPolicyRule Move-ResourcePool Move-Template Move-VApp Move-VDisk Move-VM Move-VMHost New-AdvancedSetting New-AlarmAction " +
-        "New-AlarmActionTrigger New-CDDrive New-CIAccessControlRule New-CIVApp New-CIVAppNetwork New-CIVAppTemplate New-CIVM New-Cluster New-CustomAttribute New-Datacenter New-Datastore " +
-        "New-DatastoreCluster New-DatastoreDrive New-DrsClusterGroup New-DrsRule New-DrsVMHostRule New-DscChecksum New-FloppyDrive New-Folder New-Guid New-HCXAppliance New-HCXMigration " +
-        "New-HCXNetworkExtension New-HCXNetworkMapping New-HCXReplication New-HCXSitePairing New-HCXStaticRoute New-HardDisk New-IScsiHbaTarget New-KmipClientCertificate " +
-        "New-NetworkAdapter New-NfsUser New-NsxAddressSpec New-NsxClusterVxlanConfig New-NsxController New-NsxDynamicCriteriaSpec New-NsxEdge New-NsxEdgeBgpNeighbour New-NsxEdgeCsr " +
-        "New-NsxEdgeFirewallRule New-NsxEdgeInterfaceSpec New-NsxEdgeNatRule New-NsxEdgeOspfArea New-NsxEdgeOspfInterface New-NsxEdgePrefix New-NsxEdgeRedistributionRule " +
-        "New-NsxEdgeSelfSignedCertificate New-NsxEdgeStaticRoute New-NsxEdgeSubInterface New-NsxEdgeSubInterfaceSpec New-NsxFirewallRule New-NsxFirewallSavedConfiguration " +
-        "New-NsxFirewallSection New-NsxIpPool New-NsxIpSet New-NsxLoadBalancerApplicationProfile New-NsxLoadBalancerApplicationRule New-NsxLoadBalancerMemberSpec " +
-        "New-NsxLoadBalancerMonitor New-NsxLoadBalancerPool New-NsxLogicalRouter New-NsxLogicalRouterBgpNeighbour New-NsxLogicalRouterBridge New-NsxLogicalRouterInterface " +
-        "New-NsxLogicalRouterInterfaceSpec New-NsxLogicalRouterOspfArea New-NsxLogicalRouterOspfInterface New-NsxLogicalRouterPrefix New-NsxLogicalRouterRedistributionRule " +
-        "New-NsxLogicalRouterStaticRoute New-NsxLogicalSwitch New-NsxMacSet New-NsxManager New-NsxSecurityGroup New-NsxSecurityPolicy New-NsxSecurityPolicyAssignment " +
-        "New-NsxSecurityPolicyFirewallRuleSpec New-NsxSecurityPolicyGuestIntrospectionSpec New-NsxSecurityPolicyNetworkIntrospectionSpec New-NsxSecurityTag New-NsxSecurityTagAssignment " +
-        "New-NsxSegmentIdRange New-NsxService New-NsxServiceGroup New-NsxSpoofguardPolicy New-NsxSslVpnAuthServer New-NsxSslVpnClientInstallationPackage New-NsxSslVpnIpPool " +
-        "New-NsxSslVpnPrivateNetwork New-NsxSslVpnUser New-NsxTransportZone New-NsxVdsContext New-OSCustomizationNicMapping New-OSCustomizationSpec New-Org New-OrgNetwork New-OrgVdc " +
-        "New-OrgVdcNetwork New-ResourcePool New-ScriptFileInfo New-ScsiController New-Snapshot New-SpbmRule New-SpbmRuleSet New-SpbmStoragePolicy New-StatInterval New-Tag " +
-        "New-TagAssignment New-TagCategory New-Template New-TemporaryFile New-VAIOFilter New-VApp New-VDPortgroup New-VDSwitch New-VDSwitchPrivateVlan New-VDisk " +
-        "New-VICredentialStoreItem New-VIInventoryDrive New-VIPermission New-VIProperty New-VIRole New-VISamlSecurityContext New-VM New-VMHostAccount New-VMHostNetworkAdapter " +
-        "New-VMHostProfile New-VMHostProfileVmPortGroupConfiguration New-VMHostRoute New-VTpm New-VasaProvider New-VcsOAuthSecurityContext New-VirtualPortGroup New-VirtualSwitch " +
-        "New-VsanDisk New-VsanDiskGroup New-VsanFaultDomain New-VsanIscsiInitiatorGroup New-VsanIscsiInitiatorGroupTargetAssociation New-VsanIscsiLun New-VsanIscsiTarget " +
-        "New-vRABusinessGroup New-vRAEntitlement New-vRAExternalNetworkProfile New-vRAGroupPrincipal New-vRANATNetworkProfile New-vRANetworkProfileIPRangeDefinition New-vRAPackage " +
-        "New-vRAPropertyDefinition New-vRAPropertyGroup New-vRAReservation New-vRAReservationNetworkDefinition New-vRAReservationPolicy New-vRAReservationStorageDefinition " +
-        "New-vRARoutedNetworkProfile New-vRAService New-vRAStorageReservationPolicy New-vRATenant New-vRATenantDirectory New-vRAUserPrincipal New-vRNIApplication New-vRNIApplicationTier " +
-        "New-vRNIDataSource Open-VMConsoleWindow Publish-Module Publish-NsxSpoofguardPolicy Publish-Script Register-PSRepository Register-PackageSource Remove-AdvancedSetting " +
-        "Remove-AlarmAction Remove-AlarmActionTrigger Remove-Alias Remove-CDDrive Remove-CIAccessControlRule Remove-CIVApp Remove-CIVAppNetwork Remove-CIVAppTemplate Remove-Cluster " +
-        "Remove-CustomAttribute Remove-Datacenter Remove-Datastore Remove-DatastoreCluster Remove-DrsClusterGroup Remove-DrsRule Remove-DrsVMHostRule Remove-FloppyDrive Remove-Folder " +
-        "Remove-HCXAppliance Remove-HCXNetworkExtension Remove-HCXReplication Remove-HCXSitePairing Remove-HardDisk Remove-IScsiHbaTarget Remove-Inventory Remove-KeyManagementServer " +
-        "Remove-NetworkAdapter Remove-NfsUser Remove-NsxCluster Remove-NsxClusterVxlanConfig Remove-NsxController Remove-NsxDynamicCriteria Remove-NsxDynamicMemberSet Remove-NsxEdge " +
-        "Remove-NsxEdgeBgpNeighbour Remove-NsxEdgeCertificate Remove-NsxEdgeCsr Remove-NsxEdgeFirewallRule Remove-NsxEdgeInterfaceAddress Remove-NsxEdgeNatRule Remove-NsxEdgeOspfArea " +
-        "Remove-NsxEdgeOspfInterface Remove-NsxEdgePrefix Remove-NsxEdgeRedistributionRule Remove-NsxEdgeStaticRoute Remove-NsxEdgeSubInterface Remove-NsxFirewallExclusionListMember " +
-        "Remove-NsxFirewallRule Remove-NsxFirewallRuleMember Remove-NsxFirewallSavedConfiguration Remove-NsxFirewallSection Remove-NsxIpPool Remove-NsxIpSet Remove-NsxIpSetMember " +
-        "Remove-NsxLoadBalancerApplicationProfile Remove-NsxLoadBalancerMonitor Remove-NsxLoadBalancerPool Remove-NsxLoadBalancerPoolMember Remove-NsxLoadBalancerVip " +
-        "Remove-NsxLogicalRouter Remove-NsxLogicalRouterBgpNeighbour Remove-NsxLogicalRouterBridge Remove-NsxLogicalRouterInterface Remove-NsxLogicalRouterOspfArea " +
-        "Remove-NsxLogicalRouterOspfInterface Remove-NsxLogicalRouterPrefix Remove-NsxLogicalRouterRedistributionRule Remove-NsxLogicalRouterStaticRoute Remove-NsxLogicalSwitch " +
-        "Remove-NsxMacSet Remove-NsxSecondaryManager Remove-NsxSecurityGroup Remove-NsxSecurityGroupMember Remove-NsxSecurityPolicy Remove-NsxSecurityPolicyAssignment " +
-        "Remove-NsxSecurityPolicyRule Remove-NsxSecurityPolicyRuleGroup Remove-NsxSecurityPolicyRuleService Remove-NsxSecurityTag Remove-NsxSecurityTagAssignment " +
-        "Remove-NsxSegmentIdRange Remove-NsxService Remove-NsxServiceGroup Remove-NsxSpoofguardPolicy Remove-NsxSslVpnClientInstallationPackage Remove-NsxSslVpnIpPool " +
-        "Remove-NsxSslVpnPrivateNetwork Remove-NsxSslVpnUser Remove-NsxTransportZone Remove-NsxTransportZoneMember Remove-NsxVdsContext Remove-OSCustomizationNicMapping " +
-        "Remove-OSCustomizationSpec Remove-Org Remove-OrgNetwork Remove-OrgVdc Remove-OrgVdcNetwork Remove-PSReadLineKeyHandler Remove-PassthroughDevice Remove-ResourcePool " +
-        "Remove-Snapshot Remove-SpbmStoragePolicy Remove-StatInterval Remove-Tag Remove-TagAssignment Remove-TagCategory Remove-Template Remove-UsbDevice Remove-VAIOFilter Remove-VApp " +
-        "Remove-VDPortGroup Remove-VDSwitch Remove-VDSwitchPhysicalNetworkAdapter Remove-VDSwitchPrivateVlan Remove-VDSwitchVMHost Remove-VDisk Remove-VICredentialStoreItem " +
-        "Remove-VIPermission Remove-VIProperty Remove-VIRole Remove-VM Remove-VMHost Remove-VMHostAccount Remove-VMHostNetworkAdapter Remove-VMHostNtpServer Remove-VMHostProfile " +
-        "Remove-VMHostProfileVmPortGroupConfiguration Remove-VMHostRoute Remove-VTpm Remove-VasaProvider Remove-VirtualPortGroup Remove-VirtualSwitch " +
-        "Remove-VirtualSwitchPhysicalNetworkAdapter Remove-VsanDisk Remove-VsanDiskGroup Remove-VsanFaultDomain Remove-VsanIscsiInitiatorGroup " +
-        "Remove-VsanIscsiInitiatorGroupTargetAssociation Remove-VsanIscsiLun Remove-VsanIscsiTarget Remove-vRABusinessGroup Remove-vRACustomForm Remove-vRAExternalNetworkProfile " +
-        "Remove-vRAGroupPrincipal Remove-vRAIcon Remove-vRANATNetworkProfile Remove-vRAPackage Remove-vRAPrincipalFromTenantRole Remove-vRAPropertyDefinition Remove-vRAPropertyGroup " +
-        "Remove-vRAReservation Remove-vRAReservationNetwork Remove-vRAReservationPolicy Remove-vRAReservationStorage Remove-vRARoutedNetworkProfile Remove-vRAService " +
-        "Remove-vRAStorageReservationPolicy Remove-vRATenant Remove-vRATenantDirectory Remove-vRAUserPrincipal Remove-vRNIApplication Remove-vRNIApplicationTier Remove-vRNIDataSource " +
-        "Repair-NsxEdge Repair-VsanObject Request-vRACatalogItem Request-vRAResourceAction Restart-CIVApp Restart-CIVAppGuest Restart-CIVM Restart-CIVMGuest Restart-VM Restart-VMGuest " +
-        "Restart-VMHost Restart-VMHostService Resume-HCXReplication Revoke-NsxSpoofguardNicApproval Save-Module Save-Package Save-Script Search-Cloud Set-AdvancedSetting " +
-        "Set-AlarmDefinition Set-Annotation Set-CDDrive Set-CIAccessControlRule Set-CINetworkAdapter Set-CIVApp Set-CIVAppNetwork Set-CIVAppStartRule Set-CIVAppTemplate Set-Cluster " +
-        "Set-CustomAttribute Set-Datacenter Set-Datastore Set-DatastoreCluster Set-DrsClusterGroup Set-DrsRule Set-DrsVMHostRule Set-FloppyDrive Set-Folder Set-HCXAppliance " +
-        "Set-HCXMigration Set-HCXReplication Set-HardDisk Set-IScsiHbaTarget Set-KeyManagementServer Set-KmsCluster Set-MarkdownOption Set-NetworkAdapter Set-NfsUser Set-NicTeamingPolicy " +
-        "Set-NodeExclusiveResources Set-NodeManager Set-NodeResourceSource Set-NodeResources Set-NsxEdge Set-NsxEdgeBgp Set-NsxEdgeFirewall Set-NsxEdgeInterface Set-NsxEdgeNat " +
-        "Set-NsxEdgeOspf Set-NsxEdgeRouting Set-NsxFirewallGlobalConfiguration Set-NsxFirewallRule Set-NsxFirewallSavedConfiguration Set-NsxFirewallThreshold Set-NsxLoadBalancer " +
-        "Set-NsxLoadBalancerPoolMember Set-NsxLogicalRouter Set-NsxLogicalRouterBgp Set-NsxLogicalRouterBridging Set-NsxLogicalRouterInterface Set-NsxLogicalRouterOspf " +
-        "Set-NsxLogicalRouterRouting Set-NsxManager Set-NsxManagerRole Set-NsxManagerTimeSettings Set-NsxSecurityPolicy Set-NsxSecurityPolicyFirewallRule Set-NsxSslVpn " +
-        "Set-OSCustomizationNicMapping Set-OSCustomizationSpec Set-Org Set-OrgNetwork Set-OrgVdc Set-OrgVdcNetwork Set-PSCurrentConfigurationNode Set-PSDefaultConfigurationDocument " +
-        "Set-PSMetaConfigDocInsProcessedBeforeMeta Set-PSMetaConfigVersionInfoV2 Set-PSReadLineKeyHandler Set-PSReadLineOption Set-PSRepository Set-PSTopConfigurationName " +
-        "Set-PackageSource Set-PowerCLIConfiguration Set-ResourcePool Set-ScsiController Set-ScsiLun Set-ScsiLunPath Set-SecurityPolicy Set-Snapshot Set-SpbmEntityConfiguration " +
-        "Set-SpbmStoragePolicy Set-StatInterval Set-Tag Set-TagCategory Set-Template Set-VAIOFilter Set-VApp Set-VDBlockedPolicy Set-VDPort Set-VDPortgroup Set-VDPortgroupOverridePolicy " +
-        "Set-VDSecurityPolicy Set-VDSwitch Set-VDTrafficShapingPolicy Set-VDUplinkLacpPolicy Set-VDUplinkTeamingPolicy Set-VDVlanConfiguration Set-VDisk Set-VIPermission Set-VIRole Set-VM " +
-        "Set-VMHost Set-VMHostAccount Set-VMHostAdvancedConfiguration Set-VMHostAuthentication Set-VMHostDiagnosticPartition Set-VMHostFirewallDefaultPolicy Set-VMHostFirewallException " +
-        "Set-VMHostFirmware Set-VMHostHba Set-VMHostModule Set-VMHostNetwork Set-VMHostNetworkAdapter Set-VMHostProfile Set-VMHostProfileImageCacheConfiguration " +
-        "Set-VMHostProfileStorageDeviceConfiguration Set-VMHostProfileUserConfiguration Set-VMHostProfileVmPortGroupConfiguration Set-VMHostRoute Set-VMHostService Set-VMHostSnmp " +
-        "Set-VMHostStartPolicy Set-VMHostStorage Set-VMHostSysLogServer Set-VMQuestion Set-VMResourceConfiguration Set-VMStartPolicy Set-VTpm Set-VirtualPortGroup Set-VirtualSwitch " +
-        "Set-VsanClusterConfiguration Set-VsanFaultDomain Set-VsanIscsiInitiatorGroup Set-VsanIscsiLun Set-VsanIscsiTarget Set-vRABusinessGroup Set-vRACatalogItem Set-vRACustomForm " +
-        "Set-vRAEntitlement Set-vRAExternalNetworkProfile Set-vRANATNetworkProfile Set-vRAReservation Set-vRAReservationNetwork Set-vRAReservationPolicy Set-vRAReservationStorage " +
-        "Set-vRARoutedNetworkProfile Set-vRAService Set-vRAStorageReservationPolicy Set-vRATenant Set-vRATenantDirectory Set-vRAUserPrincipal Set-vRNIDataSourceSNMPConfig Show-Markdown " +
-        "Start-CIVApp Start-CIVM Start-HCXMigration Start-HCXReplication Start-SpbmReplicationFailover Start-SpbmReplicationPrepareFailover Start-SpbmReplicationPromote " +
-        "Start-SpbmReplicationReverse Start-SpbmReplicationTestFailover Start-ThreadJob Start-VApp Start-VM Start-VMHost Start-VMHostService Start-VsanClusterDiskUpdate " +
-        "Start-VsanClusterRebalance Start-VsanEncryptionConfiguration Stop-CIVApp Stop-CIVAppGuest Stop-CIVM Stop-CIVMGuest Stop-SpbmReplicationTestFailover Stop-Task Stop-VApp Stop-VM " +
-        "Stop-VMGuest Stop-VMHost Stop-VMHostService Stop-VsanClusterRebalance Suspend-CIVApp Suspend-CIVM Suspend-HCXReplication Suspend-VM Suspend-VMGuest Suspend-VMHost " +
-        "Sync-SpbmReplicationGroup Test-ConflictingResources Test-HCXMigration Test-HCXReplication Test-Json Test-ModuleReloadRequired Test-MofInstanceText Test-NodeManager " +
-        "Test-NodeResourceSource Test-NodeResources Test-ScriptFileInfo Test-VMHostProfileCompliance Test-VMHostSnmp Test-VsanClusterHealth Test-VsanNetworkPerformance " +
-        "Test-VsanStoragePerformance Test-VsanVMCreation Test-vRAPackage Uninstall-Module Uninstall-Package Uninstall-Script Unlock-VM Unregister-PSRepository Unregister-PackageSource " +
-        "Update-ConfigurationDocumentRef Update-ConfigurationErrorCount Update-DependsOn Update-LocalConfigManager Update-Module Update-ModuleManifest Update-ModuleVersion Update-PowerNsx " +
-        "Update-Script Update-ScriptFileInfo Update-Tools Update-VsanHclDatabase ValidateUpdate-ConfigurationData Wait-Debugger Wait-NsxControllerJob Wait-NsxGenericJob Wait-NsxJob " +
-        "Wait-Task Wait-Tools Write-Information Write-Log Write-MetaConfigFile Write-NodeMOFFile",
-      nomarkup:
-        "-ne -eq -lt -gt -ge -le -not -like -notlike -match -notmatch -contains -notcontains -in -notin -replace",
-    },
+  var PS_COMMENT = hljs.inherit(
+    hljs.COMMENT(null, null),
+    {
+      variants: [
+        /* single-line comment */
+        { begin: /#/, end: /$/ },
+        /* multi-line comment */
+        { begin: /<#/, end: /#>/ }
+      ],
+      contains: [PS_HELPTAGS]
+    }
+  );
+
+  var CMDLETS = {
+    className: 'built_in',
+    variants: [
+      { begin: '('.concat(VALID_VERBS, ')+(-)[\\w\\d]+') }
+    ]
+  };
+
+  var PS_CLASS = {
+    className: 'class',
+    beginKeywords: 'class enum', end: /\s*[{]/, excludeEnd: true,
+    relevance: 0,
+    contains: [hljs.TITLE_MODE]
+  };
+
+  var PS_FUNCTION = {
+    className: 'function',
+    begin: /function\s+/, end: /\s*\{|$/,
+    excludeEnd: true,
+    returnBegin: true,
+    relevance: 0,
     contains: [
-      BACKTICK_ESCAPE,
-      hljs.NUMBER_MODE,
+      { begin: "function", relevance: 0, className: "keyword" },
+      { className: "title",
+        begin: TITLE_NAME_RE, relevance:0 },
+      { begin: /\(/, end: /\)/, className: "params",
+        relevance: 0,
+        contains: [VAR] }
+      // CMDLETS
+    ]
+  };
+
+  // Using statment, plus type, plus assembly name.
+  var PS_USING = {
+    begin: /using\s/, end: /$/,
+    returnBegin: true,
+    contains: [
       QUOTE_STRING,
       APOS_STRING,
-      LITERAL,
-      VAR,
-      PS_COMMENT,
-    ],
+      { className: 'keyword', begin: /(using|assembly|command|module|namespace|type)/ }
+    ]
+  };
+
+  // Comperison operators & function named parameters.
+  var PS_ARGUMENTS = {
+    variants: [
+      // PS literals are pretty verbose so it's a good idea to accent them a bit.
+      { className: 'operator', begin: '('.concat(COMPARISON_OPERATORS, ')\\b') },
+      { className: 'literal', begin: /(-)[\w\d]+/, relevance:0 }
+    ]
+  };
+
+  var STATIC_MEMBER = {
+    className: 'selector-tag',
+    begin: /::\w+\b/, end: /$/,
+    returnBegin: true,
+    contains: [
+      { className: 'attribute', begin: /\w+/, endsParent: true }
+    ]
+  };
+
+  var HASH_SIGNS = {
+    className: 'selector-tag',
+    begin: /\@\B/,
+    relevance: 0
+  };
+
+  var PS_NEW_OBJECT_TYPE = {
+    className: 'built_in',
+    begin: /New-Object\s+\w/, end: /$/,
+    returnBegin: true,
+    contains: [
+      { begin: /New-Object\s+/, relevance: 0 },
+      { className: 'meta', begin: /([\w\.])+/, endsParent: true }
+    ]
+  };
+
+  // It's a very general rule so I'll narrow it a bit with some strict boundaries
+  // to avoid any possible false-positive collisions!
+  var PS_METHODS = {
+    className: 'function',
+    begin: /\[.*\]\s*[\w]+[ ]??\(/, end: /$/,
+    returnBegin: true,
+    relevance: 0,
+    contains: [
+      {
+        className: 'keyword', begin: '('.concat(
+        KEYWORDS.keyword.toString().replace(/\s/g, '|'
+        ), ')\\b'),
+        endsParent: true,
+        relevance: 0
+      },
+      hljs.inherit(hljs.TITLE_MODE, { endsParent: true })
+    ]
+  };
+
+  var GENTLEMANS_SET = [
+    // STATIC_MEMBER,
+    PS_METHODS,
+    PS_COMMENT,
+    BACKTICK_ESCAPE,
+    hljs.NUMBER_MODE,
+    QUOTE_STRING,
+    APOS_STRING,
+    // PS_NEW_OBJECT_TYPE,
+    CMDLETS,
+    VAR,
+    LITERAL,
+    HASH_SIGNS
+  ];
+
+  var PS_TYPE = {
+    begin: /\[/, end: /\]/,
+    excludeBegin: true,
+    excludeEnd: true,
+    relevance: 0,
+    contains: [].concat(
+      'self',
+      GENTLEMANS_SET,
+      { begin: "(" + TYPES.join("|") + ")", className: "built_in", relevance:0 },
+      { className: 'type', begin: /[\.\w\d]+/, relevance: 0 }
+    )
+  };
+
+  PS_METHODS.contains.unshift(PS_TYPE)
+
+  return {
+    aliases: ["ps", "ps1"],
+    lexemes: /-?[A-z\.\-]+/,
+    case_insensitive: true,
+    keywords: KEYWORDS,
+    contains: GENTLEMANS_SET.concat(
+      PS_CLASS,
+      PS_FUNCTION,
+      PS_USING,
+      PS_ARGUMENTS,
+      PS_TYPE
+    )
   };
 };
 
 /***/ }),
-/* 239 */
+/* 244 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20052,7 +20600,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 240 */
+/* 245 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20086,7 +20634,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 241 */
+/* 246 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20178,7 +20726,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 242 */
+/* 247 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20252,7 +20800,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 243 */
+/* 248 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20292,7 +20840,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 244 */
+/* 249 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20411,7 +20959,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 245 */
+/* 250 */
 /***/ (function(module, exports) {
 
 module.exports = // Base deafult colors in PB IDE: background: #FFFFDF; foreground: #000000;
@@ -20431,17 +20979,22 @@ function(hljs) {
   return {
     aliases: ['pb', 'pbi'],
     keywords: // PB IDE color: #006666 (Blue Stone) + Bold
-      // The following keywords list was taken and adapted from GuShH's PureBasic language file for GeSHi...
-      'And As Break CallDebugger Case CompilerCase CompilerDefault CompilerElse CompilerEndIf CompilerEndSelect ' +
-      'CompilerError CompilerIf CompilerSelect Continue Data DataSection EndDataSection Debug DebugLevel ' +
-      'Default Define Dim DisableASM DisableDebugger DisableExplicit Else ElseIf EnableASM ' +
-      'EnableDebugger EnableExplicit End EndEnumeration EndIf EndImport EndInterface EndMacro EndProcedure ' +
-      'EndSelect EndStructure EndStructureUnion EndWith Enumeration Extends FakeReturn For Next ForEach ' +
-      'ForEver Global Gosub Goto If Import ImportC IncludeBinary IncludeFile IncludePath Interface Macro ' +
-      'NewList Not Or ProcedureReturn Protected Prototype ' +
-      'PrototypeC Read ReDim Repeat Until Restore Return Select Shared Static Step Structure StructureUnion ' +
-      'Swap To Wend While With XIncludeFile XOr ' +
-      'Procedure ProcedureC ProcedureCDLL ProcedureDLL Declare DeclareC DeclareCDLL DeclareDLL',
+      // Keywords from all version of PureBASIC 5.00 upward ...
+      'Align And Array As Break CallDebugger Case CompilerCase CompilerDefault ' +
+      'CompilerElse CompilerElseIf CompilerEndIf CompilerEndSelect CompilerError ' +
+      'CompilerIf CompilerSelect CompilerWarning Continue Data DataSection Debug ' +
+      'DebugLevel Declare DeclareC DeclareCDLL DeclareDLL DeclareModule Default ' +
+      'Define Dim DisableASM DisableDebugger DisableExplicit Else ElseIf EnableASM ' +
+      'EnableDebugger EnableExplicit End EndDataSection EndDeclareModule EndEnumeration ' +
+      'EndIf EndImport EndInterface EndMacro EndModule EndProcedure EndSelect ' +
+      'EndStructure EndStructureUnion EndWith Enumeration EnumerationBinary Extends ' +
+      'FakeReturn For ForEach ForEver Global Gosub Goto If Import ImportC ' +
+      'IncludeBinary IncludeFile IncludePath Interface List Macro MacroExpandedCount ' +
+      'Map Module NewList NewMap Next Not Or Procedure ProcedureC ' +
+      'ProcedureCDLL ProcedureDLL ProcedureReturn Protected Prototype PrototypeC ReDim ' +
+      'Read Repeat Restore Return Runtime Select Shared Static Step Structure ' +
+      'StructureUnion Swap Threaded To UndefineMacro Until Until  UnuseModule ' +
+      'UseModule Wend While With XIncludeFile XOr',
     contains: [
       // COMMENTS | PB IDE color: #00AAAA (Persian Green)
       hljs.COMMENT(';', '$', {relevance: 0}),
@@ -20470,10 +21023,32 @@ function(hljs) {
       CONSTANTS
     ]
   };
-};
+}
+
+/*  ==============================================================================
+                                      CHANGELOG
+    ==============================================================================
+    - v.1.2 (2017-05-12)
+        -- BUG-FIX: Some keywords were accidentally joyned together. Now fixed.
+    - v.1.1 (2017-04-30)
+        -- Updated to PureBASIC 5.60.
+        -- Keywords list now built by extracting them from the PureBASIC SDK's
+           "SyntaxHilighting.dll" (from each PureBASIC version). Tokens from each
+           version are added to the list, and renamed or removed tokens are kept
+           for the sake of covering all versions of the language from PureBASIC
+           v5.00 upward. (NOTE: currently, there are no renamed or deprecated
+           tokens in the keywords list). For more info, see:
+           -- http://www.purebasic.fr/english/viewtopic.php?&p=506269
+           -- https://github.com/tajmone/purebasic-archives/tree/master/syntax-highlighting/guidelines
+    - v.1.0 (April 2016)
+        -- First release
+        -- Keywords list taken and adapted from GuShH's (Gustavo Julio Fiorenza)
+           PureBasic language file for GeSHi:
+           -- https://github.com/easybook/geshi/blob/master/geshi/purebasic.php
+*/;
 
 /***/ }),
-/* 246 */
+/* 251 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20495,6 +21070,10 @@ module.exports = function(hljs) {
     keywords: KEYWORDS,
     illegal: /#/
   };
+  var LITERAL_BRACKET = {
+    begin: /\{\{/,
+    relevance: 0
+  };
   var STRING = {
     className: 'string',
     contains: [hljs.BACKSLASH_ESCAPE],
@@ -20511,11 +21090,11 @@ module.exports = function(hljs) {
       },
       {
         begin: /(fr|rf|f)'''/, end: /'''/,
-        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, LITERAL_BRACKET, SUBST]
       },
       {
         begin: /(fr|rf|f)"""/, end: /"""/,
-        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, LITERAL_BRACKET, SUBST]
       },
       {
         begin: /(u|r|ur)'/, end: /'/,
@@ -20533,11 +21112,11 @@ module.exports = function(hljs) {
       },
       {
         begin: /(fr|rf|f)'/, end: /'/,
-        contains: [hljs.BACKSLASH_ESCAPE, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, LITERAL_BRACKET, SUBST]
       },
       {
         begin: /(fr|rf|f)"/, end: /"/,
-        contains: [hljs.BACKSLASH_ESCAPE, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, LITERAL_BRACKET, SUBST]
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE
@@ -20554,7 +21133,7 @@ module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
     begin: /\(/, end: /\)/,
-    contains: ['self', PROMPT, NUMBER, STRING]
+    contains: ['self', PROMPT, NUMBER, STRING, hljs.HASH_COMMENT_MODE]
   };
   SUBST.contains = [STRING, NUMBER, PROMPT];
   return {
@@ -20564,6 +21143,9 @@ module.exports = function(hljs) {
     contains: [
       PROMPT,
       NUMBER,
+      // eat "if" prior to string so that it won't accidentally be
+      // labeled as an f-string as in:
+      { beginKeywords: "if", relevance: 0 },
       STRING,
       hljs.HASH_COMMENT_MODE,
       {
@@ -20594,7 +21176,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 247 */
+/* 252 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20621,7 +21203,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 248 */
+/* 253 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20794,7 +21376,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 249 */
+/* 254 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -20868,7 +21450,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 250 */
+/* 255 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21172,7 +21754,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21203,7 +21785,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21274,7 +21856,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 253 */
+/* 258 */
 /***/ (function(module, exports) {
 
 module.exports = // Colors from RouterOS terminal:
@@ -21302,7 +21884,7 @@ function(hljs) {
   // ToDo: var PARAMETERS_PRINT = 'append as-value brief detail count-only file follow follow-only from interval terse value-list without-paging where info';
   // ToDo: var OPERATORS = '&& and ! not || or in ~ ^ & << >> + - * /';
   // ToDo: var TYPES = 'num number bool boolean str string ip ip6-prefix id time array';
-  // ToDo: The following tokens serve as delimiters in the grammar: ()  []  {}  :   ;   $   / 
+  // ToDo: The following tokens serve as delimiters in the grammar: ()  []  {}  :   ;   $   /
 
   var VAR_PREFIX = 'global local set for foreach';
 
@@ -21313,7 +21895,7 @@ function(hljs) {
       {begin: /\$\{(.*?)}/}
     ]
   };
-  
+
   var QUOTE_STRING = {
     className: 'string',
     begin: /"/, end: /"/,
@@ -21327,12 +21909,12 @@ function(hljs) {
       }
     ]
   };
-  
+
   var APOS_STRING = {
     className: 'string',
     begin: /'/, end: /'/
   };
-  
+
   var IPADDR = '((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\b';
   var IPADDR_wBITMASK =  IPADDR+'/(3[0-2]|[1-2][0-9]|\\d)';
   //////////////////////////////////////////////////////////////////////
@@ -21356,7 +21938,7 @@ function(hljs) {
           { begin: /^\[\</, end: /\>\]$/, },        // F# class declaration?
           { begin: /<\//, end: />/, },              // HTML tags
           { begin: /^facet /, end: /\}/, },         // roboconf - лютый костыль )))
-          { begin: '^1\\.\\.(\\d+)$', end: /$/, },  // tap  
+          { begin: '^1\\.\\.(\\d+)$', end: /$/, },  // tap
         ],
         illegal: /./,
       },
@@ -21365,7 +21947,7 @@ function(hljs) {
       APOS_STRING,
       VAR,
       { // attribute=value
-        begin: /[\w-]+\=([^\s\{\}\[\]\(\)]+)/, 
+        begin: /[\w-]+\=([^\s\{\}\[\]\(\)]+)/,
         relevance: 0,
         returnBegin: true,
         contains: [
@@ -21374,7 +21956,7 @@ function(hljs) {
             begin: /[^=]+/
           },
           {
-            begin: /=/, 
+            begin: /=/,
             endsWithParent:  true,
             relevance: 0,
             contains: [
@@ -21401,7 +21983,7 @@ function(hljs) {
               }, //*/
               {
                 // Не форматировать не классифицированные значения. Необходимо для исключения подсветки значений как built_in.
-                // className: 'number',  
+                // className: 'number',
                 begin: /("[^"]*"|[^\s\{\}\[\]]+)/,
               }, //*/
             ]
@@ -21414,7 +21996,7 @@ function(hljs) {
         begin: /\*[0-9a-fA-F]+/,
       }, //*/
 
-      { 
+      {
         begin: '\\b(' + COMMON_COMMANDS.split(' ').join('|') + ')([\\s\[\(]|\])',
         returnBegin: true,
         contains: [
@@ -21422,10 +22004,10 @@ function(hljs) {
             className: 'builtin-name', //'function',
             begin: /\w+/,
           },
-        ],  
+        ],
       },
-      
-      { 
+
+      {
         className: 'built_in',
         variants: [
           {begin: '(\\.\\./|/|\\s)((' + OBJECTS.split(' ').join('|') + ');?\\s)+',relevance: 10,},
@@ -21437,7 +22019,7 @@ function(hljs) {
 };
 
 /***/ }),
-/* 254 */
+/* 259 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21477,7 +22059,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 255 */
+/* 260 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21542,16 +22124,16 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 256 */
+/* 261 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var NUM_SUFFIX = '([ui](8|16|32|64|128|size)|f(32|64))\?';
   var KEYWORDS =
-    'alignof as be box break const continue crate do else enum extern ' +
-    'false fn for if impl in let loop match mod mut offsetof once priv ' +
-    'proc pub pure ref return self Self sizeof static struct super trait true ' +
-    'type typeof unsafe unsized use virtual while where yield move default';
+    'abstract as async await become box break const continue crate do dyn ' +
+    'else enum extern false final fn for if impl in let loop macro match mod ' +
+    'move mut override priv pub ref return self Self static struct super ' +
+    'trait true try type typeof unsafe unsized use virtual where while yield';
   var BUILTINS =
     // functions
     'drop ' +
@@ -21654,7 +22236,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 257 */
+/* 262 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21784,7 +22366,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 258 */
+/* 263 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -21903,7 +22485,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 259 */
+/* 264 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22051,7 +22633,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 260 */
+/* 265 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22109,10 +22691,12 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 261 */
+/* 266 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
+  var AT_IDENTIFIER = '@[a-z-]+' // @font-face
+  var AT_MODIFIERS = "and or not only"
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var VARIABLE = {
     className: 'variable',
@@ -22164,15 +22748,17 @@ module.exports = function(hljs) {
         relevance: 0
       },
       {
+        className: 'selector-pseudo',
         begin: ':(visited|valid|root|right|required|read-write|read-only|out-range|optional|only-of-type|only-child|nth-of-type|nth-last-of-type|nth-last-child|nth-child|not|link|left|last-of-type|last-child|lang|invalid|indeterminate|in-range|hover|focus|first-of-type|first-line|first-letter|first-child|first|enabled|empty|disabled|default|checked|before|after|active)'
       },
       {
+        className: 'selector-pseudo',
         begin: '::(after|before|choices|first-letter|first-line|repeat-index|repeat-item|selection|value)'
       },
       VARIABLE,
       {
         className: 'attribute',
-        begin: '\\b(z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|image-orientation|image-resolution|image-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
+        begin: '\\b(src|z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|image-orientation|image-resolution|image-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
         illegal: '[^\\s]'
       },
       {
@@ -22191,19 +22777,32 @@ module.exports = function(hljs) {
           }
         ]
       },
+      // matching these here allows us to treat them more like regular CSS
+      // rules so everything between the {} gets regular rule highlighting,
+      // which is what we want for page and font-face
+      {
+        begin: '@(page|font-face)',
+        lexemes: AT_IDENTIFIER,
+        keywords: '@page @font-face'
+      },
       {
         begin: '@', end: '[{;]',
-        keywords: 'mixin include extend for if else each while charset import debug media page content font-face namespace warn',
+        returnBegin: true,
+        keywords: AT_MODIFIERS,
         contains: [
+          {
+            begin: AT_IDENTIFIER,
+            className: "keyword"
+          },
           VARIABLE,
           hljs.QUOTE_STRING_MODE,
           hljs.APOS_STRING_MODE,
           HEXCOLOR,
           hljs.CSS_NUMBER_MODE,
-          {
-            begin: '\\s[A-Za-z0-9_.-]+',
-            relevance: 0
-          }
+          // {
+          //   begin: '\\s[A-Za-z0-9_.-]+',
+          //   relevance: 0
+          // }
         ]
       }
     ]
@@ -22211,7 +22810,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 262 */
+/* 267 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22220,7 +22819,7 @@ module.exports = function(hljs) {
     contains: [
       {
         className: 'meta',
-        begin: '^\\s{0,3}[\\w\\d\\[\\]()@-]*[>%$#]',
+        begin: '^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%$#]',
         starts: {
           end: '$', subLanguage: 'bash'
         }
@@ -22230,7 +22829,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 263 */
+/* 268 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22290,7 +22889,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 264 */
+/* 269 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22344,7 +22943,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 265 */
+/* 270 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22414,12 +23013,10 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 266 */
+/* 271 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var CPP = hljs.getLanguage('cpp').exports;
-
   // In SQF, a variable start with _
   var VARIABLE = {
     className: 'variable',
@@ -22448,6 +23045,30 @@ module.exports = function(hljs) {
         end: '\'',
         contains: [{begin: '\'\'', relevance: 0}]
       }
+    ]
+  };
+
+  // list of keywords from:
+  // https://community.bistudio.com/wiki/PreProcessor_Commands
+  var PREPROCESSOR = {
+    className: 'meta',
+    begin: /#\s*[a-z]+\b/, end: /$/,
+    keywords: {
+      'meta-keyword':
+        'define undef ifdef ifndef else endif include'
+    },
+    contains: [
+      {
+        begin: /\\\n/, relevance: 0
+      },
+      hljs.inherit(STRINGS, {className: 'meta-string'}),
+      {
+        className: 'meta-string',
+        begin: /<[^\n>]*>/, end: /$/,
+        illegal: '\\n',
+      },
+      hljs.C_LINE_COMMENT_MODE,
+      hljs.C_BLOCK_COMMENT_MODE
     ]
   };
 
@@ -22816,14 +23437,14 @@ module.exports = function(hljs) {
       VARIABLE,
       FUNCTION,
       STRINGS,
-      CPP.preprocessor
+      PREPROCESSOR
     ],
     illegal: /#|^\$ /
   };
 };
 
 /***/ }),
-/* 267 */
+/* 272 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -22957,23 +23578,22 @@ module.exports = function(hljs) {
             'true false null unknown',
           built_in:
             'array bigint binary bit blob bool boolean char character date dec decimal float int int8 integer interval number ' +
-            'numeric real record serial serial8 smallint text time timestamp tinyint varchar varying void'
+            'numeric real record serial serial8 smallint text time timestamp tinyint varchar varchar2 varying void'
         },
         contains: [
           {
             className: 'string',
             begin: '\'', end: '\'',
-            contains: [hljs.BACKSLASH_ESCAPE, {begin: '\'\''}]
+            contains: [{begin: '\'\''}]
           },
           {
             className: 'string',
             begin: '"', end: '"',
-            contains: [hljs.BACKSLASH_ESCAPE, {begin: '""'}]
+            contains: [{begin: '""'}]
           },
           {
             className: 'string',
-            begin: '`', end: '`',
-            contains: [hljs.BACKSLASH_ESCAPE]
+            begin: '`', end: '`'
           },
           hljs.C_NUMBER_MODE,
           hljs.C_BLOCK_COMMENT_MODE,
@@ -22989,7 +23609,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 268 */
+/* 273 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23076,14 +23696,18 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 269 */
+/* 274 */
 /***/ (function(module, exports) {
 
-module.exports = function(hljs) {
+module.exports = /*
+  This is a fork and modification of Drew McDonald's file (https://github.com/drewmcdonald/stata-highlighting). I have also included a list of builtin commands from https://bugs.kde.org/show_bug.cgi?id=135646.
+*/
+
+function(hljs) {
   return {
     aliases: ['do', 'ado'],
     case_insensitive: true,
-    keywords: 'if else in foreach for forv forva forval forvalu forvalue forvalues by bys bysort xi quietly qui capture about ac ac_7 acprplot acprplot_7 adjust ado adopath adoupdate alpha ameans an ano anov anova anova_estat anova_terms anovadef aorder ap app appe appen append arch arch_dr arch_estat arch_p archlm areg areg_p args arima arima_dr arima_estat arima_p as asmprobit asmprobit_estat asmprobit_lf asmprobit_mfx__dlg asmprobit_p ass asse asser assert avplot avplot_7 avplots avplots_7 bcskew0 bgodfrey binreg bip0_lf biplot bipp_lf bipr_lf bipr_p biprobit bitest bitesti bitowt blogit bmemsize boot bootsamp bootstrap bootstrap_8 boxco_l boxco_p boxcox boxcox_6 boxcox_p bprobit br break brier bro brow brows browse brr brrstat bs bs_7 bsampl_w bsample bsample_7 bsqreg bstat bstat_7 bstat_8 bstrap bstrap_7 ca ca_estat ca_p cabiplot camat canon canon_8 canon_8_p canon_estat canon_p cap caprojection capt captu captur capture cat cc cchart cchart_7 cci cd censobs_table centile cf char chdir checkdlgfiles checkestimationsample checkhlpfiles checksum chelp ci cii cl class classutil clear cli clis clist clo clog clog_lf clog_p clogi clogi_sw clogit clogit_lf clogit_p clogitp clogl_sw cloglog clonevar clslistarray cluster cluster_measures cluster_stop cluster_tree cluster_tree_8 clustermat cmdlog cnr cnre cnreg cnreg_p cnreg_sw cnsreg codebook collaps4 collapse colormult_nb colormult_nw compare compress conf confi confir confirm conren cons const constr constra constrai constrain constraint continue contract copy copyright copysource cor corc corr corr2data corr_anti corr_kmo corr_smc corre correl correla correlat correlate corrgram cou coun count cox cox_p cox_sw coxbase coxhaz coxvar cprplot cprplot_7 crc cret cretu cretur creturn cross cs cscript cscript_log csi ct ct_is ctset ctst_5 ctst_st cttost cumsp cumsp_7 cumul cusum cusum_7 cutil d|0 datasig datasign datasigna datasignat datasignatu datasignatur datasignature datetof db dbeta de dec deco decod decode deff des desc descr descri describ describe destring dfbeta dfgls dfuller di di_g dir dirstats dis discard disp disp_res disp_s displ displa display distinct do doe doed doedi doedit dotplot dotplot_7 dprobit drawnorm drop ds ds_util dstdize duplicates durbina dwstat dydx e|0 ed edi edit egen eivreg emdef en enc enco encod encode eq erase ereg ereg_lf ereg_p ereg_sw ereghet ereghet_glf ereghet_glf_sh ereghet_gp ereghet_ilf ereghet_ilf_sh ereghet_ip eret eretu eretur ereturn err erro error est est_cfexist est_cfname est_clickable est_expand est_hold est_table est_unhold est_unholdok estat estat_default estat_summ estat_vce_only esti estimates etodow etof etomdy ex exi exit expand expandcl fac fact facto factor factor_estat factor_p factor_pca_rotated factor_rotate factormat fcast fcast_compute fcast_graph fdades fdadesc fdadescr fdadescri fdadescrib fdadescribe fdasav fdasave fdause fh_st file open file read file close file filefilter fillin find_hlp_file findfile findit findit_7 fit fl fli flis flist for5_0 form forma format fpredict frac_154 frac_adj frac_chk frac_cox frac_ddp frac_dis frac_dv frac_in frac_mun frac_pp frac_pq frac_pv frac_wgt frac_xo fracgen fracplot fracplot_7 fracpoly fracpred fron_ex fron_hn fron_p fron_tn fron_tn2 frontier ftodate ftoe ftomdy ftowdate g|0 gamhet_glf gamhet_gp gamhet_ilf gamhet_ip gamma gamma_d2 gamma_p gamma_sw gammahet gdi_hexagon gdi_spokes ge gen gene gener genera generat generate genrank genstd genvmean gettoken gl gladder gladder_7 glim_l01 glim_l02 glim_l03 glim_l04 glim_l05 glim_l06 glim_l07 glim_l08 glim_l09 glim_l10 glim_l11 glim_l12 glim_lf glim_mu glim_nw1 glim_nw2 glim_nw3 glim_p glim_v1 glim_v2 glim_v3 glim_v4 glim_v5 glim_v6 glim_v7 glm glm_6 glm_p glm_sw glmpred glo glob globa global glogit glogit_8 glogit_p gmeans gnbre_lf gnbreg gnbreg_5 gnbreg_p gomp_lf gompe_sw gomper_p gompertz gompertzhet gomphet_glf gomphet_glf_sh gomphet_gp gomphet_ilf gomphet_ilf_sh gomphet_ip gphdot gphpen gphprint gprefs gprobi_p gprobit gprobit_8 gr gr7 gr_copy gr_current gr_db gr_describe gr_dir gr_draw gr_draw_replay gr_drop gr_edit gr_editviewopts gr_example gr_example2 gr_export gr_print gr_qscheme gr_query gr_read gr_rename gr_replay gr_save gr_set gr_setscheme gr_table gr_undo gr_use graph graph7 grebar greigen greigen_7 greigen_8 grmeanby grmeanby_7 gs_fileinfo gs_filetype gs_graphinfo gs_stat gsort gwood h|0 hadimvo hareg hausman haver he heck_d2 heckma_p heckman heckp_lf heckpr_p heckprob hel help hereg hetpr_lf hetpr_p hetprob hettest hexdump hilite hist hist_7 histogram hlogit hlu hmeans hotel hotelling hprobit hreg hsearch icd9 icd9_ff icd9p iis impute imtest inbase include inf infi infil infile infix inp inpu input ins insheet insp inspe inspec inspect integ inten intreg intreg_7 intreg_p intrg2_ll intrg_ll intrg_ll2 ipolate iqreg ir irf irf_create irfm iri is_svy is_svysum isid istdize ivprob_1_lf ivprob_lf ivprobit ivprobit_p ivreg ivreg_footnote ivtob_1_lf ivtob_lf ivtobit ivtobit_p jackknife jacknife jknife jknife_6 jknife_8 jkstat joinby kalarma1 kap kap_3 kapmeier kappa kapwgt kdensity kdensity_7 keep ksm ksmirnov ktau kwallis l|0 la lab labe label labelbook ladder levels levelsof leverage lfit lfit_p li lincom line linktest lis list lloghet_glf lloghet_glf_sh lloghet_gp lloghet_ilf lloghet_ilf_sh lloghet_ip llogi_sw llogis_p llogist llogistic llogistichet lnorm_lf lnorm_sw lnorma_p lnormal lnormalhet lnormhet_glf lnormhet_glf_sh lnormhet_gp lnormhet_ilf lnormhet_ilf_sh lnormhet_ip lnskew0 loadingplot loc loca local log logi logis_lf logistic logistic_p logit logit_estat logit_p loglogs logrank loneway lookfor lookup lowess lowess_7 lpredict lrecomp lroc lroc_7 lrtest ls lsens lsens_7 lsens_x lstat ltable ltable_7 ltriang lv lvr2plot lvr2plot_7 m|0 ma mac macr macro makecns man manova manova_estat manova_p manovatest mantel mark markin markout marksample mat mat_capp mat_order mat_put_rr mat_rapp mata mata_clear mata_describe mata_drop mata_matdescribe mata_matsave mata_matuse mata_memory mata_mlib mata_mosave mata_rename mata_which matalabel matcproc matlist matname matr matri matrix matrix_input__dlg matstrik mcc mcci md0_ md1_ md1debug_ md2_ md2debug_ mds mds_estat mds_p mdsconfig mdslong mdsmat mdsshepard mdytoe mdytof me_derd mean means median memory memsize meqparse mer merg merge mfp mfx mhelp mhodds minbound mixed_ll mixed_ll_reparm mkassert mkdir mkmat mkspline ml ml_5 ml_adjs ml_bhhhs ml_c_d ml_check ml_clear ml_cnt ml_debug ml_defd ml_e0 ml_e0_bfgs ml_e0_cycle ml_e0_dfp ml_e0i ml_e1 ml_e1_bfgs ml_e1_bhhh ml_e1_cycle ml_e1_dfp ml_e2 ml_e2_cycle ml_ebfg0 ml_ebfr0 ml_ebfr1 ml_ebh0q ml_ebhh0 ml_ebhr0 ml_ebr0i ml_ecr0i ml_edfp0 ml_edfr0 ml_edfr1 ml_edr0i ml_eds ml_eer0i ml_egr0i ml_elf ml_elf_bfgs ml_elf_bhhh ml_elf_cycle ml_elf_dfp ml_elfi ml_elfs ml_enr0i ml_enrr0 ml_erdu0 ml_erdu0_bfgs ml_erdu0_bhhh ml_erdu0_bhhhq ml_erdu0_cycle ml_erdu0_dfp ml_erdu0_nrbfgs ml_exde ml_footnote ml_geqnr ml_grad0 ml_graph ml_hbhhh ml_hd0 ml_hold ml_init ml_inv ml_log ml_max ml_mlout ml_mlout_8 ml_model ml_nb0 ml_opt ml_p ml_plot ml_query ml_rdgrd ml_repor ml_s_e ml_score ml_searc ml_technique ml_unhold mleval mlf_ mlmatbysum mlmatsum mlog mlogi mlogit mlogit_footnote mlogit_p mlopts mlsum mlvecsum mnl0_ mor more mov move mprobit mprobit_lf mprobit_p mrdu0_ mrdu1_ mvdecode mvencode mvreg mvreg_estat n|0 nbreg nbreg_al nbreg_lf nbreg_p nbreg_sw nestreg net newey newey_7 newey_p news nl nl_7 nl_9 nl_9_p nl_p nl_p_7 nlcom nlcom_p nlexp2 nlexp2_7 nlexp2a nlexp2a_7 nlexp3 nlexp3_7 nlgom3 nlgom3_7 nlgom4 nlgom4_7 nlinit nllog3 nllog3_7 nllog4 nllog4_7 nlog_rd nlogit nlogit_p nlogitgen nlogittree nlpred no nobreak noi nois noisi noisil noisily note notes notes_dlg nptrend numlabel numlist odbc old_ver olo olog ologi ologi_sw ologit ologit_p ologitp on one onew onewa oneway op_colnm op_comp op_diff op_inv op_str opr opro oprob oprob_sw oprobi oprobi_p oprobit oprobitp opts_exclusive order orthog orthpoly ou out outf outfi outfil outfile outs outsh outshe outshee outsheet ovtest pac pac_7 palette parse parse_dissim pause pca pca_8 pca_display pca_estat pca_p pca_rotate pcamat pchart pchart_7 pchi pchi_7 pcorr pctile pentium pergram pergram_7 permute permute_8 personal peto_st pkcollapse pkcross pkequiv pkexamine pkexamine_7 pkshape pksumm pksumm_7 pl plo plot plugin pnorm pnorm_7 poisgof poiss_lf poiss_sw poisso_p poisson poisson_estat post postclose postfile postutil pperron pr prais prais_e prais_e2 prais_p predict predictnl preserve print pro prob probi probit probit_estat probit_p proc_time procoverlay procrustes procrustes_estat procrustes_p profiler prog progr progra program prop proportion prtest prtesti pwcorr pwd q\\s qby qbys qchi qchi_7 qladder qladder_7 qnorm qnorm_7 qqplot qqplot_7 qreg qreg_c qreg_p qreg_sw qu quadchk quantile quantile_7 que quer query range ranksum ratio rchart rchart_7 rcof recast reclink recode reg reg3 reg3_p regdw regr regre regre_p2 regres regres_p regress regress_estat regriv_p remap ren rena renam rename renpfix repeat replace report reshape restore ret retu retur return rm rmdir robvar roccomp roccomp_7 roccomp_8 rocf_lf rocfit rocfit_8 rocgold rocplot rocplot_7 roctab roctab_7 rolling rologit rologit_p rot rota rotat rotate rotatemat rreg rreg_p ru run runtest rvfplot rvfplot_7 rvpplot rvpplot_7 sa safesum sample sampsi sav save savedresults saveold sc sca scal scala scalar scatter scm_mine sco scob_lf scob_p scobi_sw scobit scor score scoreplot scoreplot_help scree screeplot screeplot_help sdtest sdtesti se search separate seperate serrbar serrbar_7 serset set set_defaults sfrancia sh she shel shell shewhart shewhart_7 signestimationsample signrank signtest simul simul_7 simulate simulate_8 sktest sleep slogit slogit_d2 slogit_p smooth snapspan so sor sort spearman spikeplot spikeplot_7 spikeplt spline_x split sqreg sqreg_p sret sretu sretur sreturn ssc st st_ct st_hc st_hcd st_hcd_sh st_is st_issys st_note st_promo st_set st_show st_smpl st_subid stack statsby statsby_8 stbase stci stci_7 stcox stcox_estat stcox_fr stcox_fr_ll stcox_p stcox_sw stcoxkm stcoxkm_7 stcstat stcurv stcurve stcurve_7 stdes stem stepwise stereg stfill stgen stir stjoin stmc stmh stphplot stphplot_7 stphtest stphtest_7 stptime strate strate_7 streg streg_sw streset sts sts_7 stset stsplit stsum sttocc sttoct stvary stweib su suest suest_8 sum summ summa summar summari summariz summarize sunflower sureg survcurv survsum svar svar_p svmat svy svy_disp svy_dreg svy_est svy_est_7 svy_estat svy_get svy_gnbreg_p svy_head svy_header svy_heckman_p svy_heckprob_p svy_intreg_p svy_ivreg_p svy_logistic_p svy_logit_p svy_mlogit_p svy_nbreg_p svy_ologit_p svy_oprobit_p svy_poisson_p svy_probit_p svy_regress_p svy_sub svy_sub_7 svy_x svy_x_7 svy_x_p svydes svydes_8 svygen svygnbreg svyheckman svyheckprob svyintreg svyintreg_7 svyintrg svyivreg svylc svylog_p svylogit svymarkout svymarkout_8 svymean svymlog svymlogit svynbreg svyolog svyologit svyoprob svyoprobit svyopts svypois svypois_7 svypoisson svyprobit svyprobt svyprop svyprop_7 svyratio svyreg svyreg_p svyregress svyset svyset_7 svyset_8 svytab svytab_7 svytest svytotal sw sw_8 swcnreg swcox swereg swilk swlogis swlogit swologit swoprbt swpois swprobit swqreg swtobit swweib symmetry symmi symplot symplot_7 syntax sysdescribe sysdir sysuse szroeter ta tab tab1 tab2 tab_or tabd tabdi tabdis tabdisp tabi table tabodds tabodds_7 tabstat tabu tabul tabula tabulat tabulate te tempfile tempname tempvar tes test testnl testparm teststd tetrachoric time_it timer tis tob tobi tobit tobit_p tobit_sw token tokeni tokeniz tokenize tostring total translate translator transmap treat_ll treatr_p treatreg trim trnb_cons trnb_mean trpoiss_d2 trunc_ll truncr_p truncreg tsappend tset tsfill tsline tsline_ex tsreport tsrevar tsrline tsset tssmooth tsunab ttest ttesti tut_chk tut_wait tutorial tw tware_st two twoway twoway__fpfit_serset twoway__function_gen twoway__histogram_gen twoway__ipoint_serset twoway__ipoints_serset twoway__kdensity_gen twoway__lfit_serset twoway__normgen_gen twoway__pci_serset twoway__qfit_serset twoway__scatteri_serset twoway__sunflower_gen twoway_ksm_serset ty typ type typeof u|0 unab unabbrev unabcmd update us use uselabel var var_mkcompanion var_p varbasic varfcast vargranger varirf varirf_add varirf_cgraph varirf_create varirf_ctable varirf_describe varirf_dir varirf_drop varirf_erase varirf_graph varirf_ograph varirf_rename varirf_set varirf_table varlist varlmar varnorm varsoc varstable varstable_w varstable_w2 varwle vce vec vec_fevd vec_mkphi vec_p vec_p_w vecirf_create veclmar veclmar_w vecnorm vecnorm_w vecrank vecstable verinst vers versi versio version view viewsource vif vwls wdatetof webdescribe webseek webuse weib1_lf weib2_lf weib_lf weib_lf0 weibhet_glf weibhet_glf_sh weibhet_glfa weibhet_glfa_sh weibhet_gp weibhet_ilf weibhet_ilf_sh weibhet_ilfa weibhet_ilfa_sh weibhet_ip weibu_sw weibul_p weibull weibull_c weibull_s weibullhet wh whelp whi which whil while wilc_st wilcoxon win wind windo window winexec wntestb wntestb_7 wntestq xchart xchart_7 xcorr xcorr_7 xi xi_6 xmlsav xmlsave xmluse xpose xsh xshe xshel xshell xt_iis xt_tis xtab_p xtabond xtbin_p xtclog xtcloglog xtcloglog_8 xtcloglog_d2 xtcloglog_pa_p xtcloglog_re_p xtcnt_p xtcorr xtdata xtdes xtfront_p xtfrontier xtgee xtgee_elink xtgee_estat xtgee_makeivar xtgee_p xtgee_plink xtgls xtgls_p xthaus xthausman xtht_p xthtaylor xtile xtint_p xtintreg xtintreg_8 xtintreg_d2 xtintreg_p xtivp_1 xtivp_2 xtivreg xtline xtline_ex xtlogit xtlogit_8 xtlogit_d2 xtlogit_fe_p xtlogit_pa_p xtlogit_re_p xtmixed xtmixed_estat xtmixed_p xtnb_fe xtnb_lf xtnbreg xtnbreg_pa_p xtnbreg_refe_p xtpcse xtpcse_p xtpois xtpoisson xtpoisson_d2 xtpoisson_pa_p xtpoisson_refe_p xtpred xtprobit xtprobit_8 xtprobit_d2 xtprobit_re_p xtps_fe xtps_lf xtps_ren xtps_ren_8 xtrar_p xtrc xtrc_p xtrchh xtrefe_p xtreg xtreg_be xtreg_fe xtreg_ml xtreg_pa_p xtreg_re xtregar xtrere_p xtset xtsf_ll xtsf_llti xtsum xttab xttest0 xttobit xttobit_8 xttobit_p xttrans yx yxview__barlike_draw yxview_area_draw yxview_bar_draw yxview_dot_draw yxview_dropline_draw yxview_function_draw yxview_iarrow_draw yxview_ilabels_draw yxview_normal_draw yxview_pcarrow_draw yxview_pcbarrow_draw yxview_pccapsym_draw yxview_pcscatter_draw yxview_pcspike_draw yxview_rarea_draw yxview_rbar_draw yxview_rbarm_draw yxview_rcap_draw yxview_rcapsym_draw yxview_rconnected_draw yxview_rline_draw yxview_rscatter_draw yxview_rspike_draw yxview_spike_draw yxview_sunflower_draw zap_s zinb zinb_llf zinb_plf zip zip_llf zip_p zip_plf zt_ct_5 zt_hc_5 zt_hcd_5 zt_is_5 zt_iss_5 zt_sho_5 zt_smp_5 ztbase_5 ztcox_5 ztdes_5 ztereg_5 ztfill_5 ztgen_5 ztir_5 ztjoin_5 ztnb ztnb_p ztp ztp_p zts_5 ztset_5 ztspli_5 ztsum_5 zttoct_5 ztvary_5 ztweib_5',
+    keywords: 'if else in foreach for forv forva forval forvalu forvalue forvalues by bys bysort xi quietly qui capture about ac ac_7 acprplot acprplot_7 adjust ado adopath adoupdate alpha ameans an ano anov anova anova_estat anova_terms anovadef aorder ap app appe appen append arch arch_dr arch_estat arch_p archlm areg areg_p args arima arima_dr arima_estat arima_p as asmprobit asmprobit_estat asmprobit_lf asmprobit_mfx__dlg asmprobit_p ass asse asser assert avplot avplot_7 avplots avplots_7 bcskew0 bgodfrey bias binreg bip0_lf biplot bipp_lf bipr_lf bipr_p biprobit bitest bitesti bitowt blogit bmemsize boot bootsamp bootstrap bootstrap_8 boxco_l boxco_p boxcox boxcox_6 boxcox_p bprobit br break brier bro brow brows browse brr brrstat bs bs_7 bsampl_w bsample bsample_7 bsqreg bstat bstat_7 bstat_8 bstrap bstrap_7 bubble bubbleplot ca ca_estat ca_p cabiplot camat canon canon_8 canon_8_p canon_estat canon_p cap caprojection capt captu captur capture cat cc cchart cchart_7 cci cd censobs_table centile cf char chdir checkdlgfiles checkestimationsample checkhlpfiles checksum chelp ci cii cl class classutil clear cli clis clist clo clog clog_lf clog_p clogi clogi_sw clogit clogit_lf clogit_p clogitp clogl_sw cloglog clonevar clslistarray cluster cluster_measures cluster_stop cluster_tree cluster_tree_8 clustermat cmdlog cnr cnre cnreg cnreg_p cnreg_sw cnsreg codebook collaps4 collapse colormult_nb colormult_nw compare compress conf confi confir confirm conren cons const constr constra constrai constrain constraint continue contract copy copyright copysource cor corc corr corr2data corr_anti corr_kmo corr_smc corre correl correla correlat correlate corrgram cou coun count cox cox_p cox_sw coxbase coxhaz coxvar cprplot cprplot_7 crc cret cretu cretur creturn cross cs cscript cscript_log csi ct ct_is ctset ctst_5 ctst_st cttost cumsp cumsp_7 cumul cusum cusum_7 cutil d|0 datasig datasign datasigna datasignat datasignatu datasignatur datasignature datetof db dbeta de dec deco decod decode deff des desc descr descri describ describe destring dfbeta dfgls dfuller di di_g dir dirstats dis discard disp disp_res disp_s displ displa display distinct do doe doed doedi doedit dotplot dotplot_7 dprobit drawnorm drop ds ds_util dstdize duplicates durbina dwstat dydx e|0 ed edi edit egen eivreg emdef en enc enco encod encode eq erase ereg ereg_lf ereg_p ereg_sw ereghet ereghet_glf ereghet_glf_sh ereghet_gp ereghet_ilf ereghet_ilf_sh ereghet_ip eret eretu eretur ereturn err erro error esize est est_cfexist est_cfname est_clickable est_expand est_hold est_table est_unhold est_unholdok estat estat_default estat_summ estat_vce_only esti estimates etodow etof etomdy ex exi exit expand expandcl fac fact facto factor factor_estat factor_p factor_pca_rotated factor_rotate factormat fcast fcast_compute fcast_graph fdades fdadesc fdadescr fdadescri fdadescrib fdadescribe fdasav fdasave fdause fh_st file open file read file close file filefilter fillin find_hlp_file findfile findit findit_7 fit fl fli flis flist for5_0 forest forestplot form forma format fpredict frac_154 frac_adj frac_chk frac_cox frac_ddp frac_dis frac_dv frac_in frac_mun frac_pp frac_pq frac_pv frac_wgt frac_xo fracgen fracplot fracplot_7 fracpoly fracpred fron_ex fron_hn fron_p fron_tn fron_tn2 frontier ftodate ftoe ftomdy ftowdate funnel funnelplot g|0 gamhet_glf gamhet_gp gamhet_ilf gamhet_ip gamma gamma_d2 gamma_p gamma_sw gammahet gdi_hexagon gdi_spokes ge gen gene gener genera generat generate genrank genstd genvmean gettoken gl gladder gladder_7 glim_l01 glim_l02 glim_l03 glim_l04 glim_l05 glim_l06 glim_l07 glim_l08 glim_l09 glim_l10 glim_l11 glim_l12 glim_lf glim_mu glim_nw1 glim_nw2 glim_nw3 glim_p glim_v1 glim_v2 glim_v3 glim_v4 glim_v5 glim_v6 glim_v7 glm glm_6 glm_p glm_sw glmpred glo glob globa global glogit glogit_8 glogit_p gmeans gnbre_lf gnbreg gnbreg_5 gnbreg_p gomp_lf gompe_sw gomper_p gompertz gompertzhet gomphet_glf gomphet_glf_sh gomphet_gp gomphet_ilf gomphet_ilf_sh gomphet_ip gphdot gphpen gphprint gprefs gprobi_p gprobit gprobit_8 gr gr7 gr_copy gr_current gr_db gr_describe gr_dir gr_draw gr_draw_replay gr_drop gr_edit gr_editviewopts gr_example gr_example2 gr_export gr_print gr_qscheme gr_query gr_read gr_rename gr_replay gr_save gr_set gr_setscheme gr_table gr_undo gr_use graph graph7 grebar greigen greigen_7 greigen_8 grmeanby grmeanby_7 gs_fileinfo gs_filetype gs_graphinfo gs_stat gsort gwood h|0 hadimvo hareg hausman haver he heck_d2 heckma_p heckman heckp_lf heckpr_p heckprob hel help hereg hetpr_lf hetpr_p hetprob hettest hexdump hilite hist hist_7 histogram hlogit hlu hmeans hotel hotelling hprobit hreg hsearch icd9 icd9_ff icd9p iis impute imtest inbase include inf infi infil infile infix inp inpu input ins insheet insp inspe inspec inspect integ inten intreg intreg_7 intreg_p intrg2_ll intrg_ll intrg_ll2 ipolate iqreg ir irf irf_create irfm iri is_svy is_svysum isid istdize ivprob_1_lf ivprob_lf ivprobit ivprobit_p ivreg ivreg_footnote ivtob_1_lf ivtob_lf ivtobit ivtobit_p jackknife jacknife jknife jknife_6 jknife_8 jkstat joinby kalarma1 kap kap_3 kapmeier kappa kapwgt kdensity kdensity_7 keep ksm ksmirnov ktau kwallis l|0 la lab labbe labbeplot labe label labelbook ladder levels levelsof leverage lfit lfit_p li lincom line linktest lis list lloghet_glf lloghet_glf_sh lloghet_gp lloghet_ilf lloghet_ilf_sh lloghet_ip llogi_sw llogis_p llogist llogistic llogistichet lnorm_lf lnorm_sw lnorma_p lnormal lnormalhet lnormhet_glf lnormhet_glf_sh lnormhet_gp lnormhet_ilf lnormhet_ilf_sh lnormhet_ip lnskew0 loadingplot loc loca local log logi logis_lf logistic logistic_p logit logit_estat logit_p loglogs logrank loneway lookfor lookup lowess lowess_7 lpredict lrecomp lroc lroc_7 lrtest ls lsens lsens_7 lsens_x lstat ltable ltable_7 ltriang lv lvr2plot lvr2plot_7 m|0 ma mac macr macro makecns man manova manova_estat manova_p manovatest mantel mark markin markout marksample mat mat_capp mat_order mat_put_rr mat_rapp mata mata_clear mata_describe mata_drop mata_matdescribe mata_matsave mata_matuse mata_memory mata_mlib mata_mosave mata_rename mata_which matalabel matcproc matlist matname matr matri matrix matrix_input__dlg matstrik mcc mcci md0_ md1_ md1debug_ md2_ md2debug_ mds mds_estat mds_p mdsconfig mdslong mdsmat mdsshepard mdytoe mdytof me_derd mean means median memory memsize menl meqparse mer merg merge meta mfp mfx mhelp mhodds minbound mixed_ll mixed_ll_reparm mkassert mkdir mkmat mkspline ml ml_5 ml_adjs ml_bhhhs ml_c_d ml_check ml_clear ml_cnt ml_debug ml_defd ml_e0 ml_e0_bfgs ml_e0_cycle ml_e0_dfp ml_e0i ml_e1 ml_e1_bfgs ml_e1_bhhh ml_e1_cycle ml_e1_dfp ml_e2 ml_e2_cycle ml_ebfg0 ml_ebfr0 ml_ebfr1 ml_ebh0q ml_ebhh0 ml_ebhr0 ml_ebr0i ml_ecr0i ml_edfp0 ml_edfr0 ml_edfr1 ml_edr0i ml_eds ml_eer0i ml_egr0i ml_elf ml_elf_bfgs ml_elf_bhhh ml_elf_cycle ml_elf_dfp ml_elfi ml_elfs ml_enr0i ml_enrr0 ml_erdu0 ml_erdu0_bfgs ml_erdu0_bhhh ml_erdu0_bhhhq ml_erdu0_cycle ml_erdu0_dfp ml_erdu0_nrbfgs ml_exde ml_footnote ml_geqnr ml_grad0 ml_graph ml_hbhhh ml_hd0 ml_hold ml_init ml_inv ml_log ml_max ml_mlout ml_mlout_8 ml_model ml_nb0 ml_opt ml_p ml_plot ml_query ml_rdgrd ml_repor ml_s_e ml_score ml_searc ml_technique ml_unhold mleval mlf_ mlmatbysum mlmatsum mlog mlogi mlogit mlogit_footnote mlogit_p mlopts mlsum mlvecsum mnl0_ mor more mov move mprobit mprobit_lf mprobit_p mrdu0_ mrdu1_ mvdecode mvencode mvreg mvreg_estat n|0 nbreg nbreg_al nbreg_lf nbreg_p nbreg_sw nestreg net newey newey_7 newey_p news nl nl_7 nl_9 nl_9_p nl_p nl_p_7 nlcom nlcom_p nlexp2 nlexp2_7 nlexp2a nlexp2a_7 nlexp3 nlexp3_7 nlgom3 nlgom3_7 nlgom4 nlgom4_7 nlinit nllog3 nllog3_7 nllog4 nllog4_7 nlog_rd nlogit nlogit_p nlogitgen nlogittree nlpred no nobreak noi nois noisi noisil noisily note notes notes_dlg nptrend numlabel numlist odbc old_ver olo olog ologi ologi_sw ologit ologit_p ologitp on one onew onewa oneway op_colnm op_comp op_diff op_inv op_str opr opro oprob oprob_sw oprobi oprobi_p oprobit oprobitp opts_exclusive order orthog orthpoly ou out outf outfi outfil outfile outs outsh outshe outshee outsheet ovtest pac pac_7 palette parse parse_dissim pause pca pca_8 pca_display pca_estat pca_p pca_rotate pcamat pchart pchart_7 pchi pchi_7 pcorr pctile pentium pergram pergram_7 permute permute_8 personal peto_st pkcollapse pkcross pkequiv pkexamine pkexamine_7 pkshape pksumm pksumm_7 pl plo plot plugin pnorm pnorm_7 poisgof poiss_lf poiss_sw poisso_p poisson poisson_estat post postclose postfile postutil pperron pr prais prais_e prais_e2 prais_p predict predictnl preserve print pro prob probi probit probit_estat probit_p proc_time procoverlay procrustes procrustes_estat procrustes_p profiler prog progr progra program prop proportion prtest prtesti pwcorr pwd q\\s qby qbys qchi qchi_7 qladder qladder_7 qnorm qnorm_7 qqplot qqplot_7 qreg qreg_c qreg_p qreg_sw qu quadchk quantile quantile_7 que quer query range ranksum ratio rchart rchart_7 rcof recast reclink recode reg reg3 reg3_p regdw regr regre regre_p2 regres regres_p regress regress_estat regriv_p remap ren rena renam rename renpfix repeat replace report reshape restore ret retu retur return rm rmdir robvar roccomp roccomp_7 roccomp_8 rocf_lf rocfit rocfit_8 rocgold rocplot rocplot_7 roctab roctab_7 rolling rologit rologit_p rot rota rotat rotate rotatemat rreg rreg_p ru run runtest rvfplot rvfplot_7 rvpplot rvpplot_7 sa safesum sample sampsi sav save savedresults saveold sc sca scal scala scalar scatter scm_mine sco scob_lf scob_p scobi_sw scobit scor score scoreplot scoreplot_help scree screeplot screeplot_help sdtest sdtesti se search separate seperate serrbar serrbar_7 serset set set_defaults sfrancia sh she shel shell shewhart shewhart_7 signestimationsample signrank signtest simul simul_7 simulate simulate_8 sktest sleep slogit slogit_d2 slogit_p smooth snapspan so sor sort spearman spikeplot spikeplot_7 spikeplt spline_x split sqreg sqreg_p sret sretu sretur sreturn ssc st st_ct st_hc st_hcd st_hcd_sh st_is st_issys st_note st_promo st_set st_show st_smpl st_subid stack statsby statsby_8 stbase stci stci_7 stcox stcox_estat stcox_fr stcox_fr_ll stcox_p stcox_sw stcoxkm stcoxkm_7 stcstat stcurv stcurve stcurve_7 stdes stem stepwise stereg stfill stgen stir stjoin stmc stmh stphplot stphplot_7 stphtest stphtest_7 stptime strate strate_7 streg streg_sw streset sts sts_7 stset stsplit stsum sttocc sttoct stvary stweib su suest suest_8 sum summ summa summar summari summariz summarize sunflower sureg survcurv survsum svar svar_p svmat svy svy_disp svy_dreg svy_est svy_est_7 svy_estat svy_get svy_gnbreg_p svy_head svy_header svy_heckman_p svy_heckprob_p svy_intreg_p svy_ivreg_p svy_logistic_p svy_logit_p svy_mlogit_p svy_nbreg_p svy_ologit_p svy_oprobit_p svy_poisson_p svy_probit_p svy_regress_p svy_sub svy_sub_7 svy_x svy_x_7 svy_x_p svydes svydes_8 svygen svygnbreg svyheckman svyheckprob svyintreg svyintreg_7 svyintrg svyivreg svylc svylog_p svylogit svymarkout svymarkout_8 svymean svymlog svymlogit svynbreg svyolog svyologit svyoprob svyoprobit svyopts svypois svypois_7 svypoisson svyprobit svyprobt svyprop svyprop_7 svyratio svyreg svyreg_p svyregress svyset svyset_7 svyset_8 svytab svytab_7 svytest svytotal sw sw_8 swcnreg swcox swereg swilk swlogis swlogit swologit swoprbt swpois swprobit swqreg swtobit swweib symmetry symmi symplot symplot_7 syntax sysdescribe sysdir sysuse szroeter ta tab tab1 tab2 tab_or tabd tabdi tabdis tabdisp tabi table tabodds tabodds_7 tabstat tabu tabul tabula tabulat tabulate te tempfile tempname tempvar tes test testnl testparm teststd tetrachoric time_it timer tis tob tobi tobit tobit_p tobit_sw token tokeni tokeniz tokenize tostring total translate translator transmap treat_ll treatr_p treatreg trim trimfill trnb_cons trnb_mean trpoiss_d2 trunc_ll truncr_p truncreg tsappend tset tsfill tsline tsline_ex tsreport tsrevar tsrline tsset tssmooth tsunab ttest ttesti tut_chk tut_wait tutorial tw tware_st two twoway twoway__fpfit_serset twoway__function_gen twoway__histogram_gen twoway__ipoint_serset twoway__ipoints_serset twoway__kdensity_gen twoway__lfit_serset twoway__normgen_gen twoway__pci_serset twoway__qfit_serset twoway__scatteri_serset twoway__sunflower_gen twoway_ksm_serset ty typ type typeof u|0 unab unabbrev unabcmd update us use uselabel var var_mkcompanion var_p varbasic varfcast vargranger varirf varirf_add varirf_cgraph varirf_create varirf_ctable varirf_describe varirf_dir varirf_drop varirf_erase varirf_graph varirf_ograph varirf_rename varirf_set varirf_table varlist varlmar varnorm varsoc varstable varstable_w varstable_w2 varwle vce vec vec_fevd vec_mkphi vec_p vec_p_w vecirf_create veclmar veclmar_w vecnorm vecnorm_w vecrank vecstable verinst vers versi versio version view viewsource vif vwls wdatetof webdescribe webseek webuse weib1_lf weib2_lf weib_lf weib_lf0 weibhet_glf weibhet_glf_sh weibhet_glfa weibhet_glfa_sh weibhet_gp weibhet_ilf weibhet_ilf_sh weibhet_ilfa weibhet_ilfa_sh weibhet_ip weibu_sw weibul_p weibull weibull_c weibull_s weibullhet wh whelp whi which whil while wilc_st wilcoxon win wind windo window winexec wntestb wntestb_7 wntestq xchart xchart_7 xcorr xcorr_7 xi xi_6 xmlsav xmlsave xmluse xpose xsh xshe xshel xshell xt_iis xt_tis xtab_p xtabond xtbin_p xtclog xtcloglog xtcloglog_8 xtcloglog_d2 xtcloglog_pa_p xtcloglog_re_p xtcnt_p xtcorr xtdata xtdes xtfront_p xtfrontier xtgee xtgee_elink xtgee_estat xtgee_makeivar xtgee_p xtgee_plink xtgls xtgls_p xthaus xthausman xtht_p xthtaylor xtile xtint_p xtintreg xtintreg_8 xtintreg_d2 xtintreg_p xtivp_1 xtivp_2 xtivreg xtline xtline_ex xtlogit xtlogit_8 xtlogit_d2 xtlogit_fe_p xtlogit_pa_p xtlogit_re_p xtmixed xtmixed_estat xtmixed_p xtnb_fe xtnb_lf xtnbreg xtnbreg_pa_p xtnbreg_refe_p xtpcse xtpcse_p xtpois xtpoisson xtpoisson_d2 xtpoisson_pa_p xtpoisson_refe_p xtpred xtprobit xtprobit_8 xtprobit_d2 xtprobit_re_p xtps_fe xtps_lf xtps_ren xtps_ren_8 xtrar_p xtrc xtrc_p xtrchh xtrefe_p xtreg xtreg_be xtreg_fe xtreg_ml xtreg_pa_p xtreg_re xtregar xtrere_p xtset xtsf_ll xtsf_llti xtsum xttab xttest0 xttobit xttobit_8 xttobit_p xttrans yx yxview__barlike_draw yxview_area_draw yxview_bar_draw yxview_dot_draw yxview_dropline_draw yxview_function_draw yxview_iarrow_draw yxview_ilabels_draw yxview_normal_draw yxview_pcarrow_draw yxview_pcbarrow_draw yxview_pccapsym_draw yxview_pcscatter_draw yxview_pcspike_draw yxview_rarea_draw yxview_rbar_draw yxview_rbarm_draw yxview_rcap_draw yxview_rcapsym_draw yxview_rconnected_draw yxview_rline_draw yxview_rscatter_draw yxview_rspike_draw yxview_spike_draw yxview_sunflower_draw zap_s zinb zinb_llf zinb_plf zip zip_llf zip_p zip_plf zt_ct_5 zt_hc_5 zt_hcd_5 zt_is_5 zt_iss_5 zt_sho_5 zt_smp_5 ztbase_5 ztcox_5 ztdes_5 ztereg_5 ztfill_5 ztgen_5 ztir_5 ztjoin_5 ztnb ztnb_p ztp ztp_p zts_5 ztset_5 ztspli_5 ztsum_5 zttoct_5 ztvary_5 ztweib_5',
         contains: [
       {
         className: 'symbol',
@@ -23105,7 +23729,7 @@ module.exports = function(hljs) {
         className: 'built_in',
         variants: [
           {
-            begin: '\\b(abs|acos|asin|atan|atan2|atanh|ceil|cloglog|comb|cos|digamma|exp|floor|invcloglog|invlogit|ln|lnfact|lnfactorial|lngamma|log|log10|max|min|mod|reldif|round|sign|sin|sqrt|sum|tan|tanh|trigamma|trunc|betaden|Binomial|binorm|binormal|chi2|chi2tail|dgammapda|dgammapdada|dgammapdadx|dgammapdx|dgammapdxdx|F|Fden|Ftail|gammaden|gammap|ibeta|invbinomial|invchi2|invchi2tail|invF|invFtail|invgammap|invibeta|invnchi2|invnFtail|invnibeta|invnorm|invnormal|invttail|nbetaden|nchi2|nFden|nFtail|nibeta|norm|normal|normalden|normd|npnchi2|tden|ttail|uniform|abbrev|char|index|indexnot|length|lower|ltrim|match|plural|proper|real|regexm|regexr|regexs|reverse|rtrim|string|strlen|strlower|strltrim|strmatch|strofreal|strpos|strproper|strreverse|strrtrim|strtrim|strupper|subinstr|subinword|substr|trim|upper|word|wordcount|_caller|autocode|byteorder|chop|clip|cond|e|epsdouble|epsfloat|group|inlist|inrange|irecode|matrix|maxbyte|maxdouble|maxfloat|maxint|maxlong|mi|minbyte|mindouble|minfloat|minint|minlong|missing|r|recode|replay|return|s|scalar|d|date|day|dow|doy|halfyear|mdy|month|quarter|week|year|d|daily|dofd|dofh|dofm|dofq|dofw|dofy|h|halfyearly|hofd|m|mofd|monthly|q|qofd|quarterly|tin|twithin|w|weekly|wofd|y|yearly|yh|ym|yofd|yq|yw|cholesky|colnumb|colsof|corr|det|diag|diag0cnt|el|get|hadamard|I|inv|invsym|issym|issymmetric|J|matmissing|matuniform|mreldif|nullmat|rownumb|rowsof|sweep|syminv|trace|vec|vecdiag)(?=\\(|$)'
+            begin: '\\b(abs|acos|asin|atan|atan2|atanh|ceil|cloglog|comb|cos|digamma|exp|floor|invcloglog|invlogit|ln|lnfact|lnfactorial|lngamma|log|log10|max|min|mod|reldif|round|sign|sin|sqrt|sum|tan|tanh|trigamma|trunc|betaden|Binomial|binorm|binormal|chi2|chi2tail|dgammapda|dgammapdada|dgammapdadx|dgammapdx|dgammapdxdx|F|Fden|Ftail|gammaden|gammap|ibeta|invbinomial|invchi2|invchi2tail|invF|invFtail|invgammap|invibeta|invnchi2|invnFtail|invnibeta|invnorm|invnormal|invttail|nbetaden|nchi2|nFden|nFtail|nibeta|norm|normal|normalden|normd|npnchi2|tden|ttail|uniform|abbrev|char|index|indexnot|length|lower|ltrim|match|plural|proper|real|regexm|regexr|regexs|reverse|rtrim|string|strlen|strlower|strltrim|strmatch|strofreal|strpos|strproper|strreverse|strrtrim|strtrim|strupper|subinstr|subinword|substr|trim|upper|word|wordcount|_caller|autocode|byteorder|chop|clip|cond|e|epsdouble|epsfloat|group|inlist|inrange|irecode|matrix|maxbyte|maxdouble|maxfloat|maxint|maxlong|mi|minbyte|mindouble|minfloat|minint|minlong|missing|r|recode|replay|return|s|scalar|d|date|day|dow|doy|halfyear|mdy|month|quarter|week|year|d|daily|dofd|dofh|dofm|dofq|dofw|dofy|h|halfyearly|hofd|m|mofd|monthly|q|qofd|quarterly|tin|twithin|w|weekly|wofd|y|yearly|yh|ym|yofd|yq|yw|cholesky|colnumb|colsof|corr|det|diag|diag0cnt|el|get|hadamard|I|inv|invsym|issym|issymmetric|J|matmissing|matuniform|mreldif|nullmat|rownumb|rowsof|sweep|syminv|trace|vec|vecdiag)(?=\\()'
           }
         ]
       },
@@ -23118,7 +23742,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 270 */
+/* 275 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23169,7 +23793,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 271 */
+/* 276 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23288,7 +23912,7 @@ module.exports = function(hljs) {
     'video'
   ];
 
-  var TAG_END = '[\\.\\s\\n\\[\\:,]';
+  var LOOKAHEAD_TAG_END = '(?=[\\.\\s\\n\\[\\:,])';
 
   var ATTRIBUTES = [
     'align-content',
@@ -23531,34 +24155,25 @@ module.exports = function(hljs) {
 
       // class tag
       {
-        begin: '\\.[a-zA-Z][a-zA-Z0-9_-]*' + TAG_END,
-        returnBegin: true,
-        contains: [
-          {className: 'selector-class', begin: '\\.[a-zA-Z][a-zA-Z0-9_-]*'}
-        ]
+        begin: '\\.[a-zA-Z][a-zA-Z0-9_-]*' + LOOKAHEAD_TAG_END,
+        className: 'selector-class'
       },
 
       // id tag
       {
-        begin: '\\#[a-zA-Z][a-zA-Z0-9_-]*' + TAG_END,
-        returnBegin: true,
-        contains: [
-          {className: 'selector-id', begin: '\\#[a-zA-Z][a-zA-Z0-9_-]*'}
-        ]
+        begin: '\\#[a-zA-Z][a-zA-Z0-9_-]*' + LOOKAHEAD_TAG_END,
+        className: 'selector-id'
       },
 
       // tags
       {
-        begin: '\\b(' + TAGS.join('|') + ')' + TAG_END,
-        returnBegin: true,
-        contains: [
-          {className: 'selector-tag', begin: '\\b[a-zA-Z][a-zA-Z0-9_-]*'}
-        ]
+        begin: '\\b(' + TAGS.join('|') + ')' + LOOKAHEAD_TAG_END,
+        className: 'selector-tag'
       },
 
       // psuedo selectors
       {
-        begin: '&?:?:\\b(' + PSEUDO_SELECTORS.join('|') + ')' + TAG_END
+        begin: '&?:?:\\b(' + PSEUDO_SELECTORS.join('|') + ')' + LOOKAHEAD_TAG_END
       },
 
       // @ keywords
@@ -23627,7 +24242,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 272 */
+/* 277 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23665,7 +24280,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 273 */
+/* 278 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23787,7 +24402,8 @@ module.exports = function(hljs) {
                   '@NSCopying|@NSManaged|@objc|@objcMembers|@convention|@required|' +
                   '@noreturn|@IBAction|@IBDesignable|@IBInspectable|@IBOutlet|' +
                   '@infix|@prefix|@postfix|@autoclosure|@testable|@available|' +
-                  '@nonobjc|@NSApplicationMain|@UIApplicationMain)'
+                  '@nonobjc|@NSApplicationMain|@UIApplicationMain|@dynamicMemberLookup|' +
+                  '@propertyWrapper)'
 
       },
       {
@@ -23799,7 +24415,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 274 */
+/* 279 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23847,20 +24463,22 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 275 */
+/* 280 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
   var LITERALS = 'true false yes no null';
 
-  var keyPrefix = '^[ \\-]*';
-  var keyName =  '[a-zA-Z_][\\w\\-]*';
+  // Define keys as starting with a word character
+  // ...containing word chars, spaces, colons, forward-slashes, hyphens and periods
+  // ...and ending with a colon followed immediately by a space, tab or newline.
+  // The YAML spec allows for much more than this, but this covers most use-cases.
   var KEY = {
     className: 'attr',
     variants: [
-      { begin: keyPrefix + keyName + ":"},
-      { begin: keyPrefix + '"' + keyName + '"' + ":"},
-      { begin: keyPrefix + "'" + keyName + "'" + ":"}
+      { begin: '\\w[\\w :\\/.-]*:(?=[ \t]|$)' },
+      { begin: '"\\w[\\w :\\/.-]*":(?=[ \t]|$)' }, //double quoted keys
+      { begin: '\'\\w[\\w :\\/.-]*\':(?=[ \t]|$)' } //single quoted keys
     ]
   };
 
@@ -23896,12 +24514,12 @@ module.exports = function(hljs) {
         relevance: 10
       },
       { // multi line string
+        // Blocks start with a | or > followed by a newline
+        //
+        // Indentation of subsequent lines must be the same to
+        // be considered part of the block
         className: 'string',
-        begin: '[\\|>] *$',
-        returnEnd: true,
-        contains: STRING.contains,
-        // very simple termination: next hash key
-        end: KEY.variants[0].begin
+        begin: '[\\|>]([0-9]?[+-])?[ ]*\\n( *)[\\S ]+\\n(\\2[\\S ]+\\n?)*',
       },
       { // Ruby/Rails erb
         begin: '<%[%=-]?', end: '[%-]?%>',
@@ -23928,7 +24546,8 @@ module.exports = function(hljs) {
       },
       { // array listing
         className: 'bullet',
-        begin: '^ *-',
+      // TODO: remove |$ hack when we have proper look-ahead support
+      begin: '\\-(?=[ ]|$)',
         relevance: 0
       },
       hljs.HASH_COMMENT_MODE,
@@ -23936,14 +24555,19 @@ module.exports = function(hljs) {
         beginKeywords: LITERALS,
         keywords: {literal: LITERALS}
       },
-      hljs.C_NUMBER_MODE,
+      // numbers are any valid C-style number that
+      // sit isolated from other words
+      {
+        className: 'number',
+        begin: hljs.C_NUMBER_RE + '\\b'
+      },
       STRING
     ]
   };
 };
 
 /***/ }),
-/* 276 */
+/* 281 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -23983,7 +24607,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 277 */
+/* 282 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24047,7 +24671,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 278 */
+/* 283 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24113,7 +24737,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 279 */
+/* 284 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24152,7 +24776,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 280 */
+/* 285 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24240,7 +24864,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 281 */
+/* 286 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24264,17 +24888,17 @@ module.exports = function(hljs) {
   var FILTER = {
     begin: /\|[A-Za-z_]+:?/,
     keywords:
-      'abs batch capitalize convert_encoding date date_modify default ' +
-      'escape first format join json_encode keys last length lower ' +
-      'merge nl2br number_format raw replace reverse round slice sort split ' +
-      'striptags title trim upper url_encode',
+      'abs batch capitalize column convert_encoding date date_modify default ' +
+      'escape filter first format inky_to_html inline_css join json_encode keys last ' +
+      'length lower map markdown merge nl2br number_format raw reduce replace ' +
+      'reverse round slice sort spaceless split striptags title trim upper url_encode',
     contains: [
       FUNCTIONS
     ]
   };
 
-  var TAGS = 'autoescape block do embed extends filter flush for ' +
-    'if import include macro sandbox set spaceless use verbatim';
+  var TAGS = 'apply autoescape block deprecated do embed extends filter flush for from ' +
+    'if import include macro sandbox set use verbatim with';
 
   TAGS = TAGS + ' ' + TAGS.split(' ').map(function(t){return 'end' + t}).join(' ');
 
@@ -24310,7 +24934,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 282 */
+/* 287 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24365,6 +24989,62 @@ module.exports = function(hljs) {
       ARGS
     ]
   };
+  var NUMBER = {
+    className: 'number',
+    variants: [
+      { begin: '\\b(0[bB][01]+)n?' },
+      { begin: '\\b(0[oO][0-7]+)n?' },
+      { begin: hljs.C_NUMBER_RE + 'n?' }
+    ],
+    relevance: 0
+  };
+  var SUBST = {
+    className: 'subst',
+    begin: '\\$\\{', end: '\\}',
+    keywords: KEYWORDS,
+    contains: []  // defined later
+  };
+  var HTML_TEMPLATE = {
+    begin: 'html`', end: '',
+    starts: {
+      end: '`', returnEnd: false,
+      contains: [
+        hljs.BACKSLASH_ESCAPE,
+        SUBST
+      ],
+      subLanguage: 'xml',
+    }
+  };
+  var CSS_TEMPLATE = {
+    begin: 'css`', end: '',
+    starts: {
+      end: '`', returnEnd: false,
+      contains: [
+        hljs.BACKSLASH_ESCAPE,
+        SUBST
+      ],
+      subLanguage: 'css',
+    }
+  };
+  var TEMPLATE_STRING = {
+    className: 'string',
+    begin: '`', end: '`',
+    contains: [
+      hljs.BACKSLASH_ESCAPE,
+      SUBST
+    ]
+  };
+  SUBST.contains = [
+    hljs.APOS_STRING_MODE,
+    hljs.QUOTE_STRING_MODE,
+    HTML_TEMPLATE,
+    CSS_TEMPLATE,
+    TEMPLATE_STRING,
+    NUMBER,
+    hljs.REGEXP_MODE
+  ];
+
+
 
   return {
     aliases: ['ts'],
@@ -24376,28 +25056,12 @@ module.exports = function(hljs) {
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
-      { // template string
-        className: 'string',
-        begin: '`', end: '`',
-        contains: [
-          hljs.BACKSLASH_ESCAPE,
-          {
-            className: 'subst',
-            begin: '\\$\\{', end: '\\}'
-          }
-        ]
-      },
+      HTML_TEMPLATE,
+      CSS_TEMPLATE,
+      TEMPLATE_STRING,
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
-      {
-        className: 'number',
-        variants: [
-          { begin: '\\b(0[bB][01]+)' },
-          { begin: '\\b(0[oO][0-7]+)' },
-          { begin: hljs.C_NUMBER_RE }
-        ],
-        relevance: 0
-      },
+      NUMBER,
       { // "value" container
         begin: '(' + hljs.RE_STARTERS_RE + '|\\b(case|return|throw)\\b)\\s*',
         keywords: 'return throw case',
@@ -24438,7 +25102,7 @@ module.exports = function(hljs) {
       },
       {
         className: 'function',
-        begin: 'function', end: /[\{;]/, excludeEnd: true,
+        beginKeywords: 'function', end: /[\{;]/, excludeEnd: true,
         keywords: KEYWORDS,
         contains: [
           'self',
@@ -24449,7 +25113,7 @@ module.exports = function(hljs) {
         relevance: 0 // () => {} is more typical in TypeScript
       },
       {
-        beginKeywords: 'constructor', end: /\{/, excludeEnd: true,
+        beginKeywords: 'constructor', end: /[\{;]/, excludeEnd: true,
         contains: [
           'self',
           PARAMS
@@ -24480,7 +25144,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 283 */
+/* 288 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24534,7 +25198,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 284 */
+/* 289 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24543,17 +25207,17 @@ module.exports = function(hljs) {
     case_insensitive: true,
     keywords: {
       keyword:
-        'addhandler addressof alias and andalso aggregate ansi as assembly auto binary by byref byval ' + /* a-b */
+        'addhandler addressof alias and andalso aggregate ansi as async assembly auto await binary by byref byval ' + /* a-b */
         'call case catch class compare const continue custom declare default delegate dim distinct do ' + /* c-d */
         'each equals else elseif end enum erase error event exit explicit finally for friend from function ' + /* e-f */
-        'get global goto group handles if implements imports in inherits interface into is isfalse isnot istrue ' + /* g-i */
+        'get global goto group handles if implements imports in inherits interface into is isfalse isnot istrue iterator ' + /* g-i */
         'join key let lib like loop me mid mod module mustinherit mustoverride mybase myclass ' + /* j-m */
         'namespace narrowing new next not notinheritable notoverridable ' + /* n */
         'of off on operator option optional or order orelse overloads overridable overrides ' + /* o */
         'paramarray partial preserve private property protected public ' + /* p */
         'raiseevent readonly redim rem removehandler resume return ' + /* r */
         'select set shadows shared skip static step stop structure strict sub synclock ' + /* s */
-        'take text then throw to try unicode until using when where while widening with withevents writeonly xor', /* t-x */
+        'take text then throw to try unicode until using when where while widening with withevents writeonly xor yield', /* t-y */
       built_in:
         'boolean byte cbool cbyte cchar cdate cdec cdbl char cint clng cobj csbyte cshort csng cstr ctype ' +  /* b-c */
         'date decimal directcast double gettype getxmlnamespace iif integer long object ' + /* d-o */
@@ -24594,7 +25258,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 285 */
+/* 290 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24637,7 +25301,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 286 */
+/* 291 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24653,7 +25317,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 287 */
+/* 292 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24756,7 +25420,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 288 */
+/* 293 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24821,7 +25485,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 289 */
+/* 294 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -24935,7 +25599,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 290 */
+/* 295 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -25075,7 +25739,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 291 */
+/* 296 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -25152,7 +25816,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 292 */
+/* 297 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -25326,7 +25990,7 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 293 */
+/* 298 */
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
@@ -25437,15 +26101,15 @@ module.exports = function(hljs) {
 };
 
 /***/ }),
-/* 294 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(295);
-module.exports = __webpack_require__(302);
+__webpack_require__(300);
+module.exports = __webpack_require__(307);
 
 
 /***/ }),
-/* 295 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -25455,7 +26119,7 @@ module.exports = __webpack_require__(302);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(296);
+__webpack_require__(301);
 
 // window.Vue = require('vue');
 
@@ -25471,14 +26135,14 @@ __webpack_require__(296);
 //     el: '#app'
 // });
 
-__webpack_require__(301);
+__webpack_require__(306);
 
 /***/ }),
-/* 296 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(297);
+window._ = __webpack_require__(302);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25487,9 +26151,9 @@ window._ = __webpack_require__(297);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(299);
+  window.$ = window.jQuery = __webpack_require__(304);
 
-  __webpack_require__(300);
+  __webpack_require__(305);
 } catch (e) {}
 
 /**
@@ -25498,7 +26162,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(41);
+window.axios = __webpack_require__(46);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -25534,10 +26198,10 @@ if (token) {
 // });
 
 // Javascript syntax highlighter
-window.hljs = __webpack_require__(107);
+window.hljs = __webpack_require__(112);
 
 /***/ }),
-/* 297 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -25554,7 +26218,7 @@ window.hljs = __webpack_require__(107);
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.14';
+  var VERSION = '4.17.15';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -42654,10 +43318,10 @@ window.hljs = __webpack_require__(107);
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(298)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(303)(module)))
 
 /***/ }),
-/* 298 */
+/* 303 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -42685,11 +43349,11 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 299 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.3.1
+ * jQuery JavaScript Library v3.4.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -42699,7 +43363,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2018-01-20T17:24Z
+ * Date: 2019-05-01T21:04Z
  */
 ( function( global, factory ) {
 
@@ -42781,20 +43445,33 @@ var isWindow = function isWindow( obj ) {
 	var preservedScriptAttributes = {
 		type: true,
 		src: true,
+		nonce: true,
 		noModule: true
 	};
 
-	function DOMEval( code, doc, node ) {
+	function DOMEval( code, node, doc ) {
 		doc = doc || document;
 
-		var i,
+		var i, val,
 			script = doc.createElement( "script" );
 
 		script.text = code;
 		if ( node ) {
 			for ( i in preservedScriptAttributes ) {
-				if ( node[ i ] ) {
-					script[ i ] = node[ i ];
+
+				// Support: Firefox 64+, Edge 18+
+				// Some browsers don't support the "nonce" property on scripts.
+				// On the other hand, just using `getAttribute` is not enough as
+				// the `nonce` attribute is reset to an empty string whenever it
+				// becomes browsing-context connected.
+				// See https://github.com/whatwg/html/issues/2369
+				// See https://html.spec.whatwg.org/#nonce-attributes
+				// The `node.getAttribute` check was added for the sake of
+				// `jQuery.globalEval` so that it can fake a nonce-containing node
+				// via an object.
+				val = node[ i ] || node.getAttribute && node.getAttribute( i );
+				if ( val ) {
+					script.setAttribute( i, val );
 				}
 			}
 		}
@@ -42819,7 +43496,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.3.1",
+	version = "3.4.1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -42948,25 +43625,28 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 			// Extend the base object
 			for ( name in options ) {
-				src = target[ name ];
 				copy = options[ name ];
 
+				// Prevent Object.prototype pollution
 				// Prevent never-ending loop
-				if ( target === copy ) {
+				if ( name === "__proto__" || target === copy ) {
 					continue;
 				}
 
 				// Recurse if we're merging plain objects or arrays
 				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
 					( copyIsArray = Array.isArray( copy ) ) ) ) {
+					src = target[ name ];
 
-					if ( copyIsArray ) {
-						copyIsArray = false;
-						clone = src && Array.isArray( src ) ? src : [];
-
+					// Ensure proper type for the source value
+					if ( copyIsArray && !Array.isArray( src ) ) {
+						clone = [];
+					} else if ( !copyIsArray && !jQuery.isPlainObject( src ) ) {
+						clone = {};
 					} else {
-						clone = src && jQuery.isPlainObject( src ) ? src : {};
+						clone = src;
 					}
+					copyIsArray = false;
 
 					// Never move original objects, clone them
 					target[ name ] = jQuery.extend( deep, clone, copy );
@@ -43019,9 +43699,6 @@ jQuery.extend( {
 	},
 
 	isEmptyObject: function( obj ) {
-
-		/* eslint-disable no-unused-vars */
-		// See https://github.com/eslint/eslint/issues/6125
 		var name;
 
 		for ( name in obj ) {
@@ -43031,8 +43708,8 @@ jQuery.extend( {
 	},
 
 	// Evaluates a script in a global context
-	globalEval: function( code ) {
-		DOMEval( code );
+	globalEval: function( code, options ) {
+		DOMEval( code, { nonce: options && options.nonce } );
 	},
 
 	each: function( obj, callback ) {
@@ -43188,14 +43865,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.3
+ * Sizzle CSS Selector Engine v2.3.4
  * https://sizzlejs.com/
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright JS Foundation and other contributors
  * Released under the MIT license
- * http://jquery.org/license
+ * https://js.foundation/
  *
- * Date: 2016-08-08
+ * Date: 2019-04-08
  */
 (function( window ) {
 
@@ -43229,6 +43906,7 @@ var i,
 	classCache = createCache(),
 	tokenCache = createCache(),
 	compilerCache = createCache(),
+	nonnativeSelectorCache = createCache(),
 	sortOrder = function( a, b ) {
 		if ( a === b ) {
 			hasDuplicate = true;
@@ -43290,8 +43968,7 @@ var i,
 
 	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
 	rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*" ),
-
-	rattributeQuotes = new RegExp( "=" + whitespace + "*([^\\]'\"]*?)" + whitespace + "*\\]", "g" ),
+	rdescend = new RegExp( whitespace + "|>" ),
 
 	rpseudo = new RegExp( pseudos ),
 	ridentifier = new RegExp( "^" + identifier + "$" ),
@@ -43312,6 +43989,7 @@ var i,
 			whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
 	},
 
+	rhtml = /HTML$/i,
 	rinputs = /^(?:input|select|textarea|button)$/i,
 	rheader = /^h\d$/i,
 
@@ -43366,9 +44044,9 @@ var i,
 		setDocument();
 	},
 
-	disabledAncestor = addCombinator(
+	inDisabledFieldset = addCombinator(
 		function( elem ) {
-			return elem.disabled === true && ("form" in elem || "label" in elem);
+			return elem.disabled === true && elem.nodeName.toLowerCase() === "fieldset";
 		},
 		{ dir: "parentNode", next: "legend" }
 	);
@@ -43481,18 +44159,22 @@ function Sizzle( selector, context, results, seed ) {
 
 			// Take advantage of querySelectorAll
 			if ( support.qsa &&
-				!compilerCache[ selector + " " ] &&
-				(!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
+				!nonnativeSelectorCache[ selector + " " ] &&
+				(!rbuggyQSA || !rbuggyQSA.test( selector )) &&
 
-				if ( nodeType !== 1 ) {
-					newContext = context;
-					newSelector = selector;
-
-				// qSA looks outside Element context, which is not what we want
-				// Thanks to Andrew Dupont for this workaround technique
-				// Support: IE <=8
+				// Support: IE 8 only
 				// Exclude object elements
-				} else if ( context.nodeName.toLowerCase() !== "object" ) {
+				(nodeType !== 1 || context.nodeName.toLowerCase() !== "object") ) {
+
+				newSelector = selector;
+				newContext = context;
+
+				// qSA considers elements outside a scoping root when evaluating child or
+				// descendant combinators, which is not what we want.
+				// In such cases, we work around the behavior by prefixing every selector in the
+				// list with an ID selector referencing the scope context.
+				// Thanks to Andrew Dupont for this technique.
+				if ( nodeType === 1 && rdescend.test( selector ) ) {
 
 					// Capture the context ID, setting it first if necessary
 					if ( (nid = context.getAttribute( "id" )) ) {
@@ -43514,17 +44196,16 @@ function Sizzle( selector, context, results, seed ) {
 						context;
 				}
 
-				if ( newSelector ) {
-					try {
-						push.apply( results,
-							newContext.querySelectorAll( newSelector )
-						);
-						return results;
-					} catch ( qsaError ) {
-					} finally {
-						if ( nid === expando ) {
-							context.removeAttribute( "id" );
-						}
+				try {
+					push.apply( results,
+						newContext.querySelectorAll( newSelector )
+					);
+					return results;
+				} catch ( qsaError ) {
+					nonnativeSelectorCache( selector, true );
+				} finally {
+					if ( nid === expando ) {
+						context.removeAttribute( "id" );
 					}
 				}
 			}
@@ -43688,7 +44369,7 @@ function createDisabledPseudo( disabled ) {
 					// Where there is no isDisabled, check manually
 					/* jshint -W018 */
 					elem.isDisabled !== !disabled &&
-						disabledAncestor( elem ) === disabled;
+						inDisabledFieldset( elem ) === disabled;
 			}
 
 			return elem.disabled === disabled;
@@ -43745,10 +44426,13 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	// documentElement is verified for cases where it doesn't yet exist
-	// (such as loading iframes in IE - #4833)
-	var documentElement = elem && (elem.ownerDocument || elem).documentElement;
-	return documentElement ? documentElement.nodeName !== "HTML" : false;
+	var namespace = elem.namespaceURI,
+		docElem = (elem.ownerDocument || elem).documentElement;
+
+	// Support: IE <=8
+	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
+	// https://bugs.jquery.com/ticket/4833
+	return !rhtml.test( namespace || docElem && docElem.nodeName || "HTML" );
 };
 
 /**
@@ -44170,11 +44854,8 @@ Sizzle.matchesSelector = function( elem, expr ) {
 		setDocument( elem );
 	}
 
-	// Make sure that attribute selectors are quoted
-	expr = expr.replace( rattributeQuotes, "='$1']" );
-
 	if ( support.matchesSelector && documentIsHTML &&
-		!compilerCache[ expr + " " ] &&
+		!nonnativeSelectorCache[ expr + " " ] &&
 		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
 		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
 
@@ -44188,7 +44869,9 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch (e) {}
+		} catch (e) {
+			nonnativeSelectorCache( expr, true );
+		}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -44647,7 +45330,7 @@ Expr = Sizzle.selectors = {
 		"contains": markFunction(function( text ) {
 			text = text.replace( runescape, funescape );
 			return function( elem ) {
-				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
+				return ( elem.textContent || getText( elem ) ).indexOf( text ) > -1;
 			};
 		}),
 
@@ -44786,7 +45469,11 @@ Expr = Sizzle.selectors = {
 		}),
 
 		"lt": createPositionalPseudo(function( matchIndexes, length, argument ) {
-			var i = argument < 0 ? argument + length : argument;
+			var i = argument < 0 ?
+				argument + length :
+				argument > length ?
+					length :
+					argument;
 			for ( ; --i >= 0; ) {
 				matchIndexes.push( i );
 			}
@@ -45836,18 +46523,18 @@ jQuery.each( {
 		return siblings( elem.firstChild );
 	},
 	contents: function( elem ) {
-        if ( nodeName( elem, "iframe" ) ) {
-            return elem.contentDocument;
-        }
+		if ( typeof elem.contentDocument !== "undefined" ) {
+			return elem.contentDocument;
+		}
 
-        // Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
-        // Treat the template element as a regular one in browsers that
-        // don't support it.
-        if ( nodeName( elem, "template" ) ) {
-            elem = elem.content || elem;
-        }
+		// Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
+		// Treat the template element as a regular one in browsers that
+		// don't support it.
+		if ( nodeName( elem, "template" ) ) {
+			elem = elem.content || elem;
+		}
 
-        return jQuery.merge( [], elem.childNodes );
+		return jQuery.merge( [], elem.childNodes );
 	}
 }, function( name, fn ) {
 	jQuery.fn[ name ] = function( until, selector ) {
@@ -47156,6 +47843,26 @@ var rcssNum = new RegExp( "^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i" );
 
 var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
+var documentElement = document.documentElement;
+
+
+
+	var isAttached = function( elem ) {
+			return jQuery.contains( elem.ownerDocument, elem );
+		},
+		composed = { composed: true };
+
+	// Support: IE 9 - 11+, Edge 12 - 18+, iOS 10.0 - 10.2 only
+	// Check attachment across shadow DOM boundaries when possible (gh-3504)
+	// Support: iOS 10.0-10.2 only
+	// Early iOS 10 versions support `attachShadow` but not `getRootNode`,
+	// leading to errors. We need to check for `getRootNode`.
+	if ( documentElement.getRootNode ) {
+		isAttached = function( elem ) {
+			return jQuery.contains( elem.ownerDocument, elem ) ||
+				elem.getRootNode( composed ) === elem.ownerDocument;
+		};
+	}
 var isHiddenWithinTree = function( elem, el ) {
 
 		// isHiddenWithinTree might be called from jQuery#filter function;
@@ -47170,7 +47877,7 @@ var isHiddenWithinTree = function( elem, el ) {
 			// Support: Firefox <=43 - 45
 			// Disconnected elements can have computed display: none, so first confirm that elem is
 			// in the document.
-			jQuery.contains( elem.ownerDocument, elem ) &&
+			isAttached( elem ) &&
 
 			jQuery.css( elem, "display" ) === "none";
 	};
@@ -47212,7 +47919,8 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
 
 		// Starting value computation is required for potential unit mismatches
-		initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
+		initialInUnit = elem.nodeType &&
+			( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
 			rcssNum.exec( jQuery.css( elem, prop ) );
 
 	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
@@ -47359,7 +48067,7 @@ jQuery.fn.extend( {
 } );
 var rcheckableType = ( /^(?:checkbox|radio)$/i );
 
-var rtagName = ( /<([a-z][^\/\0>\x20\t\r\n\f]+)/i );
+var rtagName = ( /<([a-z][^\/\0>\x20\t\r\n\f]*)/i );
 
 var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 
@@ -47431,7 +48139,7 @@ function setGlobalEval( elems, refElements ) {
 var rhtml = /<|&#?\w+;/;
 
 function buildFragment( elems, context, scripts, selection, ignored ) {
-	var elem, tmp, tag, wrap, contains, j,
+	var elem, tmp, tag, wrap, attached, j,
 		fragment = context.createDocumentFragment(),
 		nodes = [],
 		i = 0,
@@ -47495,13 +48203,13 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			continue;
 		}
 
-		contains = jQuery.contains( elem.ownerDocument, elem );
+		attached = isAttached( elem );
 
 		// Append to fragment
 		tmp = getAll( fragment.appendChild( elem ), "script" );
 
 		// Preserve script evaluation history
-		if ( contains ) {
+		if ( attached ) {
 			setGlobalEval( tmp );
 		}
 
@@ -47544,8 +48252,6 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 } )();
-var documentElement = document.documentElement;
-
 
 
 var
@@ -47561,8 +48267,19 @@ function returnFalse() {
 	return false;
 }
 
+// Support: IE <=9 - 11+
+// focus() and blur() are asynchronous, except when they are no-op.
+// So expect focus to be synchronous when the element is already active,
+// and blur to be synchronous when the element is not already active.
+// (focus and blur are always synchronous in other supported browsers,
+// this just defines when we can count on it).
+function expectSync( elem, type ) {
+	return ( elem === safeActiveElement() ) === ( type === "focus" );
+}
+
 // Support: IE <=9 only
-// See #13393 for more info
+// Accessing document.activeElement can throw unexpectedly
+// https://bugs.jquery.com/ticket/13393
 function safeActiveElement() {
 	try {
 		return document.activeElement;
@@ -47862,9 +48579,10 @@ jQuery.event = {
 			while ( ( handleObj = matched.handlers[ j++ ] ) &&
 				!event.isImmediatePropagationStopped() ) {
 
-				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
-				// a subset or equal to those in the bound event (both can have no namespace).
-				if ( !event.rnamespace || event.rnamespace.test( handleObj.namespace ) ) {
+				// If the event is namespaced, then each handler is only invoked if it is
+				// specially universal or its namespaces are a superset of the event's.
+				if ( !event.rnamespace || handleObj.namespace === false ||
+					event.rnamespace.test( handleObj.namespace ) ) {
 
 					event.handleObj = handleObj;
 					event.data = handleObj.data;
@@ -47988,39 +48706,51 @@ jQuery.event = {
 			// Prevent triggered image.load events from bubbling to window.load
 			noBubble: true
 		},
-		focus: {
-
-			// Fire native event if possible so blur/focus sequence is correct
-			trigger: function() {
-				if ( this !== safeActiveElement() && this.focus ) {
-					this.focus();
-					return false;
-				}
-			},
-			delegateType: "focusin"
-		},
-		blur: {
-			trigger: function() {
-				if ( this === safeActiveElement() && this.blur ) {
-					this.blur();
-					return false;
-				}
-			},
-			delegateType: "focusout"
-		},
 		click: {
 
-			// For checkbox, fire native event so checked state will be right
-			trigger: function() {
-				if ( this.type === "checkbox" && this.click && nodeName( this, "input" ) ) {
-					this.click();
-					return false;
+			// Utilize native event to ensure correct state for checkable inputs
+			setup: function( data ) {
+
+				// For mutual compressibility with _default, replace `this` access with a local var.
+				// `|| data` is dead code meant only to preserve the variable through minification.
+				var el = this || data;
+
+				// Claim the first handler
+				if ( rcheckableType.test( el.type ) &&
+					el.click && nodeName( el, "input" ) ) {
+
+					// dataPriv.set( el, "click", ... )
+					leverageNative( el, "click", returnTrue );
 				}
+
+				// Return false to allow normal processing in the caller
+				return false;
+			},
+			trigger: function( data ) {
+
+				// For mutual compressibility with _default, replace `this` access with a local var.
+				// `|| data` is dead code meant only to preserve the variable through minification.
+				var el = this || data;
+
+				// Force setup before triggering a click
+				if ( rcheckableType.test( el.type ) &&
+					el.click && nodeName( el, "input" ) ) {
+
+					leverageNative( el, "click" );
+				}
+
+				// Return non-false to allow normal event-path propagation
+				return true;
 			},
 
-			// For cross-browser consistency, don't fire native .click() on links
+			// For cross-browser consistency, suppress native .click() on links
+			// Also prevent it if we're currently inside a leveraged native-event stack
 			_default: function( event ) {
-				return nodeName( event.target, "a" );
+				var target = event.target;
+				return rcheckableType.test( target.type ) &&
+					target.click && nodeName( target, "input" ) &&
+					dataPriv.get( target, "click" ) ||
+					nodeName( target, "a" );
 			}
 		},
 
@@ -48036,6 +48766,93 @@ jQuery.event = {
 		}
 	}
 };
+
+// Ensure the presence of an event listener that handles manually-triggered
+// synthetic events by interrupting progress until reinvoked in response to
+// *native* events that it fires directly, ensuring that state changes have
+// already occurred before other listeners are invoked.
+function leverageNative( el, type, expectSync ) {
+
+	// Missing expectSync indicates a trigger call, which must force setup through jQuery.event.add
+	if ( !expectSync ) {
+		if ( dataPriv.get( el, type ) === undefined ) {
+			jQuery.event.add( el, type, returnTrue );
+		}
+		return;
+	}
+
+	// Register the controller as a special universal handler for all event namespaces
+	dataPriv.set( el, type, false );
+	jQuery.event.add( el, type, {
+		namespace: false,
+		handler: function( event ) {
+			var notAsync, result,
+				saved = dataPriv.get( this, type );
+
+			if ( ( event.isTrigger & 1 ) && this[ type ] ) {
+
+				// Interrupt processing of the outer synthetic .trigger()ed event
+				// Saved data should be false in such cases, but might be a leftover capture object
+				// from an async native handler (gh-4350)
+				if ( !saved.length ) {
+
+					// Store arguments for use when handling the inner native event
+					// There will always be at least one argument (an event object), so this array
+					// will not be confused with a leftover capture object.
+					saved = slice.call( arguments );
+					dataPriv.set( this, type, saved );
+
+					// Trigger the native event and capture its result
+					// Support: IE <=9 - 11+
+					// focus() and blur() are asynchronous
+					notAsync = expectSync( this, type );
+					this[ type ]();
+					result = dataPriv.get( this, type );
+					if ( saved !== result || notAsync ) {
+						dataPriv.set( this, type, false );
+					} else {
+						result = {};
+					}
+					if ( saved !== result ) {
+
+						// Cancel the outer synthetic event
+						event.stopImmediatePropagation();
+						event.preventDefault();
+						return result.value;
+					}
+
+				// If this is an inner synthetic event for an event with a bubbling surrogate
+				// (focus or blur), assume that the surrogate already propagated from triggering the
+				// native event and prevent that from happening again here.
+				// This technically gets the ordering wrong w.r.t. to `.trigger()` (in which the
+				// bubbling surrogate propagates *after* the non-bubbling base), but that seems
+				// less bad than duplication.
+				} else if ( ( jQuery.event.special[ type ] || {} ).delegateType ) {
+					event.stopPropagation();
+				}
+
+			// If this is a native event triggered above, everything is now in order
+			// Fire an inner synthetic event with the original arguments
+			} else if ( saved.length ) {
+
+				// ...and capture the result
+				dataPriv.set( this, type, {
+					value: jQuery.event.trigger(
+
+						// Support: IE <=9 - 11+
+						// Extend with the prototype to reset the above stopImmediatePropagation()
+						jQuery.extend( saved[ 0 ], jQuery.Event.prototype ),
+						saved.slice( 1 ),
+						this
+					)
+				} );
+
+				// Abort handling of the native event
+				event.stopImmediatePropagation();
+			}
+		}
+	} );
+}
 
 jQuery.removeEvent = function( elem, type, handle ) {
 
@@ -48149,6 +48966,7 @@ jQuery.each( {
 	shiftKey: true,
 	view: true,
 	"char": true,
+	code: true,
 	charCode: true,
 	key: true,
 	keyCode: true,
@@ -48194,6 +49012,33 @@ jQuery.each( {
 		return event.which;
 	}
 }, jQuery.event.addProp );
+
+jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
+	jQuery.event.special[ type ] = {
+
+		// Utilize native event if possible so blur/focus sequence is correct
+		setup: function() {
+
+			// Claim the first handler
+			// dataPriv.set( this, "focus", ... )
+			// dataPriv.set( this, "blur", ... )
+			leverageNative( this, type, expectSync );
+
+			// Return false to allow normal processing in the caller
+			return false;
+		},
+		trigger: function() {
+
+			// Force setup before trigger
+			leverageNative( this, type );
+
+			// Return non-false to allow normal event-path propagation
+			return true;
+		},
+
+		delegateType: delegateType
+	};
+} );
 
 // Create mouseenter/leave events using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
@@ -48445,11 +49290,13 @@ function domManip( collection, args, callback, ignored ) {
 						if ( node.src && ( node.type || "" ).toLowerCase()  !== "module" ) {
 
 							// Optional AJAX dependency, but won't run scripts if not present
-							if ( jQuery._evalUrl ) {
-								jQuery._evalUrl( node.src );
+							if ( jQuery._evalUrl && !node.noModule ) {
+								jQuery._evalUrl( node.src, {
+									nonce: node.nonce || node.getAttribute( "nonce" )
+								} );
 							}
 						} else {
-							DOMEval( node.textContent.replace( rcleanScript, "" ), doc, node );
+							DOMEval( node.textContent.replace( rcleanScript, "" ), node, doc );
 						}
 					}
 				}
@@ -48471,7 +49318,7 @@ function remove( elem, selector, keepData ) {
 		}
 
 		if ( node.parentNode ) {
-			if ( keepData && jQuery.contains( node.ownerDocument, node ) ) {
+			if ( keepData && isAttached( node ) ) {
 				setGlobalEval( getAll( node, "script" ) );
 			}
 			node.parentNode.removeChild( node );
@@ -48489,7 +49336,7 @@ jQuery.extend( {
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var i, l, srcElements, destElements,
 			clone = elem.cloneNode( true ),
-			inPage = jQuery.contains( elem.ownerDocument, elem );
+			inPage = isAttached( elem );
 
 		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
@@ -48785,8 +49632,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 		// Support: IE 9 only
 		// Detect overflow:scroll screwiness (gh-3699)
+		// Support: Chrome <=64
+		// Don't get tricked when zoom affects offsetWidth (gh-4029)
 		div.style.position = "absolute";
-		scrollboxSizeVal = div.offsetWidth === 36 || "absolute";
+		scrollboxSizeVal = roundPixelMeasures( div.offsetWidth / 3 ) === 12;
 
 		documentElement.removeChild( container );
 
@@ -48857,7 +49706,7 @@ function curCSS( elem, name, computed ) {
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 
-		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+		if ( ret === "" && !isAttached( elem ) ) {
 			ret = jQuery.style( elem, name );
 		}
 
@@ -48913,29 +49762,12 @@ function addGetHookIf( conditionFn, hookFn ) {
 }
 
 
-var
+var cssPrefixes = [ "Webkit", "Moz", "ms" ],
+	emptyStyle = document.createElement( "div" ).style,
+	vendorProps = {};
 
-	// Swappable if display is none or starts with table
-	// except "table", "table-cell", or "table-caption"
-	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
-	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
-	rcustomProp = /^--/,
-	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
-	cssNormalTransform = {
-		letterSpacing: "0",
-		fontWeight: "400"
-	},
-
-	cssPrefixes = [ "Webkit", "Moz", "ms" ],
-	emptyStyle = document.createElement( "div" ).style;
-
-// Return a css property mapped to a potentially vendor prefixed property
+// Return a vendor-prefixed property or undefined
 function vendorPropName( name ) {
-
-	// Shortcut for names that are not vendor prefixed
-	if ( name in emptyStyle ) {
-		return name;
-	}
 
 	// Check for vendor prefixed names
 	var capName = name[ 0 ].toUpperCase() + name.slice( 1 ),
@@ -48949,15 +49781,32 @@ function vendorPropName( name ) {
 	}
 }
 
-// Return a property mapped along what jQuery.cssProps suggests or to
-// a vendor prefixed property.
+// Return a potentially-mapped jQuery.cssProps or vendor prefixed property
 function finalPropName( name ) {
-	var ret = jQuery.cssProps[ name ];
-	if ( !ret ) {
-		ret = jQuery.cssProps[ name ] = vendorPropName( name ) || name;
+	var final = jQuery.cssProps[ name ] || vendorProps[ name ];
+
+	if ( final ) {
+		return final;
 	}
-	return ret;
+	if ( name in emptyStyle ) {
+		return name;
+	}
+	return vendorProps[ name ] = vendorPropName( name ) || name;
 }
+
+
+var
+
+	// Swappable if display is none or starts with table
+	// except "table", "table-cell", or "table-caption"
+	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+	rcustomProp = /^--/,
+	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
+	cssNormalTransform = {
+		letterSpacing: "0",
+		fontWeight: "400"
+	};
 
 function setPositiveNumber( elem, value, subtract ) {
 
@@ -49030,7 +49879,10 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 			delta -
 			extra -
 			0.5
-		) );
+
+		// If offsetWidth/offsetHeight is unknown, then we can't determine content-box scroll gutter
+		// Use an explicit zero to avoid NaN (gh-3964)
+		) ) || 0;
 	}
 
 	return delta;
@@ -49040,9 +49892,16 @@ function getWidthOrHeight( elem, dimension, extra ) {
 
 	// Start with computed style
 	var styles = getStyles( elem ),
+
+		// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-4322).
+		// Fake content-box until we know it's needed to know the true value.
+		boxSizingNeeded = !support.boxSizingReliable() || extra,
+		isBorderBox = boxSizingNeeded &&
+			jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+		valueIsBorderBox = isBorderBox,
+
 		val = curCSS( elem, dimension, styles ),
-		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-		valueIsBorderBox = isBorderBox;
+		offsetProp = "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 );
 
 	// Support: Firefox <=54
 	// Return a confounding non-pixel value or feign ignorance, as appropriate.
@@ -49053,22 +49912,29 @@ function getWidthOrHeight( elem, dimension, extra ) {
 		val = "auto";
 	}
 
-	// Check for style in case a browser which returns unreliable values
-	// for getComputedStyle silently falls back to the reliable elem.style
-	valueIsBorderBox = valueIsBorderBox &&
-		( support.boxSizingReliable() || val === elem.style[ dimension ] );
 
 	// Fall back to offsetWidth/offsetHeight when value is "auto"
 	// This happens for inline elements with no explicit setting (gh-3571)
 	// Support: Android <=4.1 - 4.3 only
 	// Also use offsetWidth/offsetHeight for misreported inline dimensions (gh-3602)
-	if ( val === "auto" ||
-		!parseFloat( val ) && jQuery.css( elem, "display", false, styles ) === "inline" ) {
+	// Support: IE 9-11 only
+	// Also use offsetWidth/offsetHeight for when box sizing is unreliable
+	// We use getClientRects() to check for hidden/disconnected.
+	// In those cases, the computed value can be trusted to be border-box
+	if ( ( !support.boxSizingReliable() && isBorderBox ||
+		val === "auto" ||
+		!parseFloat( val ) && jQuery.css( elem, "display", false, styles ) === "inline" ) &&
+		elem.getClientRects().length ) {
 
-		val = elem[ "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 ) ];
+		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-		// offsetWidth/offsetHeight provide border-box values
-		valueIsBorderBox = true;
+		// Where available, offsetWidth/offsetHeight approximate border box dimensions.
+		// Where not available (e.g., SVG), assume unreliable box-sizing and interpret the
+		// retrieved value as a content box dimension.
+		valueIsBorderBox = offsetProp in elem;
+		if ( valueIsBorderBox ) {
+			val = elem[ offsetProp ];
+		}
 	}
 
 	// Normalize "" and auto
@@ -49114,6 +49980,13 @@ jQuery.extend( {
 		"flexGrow": true,
 		"flexShrink": true,
 		"fontWeight": true,
+		"gridArea": true,
+		"gridColumn": true,
+		"gridColumnEnd": true,
+		"gridColumnStart": true,
+		"gridRow": true,
+		"gridRowEnd": true,
+		"gridRowStart": true,
 		"lineHeight": true,
 		"opacity": true,
 		"order": true,
@@ -49169,7 +50042,9 @@ jQuery.extend( {
 			}
 
 			// If a number was passed in, add the unit (except for certain CSS properties)
-			if ( type === "number" ) {
+			// The isCustomProp check can be removed in jQuery 4.0 when we only auto-append
+			// "px" to a few hardcoded values.
+			if ( type === "number" && !isCustomProp ) {
 				value += ret && ret[ 3 ] || ( jQuery.cssNumber[ origName ] ? "" : "px" );
 			}
 
@@ -49269,18 +50144,29 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 		set: function( elem, value, extra ) {
 			var matches,
 				styles = getStyles( elem ),
-				isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-				subtract = extra && boxModelAdjustment(
-					elem,
-					dimension,
-					extra,
-					isBorderBox,
-					styles
-				);
+
+				// Only read styles.position if the test has a chance to fail
+				// to avoid forcing a reflow.
+				scrollboxSizeBuggy = !support.scrollboxSize() &&
+					styles.position === "absolute",
+
+				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
+				boxSizingNeeded = scrollboxSizeBuggy || extra,
+				isBorderBox = boxSizingNeeded &&
+					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+				subtract = extra ?
+					boxModelAdjustment(
+						elem,
+						dimension,
+						extra,
+						isBorderBox,
+						styles
+					) :
+					0;
 
 			// Account for unreliable border-box dimensions by comparing offset* to computed and
 			// faking a content-box to get border and padding (gh-3699)
-			if ( isBorderBox && support.scrollboxSize() === styles.position ) {
+			if ( isBorderBox && scrollboxSizeBuggy ) {
 				subtract -= Math.ceil(
 					elem[ "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 ) ] -
 					parseFloat( styles[ dimension ] ) -
@@ -49448,9 +50334,9 @@ Tween.propHooks = {
 			// Use .style if available and use plain properties where available.
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
-			} else if ( tween.elem.nodeType === 1 &&
-				( tween.elem.style[ jQuery.cssProps[ tween.prop ] ] != null ||
-					jQuery.cssHooks[ tween.prop ] ) ) {
+			} else if ( tween.elem.nodeType === 1 && (
+					jQuery.cssHooks[ tween.prop ] ||
+					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
 				tween.elem[ tween.prop ] = tween.now;
@@ -51157,6 +52043,10 @@ jQuery.param = function( a, traditional ) {
 				encodeURIComponent( value == null ? "" : value );
 		};
 
+	if ( a == null ) {
+		return "";
+	}
+
 	// If an array was passed in, assume that it is an array of form elements.
 	if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
@@ -51659,12 +52549,14 @@ jQuery.extend( {
 						if ( !responseHeaders ) {
 							responseHeaders = {};
 							while ( ( match = rheaders.exec( responseHeadersString ) ) ) {
-								responseHeaders[ match[ 1 ].toLowerCase() ] = match[ 2 ];
+								responseHeaders[ match[ 1 ].toLowerCase() + " " ] =
+									( responseHeaders[ match[ 1 ].toLowerCase() + " " ] || [] )
+										.concat( match[ 2 ] );
 							}
 						}
-						match = responseHeaders[ key.toLowerCase() ];
+						match = responseHeaders[ key.toLowerCase() + " " ];
 					}
-					return match == null ? null : match;
+					return match == null ? null : match.join( ", " );
 				},
 
 				// Raw string
@@ -52053,7 +52945,7 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 } );
 
 
-jQuery._evalUrl = function( url ) {
+jQuery._evalUrl = function( url, options ) {
 	return jQuery.ajax( {
 		url: url,
 
@@ -52063,7 +52955,16 @@ jQuery._evalUrl = function( url ) {
 		cache: true,
 		async: false,
 		global: false,
-		"throws": true
+
+		// Only evaluate the response if it is successful (gh-4126)
+		// dataFilter is not invoked for failure responses, so using it instead
+		// of the default converter is kludgy but it works.
+		converters: {
+			"text script": function() {}
+		},
+		dataFilter: function( response ) {
+			jQuery.globalEval( response, options );
+		}
 	} );
 };
 
@@ -52346,24 +53247,21 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
-	// This transport only deals with cross domain requests
-	if ( s.crossDomain ) {
+	// This transport only deals with cross domain or forced-by-attrs requests
+	if ( s.crossDomain || s.scriptAttrs ) {
 		var script, callback;
 		return {
 			send: function( _, complete ) {
-				script = jQuery( "<script>" ).prop( {
-					charset: s.scriptCharset,
-					src: s.url
-				} ).on(
-					"load error",
-					callback = function( evt ) {
+				script = jQuery( "<script>" )
+					.attr( s.scriptAttrs || {} )
+					.prop( { charset: s.scriptCharset, src: s.url } )
+					.on( "load error", callback = function( evt ) {
 						script.remove();
 						callback = null;
 						if ( evt ) {
 							complete( evt.type === "error" ? 404 : 200, evt.type );
 						}
-					}
-				);
+					} );
 
 				// Use native DOM manipulation to avoid our domManip AJAX trickery
 				document.head.appendChild( script[ 0 ] );
@@ -53056,12 +53954,12 @@ return jQuery;
 
 
 /***/ }),
-/* 300 */
+/* 305 */
 /***/ (function(module, exports) {
 
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under the MIT license
  */
 
@@ -53078,10 +53976,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: transition.js v3.3.7
- * http://getbootstrap.com/javascript/#transitions
+ * Bootstrap: transition.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#transitions
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53089,7 +53987,7 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   'use strict';
 
-  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // CSS TRANSITION SUPPORT (Shoutout: https://modernizr.com/)
   // ============================================================
 
   function transitionEnd() {
@@ -53111,7 +54009,7 @@ if (typeof jQuery === 'undefined') {
     return false // explicit for ie8 (  ._.)
   }
 
-  // http://blog.alexmaccaw.com/css-transitions
+  // https://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
     var called = false
     var $el = this
@@ -53138,10 +54036,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: alert.js v3.3.7
- * http://getbootstrap.com/javascript/#alerts
+ * Bootstrap: alert.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#alerts
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53157,7 +54055,7 @@ if (typeof jQuery === 'undefined') {
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.VERSION = '3.3.7'
+  Alert.VERSION = '3.4.1'
 
   Alert.TRANSITION_DURATION = 150
 
@@ -53170,7 +54068,8 @@ if (typeof jQuery === 'undefined') {
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    var $parent = $(selector === '#' ? [] : selector)
+    selector    = selector === '#' ? [] : selector
+    var $parent = $(document).find(selector)
 
     if (e) e.preventDefault()
 
@@ -53233,10 +54132,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: button.js v3.3.7
- * http://getbootstrap.com/javascript/#buttons
+ * Bootstrap: button.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#buttons
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53253,7 +54152,7 @@ if (typeof jQuery === 'undefined') {
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.3.7'
+  Button.VERSION  = '3.4.1'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -53359,10 +54258,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: carousel.js v3.3.7
- * http://getbootstrap.com/javascript/#carousel
+ * Bootstrap: carousel.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#carousel
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53390,7 +54289,7 @@ if (typeof jQuery === 'undefined') {
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.3.7'
+  Carousel.VERSION  = '3.4.1'
 
   Carousel.TRANSITION_DURATION = 600
 
@@ -53504,7 +54403,9 @@ if (typeof jQuery === 'undefined') {
     var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
-      $next[0].offsetWidth // force reflow
+      if (typeof $next === 'object' && $next.length) {
+        $next[0].offsetWidth // force reflow
+      }
       $active.addClass(direction)
       $next.addClass(direction)
       $active
@@ -53566,10 +54467,17 @@ if (typeof jQuery === 'undefined') {
   // =================
 
   var clickHandler = function (e) {
-    var href
     var $this   = $(this)
-    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+    var href    = $this.attr('href')
+    if (href) {
+      href = href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+    }
+
+    var target  = $this.attr('data-target') || href
+    var $target = $(document).find(target)
+
     if (!$target.hasClass('carousel')) return
+
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
     if (slideIndex) options.interval = false
@@ -53597,10 +54505,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.7
- * http://getbootstrap.com/javascript/#collapse
+ * Bootstrap: collapse.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#collapse
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53628,7 +54536,7 @@ if (typeof jQuery === 'undefined') {
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.7'
+  Collapse.VERSION  = '3.4.1'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -53735,7 +54643,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Collapse.prototype.getParent = function () {
-    return $(this.options.parent)
+    return $(document).find(this.options.parent)
       .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
       .each($.proxy(function (i, element) {
         var $element = $(element)
@@ -53758,7 +54666,7 @@ if (typeof jQuery === 'undefined') {
     var target = $trigger.attr('data-target')
       || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
 
-    return $(target)
+    return $(document).find(target)
   }
 
 
@@ -53810,10 +54718,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: dropdown.js v3.3.7
- * http://getbootstrap.com/javascript/#dropdowns
+ * Bootstrap: dropdown.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#dropdowns
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53830,7 +54738,7 @@ if (typeof jQuery === 'undefined') {
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.VERSION = '3.3.7'
+  Dropdown.VERSION = '3.4.1'
 
   function getParent($this) {
     var selector = $this.attr('data-target')
@@ -53840,7 +54748,7 @@ if (typeof jQuery === 'undefined') {
       selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    var $parent = selector && $(selector)
+    var $parent = selector !== '#' ? $(document).find(selector) : null
 
     return $parent && $parent.length ? $parent : $this.parent()
   }
@@ -53976,10 +54884,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: modal.js v3.3.7
- * http://getbootstrap.com/javascript/#modals
+ * Bootstrap: modal.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#modals
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -53991,15 +54899,16 @@ if (typeof jQuery === 'undefined') {
   // ======================
 
   var Modal = function (element, options) {
-    this.options             = options
-    this.$body               = $(document.body)
-    this.$element            = $(element)
-    this.$dialog             = this.$element.find('.modal-dialog')
-    this.$backdrop           = null
-    this.isShown             = null
-    this.originalBodyPad     = null
-    this.scrollbarWidth      = 0
+    this.options = options
+    this.$body = $(document.body)
+    this.$element = $(element)
+    this.$dialog = this.$element.find('.modal-dialog')
+    this.$backdrop = null
+    this.isShown = null
+    this.originalBodyPad = null
+    this.scrollbarWidth = 0
     this.ignoreBackdropClick = false
+    this.fixedContent = '.navbar-fixed-top, .navbar-fixed-bottom'
 
     if (this.options.remote) {
       this.$element
@@ -54010,7 +54919,7 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-  Modal.VERSION  = '3.3.7'
+  Modal.VERSION = '3.4.1'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -54027,7 +54936,7 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+    var e = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
     this.$element.trigger(e)
 
@@ -54118,8 +55027,8 @@ if (typeof jQuery === 'undefined') {
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
         if (document !== e.target &&
-            this.$element[0] !== e.target &&
-            !this.$element.has(e.target).length) {
+          this.$element[0] !== e.target &&
+          !this.$element.has(e.target).length) {
           this.$element.trigger('focus')
         }
       }, this))
@@ -54221,7 +55130,7 @@ if (typeof jQuery === 'undefined') {
     var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
     this.$element.css({
-      paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
+      paddingLeft: !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
       paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
     })
   }
@@ -54246,11 +55155,26 @@ if (typeof jQuery === 'undefined') {
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
     this.originalBodyPad = document.body.style.paddingRight || ''
-    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    var scrollbarWidth = this.scrollbarWidth
+    if (this.bodyIsOverflowing) {
+      this.$body.css('padding-right', bodyPad + scrollbarWidth)
+      $(this.fixedContent).each(function (index, element) {
+        var actualPadding = element.style.paddingRight
+        var calculatedPadding = $(element).css('padding-right')
+        $(element)
+          .data('padding-right', actualPadding)
+          .css('padding-right', parseFloat(calculatedPadding) + scrollbarWidth + 'px')
+      })
+    }
   }
 
   Modal.prototype.resetScrollbar = function () {
     this.$body.css('padding-right', this.originalBodyPad)
+    $(this.fixedContent).each(function (index, element) {
+      var padding = $(element).data('padding-right')
+      $(element).removeData('padding-right')
+      element.style.paddingRight = padding ? padding : ''
+    })
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
@@ -54268,8 +55192,8 @@ if (typeof jQuery === 'undefined') {
 
   function Plugin(option, _relatedTarget) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.modal')
+      var $this = $(this)
+      var data = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
@@ -54280,7 +55204,7 @@ if (typeof jQuery === 'undefined') {
 
   var old = $.fn.modal
 
-  $.fn.modal             = Plugin
+  $.fn.modal = Plugin
   $.fn.modal.Constructor = Modal
 
 
@@ -54297,10 +55221,13 @@ if (typeof jQuery === 'undefined') {
   // ==============
 
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
-    var $this   = $(this)
-    var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
-    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+    var $this = $(this)
+    var href = $this.attr('href')
+    var target = $this.attr('data-target') ||
+      (href && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+
+    var $target = $(document).find(target)
+    var option = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()
 
@@ -54316,17 +55243,147 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.7
- * http://getbootstrap.com/javascript/#tooltip
+ * Bootstrap: tooltip.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
-
 +function ($) {
   'use strict';
+
+  var DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
+
+  var uriAttrs = [
+    'background',
+    'cite',
+    'href',
+    'itemtype',
+    'longdesc',
+    'poster',
+    'src',
+    'xlink:href'
+  ]
+
+  var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
+
+  var DefaultWhitelist = {
+    // Global attributes allowed on any supplied element below.
+    '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
+    a: ['target', 'href', 'title', 'rel'],
+    area: [],
+    b: [],
+    br: [],
+    col: [],
+    code: [],
+    div: [],
+    em: [],
+    hr: [],
+    h1: [],
+    h2: [],
+    h3: [],
+    h4: [],
+    h5: [],
+    h6: [],
+    i: [],
+    img: ['src', 'alt', 'title', 'width', 'height'],
+    li: [],
+    ol: [],
+    p: [],
+    pre: [],
+    s: [],
+    small: [],
+    span: [],
+    sub: [],
+    sup: [],
+    strong: [],
+    u: [],
+    ul: []
+  }
+
+  /**
+   * A pattern that recognizes a commonly useful subset of URLs that are safe.
+   *
+   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
+   */
+  var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))/gi
+
+  /**
+   * A pattern that matches safe data URLs. Only matches image, video and audio types.
+   *
+   * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
+   */
+  var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i
+
+  function allowedAttribute(attr, allowedAttributeList) {
+    var attrName = attr.nodeName.toLowerCase()
+
+    if ($.inArray(attrName, allowedAttributeList) !== -1) {
+      if ($.inArray(attrName, uriAttrs) !== -1) {
+        return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
+      }
+
+      return true
+    }
+
+    var regExp = $(allowedAttributeList).filter(function (index, value) {
+      return value instanceof RegExp
+    })
+
+    // Check if a regular expression validates the attribute.
+    for (var i = 0, l = regExp.length; i < l; i++) {
+      if (attrName.match(regExp[i])) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
+    if (unsafeHtml.length === 0) {
+      return unsafeHtml
+    }
+
+    if (sanitizeFn && typeof sanitizeFn === 'function') {
+      return sanitizeFn(unsafeHtml)
+    }
+
+    // IE 8 and below don't support createHTMLDocument
+    if (!document.implementation || !document.implementation.createHTMLDocument) {
+      return unsafeHtml
+    }
+
+    var createdDocument = document.implementation.createHTMLDocument('sanitization')
+    createdDocument.body.innerHTML = unsafeHtml
+
+    var whitelistKeys = $.map(whiteList, function (el, i) { return i })
+    var elements = $(createdDocument.body).find('*')
+
+    for (var i = 0, len = elements.length; i < len; i++) {
+      var el = elements[i]
+      var elName = el.nodeName.toLowerCase()
+
+      if ($.inArray(elName, whitelistKeys) === -1) {
+        el.parentNode.removeChild(el)
+
+        continue
+      }
+
+      var attributeList = $.map(el.attributes, function (el) { return el })
+      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
+
+      for (var j = 0, len2 = attributeList.length; j < len2; j++) {
+        if (!allowedAttribute(attributeList[j], whitelistedAttributes)) {
+          el.removeAttribute(attributeList[j].nodeName)
+        }
+      }
+    }
+
+    return createdDocument.body.innerHTML
+  }
 
   // TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
@@ -54343,7 +55400,7 @@ if (typeof jQuery === 'undefined') {
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.7'
+  Tooltip.VERSION  = '3.4.1'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -54360,7 +55417,10 @@ if (typeof jQuery === 'undefined') {
     viewport: {
       selector: 'body',
       padding: 0
-    }
+    },
+    sanitize : true,
+    sanitizeFn : null,
+    whiteList : DefaultWhitelist
   }
 
   Tooltip.prototype.init = function (type, element, options) {
@@ -54368,7 +55428,7 @@ if (typeof jQuery === 'undefined') {
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.$viewport = this.options.viewport && $(document).find($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
     this.inState   = { click: false, hover: false, focus: false }
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
@@ -54401,13 +55461,25 @@ if (typeof jQuery === 'undefined') {
   }
 
   Tooltip.prototype.getOptions = function (options) {
-    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
+    var dataAttributes = this.$element.data()
+
+    for (var dataAttr in dataAttributes) {
+      if (dataAttributes.hasOwnProperty(dataAttr) && $.inArray(dataAttr, DISALLOWED_ATTRIBUTES) !== -1) {
+        delete dataAttributes[dataAttr]
+      }
+    }
+
+    options = $.extend({}, this.getDefaults(), dataAttributes, options)
 
     if (options.delay && typeof options.delay == 'number') {
       options.delay = {
         show: options.delay,
         hide: options.delay
       }
+    }
+
+    if (options.sanitize) {
+      options.template = sanitizeHtml(options.template, options.whiteList, options.sanitizeFn)
     }
 
     return options
@@ -54521,7 +55593,7 @@ if (typeof jQuery === 'undefined') {
         .addClass(placement)
         .data('bs.' + this.type, this)
 
-      this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+      this.options.container ? $tip.appendTo($(document).find(this.options.container)) : $tip.insertAfter(this.$element)
       this.$element.trigger('inserted.bs.' + this.type)
 
       var pos          = this.getPosition()
@@ -54623,7 +55695,16 @@ if (typeof jQuery === 'undefined') {
     var $tip  = this.tip()
     var title = this.getTitle()
 
-    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+    if (this.options.html) {
+      if (this.options.sanitize) {
+        title = sanitizeHtml(title, this.options.whiteList, this.options.sanitizeFn)
+      }
+
+      $tip.find('.tooltip-inner').html(title)
+    } else {
+      $tip.find('.tooltip-inner').text(title)
+    }
+
     $tip.removeClass('fade in top bottom left right')
   }
 
@@ -54804,6 +55885,9 @@ if (typeof jQuery === 'undefined') {
     })
   }
 
+  Tooltip.prototype.sanitizeHtml = function (unsafeHtml) {
+    return sanitizeHtml(unsafeHtml, this.options.whiteList, this.options.sanitizeFn)
+  }
 
   // TOOLTIP PLUGIN DEFINITION
   // =========================
@@ -54837,10 +55921,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: popover.js v3.3.7
- * http://getbootstrap.com/javascript/#popovers
+ * Bootstrap: popover.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#popovers
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -54857,7 +55941,7 @@ if (typeof jQuery === 'undefined') {
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.3.7'
+  Popover.VERSION  = '3.4.1'
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
@@ -54883,10 +55967,25 @@ if (typeof jQuery === 'undefined') {
     var title   = this.getTitle()
     var content = this.getContent()
 
-    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-    $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
-      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-    ](content)
+    if (this.options.html) {
+      var typeContent = typeof content
+
+      if (this.options.sanitize) {
+        title = this.sanitizeHtml(title)
+
+        if (typeContent === 'string') {
+          content = this.sanitizeHtml(content)
+        }
+      }
+
+      $tip.find('.popover-title').html(title)
+      $tip.find('.popover-content').children().detach().end()[
+        typeContent === 'string' ? 'html' : 'append'
+      ](content)
+    } else {
+      $tip.find('.popover-title').text(title)
+      $tip.find('.popover-content').children().detach().end().text(content)
+    }
 
     $tip.removeClass('fade top bottom left right in')
 
@@ -54905,8 +56004,8 @@ if (typeof jQuery === 'undefined') {
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
-            o.content.call($e[0]) :
-            o.content)
+        o.content.call($e[0]) :
+        o.content)
   }
 
   Popover.prototype.arrow = function () {
@@ -54946,10 +56045,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: scrollspy.js v3.3.7
- * http://getbootstrap.com/javascript/#scrollspy
+ * Bootstrap: scrollspy.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#scrollspy
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -54975,7 +56074,7 @@ if (typeof jQuery === 'undefined') {
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.3.7'
+  ScrollSpy.VERSION  = '3.4.1'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -55119,10 +56218,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tab.js v3.3.7
- * http://getbootstrap.com/javascript/#tabs
+ * Bootstrap: tab.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#tabs
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -55139,7 +56238,7 @@ if (typeof jQuery === 'undefined') {
     // jscs:enable requireDollarBeforejQueryAssignment
   }
 
-  Tab.VERSION = '3.3.7'
+  Tab.VERSION = '3.4.1'
 
   Tab.TRANSITION_DURATION = 150
 
@@ -55168,7 +56267,7 @@ if (typeof jQuery === 'undefined') {
 
     if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
 
-    var $target = $(selector)
+    var $target = $(document).find(selector)
 
     this.activate($this.closest('li'), $ul)
     this.activate($target, $target.parent(), function () {
@@ -55193,15 +56292,15 @@ if (typeof jQuery === 'undefined') {
       $active
         .removeClass('active')
         .find('> .dropdown-menu > .active')
-          .removeClass('active')
+        .removeClass('active')
         .end()
         .find('[data-toggle="tab"]')
-          .attr('aria-expanded', false)
+        .attr('aria-expanded', false)
 
       element
         .addClass('active')
         .find('[data-toggle="tab"]')
-          .attr('aria-expanded', true)
+        .attr('aria-expanded', true)
 
       if (transition) {
         element[0].offsetWidth // reflow for transition
@@ -55213,10 +56312,10 @@ if (typeof jQuery === 'undefined') {
       if (element.parent('.dropdown-menu').length) {
         element
           .closest('li.dropdown')
-            .addClass('active')
+          .addClass('active')
           .end()
           .find('[data-toggle="tab"]')
-            .attr('aria-expanded', true)
+          .attr('aria-expanded', true)
       }
 
       callback && callback()
@@ -55275,10 +56374,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: affix.js v3.3.7
- * http://getbootstrap.com/javascript/#affix
+ * Bootstrap: affix.js v3.4.1
+ * https://getbootstrap.com/docs/3.4/javascript/#affix
  * ========================================================================
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -55292,7 +56391,9 @@ if (typeof jQuery === 'undefined') {
   var Affix = function (element, options) {
     this.options = $.extend({}, Affix.DEFAULTS, options)
 
-    this.$target = $(this.options.target)
+    var target = this.options.target === Affix.DEFAULTS.target ? $(this.options.target) : $(document).find(this.options.target)
+
+    this.$target = target
       .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
       .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
@@ -55304,7 +56405,7 @@ if (typeof jQuery === 'undefined') {
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.7'
+  Affix.VERSION  = '3.4.1'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -55439,7 +56540,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 301 */
+/* 306 */
 /***/ (function(module, exports) {
 
 /**
@@ -55493,7 +56594,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery, window);
 
 /***/ }),
-/* 302 */
+/* 307 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -13,7 +13,7 @@
                 ❤ Powered by <a target="_blank" href="mailto:jochenzhang94@email.com">Jochen</a>
             </p>
             <p>
-                © Blog 2018 | <a target="_blank" href="http://www.miitbeian.gov.cn"> 粤ICP备18074839号</a>
+                © Blog 2018 | <a target="_blank" href="http://beian.miit.gov.cn/"> 粤ICP备18074839号</a>
             </p>
         </div>
     </div>

@@ -56,7 +56,7 @@
                                 </ul>
                             </li>
                             <li><a href="{{ route('tags.index') }}">标签</a></li>
-                            <li><a href="{{ route('archive.index') }}">日志</a></li>
+                            <li><a href="{{ route('archive.index') }}">归档</a></li>
                             <li><a href="{{ route('about') }}">关于</a></li>
                         </ul>
                     </div>
