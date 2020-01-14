@@ -60,15 +60,15 @@
                             <li><a href="{{ route('about') }}">关于</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3 col-sm-3">
-                        <form action="{{ route('search') }}" class="nav navbar-nav header-search">
-                            <button class="btn btn-link">
-                                <span class="sr-only">搜索</span>
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            <input id="searchBox" name="query" type="text" class="form-control" placeholder="搜索文章" value="" required >
-                        </form>
-                    </div>
+{{--                    <div class="col-md-3 col-sm-3">--}}
+{{--                        <form action="{{ route('search') }}" class="nav navbar-nav header-search">--}}
+{{--                            <button class="btn btn-link">--}}
+{{--                                <span class="sr-only">搜索</span>--}}
+{{--                                <span class="glyphicon glyphicon-search"></span>--}}
+{{--                            </button>--}}
+{{--                            <input id="searchBox" name="query" type="text" class="form-control" placeholder="搜索文章" value="" required >--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

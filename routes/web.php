@@ -15,7 +15,7 @@ Route::get('/', 'ArticleController@index')->name('index');
 
 Route::get('articles', 'ArticleController@index')->name('articles.index');
 Route::get('articles/{article}/{slug?}', 'ArticleController@show')->name('articles.show');
-Route::get('search', 'ArticleController@search')->name('search');
+//Route::get('search', 'ArticleController@search')->name('search');
 
 Route::resource('categories', 'CategoryController', ['only' => ['show']]);
 
